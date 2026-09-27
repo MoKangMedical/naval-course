@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>幸福的本质 — 纳瓦尔通识课第21课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 21 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 3 · 幸福与内在平静</div>
+ <h1>幸福的本质</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 21/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval021.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：幸福不是终点，而是起点</h3><p>想象这样一个场景：你刚刚完成了一个重要项目，得到了期待已久的升职加薪。你兴奋地庆祝，觉得终于“幸福”了。但一周后，这种兴奋感开始消退。你开始关注下一个目标：更大的房子、更高的职位、更完美的伴侣。你是否曾停下来问自己：为什么我们总是追逐幸福，却总觉得它遥不可及？</p><p>纳瓦尔·拉维坎特在硅谷的演讲中曾分享一个震撼的观点：“幸福不是你得到什么东西之后的状态。幸福是你什么都不缺时自然而然的状态。当欲望停止时，幸福就会浮现。”这句话颠覆了我们对幸福的传统理解。我们被社会教导：幸福是需要争取的——通过成就、财富、关系来“获得”。但纳瓦尔指出，这恰恰是痛苦的根源。幸福不是一种有待获取的“东西”，而是一种内在的默认状态。</p><p>今天，我们将深入探讨幸福的本质：为什么追求幸福反而让你不幸福，欲望如何成为幸福的敌人，以及如何通过简单的实践回归内在的平静。这堂课不是教你如何“得到”幸福，而是如何“发现”你从未失去的幸福。</p><blockquote><strong>核心洞察：</strong>幸福是你什么都不缺时自然而然的状态。当欲望停止时，幸福就会浮现。这不是逃避——这是最高的智慧。</blockquote><h3>二、核心理论：幸福的定义与享乐适应</h3><p><strong>幸福的定义：缺少欲望时的默认状态</strong></p><p>纳瓦尔将幸福定义为“没有欲望时的默认状态”。这不是无欲无求的消极主义，而是意识到：我们本自具足。当你停止追逐“更多”时，你才发现自己已经拥有了一切。想想看：当你不再渴望升职、不再羡慕别人的生活、不再后悔过去的选择时，心中是否有一种宁静的满足感？那就是幸福。</p><p><strong>为什么追求幸福反而让你不幸福？</strong></p><p>心理学中有个著名的“幸福悖论”：越是直接追求幸福，越难感到幸福。因为追求本身隐含了“我现在不够好”的信念。当你设定“我必须得到X才能幸福”时，你已经在否定当下的自己。纳瓦尔说：“幸福是一个陷阱。你越追逐它，它越远离你。”就像抓蝴蝶——你越用力，它越飞走；当你静静坐在花园里，它可能落在你肩上。</p><p><strong>享乐适应：得到你想要的之后，幸福感迅速回归基线</strong></p><p>享乐适应（Hedonic Adaptation）是心理学的重要发现：无论经历多大的积极或消极事件，人们的幸福感最终会回到一个基线水平。中彩票的人一年后并不比普通人更快乐；而遭遇意外的人，一段时间后也往往恢复到之前的幸福水平。这是因为我们的大脑天生会“适应”——这是进化赋予我们的生存机制，但也是幸福的陷阱。你得到新车、新房子、新伴侣后，兴奋感很快消失，你又开始寻找下一个目标。</p><p><strong>幸福的敌人：欲望、比较、后悔、焦虑</strong></p><p>纳瓦尔列举了四个主要敌人：欲望让你永远不满足；比较让你看到“别人有而我没有”；后悔让你困在过去；焦虑让你担忧未来。这些情绪都是“心智的噪音”，它们掩盖了幸福的本底。当你被这些噪音占据时，你无法感受到内在的平静。正如纳瓦尔所说：“幸福不是一种情绪，而是一种状态——没有噪音的状态。”</p><h3>三、深层分析：为什么我们如此害怕“没有欲望”？</h3><p>你可能会质疑：没有欲望，人生还有什么动力？这听起来像是逃避责任或消极厌世。但让我们深入分析。纳瓦尔的观点并非否定所有欲望，而是区分“需求”和“执念”。基本需求——食物、住所、健康、爱——是生存的自然要求。但执念是“我必须得到更多才能快乐”的信念。执念让你成为欲望的奴隶。</p><p><strong>案例分析：乔布斯的“Stay Hungry， Stay Foolish” vs 纳瓦尔的“Stay Full， Stay Still”</strong></p><p>乔布斯的名言“Stay Hungry， Stay Foolish”（保持饥饿，保持愚蠢）曾被无数人奉为信条。但纳瓦尔提醒我们：这种“饥饿”如果变成执念，会带来无尽的痛苦。乔布斯本人晚年也承认，成功并没有带来持久的幸福。相比之下，纳瓦尔推崇“Stay Full， Stay Still”（保持满足，保持静止）——不是放弃追求，而是在追求中保持内在的完整。你可以努力工作、创造价值，但不要把你的幸福寄托于结果。</p><p><strong>神经科学视角：大脑的默认模式网络</strong></p><p>现代神经科学研究发现，大脑有一个“默认模式网络”（Default Mode Network，DMN），它在我们走神、回忆过去、担忧未来时最活跃。这个网络正是欲望、比较、后悔和焦虑的生理基础。当你冥想或专注当下时，DMN的活动会减弱，你感到平静和满足。纳瓦尔的幸福观与这一发现不谋而合：幸福不是大脑的“兴奋模式”，而是“安静模式”。</p><p><strong>文化反思：为什么现代社会鼓励“不幸福”？</strong></p><p>你可能会问：如果幸福是默认状态，为什么我们很少体验到？答案在于社会结构。消费主义、社交媒体、职场文化都鼓励你“不满足”——因为只有不满足，你才会消费、竞争、奋斗。广告告诉你：你缺少某样东西；社交媒体展示别人“更好的”生活；职场奖励你的焦虑和努力。纳瓦尔说：“社会训练你成为不幸福的人。幸福需要你逆流而上。”</p><h3>四、实践应用：如何回归幸福的基础状态</h3><p><strong>课后实践：此刻，闭上眼睛30秒</strong></p><p>现在，请暂停阅读。闭上眼睛，深呼吸。注意你的身体：你坐在椅子上，有呼吸，有心跳。你活着。你没有缺少任何东西——至少在这一刻。这就是幸福的基础状态。不需要任何改变。你只需要注意到它。</p><p><strong>课后作业：连续3天，每天写下3件你不需要任何改变就能感到满足的事</strong></p><p>这个练习很简单，但需要持续。例如：今天你喝了一杯温水，感觉很舒服；你听到鸟叫声；你有一个可以遮风挡雨的家。这些小事不需要你改变任何东西，它们已经存在。连续3天，你会发现自己其实拥有很多。</p><p><strong>日常应用：建立“欲望暂停”习惯</strong></p><p>每当感到欲望升起时——比如看到别人升职、羡慕别人的生活、后悔过去的选择——暂停片刻。问自己：“我此刻缺少什么？”通常你会发现：你什么都不缺。你只是陷入了心智的噪音。通过练习，你可以学会让欲望像云朵一样飘过，而不被它带走。</p><p><strong>总结：幸福是允许自己存在</strong></p><p>纳瓦尔说：“幸福不是一种成就，而是一种许可。允许自己什么都不缺，允许自己在此刻存在。”这不是逃避，而是最高的智慧。当你停止追逐幸福，幸福就会找到你。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说幸福是‘没有欲望时的默认状态’。请用你自己的话解释这个定义，并说明为什么‘追求幸福’反而会让人远离幸福？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考欲望如何制造‘缺失感’，以及追逐目标时是否忽略了当下的满足。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">幸福不是一种需要努力获取的东西，而是当欲望消退时自然浮现的平静状态。追求幸福时，我们往往把幸福设定为一个未来目标，这本身就暗示了‘现在不够好’，从而制造了焦虑和不满。例如，你告诉自己‘等我升职就幸福’，但在追求过程中，欲望驱动你不断比较、奋斗，反而错过了已有的平静。纳瓦尔认为，幸福是默认状态，就像呼吸一样；欲望像噪音，掩盖了它。因此，停止追逐，放下‘必须得到’的执念，才能回归这种内在的安宁。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你刚获得了一直想要的加薪，但两周后你发现自己又对工作感到不满。请用‘享乐适应’原理解释这种现象，并设计一个具体行动来打破这种循环。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">享乐适应指幸福感很快回归基线。行动可以是重设期望或练习感恩，而非依赖外部奖励。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">享乐适应指人类对积极变化快速适应，导致幸福感回落基线。加薪带来的兴奋很快被日常压力取代，因为大脑将新薪资视为‘正常’，进而追求更高目标。要打破循环，可以每天花2分钟写下三件已拥有但常忽略的事（如健康、朋友、一杯好咖啡），这能主动对抗适应机制，提醒自己‘已经足够’。另一种行动是设定非物质目标，如每周冥想3次，专注于内在状态而非外部成就，从而减少对享乐适应的依赖。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第1课《财富与杠杆》中‘财富是睡觉时也能赚钱的资产’，以及本课‘幸福是欲望消失时的状态’。请分析：财富积累和幸福追求是否矛盾？如何用杠杆思维平衡二者？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">杠杆思维强调高效投入。财富可减少生存焦虑，但过度追求会滋养欲望。思考如何用财富支持而非破坏幸福。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">财富和幸福看似矛盾，实则互补。财富积累若出于恐惧或比较（欲望驱动），会加剧焦虑，远离幸福；但若用杠杆思维（如代码、资本、媒体）创造被动收入，则能减少生存压力，为幸福腾出空间。例如，通过构建自动化业务，你无需时刻工作，从而有更多时间体验‘无欲状态’。关键在于：财富应是工具，不是目标。正如纳瓦尔所言，用财富‘购买’自由（如时间、选择权），而非更多物质。平衡之道是：优先用杠杆积累足够财富消除基本焦虑，然后主动简化欲望，回归默认的平静。这样，财富成为幸福的垫脚石，而非绊脚石。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval020.html" class="prev">上一课</a>
+ <a href="naval022.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>反垄断与监管 — 纳瓦尔通识课第60课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 60 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 6 · 经济学思维</div>
+ <h1>反垄断与监管</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 60/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval060.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：市场不是完美的机器</h3><p>在经济学教科书里，市场被描绘成一台神奇的机器：每个人追求私利，最终却带来整体繁荣。但纳瓦尔·拉维坎特提醒我们：“市场不是完美的。它会在某些情况下失灵——垄断、信息不对称、外部性。理解市场失灵是理解为什么我们需要规则的理由。”这句话点出了现代经济学的核心矛盾：自由市场确实伟大，但它也有盲区。</p><p>想象一个场景：小镇上只有一家面包店。店主可以随意定价，因为居民没有其他选择。这就是垄断的雏形——当一家企业控制了整个市场，消费者就失去了议价能力。纳瓦尔曾说：“垄断的本质是消灭选择，而选择是自由市场的灵魂。”当选择消失，市场就失去了自我纠错的能力。</p><p>更棘手的是信息不对称。你买二手车时，卖家比你知道更多关于车况的信息。他可能隐瞒事故记录，而你只能靠运气。这种信息差距导致“柠檬市场”——劣质商品驱逐优质商品。2001年诺贝尔经济学奖得主乔治·阿克尔洛夫在《柠檬市场》一文中证明：当买家无法区分好坏时，他们只愿意支付平均价格，结果好产品退出市场，只剩下“柠檬”。</p><p>还有外部性。工厂排放污染，成本由全社会承担，利润却归股东。这是典型的负外部性——私人成本与社会成本分离。纳瓦尔和芒格都强调：市场在计算价格时，往往忽略了那些“看不见的成本”。</p><p>所以，市场失灵不是理论上的例外，而是现实中的常态。它提醒我们：自由市场需要规则，就像汽车需要刹车。问题在于：谁来制定规则？规则会不会也失灵？这正是本课要探讨的核心问题。</p><h3>二、核心理论：市场失灵的四种类型</h3><p>根据经济学经典分类，市场失灵主要有四种类型：垄断、信息不对称、外部性和公共物品。理解这四种类型，是理解反垄断与监管的起点。</p><p>第一，垄断。当一家企业拥有市场支配地位时，它可以限制产量、抬高价格，损害消费者福利。纳瓦尔曾用一个比喻说明：“垄断就像在沙漠里卖水——你不需要创新，只需要控制水源。”历史上，标准石油公司曾控制美国90%的炼油能力，导致油价飙升。1911年，美国最高法院依据《谢尔曼反托拉斯法》将其拆分为34家公司，这是反垄断的标志性案例。</p><p>第二，信息不对称。这通常发生在保险、金融和二手交易市场。例如，健康保险市场中，投保人比保险公司更了解自己的健康状况。结果，高风险人群更愿意投保，推高保费，低风险人群退出市场，形成“逆向选择”。纳瓦尔指出：“信息不对称是市场最大的摩擦之一，它让交易变得不公平。”</p><p>第三，外部性。污染是典型例子。但外部性也有正面的——教育不仅提升个人收入，还提高社会生产力、降低犯罪率。如果只靠市场，教育投资会不足，因为个人无法获得全部收益。所以政府通过公立学校补贴教育，这是纠正正外部性的常见手段。</p><p>第四，公共物品。国防、灯塔、基础研究——这些物品具有非竞争性和非排他性：一个人使用不影响他人，且无法阻止不付费的人使用。市场无法有效提供公共物品，因为搭便车问题会导致供给不足。芒格和纳瓦尔都强调：公共物品是政府存在的经济理由之一。</p><p>这四种失灵并非孤立的。科技巨头往往同时涉及多种：谷歌在搜索市场有垄断地位，同时通过算法控制信息流动（信息不对称），其数据中心消耗大量能源（外部性）。理解这些交叉，是分析监管必要性的关键。</p><h3>三、深层分析：监管的困境——太少和太多都有问题</h3><p>如果市场失灵是疾病，监管就是药物。但药物也有副作用。纳瓦尔警告：“规则本身也会失灵。”监管太少，市场会陷入混乱；监管太多，则扼杀创新。这种两难是经济学中最微妙的平衡问题。</p><p>先看监管太少。2008年金融危机就是典型。美国金融衍生品市场缺乏监管，银行把次级贷款打包成“有毒资产”卖给全球投资者。当房价下跌，整个系统崩溃。诺贝尔奖得主斯蒂格利茨指出：这次危机本质上是市场失灵的放大——信息不对称（投资者不懂产品）、外部性（银行风险转嫁给全社会）、以及垄断（大型金融机构“大而不倒”）。</p><p>再看监管太多。印度的“许可证制度”是反面教材。在1991年改革前，企业开工厂需要几十个政府许可，每个环节都可能被拖延或索贿。结果，印度经济增长长期停滞在3%左右，被称为“印度速度”。纳瓦尔曾评论：“过度监管不是保护消费者，而是保护既有利益者——那些已经拿到许可证的人。”</p><p>当前的科技反垄断浪潮，正处在两难的中心。2020年，美国司法部起诉谷歌，指控其通过排他性合同垄断搜索市场。欧盟已对谷歌开出超过80亿欧元的罚款。支持者说：这些巨头控制着数字基础设施，必须拆分或严格监管。反对者说：科技公司通过创新赢得市场，监管只会阻碍进步。</p><p>纳瓦尔的立场是务实的：“监管的目标不是惩罚成功，而是防止滥用。”他建议采用“行为监管”而非“结构监管”——即不强制拆分公司，但禁止反竞争行为。例如，要求平台公平对待所有商家，而不是优先推广自家产品。这种思路在欧盟《数字市场法案》中得到体现。</p><p>但监管机构也有自己的失灵：被游说集团捕获、反应滞后、缺乏技术理解。芒格和纳瓦尔都强调：好的监管应该像“看不见的手”的助手，而不是替代者。它需要足够灵活，能随着市场变化而调整。</p><h3>四、实践应用/总结：如何在现实世界中思考反垄断与监管</h3><p>理论讲完了，现在回到现实。作为投资者、创业者或普通公民，我们应该如何看待反垄断与监管？纳瓦尔给出的框架是：永远问三个问题——市场真的失灵了吗？监管能解决问题吗？监管的副作用是否小于市场失灵本身？</p><p>让我们用这个框架分析当前最热门的案例：对苹果App Store的反垄断调查。监管者担心：苹果强制开发者使用其支付系统，抽取30%佣金，这属于垄断行为。站在监管者角度：他们在担心创新被抑制、消费者支付更高价格。站在苹果公司角度：他们的辩护是——App Store提供了安全、便捷的生态系统，30%佣金是维护这个系统的合理费用。</p><p>哪个立场更合理？纳瓦尔的观点是：关键在于是否存在“可替代性”。如果开发者可以轻松转向安卓或其他平台，苹果就没有垄断。但现实是，iOS用户粘性极高，开发者几乎没有选择。这就是市场失灵。但监管方案呢？强制苹果开放第三方支付可能降低安全性，这是监管副作用的代价。</p><p>课后实践：选择一家被反垄断调查的科技公司（如谷歌、苹果、亚马逊、Meta），站在监管者和公司双方角度写一份分析报告。不要预设立场，而是像法官一样权衡证据。</p><p>课后作业：为你所在行业写一份“监管影响分析”。列出主要监管规则，然后问：这些规则真的在保护消费者吗？还是在保护现有企业的利润？例如，出租车行业的牌照制度，最初是为了保障安全，但后来变成了限制竞争的工具。你需要找出类似例子。</p><p>最后，记住纳瓦尔的忠告：“市场不是完美的，规则也不是。但正是这种不完美，给了我们思考和改进的空间。”反垄断与监管不是非黑即白的选择，而是一场永无止境的平衡艺术。掌握这种思维，你就能在任何经济环境中做出更明智的决策。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用自己的话解释为什么垄断对自由市场有害，并指出市场失灵中哪种类型与垄断直接相关。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回想垄断如何限制竞争和消费者选择，联系市场失灵中的“不完全竞争”。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">垄断有害是因为它破坏了自由市场的核心机制——竞争。当一家企业垄断市场时，它可以通过控制产量提高价格，导致消费者支付更高费用、获得更少选择，同时缺乏创新动力。这与市场失灵中的“不完全竞争”直接相关，即市场无法通过竞争达到资源最优配置。具体危害包括：1）价格扭曲，消费者剩余被剥削；2）效率低下，垄断者缺乏改进动力；3）进入壁垒高，抑制新企业创新。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你是一位监管者，正在审查一家科技巨头（如谷歌或苹果）的垄断行为。请列举两个监管者可能担忧的具体问题，并说明为什么这些行为损害了市场竞争。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想科技公司如何利用数据优势或平台规则排挤对手，如默认设置或捆绑服务。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">监管者可能担忧以下两个问题：1）滥用市场支配地位，例如谷歌在搜索市场通过默认设置推广自家服务，打压垂直搜索竞争者，这减少了用户选择并扼杀创新。2）数据垄断与不公平竞争，如苹果控制App Store规则，收取高额佣金并限制第三方支付，这抬高开发者成本并阻碍新应用诞生。这些行为损害了市场竞争，因为：a）消费者失去多样选择；b）潜在竞争者难以进入市场；c）创新动力被抑制，长期导致行业僵化。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合此前学过的“市场失灵”和“政府角色”课程，分析为什么反垄断监管存在“太少和太多都有问题”的困境。请用具体例子说明。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考监管不足如何导致垄断危害，监管过度如何扼杀创新效率，联系政府干预的边界。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">反垄断监管的困境源于市场与政府各自的局限性：1）监管太少：如早期微软案中，若放任其捆绑IE浏览器，会压制网景等竞争对手，导致市场被单一技术锁定，消费者失去选择——这符合市场失灵中的“不完全竞争”。2）监管太多：如欧盟对谷歌的频繁罚款，有时被视为过度干预，可能阻碍企业通过创新获取合法优势，增加合规成本，甚至打击投资意愿——这对应政府失灵中的“信息不对称”和“官僚惰性”。3）整合来看，理想状态是“精准监管”：只在垄断显著损害效率时干预，如拆分标准石油，但避免类似对亚马逊内部定价策略的过度审查。平衡点在于：监管应聚焦于可量化的消费者福利损害，而非企业规模本身。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval059.html" class="prev">上一课</a>
+ <a href="naval061.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

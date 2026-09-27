@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>长期投资心理学 — 纳瓦尔通识课第69课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 69 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 7 · 投资智慧</div>
+ <h1>长期投资心理学</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 69/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval069.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：短期交易的幻觉与长期投资的真相</h3><p>想象一下：你坐在电脑前，看着股市行情图。绿色数字让你心跳加速，红色数字让你手心出汗。你告诉自己，只要再盯五分钟，就能抓住下一个机会。但事实上，这五分钟可能让你损失更多。</p><p>纳瓦尔曾一针见血地指出：“讽刺的是，长期投资比短期交易容易得多——但短期交易感觉上更容易。”这是因为你的大脑被设计成偏好即时反馈。当你在交易中快速获利，哪怕只是微小的收益，大脑都会释放多巴胺，让你产生强烈的满足感。这种化学奖励机制，让短期交易变得极具诱惑。</p><p>但现实是残酷的。研究表明，90%的日内交易者最终亏损。华尔街的统计数据显示，频繁交易者的年化收益率平均比买入并持有策略低6%以上。为什么？因为短期交易在数学上就是亏钱的。交易成本、税收、情绪波动，这些因素叠加起来，让短线操作变成了一场负和游戏。</p><p>以纳斯达克指数为例，从2000年到2020年，该指数经历了三次暴跌（互联网泡沫、金融危机、新冠疫情）。但如果你在这20年里一直持有，年化收益率仍超过8%。相反，如果你试图在每次波动中低买高卖，很可能在恐慌中割肉，在贪婪中追高。</p><p>纳瓦尔强调：“长期投资者最大的敌人不是市场——是他们自己。”这句话点出了问题的核心。市场波动本身并不可怕，可怕的是我们无法控制自己的情绪。当你看到账户数字下跌时，大脑的杏仁核会触发“战斗或逃跑”反应，让你想立即行动。但正是这种本能，导致你做出错误决策。</p><p>芒格和纳瓦尔都强调，投资成功的关键在于“延迟满足”。就像种下一棵树，你不可能每天挖出来看它长了多少根。长期投资的核心，是相信时间的力量，而不是试图战胜时间。</p><p>那么，为什么我们总是被短期交易吸引？这背后是大脑的进化缺陷。在远古时代，即时反应关乎生存——看到野兽就要跑。但在现代金融市场，这种本能反而成了陷阱。我们需要重新训练大脑，让它适应长期主义的节奏。</p><h3>二、核心理论：长期投资的真正优势</h3><p>纳瓦尔认为，长期投资的优势不是运气，而是数学和心理学共同作用的结果。他提出三个关键要素：复利效应、时间不对称性和信息优势。</p><p>首先是复利效应。爱因斯坦曾说复利是世界第八大奇迹。假设你投资10万元，年化收益率15%，20年后会变成约163万元。但如果你因为短期波动而频繁进出，收益率可能降到5%，20年后只有26万元。差距超过6倍。纳瓦尔强调：“财富增长不是线性的，而是指数级的。只有长期持有，才能让复利发挥威力。”</p><p>其次是时间不对称性。在短期交易中，你的对手是专业机构、高频交易者和量化基金。他们拥有更快的速度、更低的成本和更先进的算法。你就像拿着木棍参加现代战争。但在长期投资中，你的对手变成了时间。而时间对所有参与者都是公平的。你只需要耐心等待，就能享受经济增长的红利。</p><p>第三是信息优势。纳瓦尔常说：“长期投资者不需要比别人知道得更多，只需要避免犯愚蠢的错误。”短期交易依赖于预测市场走势，这几乎不可能做到。但长期投资只需要判断一个公司的基本价值，并相信它会在未来持续增长。比如，巴菲特投资可口可乐，不是因为能预测下周的股价，而是相信人们会继续喝可乐。</p><p>芒格和纳瓦尔都强调，长期投资的核心是“能力圈”。你不需要了解所有行业，只需要找到你真正理解的领域。比如，如果你是一名医生，可能更懂医药公司；如果你是一名程序员，可能更懂科技企业。把投资限制在能力圈内，能大幅降低风险。</p><p>为了说明这一点，我们来看一个案例：2009年，纳瓦尔投资了推特（Twitter）。当时公司尚未盈利，但纳瓦尔看到了社交媒体的大趋势。他持有多年，直到2013年上市才部分退出。这笔投资为他带来了数十倍的回报。而同期，很多短线交易者在推特股价波动中赔了钱。</p><p>纳瓦尔总结：“长期投资的真正优势，不是比市场更聪明，而是比市场更有耐心。”当你把时间拉长到10年，短期波动就变成了背景噪音。你不再需要关注每天的涨跌，只需要关注企业的基本面是否改变。</p><h3>三、深层分析：如何抵御短期噪音的诱惑</h3><p>既然长期投资如此有利，为什么大多数人还是无法坚持？纳瓦尔认为，核心障碍在于“信息噪音”。我们生活在一个被信息淹没的时代，财经新闻、社交媒体、分析师报告，无时无刻不在刺激你的神经。</p><p>研究表明，一个人每天平均接收的信息量相当于174份报纸。这些信息中，绝大多数是噪音。它们会激活大脑的“恐惧回路”，让你高估风险。比如，当股市下跌5%时，媒体会铺天盖地报道“暴跌”“恐慌”。但实际上，从长期看，这种波动只是正常调整。</p><p>纳瓦尔提出一个简单但强大的方法：“信息节食”。他建议少看财经新闻，甚至完全屏蔽。他曾说：“如果你每天看财经新闻，你会在恐惧和贪婪之间摇摆。如果你一年看一次，你只会看到增长。”这正是长期投资者的视角。</p><p>以巴菲特为例，他住在奥马哈，远离华尔街的喧嚣。他每天花大量时间阅读财报和书籍，而不是看行情。他有一句名言：“股市是用来服务你的，而不是指导你的。”这意味着，你应该利用市场波动买入优质资产，而不是被市场牵着鼻子走。</p><p>芒格和纳瓦尔都强调，情绪管理是长期投资的核心技能。纳瓦尔建议，当你感到焦虑时，问自己一个问题：“这笔投资的基本面改变了吗？”如果答案是否定的，那就什么也不要做。这个简单的问题，能帮你过滤掉90%的噪音。</p><p>另一个有效方法是“设定检查周期”。纳瓦尔说：“我每年只看一次我的投资组合。”这听起来极端，但逻辑是：如果你相信一项投资值得持有10年，那么每天检查它毫无意义。检查周期越短，你越容易受到情绪影响。</p><p>为了验证这一点，我们来看一个实验：两组投资者，一组每天查看账户，一组每月查看。结果发现，每天查看的那组，交易频率高出10倍，但收益率反而更低。原因很简单：频繁查看导致频繁决策，而频繁决策往往是非理性的。</p><p>纳瓦尔总结：“长期投资者最大的敌人是自己。你需要学会忽略市场，而不是被市场控制。”这就像健身，你不可能每天称体重来判断进步。真正的变化发生在看不见的地方，比如肌肉的增长、脂肪的减少。投资也一样，真正的增长是复利在时间中的积累。</p><h3>四、实践应用：从今天开始训练长期思维</h3><p>现在，你已经理解了长期投资的优势和心理障碍。接下来，我们来谈谈如何把这些理论变成行动。纳瓦尔强调：“知识不是力量，行动才是。”</p><p>第一步，检查你上个月查看投资账户的次数。如果超过10次，说明你已经陷入了短期关注的陷阱。纳瓦尔建议：“把查看账户的频率降到每月一次，甚至每季度一次。”这听起来很难，但你可以从一个小目标开始：未来6个月内，每月只查看一次。用省下来的时间读一本关于投资的书，比如《聪明的投资者》或《穷查理宝典》。</p><p>第二步，建立“决策清单”。当你想要交易时，先问自己三个问题：第一，这笔交易是否符合我的长期计划？第二，我是否因为恐惧或贪婪而行动？第三，如果我持有10年，这笔交易还有意义吗？这三个问题能帮你避免冲动决策。</p><p>第三步，创造“物理隔离”。纳瓦尔建议，把交易软件从手机首页删除，关闭财经新闻推送，甚至设置一个“冷静期”——任何交易决策必须等待24小时才能执行。这能给你的理性大脑足够的时间，来压制情绪的冲动。</p><p>以一位学员为例，他叫张伟，是一名程序员。他曾经每天看盘3小时，频繁交易，结果一年亏损了30%。后来，他采用了纳瓦尔的方法：每月查看一次账户，只投资自己熟悉的科技公司，并制定了“买入并持有”的规则。3年后，他的年化收益率达到了18%。他说：“最大的改变不是收益率，而是我终于能睡个好觉了。”</p><p>纳瓦尔说：“投资的核心不是预测未来，而是构建一个让你不需要预测的系统。”这个系统包括：选择优质资产、设定长期目标、忽略短期噪音。当你做到这三点，投资就变成了一种轻松的习惯，而不是一场焦虑的赌博。</p><p>最后，记住纳瓦尔的忠告：“长期投资不是关于聪明，而是关于耐心。你不需要比别人更聪明，只需要比别人更冷静。”从今天开始，减少查看账户的次数，减少财经新闻的摄入，把时间花在提升自己上。你会发现，10年比10天容易得多。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">短期交易在数学上为什么是亏钱的？请结合交易成本、市场波动和概率思维解释这一核心概念。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考交易佣金、税费、频繁买卖的累积成本，以及短期价格随机性对胜率的影响。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">短期交易在数学上亏钱的原因有三：第一，交易成本（佣金、税费）会随频率增加而累积，侵蚀本金；第二，短期价格波动具有随机性（随机游走），频繁交易等于在赌运气，长期胜率趋近50%，扣除成本后净亏损；第三，概率思维表明，短期预测准确率极低，而长期持有能平滑波动，利用复利效应。因此，交易越频繁，数学期望越负。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你上个月查看了20次投资账户，每次看到下跌都感到焦虑。请设计一个具体的行动方案，帮助你减少查看频率并抵御短期噪音。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">从信息节食、设定规则和转移注意力三个角度入手，比如关闭推送、每月固定日期查看。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">行动方案：1）信息节食：卸载财经新闻APP，关闭账户推送通知，订阅每周摘要邮件；2）设定规则：每月只查看账户一次（如每月1号），并记录情绪变化；3）转移注意力：将查看账户的时间用于学习长期投资策略或运动。坚持一个月后，你会发现焦虑减少，因为短期波动不再影响决策。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">请将本课的“长期投资心理学”与之前学过的“复利效应”和“风险控制”联系起来，说明为什么长期持有比短期交易更符合这些原则。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">复利需要时间积累，风险控制强调分散和耐心，短期交易破坏这两者。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">长期投资心理学与复利效应和风险控制紧密关联：1）复利效应需长期持续增长，短期交易打断复利节奏，频繁买卖导致本金流失；2）风险控制强调分散投资和耐心持有，短期交易增加情绪化决策和过度集中风险；3）长期持有能利用时间平滑波动，降低因恐慌抛售导致的永久损失。三者共同证明：10年比10天更容易获得稳健回报。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval068.html" class="prev">上一课</a>
+ <a href="naval070.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

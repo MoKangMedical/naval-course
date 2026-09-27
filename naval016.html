@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>认知偏差 — 纳瓦尔通识课第16课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 16 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 2 · 判断力与决策</div>
+ <h1>认知偏差</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 16/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval016.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：当你的大脑成为敌人</h3><p>想象一下这个场景：你正在面试一位候选人，他毕业于你母校，喜欢同一支球队，连口头禅都和你相似。你几乎要当场拍板录用他了。但冷静下来想想——他的实际能力真的匹配吗？还是你只是被“相似性”这个信号迷惑了？</p><p>纳瓦尔曾一针见血地指出：“你的大脑不是为你服务的，它是为基因服务的。它让你感觉良好，而不是让你正确。”这句话听起来刺耳，但揭示了真相：我们的大脑并非理性机器，而是一部进化了数百万年的模式识别器。它擅长快速判断，却常常出错。</p><p>丹尼尔·卡尼曼的研究让“认知偏差”成为行为经济学的基础概念。他发现，人类大脑有两套系统：系统1是直觉、快速、自动的；系统2是理性、缓慢、费力的。问题在于，系统1占据了95%的决策时间，而它正是认知偏差的温床。</p><p>纳瓦尔和芒格都强调，在投资和人生中，最危险的错误不是信息不足，而是认知扭曲。芒格甚至列出了25种“心理误判”，并说：“如果你不知道它们，你就是个行走的靶子。”</p><p>认知偏差不是偶然的失误，而是系统性的错误。它们像手机里的默认设置，在你没有意识到时，悄悄改变你的判断。确认偏误让你只看到支持自己观点的证据；锚定效应让你被第一个数字绑架；可得性启发让你高估最近新闻的概率。</p><p>好消息是，正如纳瓦尔所说：“知道偏差是修正偏差的第一步。”一旦你意识到大脑在欺骗你，你就有机会按下暂停键，启动系统2。这节课，我们将拆解最常见的三种认知偏差，理解它们为什么如此顽固，并学会在重要决策前做一次“偏差检查”。</p><blockquote>“你的大脑是一部带着200个bug的计算机。认知偏差是系统性的思维错误——它们不是偶尔出现的，是持续不断的。”——纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：三种最常见的认知偏差</h3><p>让我们从最普遍的“确认偏误”开始。确认偏误是指人们倾向于寻找、解释和记忆那些符合自己已有信念的信息，而忽略相反的证据。纳瓦尔曾说：“大多数人不是在寻找真相，而是在寻找确认。”比如，你相信某个股票会涨，就会下意识地关注利好消息，忽略风险提示。在社交媒体上，我们只关注立场相同的账号，形成“信息茧房”。</p><p>第二个是“锚定效应”。锚定效应指人们在做判断时，会过度依赖最先接收到的信息（即“锚点”），即使这个信息与决策无关。比如，谈判中第一个报价会显著影响最终结果；购物时“原价500元，现价300元”的标签让你觉得便宜，其实那500元可能是虚标的。纳瓦尔在投资中多次强调：“不要被第一个数字催眠。永远问自己：这个锚点合理吗？”</p><p>第三个是“可得性启发”。它指人们根据记忆中信息的易得性来评估事件发生的概率。比如，飞机失事的新闻让你觉得飞行很危险，实际上车祸的概率高得多。纳瓦尔分享过一个案例：在2008年金融危机后，很多人因为恐惧而抛售股票，但历史数据表明，恐慌后的市场往往反弹——可得性启发让他们高估了风险。</p><p>为什么这些偏差如此顽固？因为它们是人类进化的遗产。在原始环境中，快速判断（比如“草丛里有蛇”）比精确分析更重要。但现代社会要求我们处理复杂、不确定的问题，系统1的快捷方式就变成了陷阱。纳瓦尔指出：“我们的情绪系统是为部落时代设计的，但我们在全球化的信息时代使用它。”这种错配导致了系统性错误。</p><p>卡尼曼的系统1和系统2模型解释了这一点：系统1是自动的、直觉的、耗能低；系统2是控制的、分析的、耗能高。由于大脑倾向于节能，系统1主导了大部分决策。认知偏差就是系统1的默认程序。要减少偏差，必须刻意激活系统2，而这需要训练和自律。</p><h3>三、深层分析：为什么认知偏差如此顽固</h3><p>认知偏差的顽固性源于三个层次：进化、神经科学和社会结构。从进化角度看，人类大脑在100万年间几乎没有变化，而现代社会只存在了1万年。这意味着，我们的思维模式是为狩猎采集生活设计的，而不是为股市、算法和全球化设计的。纳瓦尔曾说：“你的本能是让你在草原上生存，而不是在办公室里开会。”</p><p>具体来说，确认偏误在进化中有用：如果你相信某个浆果有毒，寻找支持证据能保命。但在今天，它让你固守错误观点。锚定效应在谈判中曾帮助部落首领快速达成一致，但现在它让你被无关数字操控。可得性启发在原始环境中有效：如果最近有猛兽袭击，你提高警惕是合理的。但在信息爆炸的今天，它让你高估小概率事件，低估长期趋势。</p><p>神经科学研究发现，认知偏差与大脑的奖赏系统有关。当你找到支持自己观点的证据时，大脑会释放多巴胺，产生愉悦感。这意味着，确认偏误不仅是思维错误，还是一种“成瘾”。纳瓦尔强调：“你要学会享受被证明错误的过程，因为那才是学习的时刻。”但大多数人宁愿痛苦地正确，也不愿快乐地学习。</p><p>社会结构也加剧了认知偏差。算法推荐、社交媒体、群体极化，都让我们更容易陷入信息茧房。芒格曾说：“如果你不学会如何纠正自己的错误，世界会替你纠正，但方式会很痛苦。”纳瓦尔和芒格都提倡“逆向思维”：先假设自己是错的，然后寻找证据。这种方法能有效对抗确认偏误。</p><p>如何打破这个循环？纳瓦尔建议，在重要决策前做一次“偏差检查”：列出你最想相信的结论，然后问自己：“如果这个结论是错的，哪些证据会支持相反观点？”同时，引入外部视角——想象一个客观的顾问会怎么看待这个问题。这能激活系统2，减少系统1的干扰。</p><blockquote>“大多数人不是在寻找真相，而是在寻找确认。”——纳瓦尔·拉维坎特</blockquote><h3>四、实践应用：如何在重要决策前做偏差检查</h3><p>现在，让我们把理论变成行动。纳瓦尔在投资和创业中，有一套具体的“偏差检查”流程。第一步：暂停。当你面临重大决策时，不要立即反应。纳瓦尔说：“在直觉和行动之间，留一个缓冲区。”这个缓冲区让你有机会从系统1切换到系统2。</p><p>第二步：写下来。拿出纸笔，回答三个问题：1. 我最想相信的是什么？2. 哪些信息可能因为我的偏好被忽略了？3. 如果我的假设错了，最可能的原因是什么？这个过程强迫你面对确认偏误。比如，在考虑是否换工作时，你可能只关注新公司的优点，而忽略了风险。写下来能让你看到盲点。</p><p>第三步：找反例。主动寻找反对你观点的证据。纳瓦尔分享过一个案例：他投资一家公司前，会特意阅读负面评论，并假设自己已经亏了钱，然后思考如何挽回。这种“事前验尸”方法能有效对抗锚定效应和乐观偏差。</p><p>第四步：引入外部视角。问自己：“如果我的朋友面临同样情况，我会给他什么建议？”这种距离感能减少情绪干扰。纳瓦尔和芒格都强调，最好的决策往往是“如果我不需要做决定，我会怎么做？”</p><p>课后实践：回顾你最近的一个重大决定——比如购物、换工作、投资。你感受到了哪些认知偏差的影响？你能识别出确认偏误的痕迹吗？比如，你是否只关注了支持你选择的信息？是否被第一个数字（比如价格）锚定了？是否因为最近看到某个案例而高估了概率？</p><p>课后作业：在下次做重大决定前，强制自己写下来：我最想相信的是什么？哪些信息可能因为我的偏好被忽略了？然后，找一个人扮演“魔鬼代言人”，让他挑战你的观点。记住纳瓦尔的话：“你的大脑在欺骗你，但你可以学会识破它。”</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用自己的话解释「确认偏误」和「锚定效应」的区别。为什么说它们都是系统1思维的结果？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考：确认偏误是寻找证据，锚定效应是依赖初始值。两者都绕过了理性分析。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">确认偏误是指我们倾向于寻找、解释和记住支持自己已有观点的信息，而忽略相反证据，比如只读赞同自己政治立场的新闻。锚定效应则是指我们过度依赖最先获得的信息（锚点）来做判断，即使这个锚点无关紧要，比如先看到高价商品后再觉得中等价合理。两者都是系统1的产物：系统1快速、直觉、节能，它用捷径（如确认已有信念或抓住第一个数字）来节省脑力，而系统2需要刻意激活才能纠正。关键区别在于：确认偏误是选择性注意，锚定效应是初始值依赖。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你正在决定是否换工作。你已面试了一家公司，起薪是当前薪资的120%。请描述你如何做一次「偏差检查」，识别出可能影响你的锚定效应和可得性启发。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">锚定效应：120%这个数字是否成了你的参考点？可得性启发：最近听到的离职故事是否影响了你的判断？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">偏差检查步骤：1）锚定效应：意识到120%这个数字可能不合理地成了你的心理锚点。问自己：如果起薪是100%或150%，我的感受会怎样？查行业平均薪资，而不是只盯着这个锚点。2）可得性启发：回想最近是否听过朋友跳槽涨薪的成功故事（易得记忆），而忽略了那些跳槽后后悔的案例。主动搜索反面数据。3）其他偏差：确认偏误——你是否只收集支持换工作的理由（如发展空间大）？写下换与不换的各三个客观理由，强迫自己看对立面。最后，用系统2慢思考：用纸笔列出所有因素（薪资、成长、文化、通勤），给每个因素加权打分，而非靠直觉拍板。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第5课《第一性原理》和第12课《复利思维》，解释为什么认知偏差会阻碍你发现事物的本质，以及如何用「偏差检查」来保护你的长期复利效应。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">第一性原理要求拆解到基础事实，但偏差让你停留在表面；复利需要持续正确决策，偏差会积累错误。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">第一性原理要求你剥离假设、回到基础事实，但认知偏差（如确认偏误）让你只看到支持现有信念的“事实”，从而无法真正拆解问题。例如，你相信“创业需要烧钱”，于是只找成功烧钱的案例（确认偏误），却忽略了本质：现金流模型是否成立。这破坏了第一性原理的核心——质疑假设。复利思维强调微小但持续的正确决策会指数级增长；但认知偏差让每个决策都带偏见，比如锚定效应让你接受不合理的初始条件，可得性启发让你高估近期风险。长期看，这些偏差的复合效应会导致巨大错误。保护方法：在每次重要决策前做偏差检查（列出可能的偏差、寻找对立证据、放慢速度激活系统2），就像给复利曲线定期“除虫”。这样，正确的第一性原理决策才能持续积累，产生正向复利。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval015.html" class="prev">上一课</a>
+ <a href="naval017.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>存在主义 — 纳瓦尔通识课第96课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 96 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 10 · 东西方哲学融合</div>
+ <h1>存在主义</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 96/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval096.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<p>欢迎来到康波研究院第96课，我们进入第十阶段——东西方哲学融合。今天我们要探讨一个既古老又现代的话题：存在主义。副标题是“在无意义的宇宙中创造意义”。你可能会问：宇宙真的没有意义吗？如果有，那我活着的意义是什么？别急，这节课会带你找到答案。纳瓦尔·拉维坎特曾说过：“你的人生是你设计的，不是被发现的。”这句话直击存在主义的核心：不是宇宙赋予你意义，而是你主动为自己创造意义。想象一下，你站在一片荒芜的沙漠中，没有路标，没有地图，只有你自己。这就是存在主义眼中的世界——没有预设的意义，只有你的选择。这节课，我们会从纳瓦尔的视角，结合加缪、萨特的思想，帮你理解如何在荒诞中找到幸福，在自由中承担责任。准备好了吗？让我们开始这场思想之旅。</p>
+
+<h3>一、开篇引入：宇宙的沉默与个体的觉醒</h3>
+<p>你有没有在深夜问过自己：我为什么活着？如果宇宙最终会热寂，一切归于虚无，那我现在做的努力有什么意义？这种问题，正是存在主义诞生的土壤。纳瓦尔曾说：“宇宙不在乎你，但你在乎自己。”这句话点明了存在主义的基本前提：宇宙本身是沉默的，它没有赋予你任何意义，但你有能力为自己创造意义。</p>
+<p>存在主义的核心命题是“存在先于本质”。传统哲学认为，人天生有某种本质或目的，比如“人之初，性本善”或“人是理性的动物”。但存在主义颠覆了这一观点：你首先存在，然后通过行动定义自己。就像纳瓦尔说的：“你不是生来就有一套说明书，你得自己写。”这意味着，你的本质不是固定的，而是由你每天的选择塑造的。</p>
+<p>加缪用西西弗斯的神话来说明这一点。西西弗斯被众神惩罚，必须把一块巨石推上山顶，而每次快到山顶时，石头都会滚落，他只能重新开始。这看似荒诞——永无止境的无意义劳动。但加缪说：“我们必须想象西西弗斯是幸福的。”为什么？因为他在推石头的过程中，找到了自己的节奏和意义。纳瓦尔也强调：“幸福不是终点，而是你如何对待过程。”在无意义的宇宙中，荒诞的不是生活本身，而是你在无意义中寻找意义的挣扎。但正是这种挣扎，让你成为人。</p>
+<p>让我们来看一个现实案例。假设你是一名程序员，每天写代码、修bug，感觉工作重复而无聊。你可能会问：这有什么意义？但存在主义告诉你：意义不是来自工作本身，而是来自你如何选择对待它。你可以选择把它当作谋生工具，也可以选择把它当作创造价值的途径。纳瓦尔在早期创业时，也经历过无数次失败，但他每次都说：“这不是失败，是数据。”他选择重新定义失败，从而赋予过程意义。这种觉醒，是个体从宇宙沉默中解放出来的第一步。</p>
+
+<h3>二、核心理论：存在先于本质与自由的重量</h3>
+<p>存在主义的基石是“存在先于本质”，由萨特提出。简单来说，你来到这个世界时，是一张白纸，没有预设的使命或本性。然后，你通过选择、行动、承担责任，逐步定义自己是谁。纳瓦尔的思想与此高度一致，他说：“你的人生是你设计的，不是被发现的。”这意味着，你不是在寻找一个隐藏的宝藏，而是在创造它。</p>
+<p>萨特进一步指出：“人是自由的，人注定自由，人背负着自由的重量。”为什么是“重量”？因为自由意味着你必须为自己的一切选择负责。没有上帝、命运或社会规范来替你背锅。纳瓦尔也强调：“你唯一能控制的是你的选择，而选择带来后果。”比如，你选择辞职创业，成功或失败都由你承担；你选择学习新技能，成长或停滞也由你负责。这种自由不是轻松的，它带来焦虑，但同时也带来尊严。</p>
+<p>加缪的西西弗斯是另一个核心理论。他面对荒诞——即人类渴望意义与宇宙无意义之间的冲突。加缪认为，解决荒诞的方式不是自杀或信仰上帝，而是接受荒诞，并在其中找到幸福。西西弗斯推石头时，他的每一步都是对荒诞的反抗。纳瓦尔曾说：“幸福不是拥有什么，而是成为什么。”西西弗斯在推石头的过程中，成为了一个反抗者，这就是他的意义。</p>
+<p>让我们用现代生活来理解。想象你每天通勤两小时，工作压力大，回到家只想躺平。你可能觉得生活荒诞——付出这么多，却看不到意义。但存在主义告诉你：你可以选择改变视角。通勤时你可以听播客学习，工作中你可以专注成长，回家后你可以陪伴家人。这些选择不是宇宙赋予的，而是你创造的。纳瓦尔说：“你的生活不是由环境决定的，而是由你的反应决定的。”这就是自由与责任的统一：你无法选择环境，但可以选择如何面对它。</p>
+
+<h3>三、深层分析：萨特的自由与纳瓦尔的人生观</h3>
+<p>萨特的自由观非常激进：“人是被判了自由之刑。”这意味着，你无法逃避选择——即使不选择也是一种选择。比如，你选择不选择职业，那你就选择了随波逐流。纳瓦尔也强调：“你的人生由你的选择组成，而不是你的抱怨。”这种自由带来的焦虑，正是存在主义要解决的课题。</p>
+<p>纳瓦尔的人生观与存在主义有深刻共鸣。他提出“设计你的人生”理念，认为你应该主动定义自己的价值观、目标和生活方式，而不是被社会、家庭或传统所定义。他说：“如果你不设计自己的人生，别人会替你设计。”这与萨特的“存在先于本质”完全一致：你通过行动定义自己，而不是等待别人给你定义。</p>
+<p>然而，自由也带来责任。萨特说：“当我在选择自己时，我也在为全人类立法。”意思是，你的每个选择都在定义什么是人类应有的行为。纳瓦尔虽然没说得这么哲学化，但他强调：“你的行为是你价值观的体现。”比如，你选择诚实，就是在倡导一个诚实的文化；你选择懒惰，就是在默认懒散是可接受的。这种责任感，让自由不再是放纵，而是一种力量。</p>
+<p>让我们看一个具体案例。假设你是一名创业者，面临两个选择：A是快速赚钱但违背道德的项目，B是缓慢成长但可持续的项目。萨特会说：你的选择不仅定义了你，也定义了创业者的标准。纳瓦尔会说：选择B，因为它符合你的长期价值观。他本人就多次强调“长期主义”，拒绝短期诱惑。这种选择，不是基于外部规范，而是基于你内心的自由判断。荒诞的是，你永远不知道结果——石头可能滚落，但你推的过程就是意义。</p>
+
+<h3>四、实践应用：如何在生活中创造意义</h3>
+<p>理论讲完了，现在轮到实践。存在主义不是书斋里的空谈，而是生活指南。纳瓦尔说：“哲学如果不能改变你的生活，就是无用的。”所以，我们来谈谈如何应用。</p>
+<p>第一步：承认宇宙无意义，但接受它。这不是悲观，而是解放。当你不再期待宇宙给你答案，你就能自由地创造答案。比如，你的工作可能不被别人认可，但你可以选择赋予它意义——比如帮助客户、学习技能、挑战自我。纳瓦尔说：“意义是你赋予的，不是别人给的。”</p>
+<p>第二步：用行动定义自己。存在主义强调行动优先，而不是空想。你想成为什么样的人？现在就去做。如果你想成为作家，就每天写500字；如果你想成为创业者，就从小项目开始。纳瓦尔说：“行动是治愈焦虑的唯一良药。”不要等待灵光一现，而是通过行动创造本质。</p>
+<p>第三步：在荒诞中找到幸福。加缪的西西弗斯是幸福的，因为他接受了自己的命运并反抗它。你可以把生活中的重复和挫折看作“推石头”，但你可以选择推石头的姿态——带着微笑、专注和节奏。纳瓦尔说：“幸福是一种技能，不是一种状态。”通过冥想、感恩和专注当下，你可以在荒诞中找到平静。</p>
+<p>最后，课后实践：如果没有人告诉你“应该”如何生活，如果你可以自由定义一切，你的人生会有什么不同？花10分钟写下你的答案。课后作业：读加缪的《西西弗神话》开头10页，思考：什么让你的生活有意义——即使它最终可能没有宇宙意义？记住，意义不是发现的，而是创造的。你，就是意义的创造者。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">萨特说「存在先于本质」，这与传统哲学中「本质先于存在」有何根本不同？请用你自己的话解释这一核心概念，并说明它如何挑战了「人生有预设意义」的观念。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">对比两种顺序的逻辑：先有设计图还是先有实物？存在主义更强调人的自由选择。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">传统哲学常认为人有一个固定本质（如灵魂、理性），然后在这个框架中生活。但存在主义翻转了顺序：人首先被抛入世界（存在），然后通过行动、选择和创造来定义自己（本质）。这意味着：1. 没有预设的人生剧本或终极目标；2. 人不是被设计出来的工具，而是自己塑造的作品；3. 自由是负担也是礼物：你必须为自己赋予意义。纳瓦尔也强调，人生没有出厂设置，你的价值观和生活方式是自己编写的代码。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你突然失业，且社会不再提供任何「成功标准」。请用加缪的西西弗斯精神，设计一个具体行动方案，让你在这一处境中既能面对荒诞，又能找到日常幸福。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">西西弗斯推石头的幸福在于过程而非结果。关注可控的微小行动和当下体验。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">行动方案：1. 重新定义「成功」：每天记录三件让自己感到充实的小事（如读一页书、散步时发现一朵花）；2. 创造仪式感：固定时间做一件无功利的事（如写诗、煮咖啡），像西西弗斯推石头般专注；3. 建立互助小组：与同样处境的人分享「荒诞中的快乐」，不追求结果只享受对话；4. 实践纳瓦尔的「活在当下」：早上问自己「如果今天是我生命的最后一天，我会如何度过？」然后去做那些事。关键在于：接受无意义，但用行动赋予每一天独特的意义。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合纳瓦尔的人生观（如「幸福是一种技能」「财富是睡觉时也能赚钱的能力」）和存在主义的自由与责任，分析：为什么纳瓦尔强调「定义自己的游戏」而拒绝社会比较？这两种思想如何相互支撑？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考：存在主义的自由如何转化为纳瓦尔的行动原则？责任与不比较的关系是什么？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">存在主义认为人必须为自己的选择负责，且没有外部标准可以逃避。纳瓦尔将这一哲学落地为：1. 自由即选择权：不玩社会设定的游戏（如名利竞赛），而是自己设计游戏规则（如追求内在平静、复利成长）；2. 责任即边界：不比较意味着你对自己的幸福负责，而非依赖他人认可；3. 财富本质是工具：纳瓦尔的「睡觉赚钱」不是目的，而是创造时间自由去实践存在主义的生活——专注当下、体验过程；4. 幸福是选择：就像西西弗斯选择快乐推石头，纳瓦尔选择把幸福当作可练习的技能，而非等待外在结果。两者都指向：在无意义宇宙中，你既是编剧也是演员，而最好的剧本是「活出自己定义的版本」。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval095.html" class="prev">上一课</a>
+ <a href="naval097.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

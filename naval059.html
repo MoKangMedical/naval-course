@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加密经济学 — 纳瓦尔通识课第59课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 59 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 6 · 经济学思维</div>
+ <h1>加密经济学</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 59/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval059.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：从比特币到加密经济学</h3><p>2011年，纳瓦尔第一次在推特上提到比特币。那时比特币的价格不到1美元，大多数人认为它是网络泡沫的又一个笑话。但纳瓦尔说了一句话，后来被无数人引用：“比特币是第一种不依赖信任的货币——它用数学取代了银行。”今天，比特币的价格超过数万美元，但纳瓦尔关注的从来不是价格。他关注的是：这套系统凭什么能运行？</p><p>答案就是加密经济学。这门学科的名字听起来很吓人，但核心很简单：用密码学保证安全，用经济学激励人做正确的事。纳瓦尔曾说：“加密经济学是过去几十年里最重要的思想实验之一。它第一次让我们设计出了不需要中央权威也能正常运作的系统。”你想想，互联网让信息自由流动，但货币、合同、身份这些需要信任的东西，还是得靠银行、政府、律师。加密经济学要打破的就是这个。</p><p>纳瓦尔是最早看清这一点的人。他投资了比特币、以太坊，不是投机，是看到了基础层面的变革。他常说：“加密货币不是赌场——它是技术革命。每一次价格波动都是噪音，真正的信号是这套系统如何改变人类协作的方式。”所以，别把加密经济学当成炒币指南。它是一个新框架，帮你理解：在去中心化世界里，激励怎么设计，共识怎么达成，信任怎么建立。</p><p>这一课，我们会从四个角度拆解加密经济学。首先，搞清楚它到底是什么：密码学加经济学，为什么缺一不可。然后，对比两种核心机制：工作量证明和权益证明，它们各自解决了什么问题。接着，深入讨论去中心化的真正意义——不是无政府，而是权力分散。最后，回到现实：加密货币为什么不是赌场，而是一场技术革命。准备好了吗？我们开始。</p><h3>二、核心理论：密码学 + 经济学 = 加密经济学</h3><p>纳瓦尔对加密经济学的定义非常简洁：“密码学让作弊变得不可能，经济学让作弊变得不划算。”这句话点出了这门学科的灵魂。我们先看密码学。区块链上每一笔交易都被加密、签名、链接到前一个区块。如果有人想篡改数据，他必须重写整个链条——这在计算上几乎不可能。这就是密码学提供的安全基础。</p><p>但光有密码学不够。想想看，如果系统里全是诚实的人，那密码学就多余了。现实是，总有人想多拿少给。这就是经济学登场的地方。比特币的工作量证明(PoW)机制让“挖矿”变得极其耗电——你投入的电力、硬件、时间，就是你的成本。如果你作弊，你的成本就白费了。纳瓦尔说：“工作量证明的本质是把物理世界的稀缺性引入数字世界。你不可能凭空创造比特币，就像你不能凭空创造黄金。你得付出劳动。”</p><p>再看权益证明(PoS)。以太坊在2022年从PoW切换到PoS，核心逻辑变了：你不需要用电力证明你的诚意，而是用你持有的代币。你押注32个ETH成为验证者，如果验证的交易是诚实的，你获得奖励；如果你作弊，你的押金被没收。纳瓦尔评价：“PoS更优雅——它用经济惩罚代替了物理消耗。但PoW更稳健，因为它经过了10年考验。”</p><p>这两种机制都体现了同一个原则：让参与者的利益和系统的利益对齐。芒格和纳瓦尔都强调过：“激励机制是世界的底层规律。”加密经济学把这条规律写进了代码。你不需要信任任何人，你只需要信任这套激励设计。这就是“代码即法律”的来源。</p><h3>三、深层分析：去中心化的真正意义</h3><p>很多人以为去中心化就是“没有老板”“人人平等”。纳瓦尔会纠正你：去中心化不是目标，是手段。真正的目标是抗脆弱性。一个去中心化系统没有单点故障。如果比特币的某个节点被攻击，其他节点照常运行。如果某个国家的政府禁止挖矿，算力会转移到别处。纳瓦尔说：“去中心化让系统像珊瑚礁一样——即使一部分被破坏，整体还能存活。”</p><p>但去中心化有代价。效率就是第一个牺牲品。比特币每秒只能处理7笔交易，Visa可以处理几万笔。以太坊升级后快了很多，但依然不如中心化系统。纳瓦尔承认：“去中心化系统更慢、更贵、更难用。这是为了安全性和抗审查性付出的代价。”</p><p>第二个代价是治理难题。比特币社区为了一个区块大小的争论，分裂成了比特币和比特币现金。以太坊为了修复DAO黑客攻击，硬分叉成了以太坊和以太坊经典。纳瓦尔说：“去中心化系统没有CEO，没有董事会，所以决策过程像蜗牛一样慢。但这也意味着没有人能单方面改变规则。”</p><p>所以，去中心化的真正意义不是“更好”，而是“不同”。它解决的是中心化系统解决不了的问题：信任缺失、单点控制、审查风险。纳瓦尔举过一个例子：“如果你在委内瑞拉，政府把货币贬值到零，比特币就是你的救生艇。如果你在美国，有稳定的银行系统，你可能不需要它。”去中心化不是万能药，它是一种权衡。</p><h3>四、实践应用：加密货币不是赌场——是技术革命</h3><p>纳瓦尔最讨厌听到的一句话是：“加密货币就是赌场。”他说：“如果这是赌场，那互联网早期也是赌场——很多人赔了钱，但剩下的东西改变了世界。”加密货币的价格波动确实像赌场，但底层的技术不是。区块链、智能合约、DeFi、NFT——这些不是投机工具，是新的协作方式。</p><p>举个例子。传统跨境汇款需要3-5天，手续费高达10%。用比特币转账，10分钟到账，手续费几毛钱。这背后不是投机，是技术。再比如，智能合约让“代码即合同”成为现实。你写一段代码，设定条件：如果A付了钱，B就交付文件。代码自动执行，不需要律师、法院。纳瓦尔说：“智能合约把信任从人转移到了代码。你不需要相信对方，你只需要相信代码没漏洞。”</p><p>课后实践：去读比特币白皮书的前3页。中本聪写得很清楚：他要解决的是“电子支付中的双重支付问题”。你不需要理解所有技术细节——理解它要解决的问题：如何在没有银行的情况下，防止一个人花同一笔钱两次。答案就是用加密经济学。</p><p>课后作业：用加密经济学的思维分析一个传统行业。比如，房地产：去中心化能解决信息不透明、中介费高的问题吗？会创造什么新问题？比如，谁来验证房产所有权？如果代码有bug，谁来担责？想清楚这些问题，你才算真正理解了加密经济学——它不是技术乌托邦，而是一套需要不断优化的激励机制。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用自己的语言解释‘加密经济学’为什么不仅仅是‘密码学+经济学’的简单组合，而是两者融合后产生的新范式。核心在于它解决了什么问题？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考传统系统（如银行）依赖信任中介，而加密经济学如何用激励机制替代信任。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">加密经济学不是简单拼凑，而是通过密码学保证安全性（如防篡改），用经济学设计激励机制（如挖矿奖励）让参与者自发维护系统。它解决了‘拜占庭将军问题’——在无信任网络中达成共识。传统系统依赖中央机构（如银行）验证交易，成本高且易腐败；加密经济学用代币奖励诚实验证者、惩罚恶意行为，使去中心化网络无需信任中介也能安全运行。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你为一个小型社区设计一个去中心化投票系统，成员互不信任。你会选择工作量证明还是权益证明来防止作弊？结合社区资源（如电力、资金）说明理由。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑工作量证明耗电高但更公平，权益证明省资源但可能富者更富。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">推荐权益证明。理由：1. 小型社区电力资源有限，工作量证明（如比特币挖矿）需大量能耗，不现实；2. 权益证明让成员按持币比例验证投票，作弊成本高（需持大部分代币），且社区可通过设置低门槛（如10个代币即可参与）避免富者垄断；3. 可加入随机验证者选择机制，防止寡头控制。若社区成员经济差距大，可混合使用‘委托权益证明’（DPoS），投票选出少数代表验证。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第58课《区块链的本质》中‘去中心化不是目的，而是手段’的观点，分析加密经济学如何通过激励设计实现去中心化系统的可持续性？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系区块链的信任机制与加密经济学的奖励惩罚结构。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">第58课指出去中心化旨在消除单点故障和权力垄断。加密经济学通过激励设计使之可持续：1. 奖励机制（如比特币区块奖励）吸引矿工/验证者提供算力或质押，确保网络安全性；2. 惩罚机制（如权益证明中的‘罚没’质押金）威慑恶意行为，避免51%攻击；3. 代币通胀模型平衡早期激励与长期价值存储。例如比特币每4年减半，模拟稀缺性，防止通胀失控。没有加密经济学，去中心化系统会因无人维护或作弊泛滥而崩溃。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval058.html" class="prev">上一课</a>
+ <a href="naval060.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

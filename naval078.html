@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>写作的力量 — 纳瓦尔通识课第78课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 78 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 8 · 阅读与学习</div>
+ <h1>写作的力量</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 78/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval078.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：写作不是输出，是输入</h3><p>你是否有过这样的经历：脑子里有一个想法，觉得它无比清晰、深刻，但当你想把它讲给别人听时，却发现自己支支吾吾、语无伦次，最后只能说一句“算了，反正就是那个意思”。这种“感觉理解但说不清”的状态，在纳瓦尔看来，恰恰是思维模糊的典型症状。</p><p>纳瓦尔曾说：“如果你无法把一件事简单地写出来，说明你并没有真正理解它。”这句话听起来有点绝对，但仔细想想，你会发现其中蕴含的真理。我们的大脑擅长制造“理解错觉”——它会用熟悉的词汇和模糊的意象来欺骗我们，让我们误以为自己已经掌握了某个概念。而写作，正是击碎这种错觉的最锋利工具。</p><p>纳瓦尔是巨大的写作推崇者。他并不是要我们每个人都成为职业作家，而是把写作视为一种思考工具。就像木匠需要刨子来打磨木头，思考者需要写作来打磨想法。当你尝试把模糊的想法写成清晰的文字时，你会被迫面对自己思维中的漏洞——那些被忽略的逻辑断层、未经验证的假设、以及自相矛盾的观点。</p><p>举一个具体案例。假设你“感觉”自己理解了“复利效应”这个概念。你可能会说：“复利就是利滚利，钱生钱。”但如果你试着写一篇500字的解释，你会发现事情远没有那么简单：复利的数学公式是什么？它为什么在前期增长缓慢、后期爆发？它在投资之外的生活领域（如人际关系、知识积累）如何体现？如果你写不出这些细节，说明你对复利的理解还停留在表面。</p><p>这就是写作的力量——它迫使你把“感觉理解”转化为“真实理解”。正如纳瓦尔所强调的：“写作不是思考的记录，而是思考的延伸。”你在写作的过程中，不是在复制已有的想法，而是在创造新的想法。每一次下笔，都是一次思维的重新构建。</p><p>所以，这节课的核心观点是：写作不是一种输出技能，而是一种输入工具。它帮助你理清思路、发现盲点、深化认知。无论你是企业家、工程师、学生还是管理者，学会用写作来思考，都会让你的判断力提升一个层级。</p><h3>二、核心理论：为什么写比说更难——也更有价值</h3><p>纳瓦尔曾对比过写作和说话的区别。他说：“说话是即兴的、线性的、可以被原谅的。而写作是结构化的、非线性的、无法被原谅的。”这句话揭示了为什么写比说更难，但也更有价值。</p><p>说话时，我们有声音、表情、手势、上下文来辅助表达。即使逻辑有些跳跃，听众也能通过语气和情绪来理解你的意思。比如，你在和朋友聊天时说“那个项目…有点复杂…但我觉得能成”，朋友可以感受到你的犹豫和信心，从而理解你的真实想法。但写作完全不同。当你把这句话写成文字时，它变成了“那个项目有点复杂，但我觉得能成。”读者看到的只是一个模糊的判断，没有背景、没有推理过程、没有情感温度。这种模糊性在写作中是无法被接受的。</p><p>写作要求你做到三点：第一，必须有明确的逻辑链条。你不能说“因为A，所以C”，而必须解释A如何导致B，B又如何导致C。第二，必须使用精确的语言。你不能用“大概”“可能”“有点”这类模糊词汇，而要用具体的数据、案例和定义。第三，必须考虑读者的认知起点。你不能假设读者已经知道你的背景知识，而要从最基础的概念开始构建。</p><p>这三点要求，恰恰是思考深化的关键。当你强迫自己写出逻辑链条时，你会发现自己对因果关系的理解是多么粗糙；当你强迫自己使用精确语言时，你会发现自己对概念的定义是多么模糊；当你强迫自己考虑读者时，你会发现自己对问题的认知是多么自我中心。</p><p>芒格和纳瓦尔都强调过一个类似的观点：真正的知识是可以用文字清晰表达的知识。芒格曾说：“如果你不能把一件事解释给一个聪明的外行人听，说明你并没有真正理解它。”而纳瓦尔则把这一理念推到了极致——他不仅要求自己能解释，还要求自己能写出来，并且写得简洁、直接、有洞察力。</p><p>这就是写比说更有价值的原因：说话可以蒙混过关，写作无处可藏。每一次写作，都是一次对思维的“压力测试”。只有通过这个测试，你才能确认自己真的懂了。</p><h3>三、深层分析：纳瓦尔的写作风格——简洁、直接、洞察</h3><p>纳瓦尔的写作风格是他思考方式的直接体现。他很少使用复杂的术语、冗长的句子或华丽的修辞。他的文字像一把手术刀——精准、锋利、直指核心。这种风格不是天生的，而是经过刻意训练的结果。</p><p>纳瓦尔曾说：“好的写作就像好的代码——每多一个词，就多一个出错的概率。”他追求的是用最少的字表达最多的信息。比如，他在推特上写过这样一句话：“阅读不是为了消遣，而是为了理解世界如何运转。”这句话只有十几个字，却包含了一个完整的世界观：阅读的目的不是娱乐，而是认知升级。每个字都不可或缺，每个词都有其重量。</p><p>这种简洁风格的背后，是纳瓦尔对“洞察”的极致追求。他认为，写作不是为了展示知识，而是为了传递洞见。什么是洞见？洞见就是那些“你一看就觉得对，但之前从未想过”的观点。比如，“财富是你睡觉时还能赚钱的东西”——这句话简洁得令人震惊，但它重新定义了财富的本质，让你从“努力工作赚钱”的思维模式中跳出来。</p><p>如何达到这种简洁和洞察？纳瓦尔的方法论可以总结为三步：第一，先写出来，不管多长多乱。第二，删掉所有可有可无的词。第三，检查每一句话是否传递了新的信息，如果没有，就删掉或改写。这个过程类似于雕塑——你从一块粗糙的大理石开始，不断剔除多余的部分，直到露出核心的形状。</p><p>纳瓦尔的写作还有一个重要特点：他很少使用抽象概念，而是用具体的案例和类比来说明问题。比如，他在解释“判断力”时，没有给出一个复杂的定义，而是说：“判断力就是根据长期结果做出的决策，而不是根据短期情绪。”这种写法让读者能够立刻抓住核心，而不是陷入术语的泥潭。</p><p>对于学习者来说，模仿纳瓦尔的写作风格是一个高效的方法。你不必成为他，但可以学习他的原则：简洁意味着尊重读者的时间，直接意味着不绕弯子，洞察意味着提供真正的价值。当你开始用这种方式写作时，你的思维也会随之变得清晰和锋利。</p><h3>四、实践应用/总结：如何建立写作习惯</h3><p>纳瓦尔曾说：“习惯的力量大于意志力。”建立写作习惯的关键，不是依靠一时的激情，而是设计一个低门槛、高频率的系统。下面是我根据纳瓦尔的方法论总结的三个步骤，你可以立刻开始实践。</p><p>第一步：每天写200字。不要追求文采，不要追求完美，只追求诚实。这200字可以是你今天的核心洞察，可以是你对某个问题的思考，甚至可以是你对一天的复盘。关键是“写出来”，而不是“写好”。纳瓦尔在早期也是这样做的——他每天在推特上写几条短推文，每条不超过280字，日积月累，这些短推文构成了他思想体系的基础。</p><p>第二步：找一个你“感觉”理解但无法清晰表达的概念。比如，“什么是第一性原理？”“什么是机会成本？”“什么是认知偏差？”坐下来，逼自己写出500字的解释。不要查资料，不要看笔记，只靠自己的理解来写。写完之后，你会发现自己的理解中有多少漏洞。然后，再去查资料、补漏洞，重新写一遍。这个过程就是“写作即思考”的核心实践。</p><p>第三步：定期回顾和修改。纳瓦尔会定期回顾自己写过的内容，问自己：“这个观点现在看起来还正确吗？有没有更好的表达方式？”这种自我批判的态度，是保持思维进化的关键。你可以每周花30分钟，回顾自己这一周的200字练习，挑出最不满意的一篇，重新改写。你会发现，每一次改写都是一次认知升级。</p><p>最后，我想用纳瓦尔的一句话来总结这节课：“写作不是天赋，是技能。技能可以通过练习获得。”你不是在成为作家，你是在成为更好的思考者。从今天开始，每天写200字，用文字来打磨你的思维。记住，写作的力量不在于你写了什么，而在于你在写的过程中，想明白了什么。</p><blockquote>课后实践：每天写200字。不要求文采——要求诚实。你今天的核心洞察是什么？</blockquote><blockquote>课后作业：找一个你「感觉」理解但无法清晰表达的概念。坐下来，逼自己写出500字的解释。</blockquote>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“写作是思考的延伸，不是思考的记录”。请用你自己的话解释这句话的含义，并举例说明“记录式写作”与“延伸式写作”之间的本质区别。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“记录”是整理已知，而“延伸”是探索未知。试试回忆你写日记或笔记时的两种不同状态。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">- 记录式写作：将脑中已有的想法或信息原封不动地写下来，像拍照一样，目的是保存，而非深化。例如，写下“今天开会讨论了A方案”，没有进一步分析。<br>- 延伸式写作：通过写的过程发现新联系、新观点，写作本身推动思考前进。例如，写“今天开会讨论了A方案，但写下来时我意识到B方案可能更优，因为……”，写作中产生了新洞察。<br>- 本质区别：记录是终点，延伸是起点。纳瓦尔强调写作是思考的工具，而非思想的容器。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你一直想培养写作习惯但总半途而废。现在请设计一个为期7天的“诚实写作”计划，每天200字，不追求文采。请具体说明你每天会写什么主题，以及如何克服“写不出来”的卡点。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">从最简单的观察或情绪开始，比如“今天最让我不舒服的一件事”。卡点时问自己：我此刻的真实感受是什么？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">- 第1-2天：写“今天最触动我的一个瞬间”——描述事件+真实感受，不评价好坏。<br>- 第3-4天：写“一个反复出现的念头”——比如对工作的焦虑，诚实记录，不修饰。<br>- 第5-6天：写“一个我从未说出口的观点”——比如对某个习惯的自我批评，允许不完美。<br>- 第7天：回顾前6天的内容，写“我发现了自己什么模式”——比如“我总在逃避冲突”。<br>- 克服卡点：设置5分钟定时器，写任何想到的东西；如果空白，写“我写不出来，因为……”，然后继续。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾此前学过的“纳瓦尔关于杠杆的论述”（如代码、资本、媒体是杠杆），结合本课“写作的力量”，请分析：为什么写作是一种高杠杆行为？它如何放大你的思考影响力？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考写作的“可复制性”和“异步传播”特性，以及它如何让你的一小时影响成千上万人。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">- 杠杆本质：写作是“媒体”杠杆的一种，一次创作可被无限复制、传播，不受时间空间限制。<br>- 思考放大：写作迫使你将模糊想法结构化、清晰化，这本身就是高质量的思考训练，提升个人认知杠杆。<br>- 影响力放大：一篇好文章可被反复阅读、分享，甚至影响决策。例如，一篇博客可能改变100人的思维方式，而面对面交流只能影响几个人。<br>- 长期复利：写作积累的知识资产会随时间增值，像代码或资本一样产生复利效应。纳瓦尔本人通过推文和文章放大了他的投资哲学。<br>- 总结：写作是用最低成本（一支笔或键盘）撬动最大思考与影响力的工具。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval077.html" class="prev">上一课</a>
+ <a href="naval079.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

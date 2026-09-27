@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>道家思想 — 纳瓦尔通识课第93课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 93 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 10 · 东西方哲学融合</div>
+ <h1>道家思想</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 93/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval093.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：当硅谷投资人遇见东方智慧</h3><p>想象一下，一个在硅谷每天面对无数决策、风险与不确定性的投资人，他的哲学信条里却写着“顺其自然”。这听起来是不是有些矛盾？但纳瓦尔·拉维坎特正是这样做的。他曾说：“我生命中最成功的事情，往往是那些我放手让它自然发生的事。”这句话，几乎就是道家思想中“无为”的现代版翻译。</p><p>纳瓦尔的思想体系中，有一个核心的张力：一方面，他极度推崇理性、判断力和行动力，认为财富和幸福可以通过正确的选择来创造；另一方面，他又反复强调“不挣扎”、“不抵抗”、“随遇而安”。这种看似矛盾的态度，恰恰是道家智慧的精髓。老子在《道德经》中写道：“为学日益，为道日损。”意思是，追求知识时，我们不断做加法；但追求智慧时，却要做减法——减少欲望、减少干预、减少对抗。</p><p>纳瓦尔的幸福哲学，与“为道日损”如出一辙。他认为，幸福不是通过获得更多东西来实现的，而是通过剥离那些不必要的东西——焦虑、执念、对未来的过度控制。他说：“幸福是一种默认状态。当你把那些让你不幸福的东西去掉，你就回到了幸福。”这就像道家所说的“返璞归真”。你不需要成为另一个人，你只需要回到原本的自己。</p><p>让我们看一个真实案例。纳瓦尔在早期创业时，曾面临一个关键的融资决策。他花了大量时间去谈判、设计条款、预测市场走向，但最终他发现，最成功的投资往往是那些他“没有用力过猛”的项目。他形容自己就像一条河流，不去刻意改变方向，而是顺势流动。这种态度，与道家“上善若水”的比喻几乎完全一致：水不争，却能滋养万物；水柔软，却能穿透顽石。</p><p>今天这堂课，我们将深入探讨道家思想如何与纳瓦尔的实用哲学融合。你会发现，两千多年前的老子，早已为现代人的焦虑、忙碌和“内卷”开出了药方。而这个药方，正在被硅谷最聪明的头脑重新发现和验证。</p><blockquote>“为学日益，为道日损。损之又损，以至于无为。无为而无不为。”——老子《道德经》第48章</blockquote><p>纳瓦尔对这句话的解读是：“学习是加法，智慧是减法。当你减到不能再减，你就到达了无为的境地。在那里，你什么都不做，却什么都完成了。”这不是懒惰，而是一种更高层次的效率。</p><h3>二、核心理论：道、德、无为——三个字打开一扇门</h3><p>要理解道家思想，我们得先拆解三个核心概念：道、德、无为。它们不是深奥的玄学，而是可以指导日常决策的实用工具。</p><p>第一个概念是“道”。老子说：“道可道，非常道。”意思是，真正的“道”无法用语言完全描述。我们可以把它理解为宇宙运行的底层规律——就像物理学中的万有引力，或者生物学中的自然选择。道不是神，也不是某种神秘力量，它就是事物本来的样子。纳瓦尔曾说过：“你要理解现实世界的规律，而不是与之对抗。”这句话本质上就是在说“遵道而行”。</p><p>第二个概念是“德”。德不是道德，而是“得道”。一个“有德”的人，就是能够顺应道的人。在道家看来，最高明的品德不是刻意行善，而是自然而然地对他人和世界产生积极影响。比如，一棵大树不需要“努力”去为小鸟提供荫凉，它只是按照自己的本性生长，就自然成就了其他生命。纳瓦尔在投资中奉行的原则，就是“找到那些被低估的创始人，然后放手让他们做自己”。这正是一种“有德”的表现——不干预、不控制，只提供环境。</p><p>第三个概念是“无为”。这是最容易被误解的词。无为不是什么都不做，而是“不妄为”。它强调行动要符合时机和规律，而不是出于个人欲望或焦虑。举个例子：你种下一颗种子，然后每天把它挖出来看看有没有发芽——这就是“有为”，过度干预。你种下种子，浇水、施肥，然后耐心等待——这就是“无为”，顺势而为。纳瓦尔在管理自己的时间时，遵循同样的逻辑。他说：“我从不强迫自己工作。如果我不想做某件事，我就不做。因为强迫只会带来低质量的结果。”这种态度，正是无为在个人效率上的应用。</p><p>纳瓦尔还引用过一句道家名言：“治大国若烹小鲜。”意思是治理国家就像煎小鱼一样——不要频繁翻动，否则鱼会碎。应用到个人生活，就是不要过度折腾。你不需要每天检查自己的状态，不需要强行改变自己的习惯，只要保持大方向正确，让系统自动运行。他在投资领域也是这样做的：“好公司不需要你每天盯着它。你只需要在正确的时间点做出几个关键决策。”</p><h3>三、深层分析：阴阳、斯多葛与无为的现代应用</h3><p>道家的阴阳观念，可能是对现代人最有启发的部分。阴阳不是二元对立，而是对立面的统一。老子说：“祸兮福之所倚，福兮祸之所伏。”好事里藏着坏事，坏事里也藏着好事。纳瓦尔对此有深刻的体悟。他曾说：“你生命中最大的失败，往往是你后来成功的种子。”他举了一个例子：他早期创业失败，被迫离开公司，这看似是灾难，但正是这个“失败”让他有时间去思考，最终创立了AngelList，改变了他的命运。</p><p>这种阴阳思维，与斯多葛哲学有惊人的相似之处。斯多葛学派也强调区分“可控”与“不可控”，并专注于前者。但道家走得更远：它不区分可控与不可控，而是认为一切都在“道”的流动中。你不需要对抗坏运气，也不需要抓住好运气，只需要保持内心的平静，让事情自然展开。纳瓦尔曾说过：“幸福的关键不是改变世界，而是改变你与世界的关系。”这正是阴阳与斯多葛的交汇点。</p><p>让我们看一个具体的商业案例。2008年金融危机时，许多公司恐慌性地裁员、收缩。但纳瓦尔和他投资的一些公司，采取了“无为”的策略：他们不急于应对，而是等待风暴过去。结果，那些没有过度反应的公司，反而在市场复苏时获得了更大的优势。纳瓦尔解释说：“当所有人都在恐慌时，保持冷静就是一种竞争优势。这就像道家说的‘以静制动’。”这种策略不是消极，而是对“时机”的深刻理解——知道什么时候该动，什么时候该静。</p><p>另一个例子是个人成长。很多人陷入“自我提升”的陷阱：每天读10本书、参加各种课程、用各种APP追踪自己的习惯。但纳瓦尔认为，这种“有为”往往带来焦虑和疲惫。他更推崇“无为”式的成长：找到你真正热爱的事情，然后让它自然发展。他说：“你不需要成为更好的自己。你只需要去除那些阻碍你成为自己的东西。”这就像雕刻——你不是在创造一尊雕像，而是在去掉多余的石块，让原本的形状显现出来。</p><p>最后，让我们谈谈“无为”与“行动”的平衡。很多人担心，如果一切顺其自然，会不会变得懒散？但道家从不否定行动。它否定的是“妄动”——那些出于恐惧、贪婪或虚荣心的行动。真正的无为，是像水一样行动：遇到石头就绕过去，遇到低洼就填满它，永远选择阻力最小的路径。纳瓦尔在决策时，就经常问自己：“如果我不做这个决定，会发生什么？”如果答案是“不会有什么大事”，他就选择不做。这种“少即是多”的智慧，正是无为的精髓。</p><h3>四、实践应用与总结：在逆流中学会放手</h3><p>现在，让我们把道家的智慧落地到日常生活中。课后实践要求你思考一个问题：你在哪里在“逆流而上”？哪件事如果能放手让它自然发展，结果可能更好？</p><p>我来帮你做这个练习。假设你正在为一段关系烦恼：你总是试图说服对方、改变对方，或者过度付出。这就像逆流而上——你越用力，对方越抗拒。如果你放手，给对方空间，关系反而可能自然改善。或者，你在工作中一直追求完美，反复修改方案，导致效率低下。这又是逆流而上。如果你接受“足够好”的标准，让事情自然推进，你可能发现结果比预期更好。</p><p>纳瓦尔有一个简单的决策框架：当你面临一个选择时，问问自己：“如果我不做任何事，会发生什么？”如果答案是可接受的，那就不要做。这听起来简单，但实践起来需要极大的勇气。因为我们的本能是“做点什么”来缓解焦虑。但道家告诉我们：很多时候，不做比做更难，也更有智慧。</p><p>课后作业是读一章《道德经》，推荐第1章或第11章。第1章是全书的总纲，它说：“无名天地之始，有名万物之母。”意思是，无名的状态是万物的起点，有名的状态是万物的呈现。你可以用生活中的例子来解释：比如，你创业时，最初只有一个模糊的念头（无名），然后你给它取名字、定计划（有名），但真正的成功往往来自那个最初的直觉。第11章则讲了一个更具体的道理：“三十辐共一毂，当其无，有车之用。”一个车轮，正因为中间是空的，才能装上车轴。你生活中的哪些“空”反而创造了价值？比如，留白的日程让你有灵感，独处的时间让你恢复精力。</p><p>总结一下这堂课的核心：道家思想教我们“顺势而为”，纳瓦尔则把它翻译成现代人的语言。你不需要成为另一个人，你只需要回到自己；你不需要控制一切，你只需要顺应规律。正如老子所说：“无为而无不为。”当你不再挣扎，世界反而会向你敞开。</p><blockquote>“我生命中最成功的事情，往往是那些我放手让它自然发生的事。”——纳瓦尔·拉维坎特</blockquote><p>最后，我想用纳瓦尔的一句话来结束这堂课：“幸福不是一种状态，而是一种能力——一种与世界共舞的能力。”道家思想，就是教会我们如何跳这支舞：不踩别人的脚，也不踩自己的脚。只是随着音乐的节奏，轻轻移动。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">「无为」常被误解为躺平或消极。根据本课内容，请用你自己的话解释「无为」的真正含义，并说明它为什么不是「不行动」，而是「顺势行动」。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回想「道」是自然规律，「无为」是遵循规律行动，类似水流绕过石头而非撞碎它。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">「无为」不是什么都不做，而是不强行违背自然规律去行动。它强调观察和顺应「道」（即事物内在的规律与趋势），在合适的时机以最小的阻力行动。例如，园丁不拔苗助长，而是根据土壤、阳光、水分自然滋养植物；管理者不强制命令，而是引导团队发挥各自优势。核心是「为而不争」：行动但不过度干预，让事情自然发展。这与消极躺平完全不同——躺平是放弃行动，而无为是更智慧、更高效的行动。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你最近在哪个方面感到特别费力、结果却不理想？可能是在工作中强推一个方案，或是在关系中试图改变对方。请用「阴阳」和「无为」的角度分析：这件事中「逆流而上」的表现是什么？如果「顺势而为」，你的行动会如何调整？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">阴阳强调对立面的统一，逆流常因忽略「阴」（阻力）的存在；顺势即接纳现状，找到平衡点。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">假设我在工作中强推一个创新项目，但团队反馈冷淡。逆流而上：我执着于「阳」（推进、说服、加快节奏），却忽略了「阴」（团队的顾虑、现有流程的惯性、资源限制）。无为的调整：首先停止强行推动，观察团队的真实需求（如缺乏培训或激励），然后顺势提供支持（如组织分享会、小规模试点），让项目自然获得认同。阴阳平衡体现在：不否定阻力（阴），而是将其转化为动力——比如利用团队对效率的担忧，展示新方案如何优化流程。结果可能更可持续。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">本课提到道家与斯多葛主义的「对话」。斯多葛强调控制二分法（区分可控与不可控），道家则讲「无为」。请结合你学过的斯多葛课程（如《第45课·控制二分法》），指出两者的共同点和根本差异，并举例说明如何同时运用它们应对一次压力事件。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">共同点都关注接纳现实；差异在于斯多葛更理性划分边界，道家更强调流动与整体性。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">共同点：两者都主张不对抗不可控因素，接受自然规律。斯多葛说「接受无法改变之事」，道家说「顺其自然」。差异：斯多葛通过理性划分「可控/不可控」来获得内心平静，边界清晰；道家则视万物为阴阳互动的整体，不刻意划分，而是流动地「顺势」。例如，面临裁员压力：斯多葛会告诉自己「裁员不可控，但我的反应可控」，从而专注提升技能、储备资金。道家则观察整体局势（公司文化、行业趋势），不抵抗裁员可能带来的变化（阴），同时利用空闲学习或转型（阳），把危机看作自然循环的一部分。两者结合：先用斯多葛稳定心态，再用道家智慧灵活应对。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval092.html" class="prev">上一课</a>
+ <a href="naval094.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冥想入门 — 纳瓦尔通识课第23课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 23 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 3 · 幸福与内在平静</div>
+ <h1>冥想入门</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 23/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval023.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：一杯浑浊的水</h3><p>想象你面前有一杯水，里面悬浮着泥沙。如果你不停地摇晃它，水永远是浑浊的。但如果你把它静置在桌上，几分钟后，泥沙会慢慢沉淀，水逐渐变得清澈。纳瓦尔用这个比喻来形容我们的思绪。</p><p>他说："你的思绪就像一杯浑浊的水。当你让它静置时，杂质会沉淀，水就变清澈了。"冥想的核心不是去搅拌那杯水，而是让它静下来。你不是在追求什么，而是在剥离那些让你不快乐的东西。</p><p>纳瓦尔每天冥想60分钟。这个数字听起来令人望而生畏——一个硅谷最忙碌的投资人之一，每天花一小时只是坐着。但他说，这是他做过的最有价值的投资。</p><blockquote>"冥想不是为了获得任何东西。它是为了剥离那些让你不快乐的东西。"——纳瓦尔·拉维坎特</blockquote><p>很多人对冥想有误解。他们认为冥想是"什么都不想"，或者是一种宗教仪式。实际上，冥想是一种大脑训练，就像去健身房锻炼肌肉一样。它训练你观察自己的思绪，而不是被思绪控制。</p><p>你可能会问："我每天忙得连睡觉时间都不够，哪来的时间冥想？"纳瓦尔的回答是："你每天冥想20分钟，就能获得1小时的高效时间。"这不是时间消耗，而是时间投资。冥想让你从混乱中抽离，获得清晰的判断力。</p><p>让我们从一个简单的问题开始：你上一次完全安静地坐着，什么都不做，只是观察自己的呼吸，是什么时候？大多数人会回答"从来没有"。这正是我们开始的地方。</p><p>冥想不是逃避现实，而是更深入地面对现实。它让你看到自己内心的噪音，然后学会如何让这些噪音安静下来。就像那杯水，当杂质沉淀，你才能看到水本身的清澈。</p><h3>二、核心理论：冥想的不同形式与科学基础</h3><p>冥想不是一个单一的技术，而是一个大家族。纳瓦尔认为，找到适合自己的形式比追求"正确"的形式更重要。以下是三种最主流的冥想形式：</p><p><strong>专注冥想：</strong>这是最常见的入门方式。你选择一个焦点——通常是呼吸——然后把注意力持续地放在上面。当思绪飘走时，你温柔地把它带回来。纳瓦尔说："专注冥想就像训练一只小狗。你把它放在垫子上，它跑开了，你再把它放回去。慢慢地，它会学会待在那里。"</p><p><strong>观察冥想：</strong>这是更进阶的形式。你不是专注于某个对象，而是观察自己的思绪像云一样来来去去。你不评判、不参与、不跟随。只是看。纳瓦尔说："你的思绪就像天空中的云。你是天空，不是云。"</p><p><strong>慈悲冥想：</strong>这种形式培养对他人的善意和同情。你想象把爱和善意发送给自己、亲人、陌生人，甚至那些你讨厌的人。纳瓦尔认为，这是打破自我中心的有效工具。</p><p>冥想的科学基础已经非常扎实。哈佛大学、威斯康星大学麦迪逊分校等机构的研究显示，长期冥想者的大脑发生了可测量的变化：前额叶皮层（负责决策和注意力）增厚；杏仁核（负责恐惧和焦虑）缩小；默认模式网络（负责走神和自我参照）的活动降低。</p><p>纳瓦尔说："冥想是对大脑的核磁共振扫描。它让你看到自己的思维模式，然后你可以选择改变它们。"一项研究发现，8周的正念冥想训练就能降低炎症标志物C反应蛋白的水平。冥想不是"心灵鸡汤"，它是真正的生理干预。</p><p>芒格和纳瓦尔都强调，真正的智慧来自对自身思维的理解。芒格说："如果你不能管理自己的情绪，你就无法管理任何事情。"冥想正是管理情绪的工具。</p><p>关键点：冥想不是"什么都不想"。纳瓦尔说："如果你试图什么都不想，你会疯掉。"冥想是观察思绪的来去，而不是压制它们。就像站在河边看流水，你不需要跳进去，也不需要阻止水流。你只是看着它流过。</p><h3>三、深层分析：为什么冥想让你更幸福</h3><p>纳瓦尔对幸福有一个独特的定义："幸福是缺憾感的消失。"换句话说，幸福不是拥有更多，而是对当下所拥有的感到满足。冥想正是训练这种满足感。</p><p>我们的痛苦大多来自对过去的遗憾和对未来的焦虑。你后悔昨天说错的话，担心明天要做的演讲。但冥想把你拉回当下——这个唯一的、真实存在的时刻。纳瓦尔说："你唯一能真正体验的时刻就是当下。过去只是记忆，未来只是想象。"</p><p>冥想还帮你打破"自我"的幻觉。我们都有一个内在的声音，它不停地评论、评判、担忧。纳瓦尔说："那个声音不是你。你是那个听到声音的人。"当你开始观察自己的思绪，你会意识到你不是你的想法。想法只是大脑产生的电信号，你可以选择相信它们，也可以选择忽略它们。</p><p>这种"解离"能力在投资和创业中极其重要。纳瓦尔说："最好的决策来自平静的头脑。"当市场恐慌时，你能保持冷静；当别人贪婪时，你能客观分析。冥想训练你从情绪中抽离，做出更理性的判断。</p><p>有一个著名的实验：斯坦福大学的研究者让一组人冥想8周，另一组不冥想。然后让他们观看令人不安的图片。冥想组的大脑杏仁核反应显著降低，他们能更快地恢复到平静状态。这说明冥想不是让你变得麻木，而是让你更快地从负面情绪中恢复。</p><p>纳瓦尔说："冥想就像给你的大脑安装了一个重置按钮。当你感到压力、愤怒或焦虑时，你可以按下这个按钮，回到平静。"这个按钮需要训练才能使用，但一旦学会，它就是你随身携带的工具。</p><p>从进化角度看，我们的大脑是为生存设计的，不是为幸福设计的。它不断扫描环境中的威胁，制造焦虑和恐惧来保护我们。冥想是对这种"默认设置"的修正。它让你意识到，大多数威胁只是想象中的，你不需要对每一个想法做出反应。</p><p>芒格和纳瓦尔都强调，幸福是一种技能，不是一种天赋。冥想就是训练这个技能的工具。就像你通过举重来训练肌肉，你通过冥想来训练幸福的能力。</p><h3>四、实践应用：从5分钟开始</h3><p>现在你知道了冥想的好处，但如何开始？纳瓦尔的建议很简单："从每天5分钟开始。"不要追求完美，只追求持续。</p><p><strong>第一步：设定时间和地点。</strong>选择一个固定的时间——早晨刚醒时或晚上睡前最好。找一个安静的地方，坐在椅子上或地上。不需要盘腿，不需要点香，不需要任何仪式。只要你能保持背部挺直，舒服地坐着。</p><p><strong>第二步：专注于呼吸。</strong>闭上眼睛，把注意力放在你的呼吸上。感受空气进入鼻腔，充满肺部，然后离开身体。不需要改变呼吸方式，只是观察它。纳瓦尔说："呼吸是你和当下之间的桥梁。"</p><p><strong>第三步：温柔地处理走神。</strong>你的思绪一定会飘走。这是正常的，甚至是好事——因为你意识到了。当你发现自己走神时，不要批评自己，只是轻轻地把注意力带回呼吸。纳瓦尔说："每次你把注意力带回来，就像做了一次心理俯卧撑。"</p><p><strong>第四步：逐渐增加时间。</strong>从每天2分钟开始，每周增加1分钟。目标是每天20分钟，但不要急于求成。纳瓦尔说："冥想不是一场比赛。你不需要在第一天就达到60分钟。"</p><p><strong>课后实践：现在就尝试。</strong>坐在椅子上，闭上眼睛，只注意你的呼吸。当思绪飘走时，轻轻把它带回呼吸。就5分钟。设置一个计时器，不要看钟。当你完成时，注意你的感觉——可能更平静，也可能更烦躁。无论什么感觉，都是正常的。</p><p><strong>课后作业：设定30天的冥想挑战。</strong>从每天2分钟开始，每周增加1分钟。不追求完美，只追求持续。准备一个笔记本，每天记录你的感受："今天冥想时，我的思绪飘到了工作/家庭/未来。我把它带回来了X次。"通过记录，你会看到自己的进步。</p><p>纳瓦尔说："冥想不是一种技巧，它是一种存在方式。"它不会一夜之间改变你的生活，但如果你持续练习，你会发现自己的反应模式在变化。你不再被情绪控制，你能更清晰地看到事物的本质。</p><p>最后，记住纳瓦尔的话："你的目标不是成为一个冥想者。你的目标是成为你自己。"冥想只是帮助你剥离那些不是你自己的东西——社会期望、恐惧、焦虑、自我怀疑。当你剥离了这些，剩下的就是真正的你。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说冥想不是为了「获得什么」，而是为了「剥离」。请解释「剥离」在冥想中的含义，并说明它为什么不同于「什么都不想」？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考「剥离」的对象是什么——是剥离情绪、思维惯性，还是剥离对控制的执着？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">「剥离」在冥想中指的是从惯常的思维洪流中抽身而出，不再被思绪自动牵引。它不同于「什么都不想」：1. 剥离是主动观察而非强制空白——你允许思绪升起，但选择不参与、不评判，像看云飘过；2. 剥离的对象是「对思维的认同」——我们常误以为「我」就是我的想法，冥想帮你看见念头只是大脑的产物，不是你的本质；3. 剥离带来自由——不再被焦虑、回忆或计划绑架，而是回到当下的纯粹存在。所以，冥想是训练「观察者」而非「消灭者」的能力。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你正因工作压力感到焦虑，脑中反复回放白天的失误。请设计一个5分钟的冥想练习，具体说明如何运用「观察冥想」来应对这种状态。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">重点不是赶走焦虑，而是把焦虑当作观察对象。注意呼吸的节奏如何成为锚点。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 找安静角落坐下，闭眼，做三次深长呼吸（吸气4秒，呼气6秒），让身体沉入椅子。2. 将注意力放在鼻尖或腹部，感受呼吸的自然起伏——这是你的锚点。3. 当焦虑念头（如“我搞砸了”）出现时，在心里轻声标记：“这是焦虑，它来了。” 4. 像看天气预报一样观察它：它带来什么身体感受？（胸口发紧？手心出汗？）5. 不分析、不评判，只默念“它只是念头，它会走”。6. 当注意力被卷走时，温和地把意识带回呼吸，像把飘走的小船轻轻拉回岸边。7. 5分钟后，睁眼，注意此刻的平静感。关键：你不是在战斗，而是在邀请焦虑坐下喝茶。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第22课《幸福是一种技能》中「幸福是默认状态，痛苦是大脑的报警机制」的观点，说明冥想如何帮助人从「报警模式」切换回「幸福默认状态」。请用生理学证据支撑。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系冥想对前额叶皮层和杏仁核的影响——大脑的可塑性如何改变情绪反应模式。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 生理学基础：冥想能降低杏仁核（大脑警报中心）的活跃度，同时增厚前额叶皮层（理性决策区）的灰质，这直接削弱了「报警模式」的强度。2. 幸福默认状态：纳瓦尔认为幸福不需要争取，只需移除障碍——冥想剥离了焦虑、悔恨等「报警信号」，让大脑回归平静基线。3. 具体机制：a) 专注冥想训练了「注意力肌肉」，减少被负面念头绑架的频率；b) 观察冥想让情绪像闪电一样划过却不留下伤痕——你学会不对警报反应，警报便自然减弱；c) 长期练习后，大脑会形成新的神经回路：遇到压力时不自动触发战斗或逃跑，而是先暂停、呼吸、观察。4. 整合实践：每天5分钟冥想，就是给大脑做「幸福复位」——如同重启电脑，清空临时文件，让系统回到出厂设置般的平静。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval022.html" class="prev">上一课</a>
+ <a href="naval024.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

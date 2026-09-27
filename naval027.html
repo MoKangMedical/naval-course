@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>愤怒的智慧 — 纳瓦尔通识课第27课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 27 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 3 · 幸福与内在平静</div>
+ <h1>愤怒的智慧</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 27/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval027.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：愤怒，你心中的那个“正义”的声音</h3>
+<p>想象一下：你正在开车上班，前方一辆车突然变道，不打招呼就插到你前面。你瞬间火冒三丈，心跳加速，嘴里可能已经蹦出几句脏话。你觉得自己完全有理由愤怒，因为对方“违规”了，因为你“被侵犯”了。但让我们停下来想一想：那个司机知道你的存在吗？他可能只是赶时间，或者根本没注意到你。你愤怒的真正原因，不是他做了什么，而是你内心有一个期待——期待所有司机都遵守规则、礼貌行车。当这个期待被打破，愤怒就产生了。</p>
+<p>愤怒，是我们生活中最常见的情绪之一。它像一把双刃剑，有时能激发我们捍卫正义，但更常让我们失去理智，做出后悔的决定。纳瓦尔·拉维坎特，这位硅谷著名的天使投资人，对愤怒有着深刻的洞察。他认为，“愤怒很少是合理的。它通常是你对世界的期待没有得到满足时的反应。”这句话听起来简单，却直击本质。今天，我们就来探索“愤怒的智慧”——不是教你压抑愤怒，而是学会读懂愤怒背后的信号，把它从破坏性情绪转化为成长的工具。</p>
+<blockquote>“愤怒就像抓住一块热炭，想扔向别人，结果烧伤的却是自己。”——佛陀</blockquote>
+
+<h3>二、核心理论：愤怒的根源——未被满足的期待</h3>
+<p>纳瓦尔的观点核心在于：愤怒不是由外部事件直接引发的，而是由你对事件的“解读”和“期待”决定的。这其实呼应了心理学中的“认知行为理论”：事件本身（A）不会直接导致情绪（C），中间还有一个关键环节——你的信念和期待（B）。比如，同样是被人插队，如果你期待“人人都该排队”，你会愤怒；如果你觉得“这人可能有急事”，你可能只是无奈。</p>
+<p><strong>愤怒的根源公式：期待 + 现实 ≠ 愤怒</strong></p>
+<p>让我们拆解一下：<br>1. <strong>期待</strong>：你对他人、环境或自己的理想化假设。比如“他应该懂礼貌”“工作应该公平”“我永远不该犯错”。<br>2. <strong>现实</strong>：实际发生的事情。比如他插队了、领导批评了你、你犯了错。<br>3. <strong>愤怒</strong>：当期待与现实之间的差距超过你的容忍阈值时，产生的情绪反应。</p>
+<p>所以，愤怒的本质，是你内心那个“世界应该怎样”的剧本，与现实剧本之间的冲突。纳瓦尔曾分享过一个例子：有一次他在网上被陌生人辱骂，他一开始很生气，但随后他问自己：“我期待什么？期待一个素未谋面的人对我礼貌？这个期待合理吗？”当他意识到这个期待本身就不现实时，愤怒就消退了。</p>
+<p><strong>案例：职场中的愤怒</strong><br>小王是一家公司的项目经理，他精心准备了一份方案，却在会议上被同事小李当众批评。小王愤怒极了，觉得小李“故意针对他”。但如果我们用纳瓦尔的视角分析：小王的期待是什么？他期待自己的方案被认可，他期待同事之间互相尊重。但现实是，小李只是指出了方案中的漏洞，可能语气直接了些。真正的问题不是小李做了什么，而是小王心中那个“我的方案必须完美”的期待。这个期待合理吗？任何方案都有改进空间。小李知道小王的期待吗？很可能不知道，他只是就事论事。</p>
+
+<h3>三、深层分析：愤怒的代价与斯多葛学派的智慧</h3>
+<p>愤怒不仅源于不合理的期待，它还会带来一系列代价，这些代价往往比引发愤怒的事件本身更严重。</p>
+<p><strong>1. 生理代价：身体在“燃烧”</strong><br>愤怒时，你的身体进入“战斗或逃跑”模式：心率加快、血压升高、皮质醇（压力激素）分泌增加。长期频繁的愤怒，会增加心脏病、高血压的风险，甚至加速衰老。纳瓦尔曾说：“愤怒对身体的伤害，就像喝下一杯毒药，却期待对方死掉。”</p>
+<p><strong>2. 社交代价：关系的裂痕</strong><br>愤怒时，我们容易说出伤人的话，做出冲动的决定。一句“你永远都这么自私”可能让一段友谊破裂，一次拍桌子可能让同事疏远你。愤怒就像一把锤子，它也许能砸开问题，但更可能砸碎关系。</p>
+<p><strong>3. 决策代价：理性的丧失</strong><br>神经科学研究表明，愤怒会抑制前额叶皮层（负责理性思考的区域）的活动，让你更倾向于做出短视、极端的决定。比如，愤怒时辞职、愤怒时开车撞人、愤怒时在社交媒体上发攻击性帖子——这些都可能带来无法挽回的后果。</p>
+<p><strong>斯多葛学派的智慧：控制你能控制的</strong><br>古希腊的斯多葛学派哲学家，如塞内卡和马可·奥勒留，对愤怒有极深的洞见。塞内卡在《论愤怒》中写道：“愤怒是短暂的疯狂。”斯多葛学派的核心思想是：区分“你能控制的”和“你不能控制的”。你无法控制别人的行为，但你可以控制自己的反应。当你愤怒时，你实际上是在试图控制那些不可控的东西——比如他人的态度、天气、交通——这注定会失败。</p>
+<p>马可·奥勒留，这位罗马皇帝，在《沉思录》中写道：“如果有人冒犯了你，首先问自己：我期待什么？我是否期待一个完美的人？如果我不期待，那么他的行为只是他的本性，与我无关。” 这种思维方式，正是纳瓦尔所提倡的：把愤怒从“他人的问题”转化为“自己的期待问题”。</p>
+<blockquote>“如果有人让你愤怒，那是你的期待在惩罚你自己。”——纳瓦尔·拉维坎特</blockquote>
+
+<h3>四、实践应用/总结：如何将愤怒转化为信号而非反应</h3>
+<p>既然愤怒是期待与现实冲突的信号，我们该如何利用这个信号，而不是被它控制？以下是几个实用的步骤，基于纳瓦尔和斯多葛学派的智慧。</p>
+<p><strong>步骤一：暂停，问自己三个问题</strong><br>当你感到愤怒时，不要立即反应。深呼吸，问自己：<br>1. <strong>我期待的是什么？</strong>（比如“他应该尊重我”“这件事应该顺利进行”）<br>2. <strong>这个期待合理吗？</strong>（比如，他是否知道这个期待？这件事是否在我的控制范围内？）<br>3. <strong>对方知道我的期待吗？</strong>（很多时候，我们愤怒是因为别人没有满足一个他们根本不知道的期待。）</p>
+<p><strong>步骤二：区分事实与解读</strong><br>愤怒常常源于我们对事实的“添油加醋”。事实是客观的，解读是主观的。例如：<br>- 事实：同事在会议上打断了你的发言。<br>- 解读：他不尊重我，他故意让我难堪。<br>但事实可能只是：他急着补充一个关键信息。当你把事实和解读分开，愤怒的强度通常会下降。</p>
+<p><strong>步骤三：重新评估期待</strong><br>如果发现期待不合理（比如期待所有司机都完美驾驶），就主动调整期待。纳瓦尔建议：“降低对世界的期待，但提高对自己的期待。” 期待别人完美是徒劳的，但期待自己冷静处理问题，是可行的。</p>
+<p><strong>步骤四：用行动代替情绪</strong><br>愤怒的能量可以转化为建设性的行动。比如，如果对工作流程不满，愤怒可以推动你提出改进方案；如果对人际关系不满，愤怒可以提醒你设立边界。关键是，不要让情绪控制你，而是你控制情绪。</p>
+<p><strong>课后实践：本周的“愤怒日志”</strong><br>1. 每次感到愤怒时，立即停下来，记录：<br>   - 引发事件（事实）<br>   - 你的期待（“我期待的是……”）<br>   - 这个期待合理吗？<br>2. 一周后，回顾日志，你会发现自己愤怒的模式——比如，大部分愤怒都源于对“尊重”的期待，或者对“效率”的期待。这些模式就是你成长的线索。</p>
+<p><strong>课后作业：区分事实与解读</strong><br>记录一周内每次让你愤怒的事件。对于每件事，区分：<br>- <strong>实际发生的事实</strong>（客观、可验证的）<br>- <strong>你对事实的解读</strong>（你的故事、判断）<br>例如：<br>- 事实：朋友迟到了30分钟。<br>- 解读：他不重视我，他不在乎我的时间。<br>然后问自己：有没有其他可能的解读？比如他遇到了交通堵塞，或者他最近压力很大。这个练习能帮你打破愤怒的惯性。</p>
+<p><strong>总结：愤怒的智慧</strong><br>纳瓦尔说：“真正的自由，不是没有愤怒，而是不再被愤怒控制。” 愤怒不是敌人，它是一个信使，告诉你：你的期待需要调整，或者你的边界需要设立。学会倾听这个信使，然后冷静地做出选择，你就掌握了愤怒的智慧。从今天开始，当愤怒来临时，不要急着爆发，而是像一位科学家一样，观察它、分析它，然后把它化为成长的燃料。记住，你无法控制风的方向，但你可以调整自己的帆。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“愤怒是期待的产物”。请用你自己的话解释：为什么期待与现实不符会引发愤怒？这与斯多葛学派“控制二分法”有何联系？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考期待的本质——它是否属于你能控制的范围？斯多葛学派强调区分可控与不可控。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 愤怒的核心机制：当你的期待（如“对方应该尊重我”）与现实（对方没做到）冲突时，大脑会感到失控，从而触发愤怒作为防御反应。2. 斯多葛联系：根据控制二分法，期待往往指向不可控的外部事件（如他人行为），而斯多葛学派主张只关注可控的内心反应。愤怒因此是“对不可控事物的执念”的表现。3. 关键洞察：合理期待应基于自身行动（如“我可以用平静语气沟通”），而非他人必须配合。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你在工作中被同事当众批评，感到愤怒。请运用本课“愤怒转化为信号”的方法，设计一个3步行动方案：从识别期待到理性回应。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">第一步先问自己“我期待什么？”（如尊重、公平），再评估期待是否合理，最后用非暴力沟通表达。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 暂停与觉察：深呼吸10秒，问“我期待的到底是什么？”（可能是“同事应该私下指出问题”或“批评应基于事实”）。2. 评估合理性：这个期待符合现实吗？——同事可能无恶意但方式欠妥；对方是否知道你的期待？——通常不知道，因为未明确沟通。3. 理性回应：用“我注意到……我感到……我希望……”框架表达，如“我注意到你刚才的批评方式，让我感到不被尊重。我希望未来能私下讨论反馈。” 这样愤怒成为改进沟通的信号，而非对抗反应。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第3课《决策的杠杆》中“情绪是决策的噪音”和第12课《幸福是默认状态》中“幸福源于接纳现实”，结合本课愤怒智慧，说明三者如何共同构建一个“情绪成熟者”的思维框架。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考这三个概念如何互补：决策需要冷静，幸福需要接纳，愤怒需要转化。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 决策与愤怒：第3课强调情绪会扭曲决策，愤怒时容易冲动。本课建议将愤怒转化为信号，即先识别期待再行动，避免情绪主导决策。2. 幸福与接纳：第12课指出幸福是接纳现实而非对抗。本课指出愤怒源于期待与现实冲突，因此接纳现实（如“他人可能不完美”）能减少愤怒根源。3. 整合框架：情绪成熟者=①用斯多葛二分法区分可控（自身反应）与不可控（他人行为）→②接纳不可控现实（幸福课）→③将愤怒信号用于调整自我期待而非指责他人→④在冷静状态下做出高质量决策（决策课）。三者形成闭环：接纳→转化→决策→成长。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval026.html" class="prev">上一课</a>
+ <a href="naval028.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

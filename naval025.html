@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嫉妒的解剖 — 纳瓦尔通识课第25课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 25 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 3 · 幸福与内在平静</div>
+ <h1>嫉妒的解剖</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 25/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval025.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：嫉妒，一种信息不完全的认知偏差</h3><p>同学们好，欢迎来到康波研究院的通识课堂。今天，我们进入第三阶段“幸福与内在平静”的第25课，主题是“嫉妒的解剖”。你可能觉得嫉妒是一种情绪，但纳瓦尔告诉我们，它本质上是一种认知偏差——源自我们所掌握的信息不完整。</p><p>纳瓦尔曾这样描述嫉妒：“你嫉妒的只是别人生活的一个切片，而不是全部。如果你能看到那个人的整个人生，包括他的痛苦、失败和深夜的焦虑，你可能就不会嫉妒了。”这句话直击要害。我们嫉妒同事的升职加薪，却不知道他每天加班到凌晨两点；我们嫉妒朋友环游世界，却不知道他正在为信用卡债务发愁；我们嫉妒网红光鲜亮丽，却不知道他为了维持人设付出了多少代价。</p><p>让我讲一个真实案例。一位创业者曾向纳瓦尔诉苦，说嫉妒同行融资几千万。纳瓦尔问他：“如果你和那个人交换全部人生，包括他的童年创伤、他的家庭矛盾、他的健康问题，你愿意吗？”创业者沉默了。因为他知道，那个同行虽然拿到了融资，但父亲刚去世，妻子正在闹离婚，自己还患上了严重的失眠症。</p><p>这就是嫉妒的真相：我们总是拿着别人的“高光时刻”来对比自己的“日常状态”。心理学家费斯汀格在1954年提出社会比较理论，认为人类天生就有将自己与他人比较的倾向。但问题在于，比较的对象往往是经过精心筛选的“切片”，而不是完整的“全貌”。</p><p>纳瓦尔说：“社交媒体是嫉妒的放大器。”因为每个人都在上面展示自己最完美的一面——旅游照片、工作成就、家庭幸福。你看到的只是别人精心剪辑的“预告片”，却误以为是“完整电影”。这种信息不对称，让嫉妒变得无处不在。</p><p>今天，我们将深入解剖嫉妒的机制，学习如何用“交换测试法”来化解它。记住纳瓦尔的警告：“嫉妒是一种自我消耗。它不会让你变得更好，只会让你更痛苦。”让我们开始吧。</p><h3>二、核心理论：社会比较与嫉妒的心理学机制</h3><p>要理解嫉妒，我们必须先理解它的心理学根源。纳瓦尔和芒格都强调，人类的大脑天生就是一个“比较器”。我们不是通过客观标准来评估自己，而是通过与他人的比较来定义自己的价值。这就是费斯汀格的社会比较理论的核心。</p><p>社会比较分为两种：上行比较（与比自己强的人比）和下行比较（与比自己弱的人比）。嫉妒主要来自上行比较。当你看到别人拥有更多财富、更高地位、更幸福的生活时，大脑会释放一种“不公平”信号，引发焦虑和痛苦。这种信号在进化上是有意义的——它曾激励我们的祖先去争取更多资源，但在现代社会，它却常常变成一种自我折磨。</p><p>纳瓦尔指出，嫉妒的强度与比较对象的“相似度”成正比。你不太会嫉妒比尔·盖茨的财富，因为你们差距太大，你根本不会拿自己去比。但你会嫉妒你的朋友、同事、邻居——那些和你起点相似、背景相近的人。因为他们的成功让你觉得“本应属于你”。</p><p>这里有一个关键洞察：嫉妒往往源于“稀缺心态”。纳瓦尔说：“当你认为资源是有限的，别人的获得就是你的损失时，嫉妒就会滋生。”比如，你认为升职名额只有一个，别人得到了，你就失去了。但纳瓦尔提醒我们，财富和机会并不是零和游戏。别人成功不代表你失败。</p><p>芒格和纳瓦尔都强调，解决嫉妒的第一步是“意识到你是在比较切片，而不是整体”。当你嫉妒同事的薪水时，问自己：我是否知道他的工作压力、他的家庭负担、他的健康成本？很可能你不知道。这种信息不对称，让嫉妒变得荒谬。</p><p>纳瓦尔曾分享过一个练习：把嫉妒的对象列出来，然后写下你嫉妒的具体点。接着，想象你获取了这个点之后，会带来哪些连带后果。比如，你嫉妒朋友的身材，但如果你拥有他的身材，你可能也要接受他的饮食控制、每天两小时的训练、以及推掉社交活动的时间成本。这样一想，嫉妒往往会消退。</p><h3>三、深层分析：为什么社交媒体是嫉妒的温床</h3><p>纳瓦尔说：“社交媒体是人类历史上最强大的嫉妒放大器。”为什么？因为它的设计机制就是利用社会比较来获取用户注意力。Instagram、Facebook、抖音，每个平台都在鼓励用户展示最好的一面，隐藏最差的一面。结果就是，你看到的全是“精选切片”，而不是“真实全貌”。</p><p>让我们用数据说话。一项2020年的研究发现，每天使用社交媒体超过3小时的人，嫉妒感比普通人高出40%。另一项研究显示，浏览Facebook半小时后，用户的幸福感平均下降15%。为什么？因为你在刷手机时，大脑会不自觉地做“上行比较”——看到别人度假，你觉得自己在加班；看到别人升职，你觉得自己停滞不前。</p><p>但纳瓦尔提醒我们，社交媒体上的“别人”其实是一个虚构角色。你嫉妒的那个网红，可能为了那张照片拍了100次，修了2小时，还用了滤镜和AI生成。这不是真实的人，而是一个“数字面具”。你嫉妒的，是一个不存在的东西。</p><p>更深层的问题是，社交媒体放大了“相对剥夺感”。这个概念由社会学家斯托弗提出：当人们觉得自己应该拥有某种东西，但实际上没有时，就会产生被剥夺的感觉。比如，你看到朋友都买了房，而自己没有，就会觉得“被剥夺”了。但事实上，你可能从未想过要买房，只是看到别人有，才觉得自己也应该有。</p><p>纳瓦尔认为，要打破这种循环，必须建立“内在评价体系”。他说：“不要用别人的标准来定义自己的成功。你的幸福只能由你自己定义。”这意味着，你需要减少外部比较，增加内部比较——今天的你比昨天的你进步了吗？这才是唯一有意义的比较。</p><p>一个实用的方法是：每天花5分钟写下三件你感恩的事。纳瓦尔本人就坚持这个习惯。他说：“感恩是嫉妒的解药。当你专注于自己拥有的，而不是别人拥有的，嫉妒就会消失。”试试看，坚持30天，你会看到变化。</p><h3>四、实践应用：交换测试法与课后行动</h3><p>现在，我们来学习纳瓦尔最核心的嫉妒化解工具：交换测试法。这个方法很简单，但威力巨大。步骤如下：</p><p>第一步：找出你最嫉妒的一个人。可以是同事、朋友、网红，甚至陌生人。写下他的名字。</p><p>第二步：具体描述你嫉妒他的什么。是财富？地位？外表？还是生活方式？越具体越好。比如，“我嫉妒他的年薪200万”或“我嫉妒她每天都能旅游”。</p><p>第三步：想象你要和他交换全部人生，包括所有方面——不仅仅是他的成功，还有他的童年创伤、他的健康问题、他的人际关系烦恼、他的债务、他的压力、他的失眠、他的家庭矛盾。你要接受他的一切记忆和后果。</p><p>第四步：问自己：“我还想换吗？”如果答案是“不”，那么你的嫉妒就消失了。因为你意识到，你嫉妒的只是一个切片，而不是整体。如果答案是“可能”，那么你需要更深入地思考：你愿意接受那些隐藏的痛苦吗？</p><p>纳瓦尔曾用这个测试帮助一位朋友。这位朋友嫉妒一位亿万富翁，说想拥有他的财富。纳瓦尔说：“好，那你不仅要获得他的钱，还要获得他的童年——他父亲酗酒、母亲抑郁、他曾在街头流浪三年。你还想换吗？”朋友立刻说：“不，我不想。”嫉妒瞬间消失了。</p><p>课后作业有两项。第一：取消关注5个让你感到嫉妒或不满足的社交媒体账号。它们可能是那些炫富、炫美貌、炫生活的账号。替换为5个让你感到启发或学习的账号，比如知识博主、技能教程、哲学思考者。这个动作会减少你的“上行比较”来源。</p><p>第二：每天睡前做一次“感恩三件事”练习，坚持30天。记录你的情绪变化。你会发现，嫉妒的频率和强度都在下降。</p><p>最后，记住纳瓦尔的话：“嫉妒是自我消耗。你越嫉妒，就越远离幸福。真正的平静，来自于接受自己，而不是比较自己。”希望今天的课程能帮你卸下嫉妒的包袱，轻装前行。我们下节课见。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">嫉妒的核心机制是“社会比较理论”。请用自己的话解释：为什么我们往往嫉妒某个人的某个方面，而不是嫉妒他的全部人生？这与“切片”概念有何关联？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想社交媒体上你看到的是别人的高光时刻，还是完整的生活？嫉妒是否只关注了某个片段？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">社会比较理论指出，人类通过与他人比较来评估自身价值，但嫉妒常常源于选择性比较。我们只关注他人的“切片”——比如财富、外貌或成就，而忽略其背后的代价（如压力、健康问题或人际关系烦恼）。这是因为大脑倾向于简化比较，只提取吸引自己的部分，却自动过滤了对方的负面经历。所以，嫉妒本质上是“切片比较”，而非整体交换。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你嫉妒一位朋友总是旅行晒照片，而自己困在办公室。请用“交换测试法”分析：如果必须与他交换全部人生——包括他旅途中可能的孤独、经济压力或家庭矛盾——你还会愿意吗？写出具体对比。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">列出你嫉妒的“切片”（如自由），再列出该切片背后可能隐藏的代价（如不稳定收入）。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">嫉妒切片：自由旅行的快乐。但交换全部人生后，我可能需要承受：①旅行中的孤独感（长期独处）；②经济不稳定（他可能背负债务或靠兼职维持）；③家庭矛盾（他可能因频繁离家与亲人疏远）；④健康风险（长途飞行或饮食不规律）。相比之下，我虽然被困办公室，但有稳定收入、同事社交和家庭陪伴。交换后，我可能失去这些基础保障。因此，我不愿交换。这说明嫉妒的只是理想化的切片，而非整体。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第24课《欲望的迷宫》中“欲望是痛苦的源泉”这一概念，结合本课“嫉妒是切片比较”，分析：欲望与嫉妒如何相互强化？如何用“交换测试法”打破这种循环？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想欲望是否让你只看到别人的“拥有”，而嫉妒则让你忽略对方的“失去”？交换测试法如何帮你看到全貌？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">欲望驱动我们追求更多（如财富、地位），而嫉妒则让我们聚焦于他人已获得的“切片”，从而加剧欲望的焦虑。例如，欲望说“我要像他一样成功”，嫉妒则放大他成功的片段，忽略其付出的痛苦。这种循环让大脑陷入比较陷阱。交换测试法通过要求想象与对方交换全部人生（包括痛苦），迫使我们看到欲望目标背后的代价，从而认识到自己的现有价值。这打破了“欲望-嫉妒”的强化循环，让我们从“缺什么”转向“有什么”，减少无谓的痛苦。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval024.html" class="prev">上一课</a>
+ <a href="naval026.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

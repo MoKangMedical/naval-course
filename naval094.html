@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>印度哲学 — 纳瓦尔通识课第94课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 94 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 10 · 东西方哲学融合</div>
+ <h1>印度哲学</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 94/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval094.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：从纳瓦尔的印度根源谈起</h3><p>纳瓦尔·拉维坎特，这位硅谷的投资天才，他的思想并非凭空而来。他出生于印度，成长于一个充满哲学气息的家庭。印度哲学，特别是吠檀多和瑜伽传统，像一条暗流，深深影响了他的世界观。纳瓦尔曾说：“我的一切思想，最终都可以追溯到印度的古老智慧。”这句话不是客套，而是他对自己根源的坦诚。</p><p>很多人以为印度哲学就是“冥想”和“瑜伽”，但它的内核远比这复杂。印度哲学不是一个单一的体系，而是一个庞大的家族，包含六派正统哲学（如数论、瑜伽、吠檀多）和无数民间传统。纳瓦尔最常引用的是吠檀多和瑜伽，尤其是“不执着于结果”和“追求内心平静”这两个概念。他曾在一次访谈中感叹：“西方人追求成功，但成功往往带来焦虑。印度哲学告诉我，真正的成功是内心的自由。”</p><p>举个例子，纳瓦尔在投资时有一个著名原则：“只投你能完全理解的东西，然后忘记它。”这听起来像是一种商业策略，但背后是印度哲学中的“业瑜伽”思想——行动而不执着于结果。他投资Uber、Twitter时，并没有天天盯着股价，而是专注于“做正确的事”，让结果自然发生。这种心态，让他避开了很多投资中的情绪陷阱。</p><p>纳瓦尔的印度根源，不是一种文化标签，而是一种思维工具。他吸收了印度哲学中对“自我”和“宇宙”的深刻洞察，并用现代语言重新诠释。比如，他常说：“你无法控制结果，但你可以控制行动。”这句话，其实就是《薄伽梵歌》中克里希那对阿周那的教导：“你有权行动，但无权享受行动的果实。”</p><p>印度哲学的多样性，也体现在纳瓦尔的思想中。他不是一个教条的追随者，而是一个实用主义者。他会从不同哲学流派中提取对自己有用的部分，比如从瑜伽中学习“专注”，从吠檀多中学习“不执着”。这种开放的态度，正是印度哲学的精髓——它不要求你信仰什么，而是邀请你探索什么是“真实”。</p><p>这节课，我们就来深入探讨印度哲学的核心，看看它如何塑造了纳瓦尔，以及如何改变你的人生。记住，印度哲学不是死的知识，而是一种活的实践。你不需要去印度修行，只需要在每天的决策中，融入一点古老的智慧。</p><h3>二、核心理论：瑜伽与吠檀多的精髓</h3><p>印度哲学中，瑜伽和吠檀多是两个最重要的流派。但请注意，瑜伽不仅仅是你在健身房里做的体式。瑜伽（Yoga）这个词，来自梵语词根“yuj”，意思是“连接”或“合一”。它是一套完整的修行体系，旨在让个体灵魂（Atman）与宇宙灵魂（Brahman）合一。纳瓦尔曾说：“瑜伽不是扭曲身体，而是扭曲你的自我。”</p><p>传统瑜伽有八支，包括持戒、精进、体位法、调息、制感、专注、冥想和三摩地。现代人只关注体位法，但纳瓦尔更看重后三支——专注、冥想和三摩地。他认为，真正的瑜伽是训练你的意识，而不是你的腹肌。他每天花一小时冥想，不是为了放松，而是为了“看见真实”。他说：“冥想时，你不再被念头控制，而是成为念头的主人。”</p><p>吠檀多（Vedanta）则更偏向哲学。它源自《奥义书》，核心教义是“梵我如一”——你的本质和宇宙的本质是同一的。纳瓦尔对此有精辟的解释：“你以为你是一个独立的人，但你的意识只是宇宙意识的一个片段。当你认识到这一点，恐惧和焦虑就消失了。”这种观点，和现代物理学中的“全息宇宙”理论有异曲同工之妙。</p><p>纳瓦尔把吠檀多应用到生活中：当你意识到“自我”只是幻觉，你对失败的恐惧就会减轻。因为失败的不是“你”，而是一个暂时的角色。他说：“人生就像一场游戏，你既是玩家，又是游戏本身。”这种视角，让他能够从容面对投资中的起起落落。</p><p>瑜伽和吠檀多不是对立的。瑜伽是实践，吠檀多是理论。纳瓦尔强调：“你需要用瑜伽来体验吠檀多的真理。”也就是说，光知道“梵我如一”没用，你得通过冥想和专注，去真正感受到那种合一。否则，它只是头脑中的一个概念。</p><p>芒格和纳瓦尔都强调“理性”，但纳瓦尔的理性多了一丝灵性。芒格用“心智模型”来避免错误，纳瓦尔则用瑜伽来超越错误。他说：“当你不再执着于‘我’的得失，你就能更客观地看待世界。”这种客观性，正是投资和生活中最高级的智慧。</p><h3>三、深层分析：业瑜伽——行动而不执着</h3><p>在《薄伽梵歌》中，克里希那教导阿周那一个核心原则：“业瑜伽”（Karma Yoga）。这个词翻译过来就是“行动的瑜伽”，但它的精髓是“行动而不执着于结果”。纳瓦尔把这个原则当作自己的座右铭。他说：“我做的每一件事，都专注于过程，而不是结果。因为结果不受我控制，但过程可以。”</p><p>为什么“不执着”这么重要？因为执着于结果会带来焦虑和偏见。当你投资一家公司时，如果你太在意股价，你就会做出非理性的决策——比如在恐慌时抛售，在贪婪时追高。纳瓦尔的做法是：在投资前做足功课，然后“忘记”这笔投资。他说：“如果你不能承受损失，就不要投资。但如果你投资了，就接受任何结果。”</p><p>业瑜伽不是消极的“不作为”，而是积极的“行动”。阿周那在战场上，克里希那让他战斗，但不要为胜利或失败而烦恼。同样，纳瓦尔鼓励创业者“全力以赴，但不要期待回报”。他投资Uber时，看中的是创始人的愿景和执行力，而不是短期盈利。这种心态，让他能长期持有优质资产。</p><p>业瑜伽的另一个层面是“奉献”。在印度哲学中，行动应该是一种“奉献”，而不是一种“索取”。纳瓦尔把工作视为一种“游戏”，一种表达自我的方式。他说：“当你享受过程，结果自然而来。”这种思维，和“心流”理论不谋而合——当你完全沉浸在行动中，时间会消失，效率会提升，幸福感也会增强。</p><p>但“不执着”不等于“不在乎”。纳瓦尔区分了“冷漠”和“超然”。冷漠是放弃，而超然是接受。他说：“你可以关心结果，但不要被结果绑架。”比如，他关心自己的健康，但不会因为一次体检指标不好就崩溃。他会调整饮食和运动，但不会焦虑。这种态度，让他保持了长期的稳定和高效。</p><p>在实践中，业瑜伽需要训练。纳瓦尔建议从“小事”开始：比如吃饭时，专注于品尝每一口，而不是看手机；工作写代码时，专注于每一行代码，而不是想着项目完成后的奖励。他说：“当你把每一刻都当作目的，而不是手段，你就活在了当下。”这种活在当下的能力，就是业瑜伽的果实。</p><h3>四、实践应用：把印度哲学融入日常生活</h3><p>理论说得再多，不实践就是空谈。纳瓦尔强调：“哲学不是用来崇拜的，是用来生活的。”所以，这节课的实践很简单：做一件事——任何事——专注于做这件事本身，不担心结果。感受“行动而不执着”。你可以选择一件日常活动，比如洗碗、跑步、写报告，或者冥想。</p><p>具体步骤：第一，选择一件你通常觉得枯燥或焦虑的事。比如，如果你害怕写邮件，那就写一封邮件。第二，设定一个意图：我写这封邮件，不是为了得到回复，而是为了表达清楚。第三，在行动中，只关注动作本身——手指打字的感觉，大脑思考的过程。如果念头飘向“对方会不会生气”，就轻轻拉回来。第四，完成后，不评价结果，只感受“完成了”的轻松。</p><p>纳瓦尔自己每天做“不执着”的练习。比如，他发推文时，不关心点赞数，只关心内容是否真实。他说：“我写东西，不是为了取悦别人，而是为了理清自己的思路。”这种心态，让他的推文反而更有影响力。你可以试试：发一条朋友圈或微博，然后不查看任何反馈，看看自己的内心有什么变化。</p><p>课后作业是：了解一个印度哲学概念，比如“达摩”（Dharma）。达摩可以理解为“天职”或“正道”，即你在这个世界上的独特使命。纳瓦尔说：“找到你的达摩，然后全力以赴，但不执着于结果。”如何找到达摩？你可以问自己：什么是我做起来毫不费力，但别人觉得很难的事？什么让我感到充实，即使没有报酬？</p><p>把达摩应用到人生中。比如，如果你天生擅长沟通，那你的达摩可能是“连接他人”。那么，你每天的工作，就可以围绕这个核心展开——无论是做销售、写作还是教书。但记住，达摩不是目标，而是一种方向。你不需要“达成”达摩，只需要“活出”达摩。</p><p>最后，总结一下这节课的核心：印度哲学不是遥远的古老智慧，而是你每天都可以用的工具。纳瓦尔用它来投资、创业、生活。你也可以。从今天开始，做一件事，专注于过程，不执着结果。你会发现，焦虑减少了，效率提高了，内心也平静了。正如纳瓦尔所说：“当你不再追求幸福，幸福就来了。”</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔提到印度哲学强调‘多样性中的统一’。请用自己的话解释：为什么印度哲学包含如此多不同的流派（如瑜伽、吠檀多、业瑜伽），却仍被视为一个整体体系？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考不同流派如何服务于不同人的需求，但都指向同一终极目标。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">印度哲学的多样性源于其包容性，承认人类有不同的性情、智力和精神需求。瑜伽适合注重身体与冥想的人；吠檀多适合追求理性思辨者；业瑜伽适合行动派。不同路径（marga）如同登山的不同路线，但都指向同一峰顶——自我实现（moksha）。这种多样性不是矛盾，而是对‘真理唯一，道路多样’的体现。纳瓦尔强调，印度哲学的核心在于实用主义：找到适合你的方法，而非固守单一教条。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你正在准备一场重要演讲，但结果完全取决于评委的主观判断。用‘业瑜伽’原则设计一个行动计划，确保你专注于过程而非结果。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">明确你能控制的部分（内容、练习、心态），放下对评分或掌声的执着。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">根据业瑜伽：1. 专注行动本身：每天花1小时打磨演讲逻辑和表达，不预想评委反应；2. 设置过程目标：如‘今天练习3次脱稿’而非‘必须拿第一’；3. 正念练习：演讲前做3次深呼吸，提醒自己‘我已尽力，结果不由我’；4. 事后反思：无论结果如何，记录学到了什么，而非懊悔或自满。关键是把‘行动’视为奉献（如纳瓦尔所说‘把工作当作修行’），让焦虑转化为专注的愉悦。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第34课《冥想与观察者》中‘观察你的想法’和第94课‘行动而不执着’，设计一个日常练习，将冥想中的‘观察者视角’应用到业瑜伽行动中。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想象你同时是‘行动者’和‘观察者’，在做事时保持对情绪的觉察。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">整合练习——‘观行动冥想’：1. 选择一件小事（如洗碗、写邮件），做前闭眼10秒，问‘我是否执着于结果？’；2. 行动时，用冥想中学到的‘观察者视角’留意身体反应（如手部紧张、呼吸急促），不评判；3. 若发现焦虑，默念纳瓦尔的提醒：‘结果只是副产品，行动才是目的’；4. 完成后，像观察云一样观察你的情绪（满足/失望），然后放下。这个练习将两课精髓结合：冥想培养对内心的觉知，业瑜伽将这种觉知转化为自由行动。你会发现自己更从容，因为‘做’本身就成了奖励。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval093.html" class="prev">上一课</a>
+ <a href="naval095.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

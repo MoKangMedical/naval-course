@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精力管理 — 纳瓦尔通识课第38课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 38 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 4 · 自我修炼</div>
+ <h1>精力管理</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 38/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval038.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：意志力不是无限的，但它是可再生的</h3><p>想象一下，你早上醒来，精神饱满，一口气处理了三个重要项目，回复了所有邮件，还抽空读了半小时书。到了下午两点，你盯着屏幕，大脑一片空白，连最简单的决定都做不出来——中午吃什么？你犹豫了十分钟。这不是你懒，也不是你不自律，而是你的意志力已经“用完”了。</p><p>纳瓦尔曾说：“意志力是一种每天有限但可再生的资源。你不可能一天24小时都保持高效，就像你不可能让手机一直不充电。” 这句话听起来简单，但背后藏着一个深刻的真相：我们大多数人把意志力和自律混为一谈，认为只要足够“努力”，就能一直保持专注。但纳瓦尔和芒格都强调，这种想法是反人性的。芒格甚至直言：“如果你试图用意志力对抗生理规律，你一定会输。”</p><p>让我们用科学来验证一下。心理学家罗伊·鲍迈斯特（Roy Baumeister）在1998年做了一个著名的“萝卜和巧克力实验”：把学生分成两组，一组面对刚出炉的巧克力饼干，只能吃萝卜；另一组可以随便吃饼干。随后，两组学生都去做一个无解的几何题。结果，吃萝卜的学生平均只坚持了8分钟就放弃了，而吃饼干的学生坚持了19分钟。为什么？因为抵制饼干的诱惑消耗了他们的意志力，导致后续任务没有能量可用。</p><p>这个实验揭示了一个关键点：意志力像肌肉一样，使用后会疲劳。但好消息是，它也可以像肌肉一样通过休息和恢复来再生。纳瓦尔把这一点用到了极致：他每天只做三件最重要的事，其他时间全部用来“充电”。他甚至在采访中说：“我很少在下午做决策，因为我知道那时候我的大脑已经关机了。”</p><p>所以，精力管理的核心不是“硬撑”，而是“智慧地分配”。你需要知道自己的能量曲线，然后在高峰期做最重要的事，在低谷期做恢复。这不是偷懒，而是高效能人士的底层逻辑。正如纳瓦尔所说：“成功不是关于在疲惫时硬撑，而是关于在你精力最充沛的时候做最重要的事。”</p><h3>二、核心理论：精力的四个来源与意志力的节奏</h3><p>纳瓦尔认为，精力不是单一的东西，它来自四个层面：身体、情绪、思维和精神。这四个来源像一个四轮驱动的车，任何一个轮子没气，整辆车就跑不动。</p><p>第一，身体精力。这是最基础的。纳瓦尔强调，睡眠、饮食和运动是精力的“基础设施”。他说：“如果你睡不好，吃垃圾食品，不运动，你就是在用意志力跟生理规律打仗，你永远赢不了。” 科学研究也证实：睡眠不足会直接降低前额叶皮层的活性，而前额叶正是负责决策和自控的大脑区域。所以，早上精力最充沛，不是因为“意志力满格”，而是因为你的大脑经过一夜休息，葡萄糖和神经递质都恢复了。</p><p>第二，情绪精力。纳瓦尔指出，负面情绪是精力的“黑洞”。焦虑、愤怒、沮丧都会大量消耗意志力。他举过一个例子：如果你刚和伴侣吵了一架，你接下来半小时很难专注工作。这是因为情绪波动激活了杏仁核，抢占了大脑资源。所以，情绪管理就是精力管理——保持平和的心态，少内耗，多输出。</p><p>第三，思维精力。这指的是你的专注力和认知能力。纳瓦尔说：“思考本身很消耗能量，所以你要保护你的注意力。” 他建议每天只做1-2个深度思考任务，其他时间用于自动化或委托。思维精力的特点是：它像电池一样，用一点少一点，但可以通过休息和切换任务来恢复。</p><p>第四，精神精力。这是最高层次的精力，来自你的使命感和意义感。纳瓦尔认为，当你做一件你真正相信的事情时，你不会觉得累。他说：“如果你在做你热爱的事情，工作就是休息。” 精神精力是可持续的，因为它不是靠消耗，而是靠“充电”——比如冥想、阅读、与志同道合的人交流。</p><p>这四个来源共同决定了你的意志力总量。但纳瓦尔特别强调一个节奏：意志力像潮汐一样有涨有落。早上是高潮，下午是低谷，晚上是恢复期。他建议：“把你最重要的决策和任务安排在上午，因为那是你的大脑最清醒的时候。” 这个观点和芒格不谋而合，芒格也说过：“我从不下午做投资决策，因为我知道那时候我的判断力会下降。”</p><h3>三、深层分析：为什么早上是最佳决策时间，以及如何建立恢复仪式</h3><p>既然意志力是有限的，那么如何最大化利用它？纳瓦尔给出的答案很简单：顺应节奏，而不是对抗节奏。这就像种地一样，你不能在冬天播种，也不能在夏天休眠。你要在精力最充沛的时候做最重要的事，在精力低谷期做恢复。</p><p>为什么早上是最佳决策时间？因为经过一夜睡眠，你的大脑葡萄糖水平最高，前额叶皮层活性最强，而且没有受到任何“决策疲劳”的影响。决策疲劳是一个被广泛验证的现象：每做一个决策，你的意志力就会消耗一点。比如，法官在上午判案，假释通过率高达65%；到了下午，这个数字骤降到10%。不是因为法官下午变坏了，而是因为他们做了一天的决策，大脑已经“没电”了。</p><p>纳瓦尔本人就是一个极端例子：他每天只做三件事——阅读、思考、投资决策。他把这些事全部安排在上午，下午只做不需要动脑的事情，比如回复邮件、开会（他称之为“低脑力消耗活动”）。他说：“我很少在下午做重要决策，因为我知道那时候我的大脑已经关机了。”</p><p>但这不是说下午就彻底躺平。纳瓦尔提出了一个关键概念：精力恢复仪式。他认为，精力的恢复不是靠“睡觉”这一个动作，而是需要在一天中嵌入多个“恢复点”。他建议在精力低谷期（比如下午2点和4点）做5-10分钟的快速恢复动作。这些动作可以是：闭眼深呼吸、散步5分钟、喝一杯水、听一首喜欢的歌、或者做几个拉伸动作。关键在于，这些动作要“快”且“有规律”，让大脑从工作模式切换到恢复模式。</p><p>为什么恢复仪式如此重要？因为意志力不是线性消耗的，而是有波动的。如果你在低谷期硬撑，你不仅效率低下，还会透支晚上的精力，导致第二天更差。纳瓦尔说：“压力和恢复必须保持平衡。如果你只有压力，没有恢复，你会崩溃；如果你只有恢复，没有压力，你会停滞。” 这个观点和运动训练中的“超量恢复”原理完全一致——肌肉在训练后需要休息才能变强，大脑也一样。</p><p>所以，深层分析告诉我们：精力管理不是“省着用”，而是“智慧地用”。你要在高峰期冲刺，在低谷期充电，而不是一直开着“低能耗模式”。</p><h3>四、实践应用：画出你的能量曲线，设计恢复仪式</h3><p>理论说完了，现在来到最关键的环节：如何把这些知识用到你的日常生活中？纳瓦尔说：“知识如果不转化为行动，就是噪音。” 所以，我给出两个具体的实践动作，你可以在今天就开始做。</p><p>第一个实践：画出你一天的能量曲线。找一张纸，画一个坐标系：横轴是时间（从早上6点到晚上12点），纵轴是精力水平（从低到高）。然后，回顾你过去一周的每一天，标记出你什么时候精力最旺盛，什么时候最疲惫。比如，你可能发现你早上9-11点最清醒，下午2-3点最困，晚上7-8点又有一点精神。这个曲线就是你的“精力地图”。接下来，把最重要的任务（比如写报告、做决策、处理复杂问题）安排到高峰期，把机械性任务（比如回复邮件、整理文件）安排到低谷期。纳瓦尔说：“不要试图在低谷期做重要的事，那是浪费你的意志力。”</p><p>第二个实践：设计一个精力恢复仪式。在你的两个精力低谷期（比如下午2点和4点），各做一个5-10分钟的快速恢复动作。这个动作要简单、可重复、不依赖外部条件。我推荐几个选项：闭眼深呼吸（4秒吸气，7秒屏息，8秒呼气，重复5次）、站起来散步3分钟（哪怕只是在房间里走一圈）、喝一杯温水、或者做5个深蹲。关键是要“有意识地切换状态”——从工作模式切换到恢复模式，然后5分钟后重新开始工作。纳瓦尔说：“恢复仪式就像给手机充电，你不需要充到100%，只需要充到20%就够你撑到下一个休息点。”</p><p>最后，我给你一个课后作业：在接下来的一周里，每天执行你的能量曲线和恢复仪式。记录下你的感受：你是不是在高峰期更高效了？低谷期是不是没那么难熬了？你会发现，精力管理不是让你“更努力”，而是让你“更聪明”。正如纳瓦尔所说：“成功不是关于在疲惫时硬撑，而是关于在你精力最充沛的时候做最重要的事。” 现在，开始行动吧。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“意志力是一种可再生但有限的资源”。请结合精力的四个来源（身体、情绪、思维、精神），解释为什么早上通常是最佳决策时间，并说明意志力如何在不同来源间相互影响。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考早上身体恢复充分、情绪稳定、思维清晰、精神专注，这些如何共同减少意志力消耗。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 身体来源：经过一夜睡眠，身体能量储备充足，血糖稳定，意志力消耗最低。2. 情绪来源：早晨负面情绪较少，无需消耗意志力调节情绪。3. 思维来源：大脑未受信息过载，决策疲劳尚未累积，认知资源充沛。4. 精神来源：目标感清晰，未受日常琐事干扰。意志力在不同来源间相互影响：例如身体疲劳会降低情绪调节能力，进而削弱思维决策质量。早晨各来源处于峰值，意志力消耗最小，因此是最佳决策时间。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你是一名项目经理，每天上午9点到12点开会，下午处理邮件和文档。你发现自己下午4点后注意力涣散，常犯低级错误。请基于“压力和恢复的节奏”概念，设计一个调整方案，包括精力恢复仪式和任务重新安排。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先画出你一天的能量曲线，识别高峰和低谷。然后引入短时恢复仪式（如冥想、散步）并调整关键任务时间。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 重新安排任务：将最重要的决策和创造性工作移至早上8-10点（能量高峰），下午4点后只做低耗能事务（如整理文件）。2. 建立恢复仪式：每工作90分钟休息5-10分钟，具体包括：闭眼深呼吸3分钟、喝一杯水、站起来拉伸。中午12点午餐后安排15分钟小睡或散步。3. 利用压力-恢复节奏：上午高强度会议后，下午2点安排15分钟“恢复仪式”（如冥想），再处理邮件。4. 下午4点前完成所有需要精力的工作，之后允许自己低强度工作，避免强迫自己导致意志力枯竭。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾之前学过的“决策疲劳”和“习惯自动化”概念，结合本课“精力管理”，说明为什么建立精力恢复仪式能减少决策疲劳，并提升意志力再生效率。请用具体例子说明三者如何协同工作。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考习惯自动化如何节省意志力，精力恢复如何补充意志力，决策疲劳如何被仪式打断。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 习惯自动化减少决策疲劳：当恢复仪式（如每天下午3点冥想）成为自动习惯，你无需消耗意志力决定“要不要做”，直接执行即可。2. 精力恢复补充意志力：恢复仪式（如5分钟深呼吸）激活副交感神经，降低皮质醇，提升血糖和氧气供应，直接恢复身体和情绪精力。3. 决策疲劳被仪式打断：连续决策会导致意志力消耗，而恢复仪式提供了一个“重启点”，让大脑从疲劳状态恢复，例如在连续三个会议后，10分钟散步能重置注意力。4. 三者协同：习惯自动化（无需决策）→ 精力恢复（补充资源）→ 减少决策疲劳（避免枯竭），形成正向循环。例如：每天固定时间做恢复仪式，自动节省意志力，同时提升下午工作效率。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval037.html" class="prev">上一课</a>
+ <a href="naval039.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

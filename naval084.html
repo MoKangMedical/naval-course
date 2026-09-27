@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谈判与说服 — 纳瓦尔通识课第84课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 84 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>谈判与说服</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 84/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval084.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：谈判不是战争，是舞蹈</h3><p>你可能觉得谈判是件让人紧张的事。它让人联想到西装革履的会议室、咄咄逼人的对手、还有那些你死我活的较量。但纳瓦尔·拉维坎特对此有完全不同的看法。他认为，谈判的本质不是赢过对方，而是创造双方都能带走的价值。这种思维转变，是通往自由的关键一步。</p><p>纳瓦尔曾说：“最好的谈判是双方都感觉赢了。”这听起来像一句漂亮话，但背后有深刻的逻辑。当你把谈判看作零和游戏，你的目标就是尽可能多地夺取。但这么做会带来两个问题：第一，对方会感到被剥削，未来不再愿意与你合作；第二，你在谈判中耗费大量精力去算计、去伪装，这本身就不自由。</p><p>举个例子。你在二手平台卖一个旧手机，标价3000元。买家出价2000元。如果你只盯着价格，你会陷入拉锯战。但如果你换个角度想：对方需要手机，你需要现金，你们之间可以创造什么额外价值？也许你可以附赠一个充电宝，或者提供送货上门服务，让总价值提升到2500元。对方觉得划算，你也多赚了500元。这就是纳瓦尔说的“创造价值”。</p><p>谈判不是战争，是舞蹈。战争有输赢，舞蹈讲究的是双方配合，跳出优美的节奏。芒格和纳瓦尔都强调，长远的声誉比任何单次交易都重要。如果你在谈判中耍花招，短期内也许能占便宜，但长期来看，你的名声会受损，别人会避开你。而如果你以合作者的姿态出现，你不仅会赢得交易，还会赢得信任。</p><p>所以，这一课的核心就是：放下“赢”的执念，专注于创造价值。当你不再把谈判看作一场战斗，而是看作一次共同探索机会的对话，你会发现自己更放松、更真诚，也更容易达成好结果。</p><blockquote>纳瓦尔的名言：“你最大的资产是你的声誉。保护它，就像保护你的眼睛一样。”</blockquote><h3>二、核心理论：原则谈判法与BATNA</h3><p>纳瓦尔的谈判哲学，与哈佛大学谈判项目提出的“原则谈判法”高度一致。这套方法的核心是：对人温和，对事强硬。什么意思呢？就是尊重对方的人格，理解他的感受，但在事情本身的原则和标准上，寸步不让。</p><p>具体来说，原则谈判法有四个要点。第一，把人和事分开。不要因为对方态度强硬，就对他产生敌意。你反对的是他的立场，不是他的人。第二，关注利益，而不是立场。立场是表面的要求，利益是背后的需求。比如对方要求降价，他的利益可能是预算紧张，也可能是不想被坑。找到利益点，才能找到解决方案。第三，创造双赢的选择。不要只盯着一个方案，多想想还有没有其他方式让双方都受益。第四，坚持使用客观标准。比如市场价、行业惯例、专家意见，这些比主观意愿更有说服力。</p><p>另一个关键概念是BATNA，即“最佳替代方案”。这是谈判中最重要的杠杆。BATNA是你的底牌：如果谈不拢，你最好的选择是什么？比如你在谈工作薪水，如果对方不给你加薪，你的BATNA可能是跳槽去另一家公司，或者自由职业。你的BATNA越强，你在谈判中就越有底气。</p><p>纳瓦尔强调，在谈判前一定要清楚自己的BATNA。很多人之所以在谈判中妥协，是因为他们害怕谈崩。但如果你知道，即使谈不成，你也有不错的替代方案，你就不会轻易让步。同时，你也要尽可能了解对方的BATNA。如果对方的替代方案很差，他就有动力和你达成协议。芒格和纳瓦尔都认为，信息是谈判中最大的力量源泉。</p><p>举个例子。你是一个自由职业者，和客户谈项目报价。你的BATNA是：如果这个客户不签，下周还有另一个客户等着。这个认知让你可以坚定地报出你的价格，而不必担心失去订单。反过来，如果你知道客户的BATNA是：如果不用你，就得花双倍价钱请大公司。那你的谈判地位就非常强。</p><h3>三、深层分析：为什么诚实是最有效的策略</h3><p>纳瓦尔的谈判风格有一个显著特点：极其简洁。他从不耍花招，不玩心理游戏，不虚张声势。他说：“说真话，因为这样你就不用记住你说了什么。”这种诚实策略，看似简单，实则威力巨大。</p><p>为什么诚实有效？首先，诚实能建立信任。在信息不对称的谈判中，信任是稀缺资源。如果你坦诚地分享你的需求和底线，对方会感到被尊重，也更愿意回报以坦诚。这种互惠的力量，是谈判中最强大的动力之一。心理学研究表明，当一个人收到善意时，他会本能地想回报。所以，先给出诚意，往往能换来诚意。</p><p>其次，诚实能降低交易成本。耍花招需要你记住谎言、设计话术、应对质疑，这非常耗费心力。而诚实让你可以专注于问题本身，而不是表演。纳瓦尔曾说：“如果你在谈判中感到紧张，说明你在假装。”当你完全诚实，你就没有什么可害怕的。你的精力可以全部用来思考如何创造价值。</p><p>但诚实不等于暴露所有信息。纳瓦尔的意思是，不要故意欺骗。你不需要主动告诉对方你的BATNA是什么，但如果对方问起，你可以坦诚相告。比如对方问：“你还有其他选择吗？”你可以说：“有的，我在考虑其他机会。”这既诚实，又不失力量。</p><p>更深一层看，诚实策略背后是一种长期主义。纳瓦尔认为，人生不是一场零和游戏，而是一场无限游戏。你的目标不是赢下今天这一局，而是让自己在未来有更多机会。如果你在谈判中留下坏名声，别人会记住你，未来合作的门就会关上。而如果你以诚实和公平著称，人们会主动找你合作。芒格也说：“声誉是你最宝贵的资产，它需要一生来建立，但一次欺骗就能毁掉。”</p><p>最后，诚实能让你保持内心的平静。纳瓦尔追求的是自由，而自由的前提是内心没有冲突。如果你靠欺骗赢了谈判，你会有内疚感，或者担心被揭穿。这种心理负担会消耗你的能量。而诚实让你可以坦然面对任何结果，无论是成是败。</p><blockquote>纳瓦尔的名言：“如果你不能诚实地说出你的想法，那么你可能根本不应该说任何话。”</blockquote><h3>四、实践应用：从谈判到说服，创造共赢</h3><p>现在，我们把理论变成行动。谈判和说服，本质上是同一件事：影响他人与你合作。无论是谈薪资、谈合作、还是和伴侣商量周末去哪玩，这些场景都适用同样的原则。</p><p>第一步，准备你的BATNA。在下一次重要对话前，花10分钟写下：如果完全谈不拢，你的最好替代方案是什么？比如你准备和老板谈加薪，你的BATNA可能是跳槽、或者接受现状但减少工作量。明确这个方案，你就不容易在谈判中慌乱。</p><p>第二步，了解对方的利益。不要只盯着对方的立场。比如老板说“公司预算紧张”，他的利益可能是控制成本，也可能是担心开了先例。你可以问：“除了预算，还有什么因素让你犹豫？”这样能打开对话空间。</p><p>第三步，创造选项。不要只谈价格或条件，想想还有什么可以交换。比如你要求加薪，老板给不了现金，但可以给你更多假期、培训机会、或者股权。这些对老板成本低，但对你有价值。这就是创造双赢。</p><p>第四步，使用客观标准。比如你想让房东降租金，可以引用周边小区的平均租金数据。这比说“我觉得太贵了”更有说服力。客观标准让谈判从“谁更强势”变成“什么更合理”。</p><p>课后实践：回忆你最近的一次谈判，哪怕只是和摊贩讨价还价。你是更像合作者还是竞争者？如果你是竞争者，下次试试合作者姿态：先问对方“你的底线是什么”，然后说“我理解，那我们看看有没有其他方式”。你会发现，对方的态度会软化。</p><p>课后作业：在下一次重要对话前，写下你的BATNA。然后问自己：如果这个方案行不通，我还有什么选择？这个简单的练习，能让你在任何谈判中保持从容。</p><p>最后，记住纳瓦尔的提醒：谈判不是目的，自由才是。你不需要赢下每一次谈判，你只需要确保每一次对话都让你更接近你想要的自由。当你以诚待人、创造价值，你不仅会得到更好的交易，还会得到更好的人生。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“谈判不是赢对手，是创造价值”。请解释“对人温和，对事强硬”这一原则谈判法的核心含义，并对比它与传统“竞争式谈判”的根本区别。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“温和”针对的是人际关系，“强硬”针对的是问题本身，而非立场。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">“对人温和，对事强硬”是原则谈判法的精髓：<br>1. 对人温和：保持尊重、倾听、理解对方需求，维护良好关系，避免情绪对抗。<br>2. 对事强硬：聚焦问题本身，坚持客观标准，不妥协于无理要求。<br>3. 与传统竞争式谈判的区别：竞争式谈判视对方为对手，目标为“赢”，常使用隐瞒、施压等策略；原则谈判视对方为合作伙伴，追求双赢，通过利益分析而非立场对抗达成共识。<br>4. 核心价值：既保护关系，又捍卫原则，实现可持续的长期合作。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你正在和房东协商续租，房东提出涨价20%，而你希望维持原价或最多涨5%。请运用BATNA（最佳替代方案）概念，设计一个具体的谈判策略，包括如何利用你的替代方案来增加议价能力。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先列出你的所有替代方案（如搬家、合租等），找出最佳方案，再将其作为谈判筹码。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 明确BATNA：先调查周边同类型房源价格，若找到同等条件且租金仅涨3%的房源，则BATNA是“搬家到新住处”。<br>2. 提升BATNA：主动联系3-5个备选房源，确保有实际可搬入的选择，增强底气。<br>3. 谈判策略：<br>   - 开场：表达对现有住房的喜爱，但理性说明市场行情（如“周边同户型均价仅涨5%”）。<br>   - 提出方案：建议涨5%，并强调你作为长期租客的稳定性（减少房东空置风险）。<br>   - 若房东坚持20%：温和告知“我理解您的立场，但我的最佳替代方案是搬到XX小区，价格更合理”，同时保持友好态度。<br>4. 关键：BATNA不是威胁，而是客观事实，帮助双方聚焦利益而非立场。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第78课“复利思维”和第82课“长期主义”，结合本课的“互惠的力量”和“诚实是最有效的谈判策略”，解释为什么在谈判中建立信任比短期占便宜更符合纳瓦尔的人生算法。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考诚实如何降低交易成本，互惠如何创造长期复利，以及这些如何与复利思维和长期主义呼应。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 复利思维与谈判：复利的核心是持续正向积累。在谈判中，诚实和互惠建立信任，信任会带来更多合作机会，产生“信任复利”。<br>2. 长期主义视角：短期占便宜（如欺骗）会破坏关系，导致未来合作成本剧增；而诚实策略虽可能让出眼前小利，但赢得长期伙伴。<br>3. 互惠的力量：提供价值（如信息透明、让步）会触发对方回馈本能，形成良性循环，这与复利中“投入-回报”的放大效应一致。<br>4. 诚实降低交易成本：纳瓦尔强调“诚实是最有效的策略”，因为谎言需要记忆和圆谎，消耗认知资源，而诚实让谈判透明、高效，减少内耗。<br>5. 整合结论：谈判中的诚实与互惠，本质是践行复利思维和长期主义——放弃零和博弈，追求正和游戏，让每一次谈判成为未来合作的种子。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval083.html" class="prev">上一课</a>
+ <a href="naval085.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

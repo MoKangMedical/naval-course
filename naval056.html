@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易成本 — 纳瓦尔通识课第56课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 56 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 6 · 经济学思维</div>
+ <h1>交易成本</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner" style="background:rgba(6,182,212,.08);color:#06b6d4">经济学思维</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 56/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval056.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：市场之手的边界</h3>
+
+想象一下，你早上起床后，需要一杯咖啡。你当然可以自己种咖啡豆、烘焙、研磨、冲泡——但这显然不划算。所以你选择去楼下的咖啡店买一杯。这个简单的选择背后，隐藏着一个深刻的经济学问题：为什么有些事我们自己做，有些事交给别人做？
+
+纳瓦尔曾说：“理解交易成本，是理解现代商业的钥匙。” 20世纪30年代，一位名叫罗纳德·科斯的年轻经济学家提出了一个看似简单却颠覆性的问题：如果经济学家们一直鼓吹市场是配置资源最有效的方式，为什么我们还需要公司这种组织形式？为什么不是每个人都作为独立的个体在市场上交易？
+
+科斯的答案直指核心：因为市场交易不是免费的。每次交易都伴随着一系列成本——寻找合适的交易对象、谈判价格、起草合同、监督执行、解决纠纷。这些成本，统称为“交易成本”。
+
+举个例子：假设你想装修房子。理论上，你可以分别联系水泥工、电工、木工、油漆工，每个工种单独谈价格、签合同、协调时间。但实际操作中，你更可能找一家装修公司，由它来统筹所有工作。为什么？因为装修公司内部化了大量协调成本——你只需与一家公司打交道，而公司内部通过行政命令和流程管理，降低了整体交易成本。
+
+这就是公司存在的根本原因：当内部管理的成本低于市场交易的成本时，公司就比市场更有效率。科斯因此获得了1991年的诺贝尔经济学奖。
+
+纳瓦尔进一步指出：“交易成本的概念不仅解释了公司为什么存在，也解释了为什么有些行业会垂直整合，有些行业会外包。” 在互联网时代，交易成本正在急剧下降，这改变了无数行业的格局。比如，滴滴和Uber通过技术降低了乘客与司机之间的搜索和匹配成本，让共享经济成为可能。
+
+但交易成本从未消失，只是形态发生了变化。信任成本、信息不对称成本、法律合规成本，仍然是现代商业的核心挑战。理解交易成本，能让你做出更明智的决策：什么时候该自己做，什么时候该外包；什么时候该雇佣，什么时候该合作。
+
+这一课，我们将深入探讨交易成本的理论、应用，以及如何用它来优化你的工作和生活。
+
+<h3>二、核心理论：科斯定理与交易成本的本质</h3>
+
+科斯的理论可以概括为两个核心命题。第一，交易成本是真实存在的，并且深刻影响经济组织的形态。第二，当交易成本为零时，无论产权如何初始分配，市场都能通过谈判达到最有效的结果——这就是著名的“科斯定理”。
+
+先看交易成本的分类。经济学家通常将其分为三类：搜索成本、谈判成本和执行成本。搜索成本是你找到合适交易对象所需的时间与精力，比如在招聘平台上筛选简历。谈判成本是双方就价格、条款达成一致的过程，比如律师起草合同。执行成本是确保交易按约定履行的监督与纠错，比如检查装修质量。
+
+纳瓦尔曾这样比喻：“交易成本就像经济系统中的摩擦力。没有摩擦，一切都会顺畅流动；但现实中，摩擦无处不在。” 公司、合同、品牌、信任机制，本质上都是减少摩擦的工具。
+
+科斯定理听起来有点反直觉：如果交易成本为零，产权分配不重要？举个例子：假设一家工厂污染了附近居民的空气。如果交易成本为零，居民可以联合起来付钱给工厂，让它减少污染；或者工厂可以付钱给居民，换取污染权。无论初始产权归谁，只要双方能自由谈判，最终都会达到一个双方都能接受的污染水平。
+
+但现实是交易成本永远大于零。居民很难组织起来，律师费很贵，谈判可能陷入僵局。因此，产权的初始分配就变得至关重要。法律和政策的制定，往往就是在权衡如何降低交易成本。
+
+科斯定理的一个重要推论是：在存在交易成本的世界里，制度设计的目标应该是最小化交易成本。比如，明确界定产权（如土地登记制度）能降低纠纷成本；标准化合同（如房屋租赁模板）能降低谈判成本；第三方担保（如支付宝）能降低信任成本。
+
+纳瓦尔强调：“交易成本思维是一种元认知能力。它让你看到那些被隐藏起来的成本——比如你花在犹豫不决上的时间，就是一种搜索成本。” 当你意识到这些成本的存在，你就能更有意识地优化它们。
+
+<h3>三、深层分析：互联网如何重塑交易成本</h3>
+
+互联网的出现，被许多人视为交易成本革命的最大催化剂。纳瓦尔曾说：“互联网是交易成本的粉碎机。” 它如何做到的？让我们逐层分析。
+
+首先，搜索成本几乎降为零。在传统时代，找一家合适的供应商可能需要翻黄页、打电话、跑市场。现在，搜索引擎、电商平台、社交媒体让你在几分钟内就能找到全球范围内的选项。信息不对称被极大缓解，价格透明度提高，货比三家的成本几乎可以忽略。
+
+其次，谈判成本被标准化和自动化。在线合同、电子签名、智能合约（如区块链上的自动执行协议）减少了人工介入。Uber的定价算法直接消除了每次打车的价格谈判；Airbnb的预订系统自动处理支付和退款。
+
+再次，执行成本通过声誉机制大幅降低。淘宝的买家评价、Airbnb的房东评分、滴滴的乘客星级——这些系统让信任变得可量化。违约行为的成本急剧上升，因为差评会影响未来的交易机会。
+
+但互联网也创造了新的交易成本。信息过载本身就是一种搜索成本——你需要花时间筛选海量信息。网络安全风险增加了执行成本——你需要担心数据泄露或网络诈骗。平台垄断可能产生新的谈判成本——比如外卖平台对商家的高抽成。
+
+纳瓦尔提醒我们：“技术不会消灭交易成本，它只会改变交易成本的分布。” 理解这一点，就能解释很多商业现象。为什么亚马逊要自建物流？因为第三方物流的交易成本（协调、时效、质量控制）超过了内部管理的成本。为什么Netflix从DVD租赁转向流媒体？因为物流成本（运输、库存）被数字分发成本取代，后者更低。
+
+更深层的洞察是：交易成本决定了企业的边界。科斯理论预测，当一项活动的内部管理成本低于市场交易成本时，企业会倾向于内部化；反之则外包。互联网降低了外部交易成本，所以过去二十年我们看到大量外包和平台经济的兴起。但近年来，一些公司又开始重新内部化（如苹果自研芯片），因为内部化的管理成本（如研发效率）变得相对更低。
+
+<h3>四、实践应用：用交易成本思维优化你的决策</h3>
+
+理解了交易成本的理论，如何应用到日常生活中？纳瓦尔建议：“把你的时间和精力视为稀缺资源，任何交易成本都是对它们的消耗。你要像CEO一样审视这些成本。”
+
+第一步：识别你工作中的交易成本。列出你每周花在以下活动上的时间：寻找信息（搜索成本）、与同事或客户讨价还价（谈判成本）、检查工作质量或跟进进度（执行成本）。这些时间加起来可能远超你的想象。
+
+第二步：评估是否可以通过内部化或外包来降低总成本。比如，你经常花两小时比较不同供应商的报价，那么是否值得雇一个采购助理？你花大量时间协调跨部门项目，是否可以通过引入项目管理软件来降低协调成本？
+
+第三步：考虑信任成本。纳瓦尔特别强调：“信任是交易成本中最隐蔽的一种。当你不敢信任别人时，你会花更多时间监督、检查、写合同。” 建立信任机制——比如选择有口碑的合作方、使用担保交易平台——可以显著降低信任成本。
+
+课后实践：回想你工作中是否有明明可以外包但一直自己做的事情？比如自己写会议纪要、自己记账、自己修电脑。阻碍你的可能不是金钱成本，而是信任成本——你担心外包质量不可控，或者沟通成本太高。试着用一周时间，把一件小事外包出去，记录节省的时间和产生的摩擦。
+
+课后作业：分析你的个人“商业模式”。列出你日常工作中“内部化”的活动（自己完成）和“外部化”的活动（依赖他人或工具）。问自己：这个分配合理吗？有没有哪些活动可以外包，从而释放你的时间去做更高价值的事？有没有哪些活动应该内部化（比如学习新技能），因为外部交易成本太高？
+
+纳瓦尔总结道：“交易成本思维是一种终身受用的框架。它让你从‘我应该做这件事’转向‘做这件事的成本是否值得’。” 当你学会用这个框架审视决策，你会发现自己能更高效地配置资源——无论是时间、金钱还是注意力。
+
+最终，交易成本理论揭示了一个朴素真理：效率不是凭空产生的，而是来自对摩擦的持续消除。每一次降低交易成本，都是在为创造价值铺路。
+ </div>
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用你自己的话解释科斯定理：为什么说当交易成本为零时，无论初始产权如何分配，最终资源都会流向最高价值的使用者？请结合一个具体例子说明。</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考产权分配如何影响谈判，以及交易成本为零时谈判的无限可能性。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">科斯定理的核心是：在无交易成本的世界里，产权初始分配不影响最终效率。例如，一个工厂污染了附近居民，若产权归居民，工厂需付费购买污染权；若产权归工厂，居民可付费要求工厂减少污染。只要谈判成本为零，双方总能达成最优方案（如工厂安装净化器），资源流向最高价值用途。关键在于交易成本为零时，自发谈判会消除外部性，产权只是起点而非终点。</div>
+    </details>
+  </div>
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你工作中有一项任务：整理每周销售数据并制作报告。你一直自己做，但同事建议外包给兼职数据分析师。请用交易成本思维分析：哪些交易成本（搜索、谈判、执行）可能阻碍你外包？如何降低这些成本？</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">分别列出搜索合适人选、商定价格、监督质量、建立信任的成本，并思考解决方案。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">阻碍外包的交易成本包括：1. 搜索成本：寻找可靠兼职需要时间和筛选。2. 谈判成本：明确需求、定价、交付条款需反复沟通。3. 执行成本：监督数据准确性、处理返工。4. 信任成本：担心数据泄露或质量不稳定。降低方法：使用专业平台（如Upwork）降低搜索成本；制定标准化合同和验收标准减少谈判成本；先试单建立信任；用共享文档实时追踪进度降低执行成本。若这些成本总和低于你每周省下的3小时，外包就值得。</div>
+    </details>
+  </div>
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第55课《杠杆的力量》，结合本课交易成本理论：为什么互联网平台（如Upwork、Fiverr）能同时降低交易成本和放大个人杠杆？请用科斯定理解释公司边界的变化。</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系互联网降低搜索、谈判、执行成本，以及杠杆如何让个人替代公司。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">互联网平台通过标准化接口、评分系统、争议仲裁机制，极大降低搜索、谈判、信任成本。这使个人能像“迷你公司”一样直接提供专业服务，无需组建团队。科斯定理指出：公司存在是因为内部交易成本低于市场交易成本。当互联网将市场交易成本降到极低时，公司边界收缩——更多工作从内部雇佣转为外包。同时，第55课的杠杆（如代码、媒体）让个人能服务全球客户，进一步放大效率。例如，一个自由设计师通过平台接单，既享受低交易成本，又利用数字工具放大产出，这正是公司被“解构”的缩影。</div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="index.html" class="prev">课程索引</a>
+ <a href="naval002.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自律与自由 — 纳瓦尔通识课第36课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 36 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 4 · 自我修炼</div>
+ <h1>自律与自由</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 36/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval036.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：自律与自由的悖论</h3><p>想象一下，你每天清晨5点起床，跑步5公里，然后开始一天的工作。你的朋友可能会说：“你太自律了，真不自由。”但你内心清楚，这种自律让你精力充沛，工作效率倍增，晚上还能腾出时间陪伴家人。纳瓦尔·拉维坎特曾说：“自律不是自我惩罚，而是自我选择。”这句话点破了自律与自由的核心关系：它们不是对立面，而是因果链。</p><p>在康波研究院的课程体系中，我们反复强调一个观点：真正的自由不是随心所欲，而是有能力选择自己想要的生活。纳瓦尔认为，大多数人把自由误解为“没有约束”，但事实上，没有约束的自由往往导致混乱和后悔。比如，如果你整天刷手机、吃垃圾食品、熬夜，你获得了即时的“自由”，但长期来看，你会失去健康、时间和选择权——这才是真正的束缚。</p><p>让我们看一个具体案例。硅谷创业者埃隆·马斯克以极端自律闻名：他每天工作16小时，严格规划每一分钟。有人问他为何如此“不自由”，他回答：“我现在自律，是为了未来能自由地探索火星。”这就是自律的深层逻辑：通过当下的约束，换取未来的更大可能性。纳瓦尔也强调：“财富自由不是终点，而是起点——它让你有能力做真正想做的事。”</p><p>但这里有一个陷阱：很多人把自律等同于苦行僧式的生活。他们强迫自己早起、学习、锻炼，结果坚持两周就崩溃了。为什么？因为他们没有理解自律的本质。自律不是对抗本能，而是设计系统。正如芒格和纳瓦尔都强调的：“好习惯比意志力更可靠。”自律的真正力量，来自于你主动选择的行为模式，而不是被动的自我惩罚。</p><p>在本课中，我们将彻底拆解自律与自由的关系。你会发现，自律不是自由的敌人，而是自由的基石。当你学会用自律构建生活框架时，你反而会获得前所未有的掌控感——这才是真正的自由。</p><h3>二、核心理论：自律的真谛与正反馈循环</h3><p>纳瓦尔在《纳瓦尔宝典》中提出了一个关键观点：“自律就是延迟满足。”但这只是表象。更深层的真相是：自律是一种“自我投资”。你每天花30分钟学习新技能，短期看是“不自由”，但长期看，你获得了职业选择的自由。你每天坚持锻炼，短期看是“痛苦”，但长期看，你获得了身体健康的自由。</p><p>为了理解这个机制，我们需要引入“自律与自由的正反馈循环”。这个循环分为三步：第一步，你主动选择一个自律行为（比如每天阅读1小时）。第二步，这个行为带来微小但持续的收益（比如知识积累、思维提升）。第三步，这些收益让你更有能力做出更好的选择（比如跳槽到更好的公司）。而更好的选择又激励你继续自律——这就是正反馈循环。</p><p>举个例子：一位名叫李明的程序员，每天花30分钟学习人工智能。起初，他觉得很累，但半年后，他掌握了AI工具，工作效率翻倍，还获得了晋升机会。这时，他不再需要“强迫”自己学习，因为他已经尝到了甜头——自律变成了习惯。纳瓦尔曾说：“当你看到自律带来的结果时，你就不再需要意志力了。”</p><p>但正反馈循环也有陷阱。很多人一开始就设定过高的目标（比如每天学习5小时），结果很快放弃。芒格和纳瓦尔都强调：“自律要从小处着手。”比如，每天只读10页书，做10个俯卧撑。这些微小的自律行为更容易坚持，也更容易积累成复利效应。纳瓦尔甚至说：“如果你不能坚持一件事，那就把它变得足够简单。”</p><p>所以，自律的真谛不是自我惩罚，而是自我选择。你选择现在吃点苦，是为了将来少吃苦。你选择约束当下的冲动，是为了释放未来的潜力。这不是牺牲，而是投资——一种对自己未来的投资。</p><h3>三、深层分析：如何在不需要意志力的情况下保持自律</h3><p>纳瓦尔认为，意志力是有限的资源，不能依赖它来维持自律。他提出了一种更聪明的方法：设计环境。比如，如果你想减少刷手机的时间，就把手机放在另一个房间；如果你想早起，就把闹钟放在远处，必须下床才能关掉。这些环境设计减少了你的决策疲劳，让自律变得自动。</p><p>另一个关键技巧是“习惯堆叠”。纳瓦尔说：“把新习惯和旧习惯绑定。”比如，你习惯早上喝咖啡，那就在喝咖啡的同时读10页书。这样，旧习惯成为新习惯的触发器，自律不再需要刻意努力。芒格也认同这个观点：“习惯是大脑的节能模式。”一旦养成习惯，自律就变成了自动导航。</p><p>但自律也需要边界。纳瓦尔警告说：“过分自律会导致反弹。”比如，严格节食的人往往在周末暴饮暴食；强迫自己每天工作12小时的人容易 burnout。所以，自律要留出弹性空间。他建议采用“80/20法则”：80%的时间严格自律，20%的时间灵活放松。这样既能保持进步，又不会感到压抑。</p><p>更深层的分析是：自律的终极目标不是控制，而是自由。纳瓦尔曾说：“真正的自律是知道什么时候该放松。”比如，如果你今天特别累，跳过锻炼，不会毁掉你的健康；但如果连续跳过一周，就说明系统出了问题。所以，自律的边界在于：它应该服务于你的长期目标，而不是成为新的枷锁。</p><p>芒格和纳瓦尔都强调：“自律要基于自我认知。”你需要了解自己的弱点、精力和节奏。比如，有些人早上效率高，适合早起学习；有些人晚上状态好，适合晚间工作。强迫自己按别人的节奏自律，反而会适得其反。所以，自律不是模板，而是定制化系统。</p><h3>四、实践应用：构建你的自律系统</h3><p>现在，让我们把理论转化为行动。纳瓦尔说：“自律不是目标，而是系统。”你需要设计一个不需要每日做决定的自动化流程。以下是具体步骤：</p><p>第一步：找出你最“不自由”的领域。比如，你经常熬夜，导致白天精力差；或者你总是拖延工作，导致加班。追问自己：缺乏自律是不是根本原因？如果是，那就把这个领域作为突破口。</p><p>第二步：设计一个微习惯。比如，如果你想改善睡眠，就设定“晚上10点把手机放在客厅充电”。这个行为很小，但能打破恶性循环。纳瓦尔强调：“微习惯是自律的起点。”</p><p>第三步：建立环境触发器。比如，在床头放一本书，代替手机；在办公室贴一张便签，提醒自己“先做最难的任务”。这些触发器让自律变得自动。</p><p>第四步：设置反馈机制。比如，每周日回顾一周的自律情况，记录进步和问题。纳瓦尔说：“反馈是自律的燃料。”看到进步，你会更有动力；发现问题，你可以调整系统。</p><p>最后，记住自律的边界：灵活不等于放弃。如果你某天没做到，不要自责，第二天继续。纳瓦尔曾说：“自律的敌人不是失败，是完美主义。”允许自己犯错，但保持系统运行。</p><p>课后实践：找出你生活中最“不自由”的领域。追问：缺乏自律是不是根本原因？课后作业：选择一个领域，设计一个“自律系统”——不需要每日做决定的自动化流程。比如，如果你想锻炼，就固定每天下午4点去健身房，并把运动服提前放在门口。这样，你不需要思考，只需要执行。</p><p>纳瓦尔总结道：“自律不是为了控制自己，而是为了解放自己。”当你用自律构建系统时，你会发现，真正的自由来自于你主动选择的生活方式，而不是被动的放纵。从今天开始，设计你的自律系统，迈向更大的自由。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">有人说自律是“自我折磨”，有人说自律是“通往自由的钥匙”。结合本课核心概念，辨析这两种观点，并解释自律与自由之间的真正关系。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">从“自我选择”和“正反馈循环”两个角度思考，避免非黑即白的判断。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">自律不是自我折磨，而是主动选择延迟满足以换取长期自由。例如，选择每天锻炼1小时看似“不自由”，但换来的是健康的身体和行动的自由。自律与自由的正反馈循环是：自律行为带来掌控感，掌控感提升自信，自信又激励更自律，最终获得更大自主权。因此，自律是“以短期选择换长期自由”，而非惩罚。忽略这一点，容易将自律等同于苦行，误解其本质。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">小张每晚刷手机到凌晨，白天困倦效率低。他尝试用“强制关机”但失败。请用“不依赖意志力”的原则，设计一个可持续的自律方案，并解释为什么它比强制关机更有效。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">改变环境、建立习惯、降低阻力比硬扛意志力更持久。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">方案：1. 将充电器放在客厅，卧室不放手机；2. 睡前30分钟设置自动开启“夜间模式”并锁定娱乐App；3. 建立睡前仪式（如读纸质书、听播客）。原理：依赖意志力容易耗尽，而环境设计减少诱惑（手机远离）、习惯替代降低启动成本（用看书替代刷手机）。强制关机是“对抗”，而此方案是“疏导”，更符合人性，可持续性强。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾此前学过的“情绪调节”和“习惯养成”课程，结合本课“自律的边界”，分析：为何过度自律（如每天必须6点起床，否则自责）反而会破坏自由？如何调整？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“灵活调整”与“自我惩罚”的区别，联系情绪接纳和习惯的弹性设计。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">过度自律本质是强迫性控制，会引发内疚和焦虑（情绪调节课中的“对抗情绪”），破坏正反馈循环。例如，偶尔晚起就自责，反而陷入“破罐破摔”的恶性循环。调整：1. 应用“80%原则”——允许20%的弹性（如一周可睡懒觉一次）；2. 用“基于身份的习惯”（如“我是重视健康的人”）而非“基于结果的目标”（如“必须6点起”）来驱动；3. 当自律失败时，用情绪调节中的“自我同情”而非批判。这样，自律成为服务于自由的工具，而非枷锁。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval035.html" class="prev">上一课</a>
+ <a href="naval037.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微观经济学基础 — 纳瓦尔通识课第51课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 51 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 6 · 经济学思维</div>
+ <h1>微观经济学基础</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 51/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval051.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：经济学思维——理解人类行为的底层逻辑</h3><p>想象一下，你每天醒来后做的第一个决定是什么？是按下闹钟继续睡，还是起身去上班？这个看似简单的选择，背后隐藏着整个经济学的核心命题：稀缺资源的配置。纳瓦尔·拉维坎特曾说：“理解经济学，就是理解人类行为的底层逻辑。”他认为，经济学不是一堆枯燥的公式和曲线，而是关于人们如何在有限的时间和资源中做出选择的学问。</p><p>为什么纳瓦尔如此强调经济学？因为在他看来，无论是个人理财、职业规划，还是创业投资，本质上都离不开经济学思维。他说：“如果你不懂经济学，你就无法理解世界是如何运转的。”这并非夸大其词。想想看，为什么苹果手机的价格在不同国家差异巨大？为什么共享单车在某个城市迅速铺开，却在另一个城市无人问津？这些问题，都能在微观经济学中找到答案。</p><p>微观经济学研究的核心，是“个体选择”如何影响市场。它关注的是个人、家庭和企业如何做决策，以及这些决策如何相互作用，形成价格、产量和分配。与宏观经济学关注GDP、通货膨胀等整体数据不同，微观经济学更贴近我们的生活。纳瓦尔将这种思维称为“第一性原理”的应用——从最基本的单位开始，理解整个系统的运作。</p><p>举个简单的例子。假设你是一个咖啡店主，每天需要决定进货多少咖啡豆。如果你只凭感觉进货，可能会面临库存积压或断货的风险。但如果你理解供需法则，就能通过观察顾客的购买行为、竞争对手的价格变动，以及季节因素，做出更精准的决策。这就是微观经济学在现实中的应用。</p><p>纳瓦尔还强调，经济学思维能帮助我们避免许多常见的认知偏差。比如，人们常常因为“沉没成本”而坚持错误的选择——已经投入的时间和金钱让我们不忍放弃。但经济学教会我们：向前看，而不是向后看。你的决策应该基于未来的收益，而不是过去的付出。这种思维方式，正是微观经济学中“边际思维”的核心。</p><p>在接下来的课程中，我们将深入探讨四个关键概念：供需法则、边际思维、机会成本和激励。这些概念看似简单，却是理解一切社会现象的钥匙。纳瓦尔说：“一旦你掌握了这些基础，你就能像经济学家一样思考——看清事物背后的因果链条。”准备好了吗？让我们开始这段思维之旅。</p><h3>二、核心理论：供需法则——价格只是供需的信号</h3><p>供需法则是微观经济学的基石，也是纳瓦尔反复强调的核心概念。他说：“价格只是供需的信号，而不是价值的衡量。”这句话值得反复品味。很多人误以为价格等于价值，但事实并非如此。一瓶矿泉水在超市里可能只卖2元，但在沙漠中，它的价格可以飙升至100元。水本身没有变，变的是供需关系。</p><p>供需法则的本质是：当需求增加或供给减少时，价格上升；当需求减少或供给增加时，价格下降。这个简单的原理，却可以解释从房地产泡沫到加密货币波动的所有市场现象。纳瓦尔曾用比特币举例：它的价格波动剧烈，不是因为它的内在价值发生了巨大变化，而是因为市场供需在短时间内剧烈摇摆。他说：“不要问价格是否合理，要问是什么在改变供需。”</p><p>让我们看一个更贴近生活的案例：口罩价格在2020年初的变化。疫情爆发后，口罩的需求瞬间暴涨，而供给却因工厂停工而锐减。结果，口罩价格从每只0.5元飙升到10元甚至更高。这不是“奸商”在操纵价格，而是供需法则在起作用。纳瓦尔对此评论：“市场会通过价格信号，引导资源流向最需要的地方。”果然，随着更多工厂转产口罩，供给增加，价格逐渐回落。</p><p>供需法则的应用远不止于商品市场。纳瓦尔认为，它同样适用于劳动力市场、资本市场甚至婚恋市场。比如，为什么程序员薪资近年来大幅上涨？因为科技行业对程序员的需求激增，而具备相应技能的人才供给不足。相反，为什么某些传统制造业岗位的薪资停滞不前？因为需求萎缩，而供给过剩。理解这一点，就能更好地规划自己的职业发展。</p><p>纳瓦尔还提醒我们，供需法则有其局限性。它假设市场是完全竞争的，信息是对称的，但现实中往往存在垄断、外部性和信息不对称。比如，药品市场常常由专利保护形成垄断，导致价格远高于边际成本。这时，供需法则需要结合制度分析来理解。但无论如何，供需法则仍是分析市场现象的第一工具。</p><p>在实践层面，纳瓦尔建议我们培养“供需敏感度”。每当看到价格变动时，不要急于下结论，而是问自己：是需求变了，还是供给变了？或者两者都在变？这种思维方式，能让你在市场波动中保持冷静，抓住机会。正如他所说：“价格是市场的语言，学会听懂它，你就能读懂世界。”</p><h3>三、深层分析：边际思维、机会成本与激励的作用</h3><p>如果说供需法则是微观经济学的骨架，那么边际思维、机会成本和激励就是它的血肉。这三个概念相互交织，共同构成了人类决策的底层逻辑。纳瓦尔曾引用经济学家的名言：“经济学是关于选择的科学，而选择的核心是权衡。”</p><p>边际思维强调“向前看”。它的核心是：决策应该基于未来的增量收益和增量成本，而不是过去的总量和平均量。举个例子，你花100元买了一张电影票，看了20分钟后发现电影很烂。这时，你应该继续看下去吗？边际思维告诉你：忘掉那100元，那是沉没成本。你只需要问自己：继续看下去，未来的90分钟能带给我多少快乐？如果答案是零，那就果断离开。纳瓦尔说：“大多数人被沉没成本困住，因为他们害怕承认错误。但经济学告诉我们，最好的决策永远是面向未来的。”</p><p>机会成本则是另一个被广泛误解的概念。纳瓦尔认为，机会成本不是“你花了多少钱”，而是“你放弃了什么”。比如，你选择花两小时刷短视频，机会成本不是这两小时的时间，而是你用这两小时本可以去做的其他事情——比如读一本书、锻炼身体或陪家人聊天。他说：“机会成本是衡量选择质量的真正标尺。”芒格和纳瓦尔都强调，在投资中，机会成本尤为重要。当你买入一只股票时，你不仅是在投入资金，更是在放弃买入其他股票的机会。</p><p>激励是经济学中最强大的工具之一。纳瓦尔说：“人们会响应激励——总是。”这句话看似简单，却蕴含着深刻的人性洞察。激励可以是金钱、荣誉、恐惧或爱。理解激励，就能预测和引导行为。比如，为什么很多公司实行“996”工作制？因为加班费是一种激励，但更关键的是，公司通过晋升和奖金制度，激励员工付出更多时间。然而，纳瓦尔也警告：错误的激励会导致灾难。比如，银行员工如果只按贷款数量获得奖金，就可能会忽视风险，导致次贷危机。</p><p>这三个概念在纳瓦尔看来，是“通识教育的核心”。他建议每个人，无论从事什么职业，都应该掌握它们。因为它们能帮助你做出更好的决策——无论是职业选择、投资理财，还是日常生活中的小事。比如，在考虑换工作时，你可以用边际思维分析新工作的增量收益；用机会成本评估放弃现有工作的代价；用激励理解新公司如何驱动员工表现。</p><p>纳瓦尔还指出，这三个概念之间存在内在联系。边际思维帮助你聚焦未来，机会成本帮你明确权衡，而激励则解释了为什么人们会做出某些选择。三者结合，就构成了一套完整的决策框架。他说：“当你用这套框架思考时，世界会变得清晰——你不再被情绪和偏见左右，而是基于理性和逻辑行动。”</p><h3>四、实践应用与总结：将经济学思维内化为生活工具</h3><p>理论的价值在于应用。纳瓦尔强调：“学习经济学不是为了考试，而是为了改变你的思维方式。”在本节课的最后，我们将探讨如何将微观经济学原理融入日常生活，并布置具体的实践任务。</p><p>首先，培养“供需敏感度”。从今天开始，观察你经常购买的商品的价格变化。比如，你常喝的咖啡、常坐的地铁票价、甚至你订阅的流媒体服务。尝试用供需变化解释这些价格波动。纳瓦尔说：“如果你能解释一个价格变化，你就掌握了经济学的一个核心概念。”例如，为什么星巴克咖啡的价格在早上比下午贵？因为早上的需求更高，而供给（咖啡师和座位）相对固定。</p><p>其次，练习“机会成本分析”。纳瓦尔建议，每天睡前花5分钟，回顾当天做的3个重要决策，并用机会成本重新评估。比如，你选择加班而不是去健身房，机会成本就是失去了锻炼带来的健康收益。你选择刷手机而不是读书，机会成本就是错过了知识积累。这种练习能让你更清楚地看到，每一个选择都在放弃其他可能性。芒格和纳瓦尔都强调，机会成本是衡量决策质量的最终标准。</p><p>第三，运用“边际思维”做取舍。当你面临选择时，不要被过去的投入绑架。比如，你已经在一份不喜欢的工作上干了三年，但不要因为“已经投入了三年”而继续坚持。问自己：未来一年，这份工作能带给我多少成长和收入？如果答案是否定的，就该果断离开。纳瓦尔说：“沉没成本不是成本，未来收益才是。”</p><p>最后，理解“激励”在设计中的力量。纳瓦尔认为，无论是管理团队还是教育孩子，激励都是最有效的工具。但要注意，激励必须与目标一致。比如，如果你想让孩子养成阅读习惯，不要用“读完一本书给10元”这种短期激励，因为这可能让孩子为了钱而读书，而不是真正热爱阅读。更好的激励是：带他去图书馆，让他自由选择喜欢的书，并和他分享阅读的乐趣。</p><p>总结一下，微观经济学的四个核心概念——供需法则、边际思维、机会成本和激励——不仅是理论工具，更是生活智慧。纳瓦尔说：“经济学是理解人性的科学。”当你掌握了这些概念，你就能更清晰地看到世界的运行规律，做出更明智的决策。记住，通识教育的目的是培养独立思考的能力，而经济学思维正是这种能力的基石。从今天开始，做一个用经济学思考的人。</p><p>课后作业：分析你昨天做的3个决策，用机会成本的概念重新评估每一个。比如，你选择了看一场电影而不是学习新技能，机会成本是什么？你选择了和朋友聚餐而不是早睡，机会成本又是什么？写下你的分析，并思考：未来如何做出更好的选择？</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">假设你花100元买了一张电影票，开场后20分钟发现电影很无聊。朋友邀请你离开去看另一场免费但精彩的演出。你会继续留下还是离开？请用边际思维和机会成本解释你的决策。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回忆：边际思维是向前看，已花的100元是沉没成本，不应影响决策。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 沉没成本误区：已花的100元是过去成本，无论是否离开都无法收回，所以不应影响决策。2. 边际思维：只需比较“继续看无聊电影”与“去看免费演出”的边际收益和边际成本。3. 机会成本：继续看电影的机会成本是错失免费演出的快乐，而离开的机会成本只是放弃无聊电影。4. 结论：理性选择是离开，因为免费演出的边际收益更高，且机会成本更低。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你注意到小区门口的水果店，夏天西瓜每斤2元，冬天却涨到6元。请用供需法则解释这种价格变化，并说明哪些激励因素影响了买卖双方的行为。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考：季节如何改变供给和需求？价格变化后，买卖双方如何调整行为？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 供给端：夏天西瓜产量大，供给充足，成本低；冬天产量少，供给紧张，成本高，导致供给曲线左移。2. 需求端：夏天天气热，西瓜需求旺盛；冬天需求减少，但供给减少更多，所以价格仍上升。3. 激励作用：高价激励农民在冬天投入更多资源反季节种植（例如大棚），也激励消费者减少购买或转向替代品（如苹果）。4. 结论：价格作为信号，反映了供需的相对紧张程度，并自动调节资源配置。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第48课《系统思维》和第50课《复利思维》，结合本课内容：为什么市场中的“看不见的手”（供需机制）可以被视为一种自组织系统？它如何体现复利效应？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系系统思维中的反馈循环，以及复利思维中微小变化积累成巨大影响。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 自组织系统：供需机制没有中央计划者，但通过价格信号、激励和个体选择，自发形成均衡，这正是系统思维中“涌现”的体现。2. 反馈循环：供过于求→价格下降→激励生产者减产、消费者多买→供需重新平衡，这是一个负反馈循环，维持系统稳定。3. 复利效应：每一次交易都是微小决策，但无数交易积累起来，形成复杂的经济秩序；例如，一个地区的房价因需求微涨，会吸引更多商家和居民，形成正向复利式增长。4. 整合：系统思维让我们看到整体结构，复利思维让我们看到时间积累的力量，而微观经济学则解释了个体选择如何驱动这一切。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval050.html" class="prev">上一课</a>
+ <a href="naval052.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

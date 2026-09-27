@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网络与社交资本 — 纳瓦尔通识课第85课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 85 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>网络与社交资本</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 85/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval085.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<p>各位同学，欢迎来到康波研究院的通识课程第九阶段——关系与自由。今天我们将探讨一个被严重误解的概念：社交资本。纳瓦尔·拉维坎特曾说：“社交资本不是收集名片，而是建立真正的互惠关系。”这句话听起来简单，但背后的逻辑却颠覆了许多人的认知。</p><p>想象一下，你参加一场高端的商务酒会，手里攥着一叠名片，心里盘算着认识了多少“大佬”。但纳瓦尔会问：这些人中，有多少会在你凌晨三点遇到困难时接你的电话？社交资本的核心不是数量，而是质量。它像一棵树，根深才能叶茂，而不是像一张网，越大越容易破。</p><p>纳瓦尔在多次访谈中强调，社交资本的本质是信任和互惠。你帮助别人，不是因为你期待立刻回报，而是因为你知道这种善意会在未来某个时刻以某种形式回流。这就像芒格和纳瓦尔都认同的：“长期来看，给予者赢。”为什么？因为索取者会耗尽关系，而给予者会积累信任。</p><p>让我们看一个案例。硅谷投资人迈克·梅普尔斯（Mike Maples）曾分享，他早期投资时，总是先为创业者提供价值——介绍客户、分享经验、甚至只是倾听。这些创业者后来成了他的忠实合作伙伴，为他带来了更多机会。迈克的行为不是算计，而是真诚的给予。结果，他的社交资本像滚雪球一样增长。</p><p>所以，今天我们要问自己：你的社交资本是真实的，还是虚假的？你是在积累信任，还是在消耗关系？接下来的课程，我们将深入探讨如何建立有意义的连接，并打破一个常见的误区——社交资本不是网络规模，而是连接质量。</p><h3>一、开篇引入：社交资本的本质——信任与互惠</h3><p>纳瓦尔认为，社交资本可以被理解为一种“关系资产”。它不像金钱那样可以量化，但它的价值在于，当需要时，它能提供支持、信息和机会。纳瓦尔曾说：“最好的网络建立方式是让自己变得有价值，然后慷慨地分享那种价值。”这句话点出了社交资本的核心：价值创造和互惠。</p><p>让我们拆解这个概念。首先，信任是社交资本的基石。没有信任，任何关系都只是表面。信任需要时间、一致性和真诚。比如，你答应朋友的事，一定做到；你分享的信息，确保准确。这样，对方才会在关键时刻依赖你。</p><p>其次，互惠不是等价交换，而是长期积累。纳瓦尔强调，不要计算短期得失。你帮别人一次，可能不会立刻得到回报，但你的善意会留在对方心里。当机会来临时，他们会想到你。这就像投资，回报往往在多年后显现。</p><p>一个经典的例子是查理·芒格。芒格年轻时，总是无私地分享自己的知识和资源。他帮助了许多创业者，这些人后来成了他的合作伙伴。芒格曾说：“你不需要回报，但世界会回报你。”这种心态让他建立了深厚的社交资本，最终成就了他的投资帝国。</p><p>相反，索取者会破坏社交资本。他们总是问“我能从你这里得到什么”，而不是“我能为你做什么”。短期看，他们可能占便宜；长期看，他们会被孤立。纳瓦尔警告说：“如果你总是索取，你的关系会越来越浅。”</p><p>所以，社交资本的本质不是交易，而是投资。你投资时间、精力、善意，收获的是信任、机会和支持。关键在于，你要有耐心和远见，不要急于求成。</p><h3>二、核心理论：给予者vs索取者——长期博弈的赢家</h3><p>纳瓦尔在多个场合提到一个核心观点：“给予者最终会赢，索取者最终会输。”这不是道德说教，而是基于现实博弈的分析。为什么？因为社交网络是一个复杂的系统，长期来看，信任和互惠会形成正反馈循环。</p><p>想象一个场景。你是一个创业者，需要融资。你认识两个投资人：一个总是先帮你介绍资源，另一个总是问你要商业计划书。你会更信任谁？显然，前者。因为他的行为表明，他愿意先付出。这种信任会让你的关系更紧密，未来合作更顺畅。</p><p>纳瓦尔引用了一个研究：在社交网络中，那些经常帮助他人的人，最终会获得更多的帮助。这是因为帮助行为会建立声誉，而声誉是社交资本的关键组成部分。你帮助的人越多，你的网络越大，机会越多。</p><p>但给予者不是傻瓜。纳瓦尔强调，给予不是无条件的。你不需要帮助那些只会索取的人。关键是要识别谁值得你投入。一个简单的方法是：看对方是否也愿意给予。如果一段关系总是单向，那就果断放弃。</p><p>让我们看一个反面案例。一个朋友总是向别人借钱，却从不还；总是要求别人帮忙，却从不回报。结果，他的朋友越来越少，最后孤立无援。这就是索取者的代价。纳瓦尔曾说：“你的人际关系是你行为的镜子。”</p><p>所以，长期来看，给予者赢，因为他们建立信任；索取者输，因为他们消耗信任。这不是童话，而是现实。你选择做哪一种人，决定了你的社交资本是增长还是萎缩。</p><h3>三、深层分析：如何建立有意义的社交连接</h3><p>纳瓦尔认为，建立有意义的连接不是靠技巧，而是靠真诚。他建议：“不要试图认识很多人，而是要深化少数关系。”这听起来反直觉，但背后有深刻的逻辑。</p><p>首先，质量胜于数量。纳瓦尔曾说：“你的手机里有500个联系人——其中有多少人会在你真正需要时接你的电话？”答案是很少。所以，与其广撒网，不如深挖井。选择5-10个人，投入时间和精力，建立深度信任。</p><p>其次，连接需要共同价值。不是所有人都值得你投入。纳瓦尔建议，寻找那些有相似价值观、目标和兴趣的人。这样，你们的关系才有基础。比如，你热爱阅读，就找书友；你创业，就找同行者。共同价值让连接更自然、更持久。</p><p>第三，连接需要主动给予。纳瓦尔强调，不要等别人来找你，而是主动提供价值。比如，分享一篇文章、介绍一个人、提供一次建议。这些小事累积起来，会让对方记住你。芒格和纳瓦尔都强调：“最好的连接方式，是让别人觉得你对他们有用。”</p><p>一个案例是LinkedIn的创始人里德·霍夫曼。他非常擅长建立连接。他不是靠发名片，而是通过分享知识、介绍资源来帮助他人。结果，他的网络覆盖了硅谷的精英。霍夫曼曾说：“连接不是目的，而是手段。”</p><p>最后，连接需要时间。纳瓦尔警告说，不要急于求成。深度关系需要数年甚至数十年才能形成。所以，要有耐心，持续投入。就像种树，你需要浇水、施肥，才能看到它成长。</p><p>所以，建立有意义的连接，不是技巧，而是态度。你真诚、慷慨、有耐心，自然会吸引对的人。</p><h3>四、实践应用：弱关系的力量与课后实践</h3><p>纳瓦尔在强调深度关系的同时，也承认弱关系的力量。弱关系指的是那些不常联系、但有一定交集的人。比如，一次会议上的陌生人、朋友的朋友。纳瓦尔认为，弱关系能带来意想不到的机会。</p><p>为什么？因为强关系往往信息同质化——你的朋友和你有相似的背景和知识。而弱关系能带来新信息、新视角。纳瓦尔曾说：“你的下一个机会，可能来自一个你只见过一次的人。”这提醒我们，不要忽视弱关系。</p><p>但弱关系不是无意义的。你需要有策略地维护。比如，定期联系、分享价值、保持开放。纳瓦尔建议，不要只关注熟人，也要拓展新圈子。参加活动、加入社群、主动介绍自己。这些行为会扩大你的网络。</p><p>让我们看一个案例。一个程序员在技术会议上认识了一个陌生人，后来这个陌生人介绍他加入了一家创业公司，最终公司上市，他获得了巨大回报。这就是弱关系的力量。纳瓦尔说：“机会往往来自意料之外。”</p><p>现在，让我们回到课后实践。纳瓦尔的问题：“你的手机里有500个联系人——其中有多少人会在你真正需要时接你的电话？”请认真思考这个问题。如果答案是少于10个，那么你的社交资本需要重建。</p><p>课后作业是：下一步不是认识更多人。是深化现有的关系。选择3个人，安排一次没有功利目的的交流。可以是一杯咖啡、一次散步、一次电话。目标是了解对方，而不是索取什么。纳瓦尔说：“真正的连接，发生在你放下目的时。”</p><p>最后，总结一下。社交资本不是收集名片，而是建立信任和互惠。给予者赢，索取者输。建立有意义的连接，需要真诚、主动和耐心。同时，不要忽视弱关系。现在，开始行动吧。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“社交资本不是网络规模——是连接质量”。请用你自己的话解释为什么拥有5000个微信好友的人，可能比只有50个深度联系人的人更“社交贫穷”？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考：当你陷入困境时，谁会立刻接你的电话？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 社交资本的核心是信任和互惠：5000个好友中，大多数只是“点头之交”，他们不会在你需要时提供实质帮助。2. 连接质量取决于深度：50个深度联系人意味着你了解他们的需求、价值观，并愿意互相支持，这种关系能带来机会、知识共享和情感支持。3. 纳瓦尔强调“给予者赢”：大量浅关系消耗你的时间和精力，而深度关系能累积信任，形成长期回报。4. 因此，社交资本不是数量游戏，而是质量投资——就像银行存款，不是看你有多少账户，而是看每个账户里的实际余额。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你刚加入一个新行业，想快速建立有价值的社交网络。根据“给予者vs索取者”和“弱关系的力量”，请设计一个30天的行动计划，包括具体行动和预期结果。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先思考：你能为他人提供什么价值？然后联系弱关系（如行业会议上的新面孔）。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 第1-7天：自我准备——列出你的独特技能（如数据分析、写作）和可分享资源（如行业报告）。2. 第8-14天：主动给予——在LinkedIn上免费帮3位行业新人修改简历，或在专业论坛回答5个问题，建立“给予者”声誉。3. 第15-21天：激活弱关系——参加1场行业会议，主动与10位陌生人交换联系方式，并承诺发送他们需要的资料（如会议笔记）。4. 第22-30天：深化连接——从弱关系中筛选2-3位有共同兴趣的人，邀请喝咖啡，讨论合作可能。预期结果：30天后，你拥有5-8个愿意互帮互助的新联系人，并可能获得1个内推机会或项目合作。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾之前学过的“复利”和“杠杆”概念。请解释：如何将社交资本视为一种“复利杠杆”？为什么长期来看“给予者”在社交资本上会获得复利效应？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">复利需要时间积累，杠杆需要低成本高回报。社交中的“给予”如何触发这种循环？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 社交资本的复利：每次真诚帮助他人（如推荐工作、分享知识），都会增加信任和声誉，这些“利息”会随时间累积。例如，你帮助一位创业者后，他可能在未来介绍给你三个投资人。2. 杠杆效应：一次“给予”可能被多次传播。比如你在行业论坛分享一篇高质量文章，会被数百人看到，相当于用一次行动撬动大量连接。3. 给予者的复利循环：给予者不急于索取，因此他人更愿意回报，形成“信任-帮助-更多信任”的正反馈。相比之下，索取者每次交易都消耗信任，导致资本萎缩。4. 与复利和杠杆的整合：这符合纳瓦尔的“财富公式”——财富=杠杆×时间×复利。在社交中，给予行为是杠杆，长期坚持是时间，信任增长是复利。最终，给予者拥有一个“自动增值”的人脉资产。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval084.html" class="prev">上一课</a>
+ <a href="naval086.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

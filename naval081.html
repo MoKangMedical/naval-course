@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>长期关系的力量 — 纳瓦尔通识课第81课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 81 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>长期关系的力量</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 81/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval081.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：关系也有复利</h3><p>想象一下，你种下一棵橡树。第一年，它只是一株小苗，几乎看不见变化。第二年，它长高了几厘米，仍然不起眼。但十年后，它的根系深入地下数米，树冠遮蔽一片天空。你不需要每天测量它的生长——时间本身就是最好的肥料。</p><p>纳瓦尔·拉维坎特用同样的逻辑看待人际关系。他说：“所有重要的事都需要时间积累。关系也有复利。每一段建立在信任基础上的长期关系，都会在未来某一天以你无法预测的方式回报你。”这不是鸡汤，而是基于对世界运作规律的深刻洞察。</p><p>我们生活在一个追求即时满足的时代。社交媒体上的点赞、职场中的快速升迁、交易中的一次性博弈——这些短期行为看似高效，实则消耗了最宝贵的资源：信任。纳瓦尔和查理·芒格都强调，长期游戏是少数聪明人的游戏，因为大多数人缺乏耐心，也看不到复利的力量。</p><p>举个简单的例子：你认识一个朋友十年，你们之间没有利益纠葛，只有真诚的交流。某天，他偶然得知一个工作机会，第一时间想到了你。这个机会可能改变你的人生轨迹，而它的起点只是十年前一次普通的交谈。这就是关系的复利——你无法预测它何时发生，但它一定会发生。</p><p>纳瓦尔的核心原则可以概括为一句话：“和长期的人玩长期的游戏。”这句话看似简单，却蕴含了财富、幸福和自由的底层密码。在接下来的内容中，我们将深入剖析为什么长期关系比短期交易更有价值，信任如何实现指数增长，以及如何识别那些值得你投入一生的“长期的人”。</p><h3>二、核心理论：长期关系的价值与复利机制</h3><p>纳瓦尔认为，长期关系的核心价值在于它的“不可替代性”。短期交易本质上是可替代的——你可以在市场上找到无数个供应商、客户或合作伙伴，但长期关系是独一无二的。当你和一个人建立了深厚的信任，你们之间的默契、理解和共同经历，无法被任何新人复制。</p><p>这种不可替代性直接转化为经济价值。纳瓦尔在谈到投资时说：“你最好的投资不是股票，而是人。”他举例说，他投资Uber和Twitter时，不是因为看到了完美的商业计划，而是因为相信那些创始人——他们是他认识多年的朋友或长期观察的对象。信任降低了交易成本，提高了决策效率。</p><p>关系的复利机制可以用一个公式理解：信任 = 时间 x 真诚 x 一致性。每一次互动，如果你都表现出真诚和一致性，信任就会像银行存款一样，产生利息。最初，利息很小，几乎感觉不到。但随着时间的推移，本金增长，利息也开始产生利息——这就是指数增长。</p><p>芒格和纳瓦尔都强调，长期关系中的投入-产出是不对称的。你可能花几个月的时间帮助一个朋友解决难题，表面上看是“亏了”，但几年后，这个朋友可能成为你事业上的关键盟友。纳瓦尔说：“你付出的每一份善意，最终都会以你无法预测的方式回到你身边。”这种不对称性，正是复利的核心。</p><p>一个具体的案例：纳瓦尔在创办AngelList之前，花了大量时间免费帮助创业者修改商业计划书、提供建议。这些创业者后来成为他的投资人、合作伙伴或客户。他的早期投入看似“无回报”，但实际上，他在积累一种无形的资产：信任网络。这个网络最终成就了他。</p><h3>三、深层分析：如何识别“长期的人”与避免陷阱</h3><p>纳瓦尔说：“和长期的人玩长期的游戏。”但问题来了：如何识别谁是“长期的人”？他们有哪些特质？</p><p>首先，长期的人有“时间视野”。他们不会因为短期利益而损害长期关系。纳瓦尔观察到一个现象：在商业谈判中，有些人会为了多赚1%而撒谎或欺骗，而另一些人会主动让利，以建立信任。后者就是长期的人。他们明白，一次交易的得失不重要，重要的是关系的持续性。</p><p>其次，长期的人有“一致性”。他们的言行一致，不会今天说一套，明天做一套。纳瓦尔说：“判断一个人的最好方法，是看他如何对待那些对他没有利用价值的人。”如果一个人对服务员、司机或下属傲慢无礼，那么他对你也不会真正尊重——这只是一个时间问题。</p><p>第三，长期的人有“成长心态”。他们愿意学习、改变和进步。纳瓦尔认为，最好的长期关系是“共同成长”的关系。如果你和一个停滞不前的人绑定，你们的信任会逐渐贬值，就像货币通胀一样。相反，和一个不断进化的人在一起，你们的信任会随着时间增值。</p><p>当然，识别长期的人也需要警惕陷阱。最大的陷阱是“假装长期”。有些人嘴上说着“我们是长期伙伴”，但行动上却只关心短期利益。纳瓦尔建议用“小测试”来筛选：给他们一个小的利益冲突，观察他们的反应。如果他们在小事上都不诚实，那么在大事上更不可能可靠。</p><p>另一个陷阱是“过度投入”。长期关系需要耐心，但不等于无底线地付出。纳瓦尔说：“你要像投资一样管理关系——分散风险，但集中精力。”不要把所有的情感和时间都押在一个人身上，而是建立一个多元化的信任网络。这样，即使某段关系破裂，你也不会全盘皆输。</p><h3>四、实践应用：构建你的长期关系网络</h3><p>理论讲完了，现在进入实践环节。纳瓦尔强调，知识如果不转化为行动，就是无用的。下面是一些具体的步骤，帮助你构建长期关系的力量。</p><p>第一步：识别你的“核心关系”。拿出纸笔，列出你生命中最重要的五个人。他们可以是家人、朋友、同事或导师。然后问自己：这些关系是长期的还是交易性的？你投入了多少时间、精力和真诚？纳瓦尔建议，每个月至少花一小时，专门反思这些关系的质量。如果某段关系正在变得交易化，你需要主动修复它。</p><p>第二步：主动创造“复利时刻”。长期关系不是被动维持的，而是主动经营的。纳瓦尔的做法是：定期和朋友分享有价值的信息，提供无条件的帮助，不要期待即时回报。例如，你可以每周给一个朋友发一条消息，不是问“你能帮我什么”，而是说“我看到这篇文章，觉得你会喜欢”。这种微小的善意，就像往银行账户里存钱，利息会慢慢累积。</p><p>第三步：学会“优雅地退出”。不是所有关系都值得长期投入。纳瓦尔说：“如果你发现一段关系是单向的、消耗性的，要果断结束。”长期游戏的前提是双方都愿意玩。如果对方不尊重你的时间或信任，那么继续投入只会让你亏损。退出时，保持风度，不要指责，只是安静地退场。</p><p>课后实践：现在，请完成这个练习——列出你最重要的5段关系，评估它们的性质（长期或交易），并记录你过去一个月投入了多少时间。然后，选择其中一段关系，写一条消息或一封信。不是道歉，而是连接。你可以说：“最近想到你，很想听听你的近况。”就这么简单。纳瓦尔说：“所有伟大的关系，都始于一次微小的连接。”</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“所有重要的事都需要时间积累”，请用你自己的语言解释：为什么长期关系中的信任会呈现“指数增长”而非“线性增长”？结合信任的复利机制，说明短期交易为何无法获得这种增长。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考信任像“复利”一样，小行动不断积累，产生非线性的回报。短期交易每次重新开始，没有积累。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">信任的指数增长源于关系的复利效应：1）每次微小但真诚的互动（如守时、倾听）都会在对方心中存入信任资本，这些资本会不断产生利息；2）长期关系中，过去的信任会降低未来沟通成本，使合作效率呈指数提升；3）短期交易每次都是零起点，没有历史积累，无法享受复利红利；4）信任的指数增长需要时间作为催化剂，就像投资需要时间才能看到复利曲线陡峭上升。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你目前有一段合作了半年的商业伙伴关系，对方经常在最后时刻改变要求，但每次都会道歉。请用“投入-产出不对称”原理分析：这段关系是值得长期维护的“长期关系”，还是需要警惕的“交易关系”？给出具体的判断依据。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">关注对方的投入是否对称：长期关系双方都愿意承担风险，交易关系一方总在索取。看道歉后是否有实际行动改变。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">这更可能是交易关系，判断依据：1）投入不对称：对方只投入“道歉”（低成本），而你投入时间、精力、情绪（高成本）；2）长期关系应体现“共同承担风险”，对方的行为表明他更关注自身利益；3）真正的长期伙伴会主动调整行为，而非仅用道歉维持表面和谐；4）如果持续半年无改进，说明对方把关系视为“可重复利用的信用透支”，而非需要维护的长期资产；5）建议设定明确边界，观察对方是否愿意改变行为模式，否则应降低投入。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回想第42课《杠杆思维》中“用杠杆放大努力”的观点，结合本课“长期关系的力量”，说明：为什么长期关系本身可以成为一种“关系杠杆”？它如何放大你在其他领域（如职业、财富）的投入产出比？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">长期关系像杠杆一样，能让你用较少的努力获得更大的回报。思考信任如何降低合作摩擦，打开新机会。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">长期关系是一种高级的关系杠杆：1）信任降低交易成本：与长期伙伴合作无需反复谈判、检查，效率倍增；2）信息杠杆：长期关系带来真实信息（如行业内部机会），这些信息能放大其他决策的正确率；3）声誉杠杆：长期关系积累的信任会形成口碑，吸引更多高质量合作，形成“信任网络效应”；4）时间杠杆：短期交易每次消耗新时间，长期关系让过去的时间持续为未来服务；5）风险对冲：长期关系在逆境中提供支持，让你敢于承担更高回报的风险项目。综上，长期关系是“信任×时间”的杠杆，能放大所有其他领域的努力。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval080.html" class="prev">上一课</a>
+ <a href="naval082.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

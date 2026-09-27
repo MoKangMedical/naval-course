@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>正念与当下 — 纳瓦尔通识课第24课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 24 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 3 · 幸福与内在平静</div>
+ <h1>正念与当下</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 24/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval024.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么你总是活在别处？</h3><p>你有没有过这样的时刻：明明坐在办公室里，脑子里却在复盘上周一次失败的会议，反复琢磨自己哪句话说得不对。或者，你正躺在床上准备入睡，心里却开始预演明天要做的汇报，担心老板会问什么刁钻的问题。你身体在这里，但你的心却不在。纳瓦尔把这种现象称为“心理时间的暴政”。他认为，人类大部分的痛苦，都源于我们无法安住在当下这一刻。</p><p>纳瓦尔曾说：“后悔是关于过去的。焦虑是关于未来的。痛苦只存在于心理时间中——不在当下的这一刻。”这句话像一把手术刀，精准地切开了我们日常烦恼的根源。你仔细想想，当你感到后悔时，你其实是在重温一个已经消失的画面。当你感到焦虑时，你是在幻想一个尚未发生的场景。这两者都不存在于此刻——而此刻，是你唯一真正拥有的时间。</p><p>这听起来很简单，但做起来极难。我们的大脑天生就是一个时间旅行机器。它通过记忆回到过去，通过想象飞向未来。这种能力在进化上是有用的：它让我们能从错误中学习，为危险做准备。但问题在于，我们的大脑过度活跃了。它不停地重播过去的痛苦，预演未来的恐惧，导致我们长期处于一种低度的应激状态。</p><p>芒格和纳瓦尔都强调过，人类的判断力在焦虑状态下会急剧下降。你越焦虑，你的决策就越短视，越容易犯错。这就形成了一个恶性循环：焦虑导致糟糕的决策，糟糕的决策又引发更多的焦虑。要打破这个循环，唯一的办法就是学会回到当下。</p><p>那么，什么是“当下”？当下不是一个哲学概念，而是一个生理事实。当下就是你正在呼吸的这一秒，是你脚底接触地面的感觉，是你耳朵听到的背景噪音。当下不需要你去思考，只需要你去感知。纳瓦尔说：“你唯一能控制的，就是现在的你。而你能控制的现在的部分，比你想象的要多。”这句话给了我们巨大的力量——因为如果你能控制现在，你就能改变未来。</p><p>这一课，我们将深入探讨后悔和焦虑的机制，然后学习如何用具体的方法把自己拉回当下。这不仅是获得内心平静的钥匙，也是提升判断力和创造力的基础。因为只有在当下，你的大脑才能从过去的包袱和未来的恐惧中解放出来，发挥出它真正的潜力。</p><blockquote>“你无法通过思考找到平静，因为思考本身就是问题所在。”——纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：后悔与焦虑的双重陷阱</h3><p>纳瓦尔把后悔和焦虑比喻为“心理时间的两大骗子”。后悔是对过去的重播，焦虑是对未来的预演。它们都有一个共同的特点：让你相信那个不存在的时空是真实的。为了理解这一点，我们需要先拆解一下后悔的机制。</p><p>后悔的本质，是一种“反事实思维”。你的大脑会不断地重播过去的场景，然后问自己：“如果当时我做了不同的选择，结果会不会更好？”这种思维看似有用，因为它能帮你总结经验。但问题在于，大多数后悔都是无效的。你无法改变过去，反复重播只会让你陷入自责和无力感。纳瓦尔指出，有效的后悔只有一种：如果你能从中学到一条具体的、可以立即执行的教训。否则，它就是纯粹的自我折磨。</p><p>举个例子，你后悔昨天在会议上没敢发言。这种后悔是无效的，因为它让你感到羞耻，却没有给你任何行动指南。但如果你把后悔转化为一个具体的教训：“下次在会议前，我先把想说的话写下来，然后强迫自己在前三分钟发言。”那么，这个后悔就变成了一个行动信号。纳瓦尔说：“如果后悔不能变成行动，那就让它消失。”</p><br><p>焦虑的机制则相反。焦虑是对未来威胁的预演。你的大脑在扫描环境，寻找可能的危险。这本来是一种生存本能，但现代社会没有猛兽，只有社交压力和不确定性。于是，你的大脑开始对“可能发生的坏事”过度敏感。纳瓦尔认为，焦虑的根源是“对失控的恐惧”。你害怕失去工作、害怕被人否定、害怕健康出问题。但这些恐惧的对象，都是尚未发生的未来。</p><p>芒格和纳瓦尔都强调过，焦虑是判断力的头号杀手。当你焦虑时，你的认知带宽被恐惧占据，你只能看到眼前的威胁，而忽略了长远的可能性。纳瓦尔建议一个简单的心理转换：把“如果……怎么办？”改成“如果发生了，我该怎么办？”前者是焦虑的无限循环，后者是解决问题的第一步。一旦你开始思考具体的应对方案，你的大脑就会从“恐慌模式”切换到“计划模式”。</p><p>但无论是后悔还是焦虑，它们有一个共同的解药：意识到你此刻是安全的。纳瓦尔说：“如果你此刻没有生命危险，那么你此刻就没有任何问题。你所有的‘问题’，都存在于你的脑海中。”这句话可能听起来有点极端，但它指出了真相：此刻的你，正在呼吸，正在读这段文字。你没有在战场上，没有在火灾中。你的身体是安全的。你的大脑只是被心理时间绑架了。</p><h3>三、深层分析：为什么身体是最好的锚？</h3><p>既然后悔和焦虑都存在于心理时间中，那么如何把自己拉回物理时间？纳瓦尔给出的答案很简单：使用你的身体。他说：“你的身体永远活在当下。你的思想可以跑到过去或未来，但你的身体只能在这里。所以，身体是你回到当下的最佳锚点。”</p><p>这背后有一个神经科学的原理。当你专注于身体感觉时，你的前额叶皮层——负责思考、计划、担忧的区域——活动会减弱。与此同时，你的岛叶和体感皮层——负责感知身体状态的区域——活动会增强。换句话说，你把注意力从“思考”切换到了“感知”。而感知，永远只发生在当下。</p><p>纳瓦尔本人经常使用一个简单的练习：当他感到焦虑或后悔时，他会把注意力集中到自己的呼吸上。不是去控制呼吸，只是去观察它。感受空气进入鼻腔的凉意，感受胸腔的起伏，感受呼气时身体的放松。这个练习只需要10秒钟，但足以打断心理时间的循环。纳瓦尔说：“呼吸是你和当下之间最直接的连接。你无法在过去或未来呼吸，你只能在现在呼吸。”</p><br><p>更深层地看，这种练习实际上是在训练你的“元认知”——也就是对思考本身的觉察。当你注意到自己在后悔或焦虑时，你其实已经从一个“被情绪控制的人”变成了一个“观察情绪的人”。这个微妙的转变，就是自由的开端。纳瓦尔说：“你不是你的思想。你是那个意识到自己在思考的存在。”这句话听起来有点禅意，但它非常实用。一旦你意识到自己陷入了心理时间，你就已经走出了第一步。</p><p>芒格和纳瓦尔都强调过，这种觉察能力是可以训练的。就像锻炼肌肉一样，你越是练习回到当下，你的“当下肌肉”就越强壮。纳瓦尔建议每天花几分钟做“无目的感知练习”。比如，在喝咖啡的时候，只专注于咖啡的味道和温度，不去想任何事情。或者，在走路的时候，只感受脚底接触地面的感觉，不去看手机。这些微小的练习，会逐渐改变你大脑的默认模式。</p><p>纳瓦尔还指出，很多人误以为“活在当下”就是什么都不做，或者放弃计划。这是完全错误的。活在当下，不是不思考未来，而是不“焦虑”于未来。你可以为未来做计划，但不要为未来而痛苦。计划是一个行动，焦虑是一种情绪。纳瓦尔说：“你可以在当下做出一个计划，然后把它放下。计划是工具，不是枷锁。”</p><h3>四、实践应用：用身体回到此刻</h3><p>好了，理论讲完了，现在我们来谈具体怎么做。纳瓦尔强调，任何哲学如果不能落地，就是空谈。他推荐一个非常实用的工具，叫做“5-4-3-2-1”练习。这个练习可以在任何时间、任何地点进行，而且只需要一分钟。当你发现自己陷入后悔或焦虑时，立刻做这个练习：找到5个你能看到的物体、4个能触摸的物体、3个能听到的声音、2个能闻到的气味、1个你能尝到的味道。</p><p>这个练习的原理很简单：它强迫你的大脑从心理时间切换到物理时间。你的视觉、触觉、听觉、嗅觉、味觉，全部都是当下的传感器。当你开始数数时，你的注意力就被拉回到了此刻的环境。你不再纠结于过去的失误，也不再担忧未来的不确定性。你只是单纯地感知着周围的世界。纳瓦尔说：“当你完全沉浸在感官中时，后悔和焦虑会自动消失，因为它们没有立足之地。”</p><p>举个例子，假设你正在为明天的演讲感到焦虑。你可以停下来，环顾四周：看到桌上的水杯、窗外的树叶、墙上的挂钟（5个物体）。然后伸手触摸：桌面的凉意、椅子的质感、衣服的布料（4个物体）。再听：空调的嗡嗡声、键盘的敲击声、远处的车流声（3个声音）。然后闻：空气中有咖啡的味道（2个气味）。最后尝：喝一口水，感受水的味道（1个味道）。做完这些，你会发现，你的焦虑已经减轻了大半。因为你已经回到了当下，而当下是安全的。</p><br><p>除了这个应急练习，纳瓦尔还建议一个长期的训练：设置一个每小时响起的提醒。每次响起时，问自己三个问题：此刻，我是在过去、未来还是当下？如果答案是“过去”或“未来”，就做一次深呼吸，把注意力拉回到身体上。这个练习的目的是培养你的“当下觉察力”。刚开始，你可能发现自己80%的时间都在心理时间里。这很正常。重要的是，你开始注意到了。纳瓦尔说：“觉察本身就是改变。”</p><p>课后作业很简单：请你在接下来的一周里，每小时设置一个闹钟。每次闹钟响起，就问自己那个问题。你可以用手机便签记录下自己的状态。一周后，回顾一下你的记录，你会惊讶地发现，原来自己大部分时间都不在当下。但这没关系，因为现在你知道了，你也有了工具。纳瓦尔说：“你无法控制过去，也无法控制未来。但你能控制现在。而你能控制的现在的部分，比你想象的要多。这是你唯一的自由。”</p><p>最后，我想用纳瓦尔的一句话来结束这一课：“幸福不是一种状态，而是一种能力——一种安住在当下的能力。”希望你能通过今天的练习，开始培养这种能力。记住，后悔和焦虑都不存在于此刻。此刻，只有你，和这个无限丰富的世界。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“后悔是对过去的重播，焦虑是对未来的预演”。请用自己的话解释：为什么这两种心理状态都“不真实”？它们如何偷走了你当下的力量？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“真实”意味着什么——只有此刻的感官体验才是真实的。后悔和焦虑都是大脑的想象。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 后悔是对过去事件的反复回放，但过去已经消失，无法改变，你只是在脑海中重播记忆，而非活在真实体验中。2. 焦虑是对未来可能性的预演，但未来尚未发生，你只是在想象虚构场景。3. 两者都让你脱离当下的实际感官输入（视觉、听觉、触觉等），使大脑被虚构叙事占据，消耗能量却无法解决实际问题。4. 当下的力量在于你能直接感知、行动和回应，而后悔和焦虑让你成为“时间的囚徒”，削弱了你对此刻真实生活的掌控力。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你正在准备一场重要演讲，突然感到心慌、手心出汗，脑中反复出现“万一讲砸了怎么办”的声音。请运用本课的“5-4-3-2-1”练习，写出你具体会如何操作来回到当下。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">专注于通过五感捕捉即时环境细节，不要评判或思考演讲内容，只描述你看到、听到、摸到等。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 看（5个物体）：看到窗外的树叶、桌面的水杯、自己的手、天花板的灯、墙上的钟。2. 摸（4个物体）：摸到桌面的冰凉、衣服的布料、椅子的硬背、手机的金属壳。3. 听（3个声音）：听到空调的嗡鸣、自己的呼吸声、远处汽车声。4. 闻（2个气味）：闻到咖啡的苦味、空气清新剂的味道。5. 尝（1个味道）：喝一口水，感受水的平淡无味。完成这轮练习后，焦虑感会减弱，因为大脑从未来幻想切换到了当下感官数据，身体锚定在现实，演讲准备也能更专注。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">本课强调“身体是最好的锚”，这与第12课《情绪是信号，不是敌人》中“用身体感受情绪”有何联系？请结合两课内容，说明如何用身体同时处理焦虑和情绪。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回顾第12课：情绪是身体信号，而非思维故事。本课的身体锚定法可以截断思维反刍，两者都强调回归身体体验。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 第12课指出，情绪本质是身体的生理反应（如心跳加速、胸闷），而大脑常将其编造成故事（如“我完了”）。2. 本课的身体锚定（如5-4-3-2-1练习）直接打断大脑的叙事循环，将注意力拉回身体感知。3. 整合应用：当焦虑袭来时，先识别身体信号（如手心出汗），然后用本课练习将注意力从“未来预演”转移到当下感官；同时，根据第12课，不抗拒出汗的生理感觉，只是观察它。4. 这样，你既避免了被情绪故事吞噬，又通过身体锚定回到了“此刻唯一真实”的体验中，形成双重保护：用身体截断思维，用接纳化解情绪。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval023.html" class="prev">上一课</a>
+ <a href="naval025.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

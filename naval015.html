@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>剃刀法则：奥卡姆与汉隆 — 纳瓦尔通识课第15课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 15 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 2 · 判断力与决策</div>
+ <h1>剃刀法则：奥卡姆与汉隆</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 15/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval015.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：剃刀，思维的减负工具</h3>
+<p>你有没有过这样的经历：明明只是同事没回消息，你却脑补了一出“他是不是对我有意见”的宫斗剧；明明只是计划外的交通堵塞，你却开始怀疑“这个世界是不是在针对我”。这些时刻，你的大脑就像一台超载的电脑，因为加载了太多无谓的假设而卡顿。纳瓦尔·拉维坎特曾一针见血地指出：“你的大脑是一台为生存而设计的机器，但它经常误以为复杂等于重要。” 在信息爆炸的时代，我们最稀缺的资源不是时间，而是认知能量。每一分钟用来猜忌、过度分析、假设恶意的时间，都是对思考的浪费。</p>
+<p>今天，我们要探讨两把思维“剃刀”——奥卡姆剃刀和汉隆剃刀。它们不是武器，而是工具。奥卡姆剃刀提醒我们：最简单的解释往往是最好的。汉隆剃刀则补充道：能用愚蠢解释的，不要归咎于恶意。这两把剃刀，是纳瓦尔在投资和生活中反复使用的核心原则。他常说：“我见过的所有聪明人，都有一个共同点：他们不会把简单的事情复杂化。”</p>
+<p>想象一下，你是一个创业者，收到一封措辞严厉的客户投诉邮件。你的第一反应可能是：“这个客户太刻薄了，故意找茬。” 但奥卡姆剃刀告诉你：最简单的解释是，客户遇到了问题，情绪失控。汉隆剃刀则进一步提醒你：他不是坏人，只是不擅长沟通。这两把剃刀，能让你从情绪漩涡中抽身，专注于解决问题，而非自我消耗。</p>
+<p>查理·芒格和纳瓦尔都强调，判断力的提升往往不在于你知道了多少，而在于你删掉了多少。芒格有句名言：“如果我知道我会死在哪里，我就永远不会去那里。” 剃刀法则正是帮你识别那些“死路”——那些复杂、恶意、低效的思维路径。今天，我们将深入拆解这两把剃刀的历史、应用和边界，让你学会用最少的心力，做出最精准的判断。</p>
+
+<h3>二、核心理论：奥卡姆剃刀与汉隆剃刀的解剖</h3>
+<p>奥卡姆剃刀，由14世纪的方济各会修士威廉·奥卡姆提出，其核心思想是：“如无必要，勿增实体。” 翻译成现代语言就是：在多个能解释同一现象的理论中，选择那个假设最少的。纳瓦尔在投资中深谙此道。他说：“我投资一家公司，不是因为它有最复杂的商业模式，而是因为它的故事简单到我能讲给一个10岁孩子听。” 例如，Uber的崛起，最简单的解释是“它让打车变得像点外卖一样简单”，而不是“它颠覆了传统交通行业的监管框架”。</p>
+<p>汉隆剃刀则更贴近人性。它源自罗伯特·汉隆的格言：“能用愚蠢解释的，不要归咎于恶意。” 这里的“愚蠢”不是智商低下，而是指无知、粗心、疏忽或情绪冲动。纳瓦尔曾分享过一个案例：他在一次会议上被一位投资人当面批评，他的第一反应是愤怒。但随后他应用汉隆剃刀，意识到对方可能只是没睡好，或者刚经历了一场失败的谈判。结果，他主动邀请对方喝咖啡，化解了潜在冲突。纳瓦尔总结：“大多数时候，别人不是针对你，他们只是没空想太多。”</p>
+<p>这两把剃刀的共同点是“简约主义”。它们不要求你证明什么，而是要求你质疑自己的假设。奥卡姆剃刀砍掉不必要的复杂性，汉隆剃刀砍掉不必要的恶意。它们的威力在于，它们能大幅降低你的认知负荷。心理学家丹尼尔·卡尼曼曾指出，人类的大脑有两个系统：系统1是直觉、快速、节能的；系统2是理性、缓慢、耗能的。剃刀法则正是让系统1更可靠的工具——它帮你快速过滤掉99%的噪音，只留下那1%真正需要系统2处理的问题。</p>
+<p>但要注意：剃刀不是真理，而是启发式方法。它不能保证你永远正确，但能保证你永远更有效率。正如纳瓦尔所说：“判断力的本质，不是做出完美的选择，而是做出足够好的选择，然后继续前进。”</p>
+
+<h3>三、深层分析：剃刀的边界与陷阱</h3>
+<p>任何工具都有其适用范围，剃刀法则也不例外。奥卡姆剃刀最大的陷阱是“过度简化”。在科学领域，最简单的解释并不总是正确的。例如，地心说比日心说更简单——它只需要假设地球是宇宙中心，而不需要解释行星的逆行运动。但日心说最终被证明更符合观测数据。纳瓦尔提醒：“奥卡姆剃刀是起点，不是终点。当你面对重大决策时，必须用数据和实验来验证。”</p>
+<p>汉隆剃刀的陷阱则是“天真”。在真实世界中，恶意确实存在。比如，网络诈骗、蓄意诽谤、职场霸凌。纳瓦尔曾说：“汉隆剃刀适用于日常人际摩擦，但不适用于系统性的恶意。” 他举了一个例子：如果你发现一个人多次故意损害你的利益，那就不能再归因于愚蠢了。此时，你需要的是“马基雅维利剃刀”——假设对方是理性的、自利的，并且有策略地行动。</p>
+<p>那么，如何判断何时使用剃刀？纳瓦尔给出了一个实用标准：“当你感到情绪波动时，先用汉隆剃刀。当你感到困惑时，先用奥卡姆剃刀。” 情绪波动往往源于对他人意图的过度解读，汉隆剃刀能让你冷静。困惑则源于信息过载，奥卡姆剃刀能帮你聚焦。但如果你发现剃刀带来的结论与你的直觉或事实相悖，那就应该停下来，启用系统2进行深度分析。</p>
+<p>一个经典的案例是：2016年美国总统大选后，许多媒体试图用复杂的地缘政治理论解释结果。但奥卡姆剃刀告诉你：最简单的解释是，很多人对现状不满，所以投票给了一个“局外人”。汉隆剃刀则提醒你：不要认为投票者是“愚蠢”或“邪恶”的，他们只是基于有限信息做出了理性选择。这种思维框架，能让你避免陷入“归因谬误”——即把所有结果都归结为个人意图或能力，而忽略了系统性和随机性因素。</p>
+<p>纳瓦尔和芒格都强调，剃刀的真正价值不是“简化”，而是“节省”。它节省的是你的认知能量，让你有精力去处理真正重要的事情。正如芒格所说：“如果你总是把事情复杂化，你就是在浪费自己的智力。” 剃刀法则的核心，是让你成为一个“认知节俭”的人——不浪费一丝心力在无意义的猜测上。</p>
+
+<h3>四、实践应用：把剃刀变成日常习惯</h3>
+<p>理论说再多，不如动手做。以下是如何将奥卡姆剃刀和汉隆剃刀融入日常生活的具体方法。</p>
+<p>首先，建立“剃刀检查点”。每天早晨，花5分钟审视当天可能遇到的三个潜在冲突。比如：领导没回你的邮件，最简单的解释是什么？同事在会议上打断你，他是不是针对你？用汉隆剃刀，假设对方只是粗心或紧张。纳瓦尔建议：“在发任何一条消息前，先问自己：我是否在过度解读对方的语气？我能否用最简单的语言表达我的需求？”</p>
+<p>其次，练习“奥卡姆日记”。每周选一个你感到困惑的问题，比如“为什么我的项目进度落后？” 列出所有可能的原因，然后划掉那些需要最多假设的。比如，“因为同事故意拖延”需要假设恶意，“因为资源不足”只需要假设客观条件。选择那个假设最少的解释，然后基于它行动。纳瓦尔说：“最好的决策，往往是那些你不需要解释太多的决策。”</p>
+<p>第三，学会“剃刀对话”。当你与人发生争执时，试着用汉隆剃刀复述对方的话：“我理解你的意思是，你因为XX原因感到不满，而不是故意要伤害我。” 这不仅能降低对方的防御心理，也能让你自己冷静。纳瓦尔在投资谈判中经常使用这一技巧：“当对方提出一个看似无理的要求时，我会先假设他是因为信息不对称，而不是因为贪婪。然后，我会主动提供信息，而不是对抗。”</p>
+<p>最后，课后实践和作业是巩固的关键。课后实践：回忆最近一次你感到被冒犯的经历。用汉隆剃刀重新审视：对方是真的恶意，还是只是愚蠢或粗心？写下你的分析。课后作业：找3个你过度复杂化的问题。用奥卡姆剃刀重新审视：最简单的解释是什么？比如，你担心朋友没回复消息是因为讨厌你，最简单的解释可能是他正在忙。</p>
+<p>纳瓦尔说：“你无法控制别人的行为，但你可以控制自己的解释。” 剃刀法则，就是让你从被动反应者，变成主动判断者。从今天开始，每次感到愤怒或困惑时，先拿起你的剃刀——砍掉复杂性，砍掉恶意。你会发现，世界比你想象的简单得多。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">奥卡姆剃刀与汉隆剃刀的核心区别是什么？请用自己的话解释，为什么它们被称为“剃刀”，以及它们分别“剃掉”了什么？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“剃刀”的比喻：它削去不必要的假设或情绪。奥卡姆剃刀针对复杂性，汉隆剃刀针对恶意归因。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 奥卡姆剃刀本质是“简约原则”：在解释现象时，若无必要，勿增实体。它剃掉的是不必要的假设和复杂化，强调最简单的解释往往最可靠。2. 汉隆剃刀是“善意原则”：当愚蠢足以解释行为时，不要归咎于恶意。它剃掉的是过度归因于他人恶意的倾向，节省情绪消耗。3. 共同点：都是认知捷径，帮助节省脑力和心理能量，避免陷入无谓的复杂或敌意。4. 区别：一个针对逻辑推理（如科学理论），一个针对人际归因（如日常误解）。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">回忆最近一次你感到被朋友或同事冒犯的经历。用汉隆剃刀重新审视：对方的行动是否更可能是出于愚蠢、粗心或无知，而非恶意？写下具体场景和你的重新解读。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先描述原始感受（愤怒、受伤），再列出对方可能的动机（恶意 vs. 疏忽），最后对比哪种解释更节省你的情绪能量。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 场景举例：同事在会议上打断我的发言，我最初感到被故意贬低。2. 汉隆剃刀分析：对方可能只是急于表达自己的观点（粗心），或者没注意到我的发言（无知），而非有意攻击。3. 重新解读：这种解释更简单，不需要假设对方精心策划羞辱我，也让我更容易放下愤怒。4. 结果：我选择私下提醒对方注意发言顺序，而非冷战。汉隆剃刀让我避免了一场不必要的冲突，节省了情绪资源。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合本课“剃刀法则”与第10课《认知吝啬鬼》中“大脑倾向于节省能量”的观点，分析：为什么奥卡姆和汉隆剃刀能帮助我们更有效地生活？它们如何与“系统1快速思考”协同工作？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系“认知吝啬鬼”概念：大脑本能地选择简单路径。剃刀法则正是这种本能的理性化版本，但需警惕过度简化。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 认知吝啬鬼理论指出，大脑天生倾向用最少能量做决策，这可能导致偏见。2. 奥卡姆剃刀与汉隆剃刀正是将这种本能理性化：它们提供明确的“简化规则”，让系统1（快速思考）在复杂情境下做出更优选择。3. 例如，面对他人失误，汉隆剃刀自动启用“善意假设”，避免系统2（慢思考）陷入恶意归因的冗长分析。4. 但整合时需注意：剃刀法则并非万能，当问题涉及高风险或复杂系统时（如医疗诊断），仍需启动系统2进行审慎验证。5. 最终，两者协同让大脑在“节省能量”与“避免错误”间找到平衡，提升日常效率。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval014.html" class="prev">上一课</a>
+ <a href="naval016.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

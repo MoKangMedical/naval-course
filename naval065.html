@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巴菲特与芒格 — 纳瓦尔通识课第65课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 65 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 7 · 投资智慧</div>
+ <h1>巴菲特与芒格</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 65/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval065.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么纳瓦尔把巴菲特和芒格视为思想导师</h3>
+<p>在硅谷这个以颠覆和创新为荣的地方，纳瓦尔·拉维坎特却毫不掩饰他对两位老人的崇拜——沃伦·巴菲特和查理·芒格。他说过：“我读过的所有投资书籍中，对我影响最大的就是巴菲特和芒格。”但有趣的是，纳瓦尔学习的不是他们如何选股票，而是他们如何思考问题。</p>
+<p>纳瓦尔认为，巴菲特和芒格最了不起的地方，不是他们赚了多少钱，而是他们建立了一套可以复制的思维体系。这套体系超越了投资本身，延伸到生活的每个角落。比如，巴菲特常说“买入一家公司就是买入它的管理层”，这背后是对人性的深刻理解。芒格则强调“反过来想”，这不仅是投资技巧，更是一种生存智慧。</p>
+<p>让我们看一个具体案例。2008年金融危机时，很多人恐慌抛售，但巴菲特却逆势买入高盛和通用电气的优先股。他为什么敢这么做？因为他不是在猜测市场走势，而是在评估这些公司的长期价值。他相信，只要这些公司基本面没变，短期波动就是机会。这种思维方式，正是纳瓦尔反复强调的“第一性原理”——抛开噪音，直击本质。</p>
+<p>纳瓦尔还从他们身上学到了一个关键点：道德是你最大的资产。巴菲特和芒格都极其重视诚信。芒格甚至说：“永远不要和你不信任的人做生意，哪怕你能赚到钱。”纳瓦尔把这条原则用在了自己的投资和创业中，他投资的公司大多由他信任的人运营。他说：“如果你不信任创始人，就别投。信任不是锦上添花，而是前提条件。”</p>
+<p>那么，这两位老人到底教给了纳瓦尔什么？简单来说，就是三件事：第一，用长期视角看问题；第二，用心智模型理解世界；第三，用道德标准约束自己。这三件事听起来简单，但做起来极难。因为人类天生倾向于短视、情绪化和自我合理化。巴菲特和芒格之所以成功，就是因为他们用几十年的训练克服了这些本能。</p>
+<p>在接下来的内容中，我们将深入探讨他们的核心原则、心智模型方法以及伯克希尔的企业文化。更重要的是，我们会分析他们做对了什么，也做错了什么——因为真正的智慧，不仅来自成功，也来自失败。</p>
+
+<h3>二、核心理论：巴菲特的核心原则与芒格的心智模型</h3>
+<p>巴菲特的投资哲学可以用三个词概括：好企业、好价格、长期持有。但这三个词背后，是极其严格的筛选标准。什么是好企业？巴菲特认为，好企业必须有“护城河”——也就是竞争对手难以复制的优势。比如可口可乐的品牌、吉列的渠道、苹果的用户粘性。这些护城河让企业能持续赚钱，即使管理层不那么聪明。</p>
+<p>好价格是什么意思？不是便宜，而是合理。巴菲特曾说：“以合理的价格买入一家伟大的公司，远好于以伟大的价格买入一家合理的公司。”这句话道破了价值投资的精髓。很多人误解价值投资就是买便宜的股票，但巴菲特强调的是“价值”——你付出的价格应该低于你获得的长期价值。比如他买入苹果时，很多人觉得贵，但他看到的是苹果的生态和用户忠诚度，这些是账面价值无法体现的。</p>
+<p>长期持有是巴菲特最著名的原则。他说：“你最好的投资，是那些你永远不想卖出的。”这背后是对复利的信仰。纳瓦尔也反复强调复利的力量，但他把复利应用到了更广的领域——知识复利、关系复利、健康复利。巴菲特持有一家公司的平均时间是20年，这让他能享受到企业成长带来的全部收益，而不是被短期波动吓跑。</p>
+<p>芒格的心智模型方法则更系统化。他认为，要做出好的决策，你需要从多个学科中提取核心模型，并把他们组合起来。比如，心理学中的“确认偏误”告诉你，人们倾向于寻找支持自己观点的信息，这会导致投资失误。物理学中的“临界点”概念告诉你，系统可能在瞬间崩塌。经济学中的“机会成本”告诉你，每一次选择都意味着放弃其他可能。</p>
+<p>芒格和纳瓦尔都强调，心智模型不是死记硬背，而是融会贯通。纳瓦尔说：“你不需要成为每个领域的专家，但你需要知道那些最重要的模型。”比如，芒格最常用的模型包括：复利、逆向思维、能力圈、安全边际、激励机制。这些模型就像工具箱里的工具，遇到不同问题就用对应的工具。</p>
+<p>一个经典案例是芒格对比亚迪的投资。2008年，伯克希尔买入比亚迪10%的股份，当时很多人不理解——比亚迪是一家中国电池和汽车公司，看起来风险很高。但芒格用自己的心智模型分析：第一，他看到了电动车的长期趋势；第二，他信任创始人王传福的能力和诚信；第三，他对比亚迪的技术护城河做了评估。结果这笔投资带来了超过10倍的回报。</p>
+
+<h3>三、深层分析：伯克希尔的企业文化与他们的错误</h3>
+<p>伯克希尔·哈撒韦最初是一家纺织厂，巴菲特在1965年收购了它，然后把它改造成一家投资控股公司。但伯克希尔的企业文化，才是它最独特的资产。这种文化有几个核心特征：第一，极度分散的决策权。巴菲特和芒格不干预子公司的日常运营，他们信任管理层。第二，长期主义。伯克希尔从不做季度业绩预测，也不迎合华尔街的短期压力。第三，节俭。巴菲特的办公室只有16平米，芒格开着一辆老款丰田车。</p>
+<p>这种文化怎么形成的？巴菲特和芒格以身作则。他们不追求奢华生活，不搞权力斗争，不追逐热门趋势。他们只做自己理解的事情。这种文化带来的好处是，伯克希尔的子公司愿意长期持有股票，而不是为了短期利润卖掉。比如，可口可乐的CEO曾说过：“巴菲特从不给我打电话问业绩，他只关心公司是否在健康发展。”</p>
+<p>但伯克希尔也犯过错误。最著名的错误之一是2000年互联网泡沫期间，巴菲特没有投资科技股，错过了亚马逊和谷歌。他后来承认：“我太愚蠢了，没有理解互联网的潜力。”另一个错误是2016年买入航空股，结果2020年疫情导致航空业崩溃，伯克希尔不得不亏损卖出。芒格也承认：“我们犯了一个错误，没有预见到疫情的冲击。”</p>
+<p>这些错误告诉我们什么？第一，没有人能永远正确。巴菲特和芒格也会犯错，但他们从错误中学习。第二，他们的错误大多发生在能力圈之外。巴菲特不懂科技，所以错过了互联网；他懂航空，但低估了系统性风险。第三，他们的错误没有摧毁伯克希尔，因为他们坚持分散投资和安全边际。</p>
+<p>纳瓦尔从这些错误中学到了一个关键教训：不要试图完美，而要追求“不犯致命错误”。他说：“巴菲特和芒格的成功，不是因为他们做对了所有事，而是因为他们做对了足够多的事，同时避免了那些会毁灭一切的错误。”比如，他们从不使用杠杆，从不做空，从不投资自己不懂的东西。这些原则让他们在危机中存活下来。</p>
+<p>另一个深刻教训是，道德错误比投资错误更致命。巴菲特和芒格都极其重视声誉。巴菲特曾说：“如果你失去了声誉，你就失去了一切。”芒格也说过：“永远不要做任何会让你感到羞愧的事。”这种道德标准，让伯克希尔吸引了最优秀的管理层和合作伙伴。</p>
+
+<h3>四、实践应用：如何用他们的智慧指导你的生活</h3>
+<p>现在，让我们把巴菲特和芒格的智慧应用到你的生活中。第一步，建立一个“能力圈”。列出你真正理解的事情——你的专业领域、你的兴趣、你的经验。然后，只在这些领域做重大决策。比如，如果你不懂加密货币，就不要投资它。如果你不懂创业，就不要盲目辞职创业。能力圈不是固定的，你可以通过学习和实践扩大它，但不要假装自己懂。</p>
+<p>第二步，使用“反过来想”的方法。芒格常说：“如果我知道我会死在哪里，我就永远不去那里。”这个逻辑可以应用到任何决策。比如，你想创业，先想清楚什么会导致创业失败：产品没有市场需求、团队不合、资金链断裂。然后，逐一避免这些因素。你想投资，先想清楚什么会导致亏损：追涨杀跌、听信谣言、全仓押注。然后，杜绝这些行为。</p>
+<p>第三步，培养长期思维。巴菲特说：“最好的投资是那些你永远不想卖出的。”这句话同样适用于你的职业生涯和人际关系。选择一个你热爱的工作，然后深耕20年；选择几个你信任的朋友，然后维护一辈子。长期思维让你远离焦虑，因为你知道短期波动不重要。</p>
+<p>第四步，建立心智模型库。从心理学、物理学、生物学、经济学等学科中，提取10-20个核心模型。比如，复利模型告诉你坚持小行动会带来大结果；机会成本模型告诉你每一次选择都有代价；激励机制模型告诉你人们的行为会受到激励的影响。把这些模型记在脑子里，遇到问题时自动调取。</p>
+<p>课后实践：读一篇巴菲特的股东信。不要关注选股建议，关注他的思维方式。比如，他如何解释一个决策？他用了哪些原则？他如何承认错误？你会发现在股东信里，巴菲特更像一个哲学家，而不是一个交易员。他讨论的是人性、长期主义和道德。</p>
+<p>课后作业：用芒格的“反过来想”分析你的一个重大决策。比如，你正在考虑换工作。反过来想：如果这个决策最终失败了，最可能的原因是什么？可能是新公司文化不合、你的技能不匹配、或者薪资谈判失败。然后，针对这些原因制定预防措施。这个练习会让你看到决策中的盲点，从而做出更好的选择。</p>
+<p>最后，记住纳瓦尔的话：“成为更好的人，才能成为更好的投资者。”巴菲特和芒格的智慧，归根结底是关于如何过好这一生。他们用几十年的实践证明了，诚实、耐心、学习和谦逊，才是真正的财富。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">巴菲特说“好企业+好价格+长期持有”是投资核心，但芒格强调“心智模型”比这更重要。请用你自己的话解释：为什么芒格认为单一的投资原则不足以应对复杂世界？这两种智慧如何互补？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想“好价格”可能因为行业变化而失效，而心智模型能帮你识别这种变化。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 单一原则的局限性：巴菲特的三原则在稳定市场中有效，但面对技术颠覆、政策突变时，“好企业”可能迅速变质，仅靠原则无法预警。2. 心智模型的优势：芒格主张用多学科模型（如心理学、物理学、生物学）交叉验证决策，比如用“复利效应”理解长期持有，用“路径依赖”解释企业僵化，避免认知盲区。3. 互补关系：巴菲特的框架提供行动指南，芒格的模型提供风险评估；前者是“做什么”，后者是“为什么做”和“何时不做”。两者结合，才能在不确定中既坚持原则又不僵化。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你是一家小型科技公司的CEO，正考虑是否收购一家陷入困境的竞争对手。芒格会建议你用哪些心智模型来评估这笔交易？请列举至少两个模型，并说明它们如何改变你的决策视角。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑“能力圈”模型帮你避免跨界风险，以及“机会成本”模型帮你对比其他投资选项。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 能力圈模型：芒格强调只做自己理解的事。收购前需自问：我们是否真正理解对手的技术、客户和供应链？如果答案模糊，模型建议放弃或聘请专家，避免“无知自信”。2. 机会成本模型：这笔收购的资金，如果用于研发、回购股票或现金分红，哪个回报更高？模型要求量化比较，而非仅看收购的“便宜价格”。3. 二阶效应模型：收购后，竞争对手的客户会流失吗？团队文化冲突会拖累效率吗？预测连锁反应，避免只看短期收益。最终，模型可能让你放弃收购，转而用资金优化现有业务——这正是芒格“少即是多”的体现。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾本课程此前学过的“复利思维”和“黑天鹅事件”，结合巴菲特与芒格的合作，请分析：为什么伯克希尔能在长期中避开大部分黑天鹅事件，同时又从复利中受益？他们的企业文化在其中扮演什么角色？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系“复利”需要持续行动，“黑天鹅”需要冗余和谦逊，而企业文化是两者间的桥梁。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 复利与黑天鹅的冲突：复利要求长期持有，黑天鹅可能瞬间摧毁积累。伯克希尔的解法是：用“安全边际”（好价格）降低黑天鹅冲击，同时保留大量现金冗余（如2008年危机时逆势投资），让复利在波动中持续。2. 企业文化的支撑：芒格和巴菲特建立了一种“去中心化+诚信”文化——子公司自主运营（减少官僚复利衰减），总部只做资本配置（聚焦复利核心）。同时，他们公开承认错误（如投资IBM的教训），避免“确认偏误”放大黑天鹅风险。3. 整合启示：黑天鹅不是复利的敌人，而是检验文化韧性的试金石。伯克希尔的文化让团队在危机中不恐慌、不盲目，反而利用危机加速复利——这正是“反脆弱”的实践。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval064.html" class="prev">上一课</a>
+ <a href="naval066.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

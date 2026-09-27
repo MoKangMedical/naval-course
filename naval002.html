@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专长：找到你的独特优势 — 纳瓦尔通识课第2课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 2 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 1 · 财富创造基础</div>
+ <h1>专长：找到你的独特优势</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner" style="background:rgba(245,158,11,.08);color:#f59e0b">财富创造基础</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 2/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval002.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么你无法被培训取代</h3>
+
+假设你面前有两份简历。第一份写着：斯坦福MBA，十年投行经验，CFA持证人，精通财务建模。第二份写着：从小痴迷拆解钟表，能凭听觉判断机械故障，曾用三年时间研究二手表交易市场的定价漏洞。哪个人更可能创造财富？
+
+纳瓦尔的答案很明确：第二个人。因为第一个人的技能可以被培训出来——事实上，每年有成千上万人获得同样的证书和经历。而第二个人的能力，几乎不可能通过任何课程复制。
+
+这就是专长与技能的本质区别。技能是知识的标准化模块，社会可以通过教育体系批量生产。专长则是你个人独特基因与经历的结晶，它无法被标准化，因此也无法被培训。
+
+纳瓦尔曾说：“如果社会可以培训你，它就可以培训别人取代你。”这句话听起来残酷，却揭示了财富创造的核心逻辑：你的价值取决于你的不可替代性。在一个信息高度对称、竞争日益激烈的世界里，可培训的技能正在快速贬值。十年前，一个优秀的网页设计师可以轻松获得高薪；今天，AI工具已经能完成大部分基础设计工作。
+
+但专长不同。专长是你与生俱来的好奇心、你独特的成长轨迹、你反复沉浸其中的那些“无用之事”共同塑造的。它可能表现为一种看问题的独特视角，一种对特定领域的直觉理解，或者一种解决问题的新颖方式。这些东西无法被写入教材，无法被考试量化，更无法被他人复制。
+
+想想你身边最成功的人。他们往往不是最聪明或最努力的，而是那些找到了自己独特优势的人。乔布斯对字体美学的痴迷，马斯克对物理本质的追问，巴菲特对商业模式的直觉——这些都不是培训的产物，而是他们生命历程的自然产物。
+
+本节课的核心洞察是：专长是你无法通过培训获得的知识。如果你能找到并深耕自己的专长，再配合适当的杠杆，财富就会自然向你靠拢。而第一步，是理解专长到底是什么。
+
+<h3>二、核心理论：专长的三个特征</h3>
+
+纳瓦尔对专长的定义非常精确：专长是那种让你觉得“这对我来说太简单了，但对别人来说却很难”的事情。他总结了专长的三个核心特征：无法培训、源于好奇、高度个人化。
+
+首先，无法培训。这意味着专长不是通过上课、读书或考试获得的。你无法通过读一本《如何成为投资天才》就成为巴菲特，也无法通过参加一个“创造力工作坊”就获得乔布斯的审美直觉。专长来自实践、试错和深度沉浸，它更像是一种“肌肉记忆”而非知识储备。
+
+举个例子。一个优秀的古董鉴定师可能无法清晰解释自己如何判断一件瓷器的真伪，但他一上手就能感觉到“不对”。这种能力来自他数十年接触真品和赝品的经验积累，任何课程都无法替代。
+
+其次，源于好奇。专长不是你“决定”去发展的，而是你“发现”的。它根植于你的天然好奇心——那些你不需要任何外部激励就愿意花时间去探索的事情。纳瓦尔强调，好奇心是专长的唯一可靠指南。如果你对某件事感到好奇，哪怕它看起来毫无用处，也应该认真对待。
+
+一个真实的案例：纳瓦尔本人早年对编程和商业都充满好奇，但他没有强迫自己成为“标准程序员”或“标准商人”。相反，他追随自己对“如何让交易更高效”这个问题的好奇心，最终创造了AngelList这个颠覆性的平台。这个过程不是规划出来的，而是好奇心引导的结果。
+
+最后，高度个人化。专长是你独特人生经历的产物。你的成长环境、你遇到的挫折、你读过的书、你交往过的人——所有这些共同塑造了你的专长。这意味着你的专长是独一无二的，就像你的指纹一样。
+
+纳瓦尔曾说：“你的专长就是你童年时代那些让你着迷的事情。”回想一下，你在10岁到15岁之间，有没有什么事情让你完全忘记时间？有没有什么领域你总想了解更多？这些才是你专长的真正线索。
+
+理解了这三个特征，你就能区分什么是技能，什么是专长。技能是可以复制的，比如编程、销售、会计。专长是不可复制的，比如你对用户心理的直觉、你对供应链效率的独特感知、你对美学与功能的平衡能力。
+
+<h3>三、深层分析：专长与技能的本质区别，以及财富的乘法效应</h3>
+
+很多人混淆了专长和技能，认为只要掌握一项热门技能就能致富。但纳瓦尔指出，技能只是基础，真正创造财富的是专长与杠杆的结合。
+
+技能是工具，专长是方向。一个精通Python的程序员是技能型人才，但一个能看出“用Python解决这个特定行业的数据问题”的程序员，才是拥有专长的人。技能告诉你“怎么做”，专长告诉你“做什么”以及“为什么”。
+
+更关键的是，技能会贬值。随着技术迭代和全球化，许多技能的生命周期正在缩短。十年前热门的技能，今天可能已经过时。但专长不会贬值，因为它基于你独特的认知框架和直觉，这些是机器和他人难以复制的。
+
+纳瓦尔提出了一个财富公式：专长 × 杠杆 = 财富。这个公式揭示了财富创造的本质。专长是你的独特性，杠杆是你放大这种独特性的工具。没有专长，杠杆只会放大你的平庸；没有杠杆，专长只能带来有限的回报。
+
+杠杆有三种形式：资本、劳动力、以及纳瓦尔特别强调的“代码和媒体”。资本和劳动力都需要他人许可，而代码和媒体是任何人都能使用的杠杆。一个拥有专长的人，可以通过写代码、写文章、拍视频来把自己的独特价值放大千百倍。
+
+举个例子。假设你有一个专长：对日本动漫产业的商业模式有深刻理解。如果你只是在一家公司做顾问，你的影响力有限。但如果你写一本关于这个主题的书，或者做一个YouTube频道，你的专长就能被数百万人看到，从而创造巨大的财富。
+
+这就是为什么纳瓦尔说：“财富是你睡觉时还在为你赚钱的东西。”专长是你的核心资产，杠杆是放大这个资产的工具。找到专长，然后找到合适的杠杆，财富就会像滚雪球一样增长。
+
+但要注意，专长和技能的边界并非绝对。有些技能可以转化为专长，比如一个医生通过数万小时的手术实践，形成了对特定病症的直觉判断。这种直觉就是专长。同样，一个程序员通过长期解决复杂问题，形成了独特的架构思维，这也是专长。关键在于，你是否在技能的基础上，发展出了别人无法复制的深度。
+
+<h3>四、实践应用：如何识别你的专长，以及课后行动指南</h3>
+
+识别专长最有效的方法，是回顾你的童年和青春期。纳瓦尔建议：想想你在10到20岁之间，有没有什么事情让你感到“这太简单了，为什么别人觉得难”？那些你完全不需要努力就能沉浸其中的事情，往往就是你的专长所在。
+
+具体来说，你可以问自己三个问题：第一，什么事情让你觉得时间过得特别快？第二，什么事情你在没人要求的情况下也愿意主动去做？第三，什么事情你做得比周围大多数人都好，而且并不觉得这需要付出努力？
+
+这些问题的答案可能看起来很“无用”。也许你小时候喜欢拆玩具，也许你沉迷于整理书架，也许你热衷于观察蚂蚁搬家。这些看似没有商业价值的爱好，恰恰可能隐藏着你的专长。
+
+纳瓦尔强调，不要过早判断一件事的商业价值。专长在早期往往看起来像“不务正业”。乔布斯痴迷书法时，没人觉得这能创造财富；马斯克沉迷电子游戏时，也没人想到他会创立特斯拉。商业价值是后来才显现的。
+
+今天的课后实践是：回顾你的童年，写下3件你天生擅长、无需努力就能沉浸其中的事情。不要考虑这些事情有没有用，也不要考虑能不能赚钱，只是诚实地记录。
+
+课后作业是：找3个认识你超过10年的人，问他们同一个问题：“你认为我最独特的天赋是什么？”对比他们的答案和你自己的认知。你会发现，别人眼中的你，往往比你更了解你的专长。
+
+最后，记住纳瓦尔的忠告：“不要试图成为别人，因为那是在浪费你成为自己的机会。”你的专长已经存在，只是需要你去发现和打磨。从今天开始，把注意力从“学什么技能”转移到“发现什么专长”上。这才是财富创造的真正起点。
+ </div>
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“专长无法被培训”，请用自己的话解释这句话的含义。为什么说专长不是技能？试用一个具体例子说明两者的区别。</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">区分“可复制性”与“独特性”——想想哪些能力可以批量传授，哪些只能自己发现。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 专长无法被培训，因为它源于个人独特的好奇心、天赋和经历，不是标准化知识体系能复制的。<br>2. 技能像编程或开车，可通过课程批量学会；专长如“用直觉判断市场情绪”或“让陌生人信任你”，无法通过教材传授。<br>3. 例子：学会Excel是技能，但“从数据中发现别人看不见的模式”是专长——后者需要你天生对数字敏感并持续痴迷。</div>
+    </details>
+  </div>
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你正在考虑转行，但发现目标行业的所有硬技能（如数据分析、市场营销）都可以通过网课学会。根据纳瓦尔的理论，你应该如何重新定位自己的优势？请结合一个具体场景给出行动方案。</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">不要只学技能，而要问：我的哪种独特天赋能让这些技能产生不可替代的价值？</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 先列出你童年时“无意识沉浸”的事：比如你总爱观察人、组织活动、或拆解复杂问题。<br>2. 将这些特质与目标行业结合：例如，如果你天生擅长说服他人，即使学市场营销技能，你的专长是“用共情力建立品牌信任”，而非单纯做广告。<br>3. 行动方案：在简历和面试中突出“非标准化成果”，如“曾自发组织社区活动，让参与者留存率提高40%”，而非只展示证书。<br>4. 关键：技能是门槛，专长是杠杆——用专长选择细分领域（如“为小众品牌做情感营销”），让竞争从技能战变成天赋战。</div>
+    </details>
+  </div>
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第1课《财富的本质》中“财富是睡觉时也能赚钱的资产”这一概念，解释为什么“专长×杠杆”会产生乘法效应？请用你童年发现的一个专长举例，并设计一个简单的杠杆模型。</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考：专长如何从“个人时间”中解脱？杠杆可以是代码、媒体、资本或团队。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 专长本身只能换取线性收入（如做一小时咨询赚一小时钱），但加上杠杆（如写书、录课程、雇团队）后，专长可被复制并持续创造价值。<br>2. 例子：你童年专长是“用故事让人安静”——这是独特天赋。<br>3. 杠杆模型：<br>   - 内容杠杆：录制“睡前故事播客”，一次创作持续下载；<br>   - 代码杠杆：开发AI故事生成工具，自动定制个性化内容；<br>   - 资本杠杆：融资成立“故事疗愈公司”，雇佣其他擅长讲故事的人。<br>4. 结果：专长（故事天赋）通过杠杆从“你亲自讲”变为“系统自动传播”，实现睡觉时收入——这就是财富。</div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="index.html" class="prev">课程索引</a>
+ <a href="naval002.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

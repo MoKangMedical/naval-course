@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>斯多葛主义 — 纳瓦尔通识课第91课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 91 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 10 · 东西方哲学融合</div>
+ <h1>斯多葛主义</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 91/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval091.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：两千年前的硅谷智慧</h3><p>想象一下，你正在硅谷的一家咖啡店里，和纳瓦尔聊人生。他可能会告诉你一个秘密：他所有关于财富和幸福的思考，都有一条看不见的线，连接着两千年前的罗马帝国。这条线就是斯多葛主义。</p><p>纳瓦尔曾说：“斯多葛主义是我最常回归的哲学。它不教你如何成功，而是教你如何应对成功和失败。” 这听起来像是一个投资人的实用建议，但它其实是关于如何活着的根本命题。</p><p>斯多葛主义的核心极其简洁：区分你能控制的和不能控制的。把全部精力放在前者，完全接受后者。这个简单的二分法，是纳瓦尔哲学的西方根源。它像一把手术刀，精准地切开了焦虑的源头。</p><p>为什么纳瓦尔会推崇一个两千年前的学派？因为斯多葛主义不是书斋里的理论，而是一套操作系统。它教你如何运行“人生”这个程序。纳瓦尔说：“你无法控制外界，但你可以控制你对事件的反应。这是你唯一的自由。”</p><p>让我们看一个案例。假设你是一名创业者，产品即将发布，但市场突然变化。你能控制什么？你不能控制市场趋势、竞争对手的动作、用户的情绪。但你能控制自己的产品迭代、团队士气、以及你如何解读这次挑战。斯多葛主义让你把焦虑从“市场会不会崩”转移到“我该如何调整”。</p><p>这听起来简单，但做起来极难。因为人类大脑天生喜欢担忧不可控的事。斯多葛主义就是一套反直觉的训练，帮你夺回注意力。</p><p>在本课中，我们将深入斯多葛主义的三位大师——爱比克泰德、塞内卡、马可·奥勒留——看看他们如何把哲学变成日常练习。你会发现，纳瓦尔的许多名言，不过是斯多葛思想的现代翻译。</p><h3>二、核心理论：控制二分法与三大支柱</h3><p>斯多葛主义的基石是“控制二分法”，由奴隶出身的哲学家爱比克泰德在《手册》中明确阐述：“有些事取决于你，有些事不取决于你。” 这听起来像废话，但它的力量在于分类的彻底性。</p><p>爱比克泰德说，只有三件事完全取决于你：你的判断、你的选择、你的意志。其他一切——财富、健康、名声、甚至他人的想法——都不完全由你控制。这意味着，你的幸福不应该建立在不可控的事物上。</p><p>纳瓦尔和芒格都强调过类似的观点。芒格说：“如果你把注意力放在你能改变的事情上，你会感到强大。如果你盯着你不能改变的，你会感到无助。” 纳瓦尔则说：“幸福是一种选择。不是因为你拥有什么，而是因为你决定不为不可控的事烦恼。”</p><p>斯多葛主义有三大支柱，对应三位大师：</p><p>第一，爱比克泰德的“控制二分法”。他出身奴隶，深知什么是真正的自由。他认为，自由不是为所欲为，而是不被外界事物奴役。如果你把快乐寄托在财富上，你就是财富的奴隶。如果你把自尊寄托在别人的评价上，你就是别人的奴隶。</p><p>第二，塞内卡的“消极可视化”。这位罗马帝国的大臣和剧作家，虽然身处权力中心，却常常预想失去一切。他写道：“财富的顶点是欲望的终点。” 他建议每天花几分钟想象你失去房子、家人、健康。这听起来悲观，但效果惊人：它让你珍惜现有的一切，并提前做好心理准备。</p><p>第三，马可·奥勒留的“内在城堡”。这位罗马皇帝在《沉思录》中写道：“你可以在内心筑起一座堡垒，外界无法攻破。” 他认为，外部事件是中性的，只有你的判断能赋予它好坏。所以，与其愤怒于天气，不如改变你对天气的态度。</p><p>这三者构成一个完整体系：控制二分法给你框架，消极可视化给你训练，内在城堡给你庇护所。</p><h3>三、深层分析：为什么斯多葛主义如此实用</h3><p>斯多葛主义之所以被纳瓦尔称为“最实用的哲学”，是因为它直接对抗人类大脑的三大弱点：焦虑、贪婪和虚荣。</p><p>焦虑源于对未来的失控感。斯多葛主义告诉你：未来不可控，但你对未来的准备可控。消极可视化不是让你沉溺于恐惧，而是让你提前演练。比如，你害怕演讲失败。斯多葛练习：想象最坏情况——忘词、被嘘、丢脸。然后问自己：我能应对吗？答案是能。你可能会尴尬，但不会死。一旦你接受了最坏情况，焦虑就变成了行动力。</p><p>贪婪源于对“更多”的渴望。斯多葛主义通过“消极可视化”来对抗。塞内卡说：“贫穷不是拥有太少，而是渴望更多。” 每天想象你失去所有，会让你重新定义“足够”。纳瓦尔也说过类似的话：“真正的财富不是拥有很多，而是欲望很少。”</p><p>虚荣源于对外界评价的依赖。爱比克泰德严词警告：“如果你在乎别人的想法，你就把自己的自由交到他们手里。” 马可·奥勒留则说：“别人的赞扬不会让你更好，别人的批评不会让你更差。你唯一需要在意的是你的内在判断。”</p><p>这三点在现代社会格外关键。社交媒体放大了焦虑、贪婪和虚荣。斯多葛主义就像一剂解药，让你从外界的噪音中抽离出来。</p><p>但斯多葛主义不是冷漠。它不让你逃避情感，而是让你管理情感。纳瓦尔说：“情绪是信号，不是命令。” 你可以感到愤怒，但不要让愤怒控制你的行动。斯多葛主义训练你观察情绪，然后选择回应。</p><p>一个典型案例是投资。市场波动时，你无法控制股价，但你能控制你的投资纪律。斯多葛投资者不会因为恐慌而抛售，也不会因为贪婪而追高。他们只关注自己能控制的事：研究公司、执行策略。</p><h3>四、实践应用：把哲学变成日常修行</h3><p>斯多葛主义不是理论，是每天练习。纳瓦尔说：“哲学如果不能改变你的行为，就是浪费时间。” 以下是三个具体的实践方法：</p><p>第一，控制二分法清单。今天开始，每天花5分钟列一个清单。左边写你能控制的事：你的努力、你的反应、你的选择。右边写你不能控制的事：别人的想法、天气、市场。然后把你的焦虑从右边移到左边。比如，你担心项目失败。右边：项目结果不可控。左边：你能否做好计划、沟通、执行。专注左边。</p><p>第二，消极可视化晨练。每天早上，花3分钟想象今天可能发生的最坏情况。比如，你可能会被老板批评、堵车、生病。然后问自己：我能应对吗？怎么应对？这让你提前做好心理准备，而不是被意外击垮。</p><p>第三，斯多葛周挑战。连续7天，每天做一次更深入的练习。第一天：想象失去你的手机和所有数字记录。第二天：想象失去你的房子。第三天：想象失去一个亲密关系。每一天，写下你的感受，以及你如何重建生活。这会让你意识到，你真正需要的东西很少，你的韧性比想象中大。</p><p>纳瓦尔本人就是斯多葛的践行者。他曾在一次采访中说：“我每天早上都会想，如果今天是我生命中的最后一天，我会做什么？这让我把时间花在最重要的事情上。” 这就是斯多葛主义的现代版本。</p><p>最后，记住马可·奥勒留的话：“生活的艺术更像摔跤，而不是舞蹈。你需要站稳脚跟，随时准备应对冲击。” 斯多葛主义就是帮你站稳脚跟的哲学。它不承诺快乐，但承诺平静。而平静，是幸福的前提。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用自己的话解释斯多葛主义的“控制二分法”。为什么爱比克泰德认为区分“能控制的”和“不能控制的”是获得内心自由的关键？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考一下：你每天焦虑的事情中，有多少其实超出了你的控制？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">控制二分法是斯多葛哲学的核心工具，它将世界分为两类：<br>1. 我们能完全控制的：自己的判断、选择、意愿、态度和行为。<br>2. 我们不能控制的：他人的想法、天气、健康、财富、死亡等外部事件。<br>爱比克泰德认为，痛苦源于我们试图控制不可控之物，而忽略了对可控之物的责任。当我们认清这一点，就能将精力聚焦于内在选择，从而摆脱对外部结果的依赖，获得真正的自由。例如，你不能控制是否下雨，但可以控制是否带伞；你不能控制别人怎么评价你，但可以控制自己是否在意。这种区分不是逃避，而是智慧地分配注意力。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你即将参加一场重要的面试，感到非常紧张。请运用斯多葛的“消极可视化”和“控制二分法”设计一个三步应对方案，帮助你平静地面对结果。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先想象最坏的结果（如失败），再区分哪些你能控制（准备、态度），哪些不能（考官偏好、竞争环境）。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">三步应对方案：<br>第一步：消极可视化。闭上眼睛，想象面试失败后的场景——你可能感到失望，但生活仍在继续。问自己：“最坏的结果是什么？我能否承受？”答案通常是“能”，这能降低恐惧。<br>第二步：应用控制二分法。列清单：<br>- 我能控制：准备内容、练习表达、保持自信、按时到达、控制呼吸。<br>- 我不能控制：考官的心情、其他候选人的表现、公司政策、结果本身。<br>第三步：专注行动。将全部精力投入可控事项：模拟面试、准备案例、调整睡眠。面试时只关注“此刻的回答是否尽力”，而非“结果如何”。无论结果如何，你已做了自己该做的，这就是斯多葛式的胜利。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾课程中“修行：不是理论，是每天练习”的理念，结合之前学过的“习惯循环”（提示-惯常行为-奖赏），设计一个日常的斯多葛练习仪式。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">比如：早晨醒来时，用3分钟做控制二分法清单；遇到挫折时，用消极可视化提醒自己。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">结合习惯循环与斯多葛修行，设计“晨间自由仪式”：<br>1. 提示：每天早晨刷牙后，面对镜子。这个固定动作触发练习。<br>2. 惯常行为：花2分钟做控制二分法清单。例如：<br>- 我能控制：今天的工作态度、对同事的耐心、是否锻炼。<br>- 我不能控制：交通拥堵、老板的情绪、股市涨跌。<br>然后默念马可·奥勒留的名言：“早晨醒来时，问自己：今天我要面对什么？是别人的意见？自己的恐惧？还是外界的噪音？记住，它们都无法伤害你，除非你允许。”<br>3. 奖赏：完成后，给自己一个微笑或深呼吸，感受内心的平静。这种微小的胜利感会强化习惯。<br>此外，遇到挫折时，可用“暂停仪式”：深呼吸三次，问自己：“这是我能控制的吗？”若否，放手；若是，行动。通过每天重复，斯多葛从理论变成肌肉记忆，最终内化为第二本能。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval090.html" class="prev">上一课</a>
+ <a href="naval092.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

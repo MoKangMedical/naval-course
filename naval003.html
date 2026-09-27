@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杠杆的力量 — 纳瓦尔通识课第3课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 3 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 1 · 财富创造基础</div>
+ <h1>杠杆的力量</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner" style="background:rgba(245,158,11,.08);color:#f59e0b">财富创造基础</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 3/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval003.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么你的努力没有带来应有的回报</h3>
+
+你有没有这样的感觉：每天工作8小时，甚至更久，但收入却始终和你的付出成正比？你加了一个小时的班，就多拿一个小时的工资。你多服务一个客户，就多赚一份钱。这种模式，纳瓦尔称之为“线性工作”。它的本质是：你的产出等于你的投入。你投入多少时间，就产出多少价值。这种模式从工业时代延续至今，它公平，但低效。
+
+纳瓦尔曾一针见血地指出：“你永远无法通过出租时间来致富。” 出租时间，意味着你把生命中最宝贵的资源——时间，以固定的单价出售。而时间是有限的，每天只有24小时。无论你多么努力，你的产出上限都被这个物理极限锁死。这就是为什么许多勤奋的人依然被困在财富的底层：他们用一根杠杆都没有的双手，去对抗那些拥有强大杠杆的人。
+
+让我们看一个具体的例子。一位厨师，每天工作10小时，做100份菜，获得100份收入。他如果想赚更多钱，只能做更多菜，或者提高每份菜的价格。但前者受限于体力，后者受限于市场。而一位美食作家，写一篇爆款食谱文章，可能只花10小时，但这篇文章会被成千上万人阅读、使用、分享。他的10小时投入，创造了相当于厨师1000小时甚至10000小时的产出价值。这就是杠杆的力量。
+
+杠杆的数学公式非常简单：输出 = 输入 x 杠杆系数。没有杠杆，杠杆系数为1，输出等于输入。有了杠杆，系数可以是100、1000，甚至无穷大。纳瓦尔认为，现代社会最不公平也最激动人心的地方在于：少数人掌握了高杠杆的工具，而大多数人还在靠体力挣扎。
+
+你可能会问：“我只是一名普通员工，我哪来的杠杆？” 这正是本课要解决的问题。杠杆不是富人的专利，而是认知的产物。从今天起，你需要重新审视你的每一个工作小时：这一小时，是只产生一小时的价值，还是通过某种工具或系统，被放大了100倍？
+
+接下来的内容，将带你深入理解三种杠杆的本质，并教你如何从零开始，为自己装上第一根杠杆。
+
+<h3>二、核心理论：三种杠杆的深度解析</h3>
+
+纳瓦尔将杠杆分为三类，按难度和效率从低到高排列：劳动力杠杆、资本杠杆、以及代码与媒体杠杆。理解这三者的区别，是财富创造的分水岭。
+
+第一种：劳动力杠杆。这是最古老、也是最难的一种杠杆。它的本质是“让别人为你工作”。你雇佣一个人，他为你工作8小时，你获得了8小时的产出，而只支付他一部分报酬。历史上，地主、工厂主、企业老板都依赖这种杠杆。但纳瓦尔认为，管理他人“极其痛苦”，因为你需要监督、协调、解决人事纠纷。这种杠杆需要极强的领导力和管理能力，而且它是有上限的——你无法无限雇佣人，因为组织会变得臃肿、低效。
+
+第二种：资本杠杆。这是工业革命以来最强大的杠杆之一。它的本质是“用钱生钱”。你投入100万元，可能获得200万元的回报。资本杠杆需要许可——要么你自己有钱，要么你能从别人那里融资。纳瓦尔说：“资本是那些已经富有的人才能获得的杠杆。” 对于普通人来说，获取资本杠杆的门槛很高，因为你首先需要证明自己值得被投资。但好消息是，一旦你积累了资本，它的放大效应是惊人的。
+
+第三种：代码与媒体杠杆。这是纳瓦尔最推崇的杠杆，也是数字时代送给每个人的礼物。代码杠杆，就是用软件、算法、程序来替代人力。你写一个自动回复邮件的小程序，它可以在你睡觉时处理1000封邮件。媒体杠杆，就是用内容（文字、音频、视频）来影响大众。你录一个理财课程，上传到网上，它可以被10万人购买，而你只需要录制一次。
+
+这两种杠杆的核心理念是：边际成本趋近于零。什么意思？你生产第一份产品的成本很高（比如写一本书花了1000小时），但复制一份的成本几乎为零（印刷一本电子书的成本是0.001元）。所以，你的产出可以无限放大，而你的投入不再增加。
+
+纳瓦尔强调：“代码和媒体是无需许可的杠杆。” 你不需要任何人的批准，不需要学历证书，不需要启动资金。你只需要一台电脑、一个网络连接，以及一个能创造价值的想法。这是有史以来最公平的杠杆——它让一个大学生可以和一家大公司竞争。
+
+但请注意：这三种杠杆不是互斥的。最成功的人往往同时使用多种杠杆。比如，一个企业家先用代码开发产品，再用媒体推广，最后用资本扩大规模。理解这一点，你就明白了财富增长的本质：不是更努力，而是更聪明地放大努力。
+
+<h3>三、深层分析：为什么传统工作没有杠杆，以及数字时代的革命</h3>
+
+让我们回到开篇的问题：为什么大多数传统工作没有杠杆？核心原因在于报酬结构——线性报酬。你是一个客服，接一个电话赚10块钱。你是一个建筑工人，砌一块砖赚5毛钱。你是一个司机，跑一公里赚2块钱。你的收入永远和你的动作直接挂钩。这种模式在工业时代是合理的，因为工厂需要可预测的劳动力。但在信息时代，这成了财富的陷阱。
+
+纳瓦尔曾说：“如果你在出卖时间，那么你的老板其实在购买你的时间，然后把它乘以一个系数再卖出去。” 你一小时创造100元的价值，老板付你30元，他赚70元。这个差价就是杠杆的体现——老板用你的劳动力为自己创造了杠杆。而你，作为劳动者，没有得到任何杠杆。
+
+那么，数字时代带来了什么革命？答案是：边际成本趋近于零。在物理世界，每多生产一个杯子，就需要多一份陶土、多一份人工。但在数字世界，每多复制一份软件、多播放一次视频，成本几乎为零。这意味着，你的努力可以一次性生产，无限次销售。
+
+举个例子：一位健身教练，在线下授课，一节课只能教10个人，每小时收入500元。他如果开一个线上健身课程，录制一次，就可以卖给1000人、10000人。他的录制时间可能是100小时，但之后每一次销售，他的投入都是零。他的收入不再受限于他的时间，而是受限于他的内容质量和传播能力。
+
+这种革命改变了财富分配的逻辑。过去，财富掌握在拥有土地和工厂的人手里。现在，财富向拥有代码和内容的人倾斜。纳瓦尔观察到一个现象：“新一代的亿万富翁，几乎都是程序员、作家、视频创作者。” 他们不是最聪明的人，但他们掌握了最高效的杠杆。
+
+但这里有一个关键点：杠杆不是免费的午餐。你仍然需要付出前期的高强度劳动。写一本书需要几个月，开发一个软件需要几百个小时。但区别在于，传统工作的劳动是重复性的，而杠杆工作的劳动是创造性的，并且一旦完成，后续的收益是自动化的。
+
+所以，当你抱怨工作辛苦时，不妨问自己：我的辛苦，是“种树”还是“砍柴”？种树是前期辛苦，后期乘凉；砍柴是每天辛苦，每天归零。杠杆的价值，就是把砍柴变成种树。
+
+<h3>四、实践应用：如何为自己装上第一根杠杆</h3>
+
+理论讲完了，现在进入最重要的部分：如何行动。纳瓦尔强调：“知道杠杆是什么，和拥有杠杆，是两回事。” 你需要一个具体的、可执行的计划。
+
+第一步：审视你当前的技能。你擅长什么？写作、编程、设计、演讲、理财、烹饪？任何技能都可以成为杠杆的支点。关键不是技能本身，而是它能否被复制和传播。比如，你擅长做Excel表格，那么你可以录一个“Excel高效技巧”视频；你擅长整理笔记，你可以写一份“知识管理指南”电子书。
+
+第二步：选择一种杠杆类型。对于绝大多数普通人，最可行的杠杆是代码和媒体。你不需要成为顶级程序员，你只需要学会使用现有工具。比如，用Canva设计模板，用Notion制作工作流，用ChatGPT辅助写作。这些都是低代码或无代码的杠杆。媒体杠杆则更简单：你只需要一个社交媒体账号，持续发布有价值的内容。
+
+第三步：设计一个最小可行性产品。不用追求完美。纳瓦尔说：“不要等待完美，先发布，再迭代。” 比如，你的目标是写一本电子书，那么先写一个5000字的指南，放到电子书平台上销售，定价9.9元。如果卖出去100份，你就有990元的收入，而你的投入是10小时的写作时间。这就是杠杆的初步体现。
+
+课后实践：审视你当前的工作。你每天8小时的工作，有多少小时是“线性劳动”——做一次赚一次钱？有多少小时是“杠杆劳动”——做一次赚多次钱？如果你的工作时间全部是线性劳动，那么你需要立刻开始改变。
+
+课后作业：选择一个你拥有的技能，设计一个让其产生杠杆效应的最小方案。比如，你擅长做PPT，那么做一个“职场PPT模板包”，上传到模板网站；你擅长英语，那么录一个“日常英语口语100句”音频课程；你擅长健身，那么写一份“家庭健身30天计划”PDF。关键在于：这个产品必须是一次制作，无限次销售。
+
+最后，记住纳瓦尔的提醒：“杠杆是放大器，但它不会放大错误。如果你创造的是垃圾，杠杆只会让更多人看到你的垃圾。” 所以，在追求杠杆之前，先确保你提供的价值是真实的。杠杆不会让你一夜暴富，但它会让你的每一分努力，都产生更大的回报。
+
+从今天起，不要再问“我怎样才能更努力”，而是问“我怎样才能少努力，却产生更大的影响”。答案就在杠杆中。
+ </div>
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔提出三种杠杆：劳动力、资本、代码与媒体。请用自己的话解释：为什么代码与媒体是“无需许可”的杠杆？而劳动力杠杆为何被认为“最难”？</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“许可”的含义：劳动力需要管理他人，资本需要他人信任，代码与媒体只需个人创造。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 代码与媒体无需许可：你可以独立编写软件、录制视频或写文章，无需等待他人批准，边际成本低且可大规模复制。2. 劳动力杠杆最难：管理他人需要领导力、沟通技巧和信任，容易引发冲突和效率问题，且每新增一人需付出管理成本。3. 资本杠杆需许可：投资需要他人（如银行、风投）的信任和授权，门槛高且风险集中。4. 核心区别：代码与媒体是“复利型”杠杆，一次创造可无限传播，而劳动力和资本受限于人力和资源规模。</div>
+    </details>
+  </div>
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你是一名自由设计师，目前按项目收取固定费用（如每个Logo 5000元）。请设计一个方案，利用代码或媒体杠杆，将你的收入从“线性”转为“指数型”。</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑边际成本趋近于零的模式，比如创建可复用的模板、在线课程或自动化工具。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 创建设计模板库：开发一套可自定义的Logo生成器（代码），用户付费下载后自动生成基础设计，你只需维护一次。2. 录制设计教程：制作一套“设计师进阶课”视频（媒体），定价999元，通过平台销售，一次录制可无限次售卖。3. 自动化服务：开发AI辅助设计工具，用户输入需求后自动生成初稿，你仅需微调，每单耗时从10小时降至10分钟。4. 核心转变：从“每小时赚500元”变为“每份作品赚500元但销售1000份”，边际成本趋近于零。5. 关键：用代码或媒体代替重复劳动，让努力产生乘数效应。</div>
+    </details>
+  </div>
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第2课《财富与金钱的区别》中“财富是可以产生收入的资产”这一概念，分析：为什么代码与媒体杠杆创造的“资产”比劳动力杠杆更符合纳瓦尔的财富定义？</div>
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系“资产”的被动性：代码与媒体能持续产生收入而不需你持续投入时间。</div>
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 财富定义回顾：财富是“在你睡觉时还能赚钱的资产”，如工厂、知识产权。2. 劳动力杠杆的局限：雇佣团队需要你持续管理，一旦停止投入，收入中断，本质仍是时间换钱。3. 代码与媒体作为资产：一篇爆款文章、一个软件工具，发布后即使你休息，仍能通过广告、订阅或销售产生被动收入。4. 杠杆效应的差异：劳动力杠杆的系数受限于管理人数（线性增长），而代码与媒体杠杆的系数可无限放大（指数增长）。5. 总结：代码与媒体是“可复制的资产”，符合纳瓦尔“财富应独立于你存在”的核心思想，而劳动力杠杆本质仍是“你的时间被他人购买”。</div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="index.html" class="prev">课程索引</a>
+ <a href="naval002.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

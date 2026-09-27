@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公司建设 — 纳瓦尔通识课第45课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 45 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 5 · 科技与创业</div>
+ <h1>公司建设</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 45/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval045.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>第45课：公司建设——从0到1的苦与乐</h3>
+<p><strong>副标题：从0到1的苦与乐</strong></p>
+<p><strong>核心洞察：</strong>Peter Thiel在《从0到1》中说：建立一个公司就像建立一个邪教——你需要一个足够强大的信念让最优秀的人才放弃稳定的高薪加入你。公司建设是创业中最被低估的技能。</p>
+
+<h3>一、开篇引入：从0到1的苦与乐</h3>
+<p>你好，欢迎来到康波研究院的第45课。今天我们要聊的话题是“公司建设”。这个词听起来很宏大，但说白了，就是从零开始，把一群人聚在一起，干成一件事。</p>
+<p>你可能会想，创业不就是有个好点子，然后找钱、找人、做产品吗？但纳瓦尔告诉我们，事情远没有那么简单。他常说：“创业最难的部分不是产品，不是融资，而是建设一个能持续运转的组织。” 这句话点出了公司建设的核心：它是一门艺术，更是一门科学。</p>
+<p>纳瓦尔和彼得·蒂尔（Peter Thiel）是硅谷的老朋友。蒂尔在他的著作《从0到1》中有一个著名的比喻：“建立一个公司就像建立一个邪教——你需要一个足够强大的信念，让最优秀的人才放弃稳定的高薪加入你。” 这个比喻听起来有点极端，但仔细想想，它抓住了创业的实质：你需要一个“信仰”，才能吸引那些最聪明、最有野心的人。</p>
+<p>为什么要强调“从0到1”？因为这是创造新事物的过程，而不是复制已有的东西。从1到N，是把一个成功模式放大，这需要管理能力；但从0到1，是从无到有，需要的是创造力和信念。纳瓦尔认为，绝大多数创业者失败，不是因为产品不好，而是因为他们低估了“从0到1”阶段的痛苦。</p>
+<p>举个例子。2004年，马克·扎克伯格在哈佛宿舍里创立Facebook时，他并没有一个完整的商业计划。他只是相信“让世界更开放”这个信念。这个信念足够强大，以至于吸引了像肖恩·帕克这样的天才加入，哪怕当时Facebook没有任何收入。这就是“从0到1”的力量。</p>
+<p>所以，公司建设的起点，不是写商业计划书，而是找到那个能让你和团队愿意付出一切的“信念”。没有这个，后面的所有步骤都是空中楼阁。</p>
+
+<h3>二、核心理论：公司建设的三个阶段——验证、扩展、固守</h3>
+<p>纳瓦尔把公司建设分为三个阶段：验证、扩展、固守。他认为，每个阶段需要的技能完全不同，很多创业者死在阶段转换中。</p>
+<p>第一阶段是“验证”。这是最痛苦的阶段，你只有几个人，甚至只有你自己。你的目标是找到产品与市场的匹配点。纳瓦尔说：“在验证阶段，你的唯一工作就是活着。” 你不需要完美，不需要规模，你只需要证明你的假设是对的。比如，Airbnb最初的验证阶段，创始人只是租出三张气垫床来验证“陌生人愿意住到别人家”这个想法。他们没做市场调研，而是直接动手。</p>
+<p>第二阶段是“扩展”。一旦验证成功，你就要快速放大。这时候，你需要的是管理能力、流程和团队。纳瓦尔警告说：“扩展阶段最危险的是，你开始相信自己的神话。” 很多创业者在这个阶段犯的错误是，把验证阶段的“直觉”当成万能药，结果团队膨胀、效率下降。</p>
+<p>第三阶段是“固守”。当公司已经站稳脚跟，你要做的是守住地盘，建立护城河。纳瓦尔认为，这个阶段最容易被忽视的是“文化”。他说：“文化是你的公司操作系统。如果操作系统坏了，再好的应用也跑不起来。” 比如，谷歌在固守阶段建立了“不作恶”的文化，这帮助它在多年后应对各种危机。</p>
+<p>为什么大多数公司死于成功之后？纳瓦尔的回答很直接：“因为成功让人自满，而自满让人忘记初心。” 一个公司从0到1成功后，往往会陷入“从1到N”的惯性，只想着扩大规模，却忽视了最初那个信念。结果，当市场变化时，它已经失去了灵活性。</p>
+
+<h3>三、深层分析：为什么公司建设是最被低估的技能</h3>
+<p>在硅谷，人们崇拜产品天才和技术极客，但很少有人谈论公司建设。纳瓦尔认为，这是创业者最大的盲区。</p>
+<p>首先，公司建设需要的不是单一技能，而是一个“技能组合”。你需要懂产品、懂营销、懂财务，更要懂人性。纳瓦尔说：“一个优秀的CEO，首先是一个心理学家。” 你需要理解每个人的动机，然后把他们拧成一股绳。比如，乔布斯能说服斯卡利加入苹果，靠的不是薪资，而是“改变世界”的愿景。</p>
+<p>其次，公司建设是反直觉的。大多数人认为，创业就是“自由”，但实际上，创业后的自由更少。纳瓦尔说：“创业不是解放，而是自我奴役。” 你每天要处理无数琐事：招聘、辞退、融资、吵架。这种压力会让很多人崩溃。因此，纳瓦尔建议创业者要有“斯多葛主义”的心态：接受痛苦，并从中学习。</p>
+<p>第三，公司建设需要“长期主义”。纳瓦尔和芒格都强调，复利不仅适用于金钱，也适用于组织。一个好的公司文化，会在十年后产生复利效应。比如，亚马逊坚持“客户至上”的文化，即使短期亏损，也要长期投入。这种文化让它从一家书店变成了科技巨头。</p>
+<p>最后，公司建设是“反脆弱的”。纳瓦尔引用塔勒布的概念说：“一个公司应该能受益于混乱和冲击。” 如果你只依赖一个产品、一个客户、一个市场，那么任何冲击都会摧毁你。真正的公司建设，是建立一个能自我进化的系统。比如，华为在面临制裁时，能迅速启动备胎计划，就是因为它有反脆弱的组织架构。</p>
+
+<h3>四、实践应用/总结：纳瓦尔的企业家哲学与你的行动指南</h3>
+<p>纳瓦尔的企业家哲学可以用一句话总结：“做难而正确的事。” 他认为，公司建设本身就是一个“难而正确”的过程，没有捷径可走。</p>
+<p>那么，如何把理论变成行动？首先，你要明确自己处于哪个阶段。如果你是验证阶段，就别想着搞KPI，而是专注于用户反馈。如果你是扩展阶段，就别再亲自写代码，而是学会放权。纳瓦尔说：“创始人最大的障碍，不是竞争对手，而是自己的ego。”</p>
+<p>其次，你要学会“反直觉”的招聘。纳瓦尔建议，招聘时不要只看简历，而是看“信念”。他举例说：“如果你要招聘一个早期员工，问他一个简单问题：如果明天公司倒闭，你会去哪？如果他回答‘其他创业公司’，那说明他不适合。” 因为你需要的是那些把公司当成“自己孩子”的人。</p>
+<p>第三，建立文化宣言。纳瓦尔认为，文化不是写在墙上的标语，而是体现在每个决策中。比如，网飞（Netflix）的文化宣言是“自由与责任”，它鼓励员工像成年人一样工作，而不是被流程束缚。这种文化让网飞在流媒体大战中胜出。</p>
+<p>课后实践：如果你要创业，列出你需要的「合伙人」品质清单。你缺少什么？谁能补充？比如，你可能擅长产品，但缺乏运营能力；或者你擅长技术，但缺乏商业嗅觉。找到互补的合伙人，是公司建设的第一步。</p>
+<p>课后作业：为你理想的公司写一份「文化宣言」：核心价值观、工作方式、不要什么样的人。比如，核心价值观可以是“客户第一”，工作方式可以是“远程协作”，不要的人可以是“爱抱怨的人”。这份宣言不是给别人看的，而是给你自己看的——它是你公司的灵魂。</p>
+<p>最后，记住纳瓦尔的话：“公司建设不是目的地，而是一段旅程。痛苦是常态，但快乐来自于创造。” 祝你在从0到1的路上，找到自己的信念。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“从0到1”和“从1到N”需要完全不同的技能。请用你自己的话解释这两个阶段的本质区别，并说明为什么一个成功的“从0到1”创始人未必能胜任“从1到N”的管理者？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“创造”与“复制”的本质差异，以及创业者心态与职业经理人心态的冲突。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 从0到1是创造新事物，需要想象力、冒险精神和试错能力，核心是“发现与验证”；从1到N是规模化复制，需要流程优化、系统管理和执行力，核心是“效率与标准”。2. 前者依赖直觉和灵活应变，后者依赖数据和规范流程。3. 一位擅长从0到1的创始人可能厌恶重复性工作，缺乏对大规模团队的管理耐心，而规模化阶段恰恰需要这种“守成”能力，因此角色切换常导致失败。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你刚验证了一个在线教育产品的市场需求，准备进入“扩展阶段”。请设计一个具体的行动计划，说明你将如何避免“死于成功之后”的陷阱。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考过度扩张、忽视核心价值、团队文化稀释等常见失败原因，并给出可操作对策。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 控制增长节奏：设定每月用户增长上限（如不超过20%），避免服务器崩溃或客服响应滞后。2. 聚焦核心价值：保留验证阶段最受欢迎的3个课程模块，不盲目添加新功能。3. 维护团队文化：每周召开全员“初心会”，分享用户成功案例，防止官僚化。4. 建立反馈闭环：设立用户顾问委员会，每月收集意见并快速迭代。5. 现金流管理：预留6个月运营资金，不因融资冲动扩大团队规模。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第30课《杠杆效应》中“资本、劳动力、代码和媒体”的杠杆分类，分析在公司建设的“验证-扩展-固守”三阶段中，哪种杠杆最适用？并解释为什么不同阶段需要切换杠杆类型。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">验证阶段侧重探索，扩展阶段侧重复制，固守阶段侧重防御，不同阶段对杠杆的依赖度不同。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 验证阶段：最适合使用“代码和媒体”杠杆。因为低成本、可快速试错，比如用代码搭建MVP或用社交媒体测试需求。2. 扩展阶段：需要引入“资本和劳动力”杠杆。规模化需要资金投入和团队分工，此时代码和媒体作为辅助工具。3. 固守阶段：应回归“代码和媒体”杠杆，同时优化资本效率。通过自动化系统（代码）和品牌护城河（媒体）降低对劳动力的依赖，防止成本失控。4. 核心逻辑：每个阶段的目标不同——验证期追求灵活性，扩展期追求速度，固守期追求可持续性，因此杠杆权重必须动态调整。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval044.html" class="prev">上一课</a>
+ <a href="naval046.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

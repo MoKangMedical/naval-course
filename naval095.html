@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西方理性主义 — 纳瓦尔通识课第95课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 95 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 10 · 东西方哲学融合</div>
+ <h1>西方理性主义</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 95/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval095.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：理性主义的起点——怀疑一切</h3>
+
+<p>想象一下，你正在一间温暖的房间里，壁炉里的火噼啪作响。你坐在椅子上，手里拿着一本书。突然，你产生了一个念头：这一切会不会都是假的？也许你其实是在做梦，也许有一个邪恶的魔鬼正在欺骗你的感官，让你以为自己在读书、在思考。这个念头，就是西方理性主义的起点。</p>
+
+<p>1637年，法国哲学家勒内·笛卡尔坐在荷兰一间小屋的火炉旁，写下了《谈谈方法》。他决定用最彻底的方式寻找真理：怀疑一切可以怀疑的东西。感官会出错，记忆会欺骗我们，甚至数学也可能被魔鬼操纵。但有一件事他无法怀疑——那就是他正在怀疑这件事本身。于是，他写下了那句名言：“我思故我在。”（Cogito, ergo sum.）</p>
+
+<p>笛卡尔的怀疑方法，本质上是一种“清零”策略。他先把所有知识放在一边，然后只接受那些经过严格检验、无法被怀疑的东西。这个方法听起来简单，但执行起来极为困难。因为人类的大脑天生倾向于相信熟悉的东西，而不是真实的东西。我们更容易接受一个让我们感到舒适的观点，而不是一个让我们感到不安的事实。</p>
+
+<p>纳瓦尔深受这种理性主义传统的影响。他说：“如果物理定律和我的信念冲突，我调整我的信念。”这句话听起来很朴素，但背后是一种巨大的勇气——承认自己可能错了。纳瓦尔认为，真正的理性不是固执己见，而是愿意被事实说服。他曾在一次访谈中提到：“科学方法的核心就是谦逊。你提出一个假设，然后你努力去证明它是错的。如果它没有被证明是错的，你暂时接受它。但你永远知道，它可能是错的。”</p>
+
+<p>笛卡尔的怀疑方法，后来演变成了现代科学方法的基础。科学家们不再依赖权威或传统，而是依赖可重复的实验和公开的证据。这正是纳瓦尔所说的“理性主义的精髓”：不是盲从，而是检验；不是信仰，而是验证。</p>
+
+<p>然而，理性主义并不是冷冰冰的逻辑机器。笛卡尔在怀疑一切之后，重新建立了一个关于上帝、灵魂和世界的体系。纳瓦尔则走得更远：他把理性主义和东方智慧结合起来。他既相信科学方法的力量，也相信冥想和直觉的价值。他说：“理性是工具，不是目的。工具要服务于更高的目标。”</p>
+
+<blockquote>“如果物理定律和我的信念冲突，我调整我的信念。”——纳瓦尔·拉维坎特</blockquote>
+
+<h3>二、核心理论：科学方法——假设、实验、修正</h3>
+
+<p>科学方法听起来很复杂，但它的核心只有三个步骤：假设、实验、修正。你提出一个关于世界的猜想，然后设计实验来检验它。如果实验不支持你的猜想，你就修改它。这个过程不断重复，直到你的猜想越来越接近真相。</p>
+
+<p>纳瓦尔把科学方法应用到个人生活中。他说：“你的人生就是一场实验。你提出一个假设——比如‘每天早起会让我更快乐’——然后你实验一个月。如果结果不支持假设，你改变它。如果你发现早起让你更焦虑，那你就调整你的假设。”</p>
+
+<p>科学方法的伟大之处在于，它不依赖权威。无论是爱因斯坦还是牛顿，他们的理论都必须经过实验检验。如果实验和理论冲突，理论必须让步。这正是纳瓦尔所说的“理性需要勇气”的原因。因为很多时候，实验结果是令人不舒服的。比如，你可能一直相信“努力工作就能成功”，但实验表明，在某些行业，运气比努力更重要。这时候，你是固执己见，还是调整信念？</p>
+
+<p>芒格和纳瓦尔都强调，理性主义需要一种特殊的勇气——承认自己无知的勇气。芒格曾说：“如果我知道我会死在哪里，我就永远不会去那个地方。”这句话背后是一种谦逊：知道自己不知道什么，比知道自己知道什么更重要。纳瓦尔补充道：“大多数人宁愿死也不愿思考。事实上，他们确实如此。”</p>
+
+<p>科学方法的另一个关键点是可重复性。一个实验如果只有你能做出来，别人做不出来，那它就不是科学。纳瓦尔把这个原则应用到投资领域：“如果我的投资策略只能在我自己的大脑里运行，别人无法复制，那它就不是一个可靠的策略。真正的策略应该能被理解和验证。”</p>
+
+<p>科学方法还有一个隐藏的好处：它让你从“正确”的焦虑中解放出来。你不必永远正确，你只需要不断修正。每一次失败都是一次学习机会。纳瓦尔说：“我不怕犯错，我怕的是不学习。”</p>
+
+<p>所以，科学方法不仅是一种获取知识的方法，更是一种生活态度。它教会我们：真相不总是令人愉快的，但它是唯一值得追求的。</p>
+
+<blockquote>“科学方法的核心就是谦逊。你提出一个假设，然后你努力去证明它是错的。”——纳瓦尔</blockquote>
+
+<h3>三、深层分析：为什么理性需要勇气</h3>
+
+<p>理性主义听起来很酷，但执行起来非常痛苦。因为理性要求你面对现实，而现实常常是残酷的。你辛苦经营多年的公司可能注定失败；你深爱的人可能并不爱你；你坚信的政治理念可能被数据推翻。理性告诉你：接受这些事实，然后调整你的行动。但情感告诉你：不，我不接受。</p>
+
+<p>纳瓦尔认为，理性需要勇气，因为理性意味着放弃控制。他说：“大多数人宁愿相信一个美丽的谎言，也不愿接受一个丑陋的真相。因为美丽的谎言让他们感觉良好，而丑陋的真相让他们感到无力。”但真正的力量来自于接受现实，哪怕它令人不快。</p>
+
+<p>举一个具体的例子。假设你是一个创业者，你的产品市场反响很差。你的朋友和家人可能会安慰你：“你的产品很棒，只是时机不对。”但理性告诉你：如果没有人愿意付费，那产品可能确实有问题。这时候，你有两个选择：继续相信安慰的话语，或者承认失败，重新开始。纳瓦尔会选择后者。他说：“失败不是终点，而是数据点。你收集数据，然后改进。”</p>
+
+<p>理性主义还要求你区分“事实”和“解释”。事实是客观存在的，比如“我的公司这个月亏损了10万元”。解释是我们赋予事实的意义，比如“这是因为市场不景气”或“这是因为我的管理不善”。理性主义要求你基于事实行动，而不是基于解释。因为解释可能被偏见扭曲。</p>
+
+<p>东方智慧中有类似的概念。佛教强调“如实观照”——看到事物本来的样子，而不是我们期望的样子。纳瓦尔把两者结合起来：用理性主义的方法去检验事实，用东方的智慧去接受事实。他说：“理性是刀，智慧是刀柄。没有刀柄，刀会伤到你自己。”</p>
+
+<p>芒格和纳瓦尔都强调，理性主义需要一种“反脆弱”的心态。不要因为失败而崩溃，而是从失败中变得更强大。纳瓦尔说：“每一次失败都是一次免费的学习机会。如果你不利用它，那是你的损失。”</p>
+
+<p>所以，理性需要勇气，但这份勇气是值得的。因为它让你从幻觉中解脱出来，让你真正看到世界的本来面目。而只有看到真相，你才能做出正确的决策。</p>
+
+<blockquote>“大多数人宁愿死也不愿思考。事实上，他们确实如此。”——纳瓦尔</blockquote>
+
+<h3>四、实践应用：如何把理性主义融入日常生活</h3>
+
+<p>理论讲完了，现在我们来谈实践。纳瓦尔强调，理性主义不是书斋里的学问，而是日常生活中的工具。以下是一些具体的应用方法。</p>
+
+<p>第一，养成“怀疑日记”的习惯。每天花五分钟，写下你当天相信的一个观点。然后问自己：这个观点有证据支持吗？如果证据不支持，我为什么还相信它？这个练习可以帮助你识别那些基于情感而非事实的信念。纳瓦尔说：“你的大脑是一个过滤器。它过滤掉不符合你预期的事实。怀疑日记就是打破这个过滤器的方法。”</p>
+
+<p>第二，用科学方法解决个人问题。假设你觉得自己“不善于社交”。这是一个信念，而不是事实。把它变成一个假设：“如果我每周参加一次社交活动，我的社交技能会提高。”然后实验一个月。记录你的感受和结果。如果一个月后，你仍然觉得不善于社交，那可能你的假设是错的。调整它，比如：“我需要参加一个特定类型的活动。”纳瓦尔说：“不要相信你的感觉，相信你的数据。”</p>
+
+<p>第三，训练自己接受“负面事实”。当你遇到一个让你不舒服的事实——比如你的体重超标，或者你的项目失败——不要逃避。深呼吸，然后对自己说：“这是事实。我能做什么？”纳瓦尔说：“接受事实是改变的第一步。如果你拒绝接受，你永远无法改变。”</p>
+
+<p>第四，把理性主义和东方智慧结合起来。冥想可以帮助你观察自己的念头，而不被它们控制。理性主义可以帮助你检验这些念头的真实性。纳瓦尔每天冥想，同时保持对科学的热爱。他说：“冥想让我看到我的念头，理性让我检验它们。两者缺一不可。”</p>
+
+<p>课后实践：找出你强烈相信但无法用证据支持的一个观点。比如“努力一定会成功”或“好人会有好报”。审视它：你为什么相信它？是因为教育、家庭还是社会影响？然后问自己：如果这个观点是错的，我的生活会有什么不同？纳瓦尔说：“最危险的信念是你从未怀疑过的信念。”</p>
+
+<p>课后作业：了解科学方法的历史。从亚里士多德到培根，再到波普尔。然后把它应用到你个人生活中的一个问题。比如：“如果我每天阅读30分钟，我的知识储备会增加。”假设，实验30天，记录结论。纳瓦尔说：“知识不是力量，应用知识才是力量。”</p>
+
+<blockquote>“最危险的信念是你从未怀疑过的信念。”——纳瓦尔</blockquote>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">笛卡尔的怀疑方法要求对一切可怀疑的事物进行彻底质疑。请用你自己的话解释：为什么这种“怀疑一切”的态度不是虚无主义，而恰恰是建立确定知识的起点？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“怀疑”与“建设”的关系，以及笛卡尔最终找到的不可怀疑的基石是什么。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 笛卡尔的怀疑不是目的而是手段：他通过怀疑一切可怀疑的事物（如感官、梦境、外部世界），是为了找到绝对不可怀疑的起点。2. 这个起点是“我思故我在”——怀疑行为本身证明了一个怀疑者的存在。3. 因此，怀疑方法像“清理地基”：先清除所有不牢固的信念，再在坚固的基石上重建知识体系。4. 这与虚无主义的区别在于：虚无主义停留在怀疑中，而笛卡尔用怀疑作为建造真理大厦的脚手架。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你有一个强烈相信但无法用证据支持的观点（例如“努力一定有回报”或“人性本善”）。请运用科学方法的“假设-实验-修正”流程，设计一个简单的检验方案，看看这个观点是否经得起理性检验。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先把这个观点转化为可验证的假设，然后思考：如果它是真的，你会观察到什么？如果观察结果不符，你愿意修正吗？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 假设转化：将“努力一定有回报”转化为可检验命题“在相同条件下，付出更多努力的人比付出较少的人获得显著更高的客观成果”。2. 实验设计：选取10个不同领域（如学习、健身、工作）的案例，记录努力投入与可量化成果的关系。3. 观察结果：很可能发现存在大量“努力但未获回报”的案例（如创业失败、考试失利），说明原假设过于绝对。4. 修正假设：改为“努力增加获得回报的概率，但非必然”，并进一步探讨哪些因素（方法、时机、运气）与努力共同作用。5. 这个练习体现了理性主义的核心：用证据修正信念，而非固守未经检验的信仰。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">本课强调“理性需要勇气”，而此前我们学习过东方智慧中的“放下执着”与“顺其自然”。请整合这两个看似矛盾的观点：在什么情况下，坚持理性分析需要勇气？在什么情况下，放下理性分析也是一种智慧？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑问题的性质：有些问题适合用理性解决，有些问题过度分析反而有害。两者的边界在哪里？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 需要勇气的理性时刻：当面对社会压力、群体偏见或权威观点时，坚持用理性独立思考需要巨大勇气——例如伽利略坚持日心说，或现代科学家质疑主流范式。2. 放下理性的智慧时刻：当面对无法用逻辑解决的人生困境（如亲人离世、爱情选择）时，过度分析会陷入焦虑循环，此时东方“顺其自然”的智慧反而能带来内心平静。3. 整合框架：理性主义适合解决“可控问题”（如科学、技术、策略），东方智慧适合应对“不可控问题”（如情绪、命运、无常）。4. 最高境界是“理性的勇气用于选择何时使用理性”——这本身需要东方智慧中的自我觉察。5. 两者结合：用理性分析哪些问题值得理性分析，对剩余部分保持觉知与接纳。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval094.html" class="prev">上一课</a>
+ <a href="naval096.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

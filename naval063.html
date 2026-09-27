@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风险管理 — 纳瓦尔通识课第63课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 63 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 7 · 投资智慧</div>
+ <h1>风险管理</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 63/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval063.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：风险不是敌人，是朋友</h3><p>各位同学，欢迎来到康波研究院的投资智慧课程。今天我们要谈论一个让很多人感到不安的话题——风险管理。你可能以为风险管理就是躲开所有可能的危险，但纳瓦尔对此有截然不同的看法。他说：“最大的风险是不承担任何风险。”这句话听起来像悖论，但仔细想想，你会发现其中的智慧。</p><p>想象一下，如果你因为害怕摔倒而从不学走路，那才是真正的失败。纳瓦尔认为，风险是不可避免的——问题是如何管理它，而不是消除它。就像冲浪者无法控制海浪的大小，但可以学会如何驾驭它。我们的生活和工作也是如此：风险无处不在，但关键不是躲开所有风险，是确保你不会因为一次风险事件而出局。</p><p>让我给你讲个故事。1998年，长期资本管理公司（LTCM）破产，这家由诺贝尔奖得主管理的对冲基金，因为过度杠杆和忽视尾部风险，一夜之间亏掉46亿美元。他们以为自己计算了所有风险，却忽略了“黑天鹅”事件——俄罗斯债务违约。这就是典型的“出局”案例：一次风险事件，把整个公司清零。纳瓦尔和芒格都强调，真正的风险不是波动，是永久性损失。</p><p>相反，看看沃伦·巴菲特。他一生中经历过多次市场崩盘，但从未被“出局”。为什么？因为他有一条铁律：永远不要用借来的钱投资。他说过：“如果你足够聪明，你就不需要杠杆；如果你不够聪明，杠杆会让你破产。”这就是风险管理的核心：不是不冒险，是确保你永远有东山再起的机会。</p><p>所以，今天我们要探讨的不是如何消除风险，而是如何与风险共舞。你将学会区分哪些风险值得承担，哪些风险必须避免，以及如何设计一个让你永不“出局”的系统。准备好了吗？让我们开始吧。</p><blockquote>“如果你不想被风险击倒，就别把全部身家押在那些可能让你永久出局的事情上。”——纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：风险的四种类型与尾部风险</h3><p>纳瓦尔把风险分为三类：已知风险、未知风险和不可知风险。理解这三者，是管理风险的第一步。</p><p><strong>已知风险</strong>是你明确知道的，比如股票市场会波动、创业可能失败、开车可能出事故。这些风险你可以量化、可以规划。比如，你知道投资股票有30%的波动率，就可以设置止损线。纳瓦尔说，对已知风险，你只需要做一件事：确保自己不会因为一次波动而出局。</p><p><strong>未知风险</strong>是你知道可能存在但无法预知的，比如经济衰退的时机、竞争对手的新技术。这些风险需要你用冗余和缓冲来应对。例如，企业保留现金储备，不是为了赚更多钱，而是为了度过未知的寒冬。芒格和纳瓦尔都强调，现金不是垃圾，是应对未知风险的保险。</p><p><strong>不可知风险</strong>是你连想都想不到的事件，比如2020年的新冠疫情、9·11恐怖袭击。这些是真正的“黑天鹅”。没有人能预测它们，但你可以通过分散化来减轻其影响。纳瓦尔说：“不要把鸡蛋放在一个篮子里，但更重要的是，确保每个篮子都不会让你全部身家消失。”</p><p>在所有这些风险中，最危险的是<strong>尾部风险</strong>——发生概率极低、但影响巨大的事件。比如，一次车祸可能毁掉你一生积蓄；一次投资失误可能让你破产；一次健康问题可能让你失去工作能力。尾部风险的关键在于：它的概率可能只有1%，但一旦发生，后果是100%的灾难。纳瓦尔认为，大多数人忽视尾部风险，因为他们只关注平均值，却忘了“平均值”不能保护你免于破产。</p><p>举个例子。2008年金融危机前，许多银行家认为房贷违约的概率很低，所以他们用高杠杆投资次贷债券。但尾部风险来了：违约率从1%飙升到10%，这些银行瞬间破产。这就是忽视尾部风险的代价。纳瓦尔说：“不要在你无法承受损失的事情上冒险，哪怕概率只有万分之一。”</p><p>那么，如何管理尾部风险？答案很直接：识别那些可能导致你“永久出局”的事情，然后坚决避免。比如，不要借高利贷投资、不要酒驾、不要忽视健康检查。这些事看起来微不足道，但一旦发生，后果不可逆。</p><h3>三、深层分析：杠铃策略——极度安全+极度冒险</h3><p>纳瓦尔提出了一种优雅的风险管理方法：<strong>杠铃策略</strong>。这个策略由塔勒布在《反脆弱》中系统阐述，纳瓦尔将其用于个人财务和人生决策。简单来说，就是把你的资源分成两部分：90%放在极度安全的资产上，10%放在极度冒险的尝试上。</p><p>为什么这样有效？因为安全部分让你永不“出局”，而冒险部分给你无限可能。纳瓦尔自己就是这样做的：他把大部分财富投入低风险的指数基金和国债，然后用一小部分资金投资高风险初创公司。他解释说：“如果你把90%的资金放在安全资产上，即使那10%全亏了，你也不会破产。但如果那10%中有一个成功，回报可能是100倍。”</p><p>杠铃策略的核心逻辑是：避免中间地带。很多人犯的错误是“中庸”——把资金放在中等风险、中等收益的资产上，比如一些所谓的“平衡型基金”。但纳瓦尔认为，这种策略既不能保护你免受尾部风险，也无法带来超额回报。相反，杠铃策略让你同时拥有安全感和增长潜力。</p><p>让我们看一个现实案例。2010年，一位程序员叫杰克，他把90%的积蓄放入国债和现金，然后用10%投资比特币。当时比特币价格只有几美元，风险极高。但杰克知道，即使这10%全亏了，他的生活也不会受影响。结果呢？比特币涨到数万美元，那10%变成了他总资产的80%。这就是杠铃策略的威力——用安全保住底线，用冒险追求上限。</p><p>纳瓦尔还把这个策略扩展到人生其他领域。比如，职业选择：你可以有一份稳定的工作（安全端），同时利用业余时间创业或学习新技能（冒险端）。这样，即使创业失败，你还有工作保底。相反，如果你辞职全职创业，就等于把所有筹码押在冒险端，一旦失败就“出局”。</p><p>芒格和纳瓦尔都强调，杠铃策略需要纪律。你不能在冒险部分投入太多，否则就变成了赌博；也不能在安全部分投入太少，否则无法抵御风险。关键是找到那个平衡点：确保安全端足够大，让你在冒险端失败后仍能继续游戏。</p><h3>四、实践应用：设计你的风险资产负债表</h3><p>现在，让我们把理论变成行动。风险管理不是纸上谈兵，而是每天都要做的决策。纳瓦尔说：“风险管理的最高境界，是让风险成为你的盟友，而不是敌人。”如何做到？我建议你从两个步骤开始。</p><p><strong>第一步：识别“永久出局”清单。</strong>拿出纸笔，列出你人生中可能导致永久出局的3件事。永久出局意味着：一旦发生，你的人生再也无法回到原来轨道。比如：健康崩溃、法律诉讼、财务破产、家庭破裂。纳瓦尔自己最担心的是健康和法律问题，所以他每天锻炼、定期体检，并聘请律师审核所有合同。你呢？你的清单是什么？写下来，然后问自己：我做了什么来防止它们？</p><p><strong>第二步：设计你的风险资产负债表。</strong>这个表格有两栏：资产端和风险暴露端。资产端包括你的现金、技能、人际关系、健康等；风险暴露端包括你面临的主要风险，比如投资亏损、失业、疾病。然后，问自己一个问题：平衡吗？如果风险暴露端远大于资产端，你处于危险中；如果资产端足够覆盖风险，你就安全。</p><p>举个例子。假设你的资产端有100万元现金、一份稳定工作、健康的身体。风险暴露端是：你投资了50万元在加密货币上，并且没有保险。那么，你的资产负债表就不平衡——因为加密货币的高波动可能让你的资产缩水80%，而你没有缓冲。解决方案：要么减少加密货币仓位，要么增加现金储备或购买保险。</p><p>纳瓦尔强调，风险资产负债表不是静态的，需要定期更新。每半年检查一次：你的风险暴露变了没有？你的资产端增长了吗？如果你换了工作、生了孩子、买了房子，风险暴露都会变化。芒格说：“如果你不管理风险，风险就会管理你。”所以，主动出击。</p><p>最后，记住课后作业：设计你自己的风险资产负债表，并评估是否平衡。不要偷懒，这是你未来十年最重要的财务工具之一。纳瓦尔说：“真正的财富不是拥有多少钱，而是你永远不会被风险击倒的能力。”学会与风险共舞，你就能在不确定性中活得从容。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说「不要在可能让你出局的事上冒险」。请用自己的话解释：什么是「出局风险」？它和普通风险有什么本质区别？为什么尾部风险特别值得警惕？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考「出局」意味着无法翻盘，与「损失」不同。尾部风险虽概率小，但后果不可逆。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 出局风险指一旦发生，你将永久失去继续游戏资格的风险，如破产、重病、入狱。<br>2. 普通风险可承受并从中学习（如投资亏损20%），而出局风险意味着游戏结束。<br>3. 尾部风险是极端事件，概率低但后果毁灭性，人们常因忽视其可能性而毫无防备，一旦发生即出局。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你每月有5000元闲钱。请设计一个「杠铃策略」的分配方案，并说明你为什么这样分配。要求明确区分「极度安全」和「极度冒险」两部分。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">安全部分用国债/定期存款保本，冒险部分用高波动资产（如期权/加密货币），中间地带全放弃。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 极度安全（90%即4500元）：存入高流动性保本账户，如货币基金或国债，确保任何时候有应急资金。<br>2. 极度冒险（10%即500元）：投入高风险高回报资产，如初创公司股权或加密货币期权，接受归零可能。<br>3. 理由：安全部分保证生存和机会成本，冒险部分以小博大，避免在中等风险中温水煮青蛙。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第15课《复利思维》中「人生复利」的概念，结合本课风险管理，说明为什么「健康」是人生最大的复利引擎，同时也是最大的出局风险？你如何用杠铃策略保护它？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">健康复利：每天小投入积累巨大回报；健康出局：一次大病可能清零。杠铃策略：基础健康投资+极端预防。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 健康是复利引擎：每天锻炼、睡眠、饮食的小投入，随年龄呈指数级增长，提升所有人生领域效能。<br>2. 健康是出局风险：一次严重疾病或意外可能永久终结你的能力，无法逆转。<br>3. 杠铃策略应用：<br>   - 极度安全（90%）：坚持规律作息、均衡营养、常规体检，确保基础健康不崩盘。<br>   - 极度冒险（10%）：预留紧急医疗基金，购买高端健康保险，应对小概率大病。<br>   - 避免中间地带：不沉迷保健品、不盲目极限运动，集中资源保底防爆。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval062.html" class="prev">上一课</a>
+ <a href="naval064.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

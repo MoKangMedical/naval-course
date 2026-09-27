@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>如何阅读一本书 — 纳瓦尔通识课第71课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 71 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 8 · 阅读与学习</div>
+ <h1>如何阅读一本书</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 71/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval071.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：阅读，是唯一值得投资的元技能</h3><p>想象你面前有两扇门。一扇门通往一个房间，里面堆满了一千本书，每本都泛黄起皱，像是被匆忙翻过。另一扇门通往一个房间，书架上只有十本书，但每本都被翻烂了，书页边缘有密密麻麻的笔记，书脊开裂，显然被反复阅读过。纳瓦尔·拉维坎特会毫不犹豫地选择第二扇门。</p><p>纳瓦尔曾说：“阅读是终极的元技能。你可以用它来学习任何其他技能。”这句话乍听像一句鸡汤，但细想一下，它揭示了一个残酷的事实：在信息爆炸的时代，大多数人不是在阅读，而是在“消费”内容。他们刷新闻、看短视频、听书评，以为自己在学习，实际上只是用“忙碌感”替代了真正的理解。</p><p>纳瓦尔自己就是阅读的狂热信徒。他从小在图书馆长大，童年时因为母亲工作繁忙，他常常被送到图书馆，一待就是几个小时。他后来回忆说：“图书馆是我最早的学校。没有图书馆，就没有今天的我。”但有趣的是，他并不主张“读得越多越好”。相反，他反复强调：阅读的质量远比数量重要。一本好书带来的价值，可能超过一百本平庸的书的总和。</p><p>为什么？因为阅读不是输入，而是对话。当你读一本好书时，你是在和一位智者对话。你的大脑必须主动思考、质疑、联想，而不是被动接收。这种深度加工的过程，才是真正的学习。而平庸的书——那些为了畅销而写的、为了填充篇幅而注水的书——只会让你的大脑变得懒惰，习惯接受现成的结论，而不是自己得出判断。</p><p>所以，纳瓦尔的阅读方法论，核心就一个字：慢。慢到你能和作者辩论，慢到你能在字里行间发现漏洞，慢到你能把书中的思想内化成自己的行动。这门课，就是教你怎么做到这一点。</p><blockquote>“阅读不是速度比赛。如果你读了一本书，但什么都没记住，那你等于没读。”——纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：纳瓦尔的阅读哲学——品味大于速度</h3><p>纳瓦尔的阅读哲学可以总结为四个核心原则，它们共同构成了一套完整的阅读方法论。</p><p><strong>原则一：品味大于速度。</strong>纳瓦尔认为，阅读的“品味”决定了一切。品味不是天生的，而是通过反复接触高质量内容培养出来的。就像品酒师能分辨出细微的差别，一个高品味的读者能迅速判断一本书是否值得读。他建议：如果你发现自己对一本书感到无聊，那就放下它。不要因为“已经读了一半”而硬撑。时间是你最宝贵的资产，浪费在一本平庸的书上，等于浪费了学习另一本好书的机会。</p><p><strong>原则二：只读最好的书。</strong>纳瓦尔常说：“书是廉价的，但时间不是。”他建议优先读经典——那些经过时间检验、被一代代人验证过的书。比如，他反复推荐《穷查理宝典》《道德经》《人类简史》等。为什么？因为经典之所以成为经典，是因为它们触及了人性的底层规律，而不是追逐一时的潮流。他警告说：“大多数书都是噪音。你的任务是把信号从噪音中筛选出来。”</p><p><strong>原则三：放弃一本书的权利。</strong>这是最反直觉的一点。我们从小被教育“做事要有始有终”，但纳瓦尔说：“如果你读不下去，就果断放弃。不要有负罪感。”他举了一个例子：他曾经开始读一本关于物理学的书，读了50页后发现完全超出自己的知识范围。他没有硬啃，而是把书放下，先去读了一本更基础的物理学入门书。几年后，当他有了足够的知识储备，再回头读那本书，发现它变得清晰易懂。他总结道：“放弃不是失败，而是策略。你只是在等待更好的时机。”</p><p><strong>原则四：重读的力量。</strong>纳瓦尔认为，真正改变你人生的书，不是读一遍就够的。他每年都会重读几本经典，每次都发现新的东西。他说：“一本书就像一面镜子。你变了，书就变了。你重读时看到的，其实是自己成长的痕迹。”他特别推荐《道德经》，说自己读了不下十遍，每次都有新的感悟。</p><p>这四个原则共同指向一个核心：阅读不是为了“完成”一本书，而是为了“吸收”一本书。速度只是副产品，理解才是目标。</p><h3>三、深层分析：为什么“读不完”比“读完”更重要</h3><p>纳瓦尔的阅读哲学之所以有效，是因为它挑战了现代社会的效率崇拜。我们总是追求“读完”的数量，把阅读当成一项任务，而不是一种体验。但纳瓦尔指出，这种心态恰恰是学习的大敌。</p><p>让我们深入分析“放弃一本书”这个原则。为什么它如此重要？因为人类的注意力是有限的，而信息是无限的。如果你把时间花在一本平庸的书上，你就失去了读一本好书的机会。这就像在自助餐厅里，你为了不浪费已经拿的食物，硬撑着吃下难吃的菜，结果错过了真正美味的佳肴。纳瓦尔说：“你不需要为放弃一本书感到内疚。你只是在做一次资源分配决策。”</p><p>那么，如何判断一本书是否值得继续读？纳瓦尔给出了一个简单的方法：读到第50页，问自己两个问题。第一，这本书有没有让我产生新的想法？第二，我是否期待继续读下去？如果两个答案都是“否”，那就果断放下。如果只有一个是“是”，可以考虑再给20页的机会。如果两个都是“是”，恭喜你，你找到了一本好书。</p><p>接下来看“重读”的力量。为什么重读比读新书更有价值？因为人类的记忆是脆弱的。研究表明，我们读一本书后，一周内会忘记80%的内容。但重读时，由于你对框架已经熟悉，大脑可以更专注于细节和深层含义。纳瓦尔举了自己的例子：他年轻时读《穷查理宝典》，只是觉得芒格很聪明。但多年后重读，他发现自己能理解芒格提到的“心理模型”了，因为他自己也在投资中验证过这些模型。他说：“重读不是重复，而是升级。你带着新的经验去读，书就变成了新的书。”</p><p>芒格和纳瓦尔都强调，阅读的本质是“理解规律”，而不是“积累信息”。信息会过时，但规律永存。比如，你读一本关于商业的书，如果它只是列举2020年的案例，那它三年后就失效了。但如果它讲的是“供需关系”“人性弱点”这些底层规律，那它十年后依然有价值。这就是为什么纳瓦尔偏爱哲学、历史、科学类的书——这些领域的规律变化最慢。</p><h3>四、实践应用：如何把纳瓦尔的阅读法变成你的习惯</h3><p>理论讲完了，现在进入实操环节。纳瓦尔的阅读法不是空中楼阁，而是可以落地执行的。以下是四个具体的行动步骤。</p><p><strong>第一步：建立你的“经典书单”。</strong>拿出纸笔，写下你过去三年里读过的、真正改变你想法或行为的书。如果少于三本，说明你需要调整选书策略。然后，去网上搜索“经典书单”——比如《穷查理宝典》《思考，快与慢》《人类简史》等。从中选出五本，作为你未来三个月的必读书。记住，纳瓦尔的原则：只读最好的。</p><p><strong>第二步：练习“放弃”的艺术。</strong>从今天开始，当你读一本书感到无聊时，允许自己放下它。但不要只是放弃，要记录放弃的原因：是内容太浅？还是太难？还是风格不合？这个记录会帮你逐渐培养“品味”。纳瓦尔说：“你的放弃记录，就是你品味的训练日志。”</p><p><strong>第三步：实施“重读计划”。</strong>从你的经典书单中选一本，现在就开始重读。读的时候，拿一支笔，随时写下你这次注意到的新东西。比如，你上次读《道德经》时可能只记住了“道可道，非常道”，但这次你可能发现“上善若水”背后的领导力智慧。纳瓦尔说：“重读时，你是在和过去的自己对话。”</p><p><strong>第四步：课后实践与作业。</strong>检视你最近读过的5本书。问自己：哪些真正改变了我的想法或行为？哪些我完全可以不读？把答案写下来。然后，挑选一本你过去读过的、改变你想法最多的书，再读一遍。记录你这次注意到但上次忽略的细节。这个作业会直接验证纳瓦尔的理论：好书值得反复读，平庸的书不值得读完。</p><p>最后，记住纳瓦尔的话：“阅读不是终点，而是起点。真正重要的不是你在书里看到了什么，而是你读完之后做了什么。”从今天起，停止追求阅读的数量，开始追求阅读的质量。你的大脑会感谢你。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔强调“品味>速度”，但许多人读书时仍追求翻页数量。请解释为什么“品味”比“速度”更重要，并用自己的话说明“放弃一本书的权利”如何支持这一理念。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考阅读的目的是获取深度理解还是完成数量指标。放弃权利意味着你可以选择更优质的内容。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 纳瓦尔认为阅读的核心是吸收能改变你思维或行为的精华，而非追求数量。速度可能导致浅尝辄止，而品味让你反复咀嚼关键段落，形成深刻记忆。2. “放弃一本书的权利”允许你跳过不适合或低质量的书，将时间留给真正值得精读的经典。这直接支持品味优先：不是每一本书都值得读完，只有那些能触发你思考的才值得投入。3. 例如，读一本哲学书时，花一小时理解一个核心观点，比快速翻完十本鸡汤书更有价值。品味让你在阅读中积累智慧，而非数据。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你最近正在读一本畅销书，但读到一半发现内容重复、缺乏新意，内心纠结是否继续。请运用纳瓦尔的方法论，列出你此时应该采取的三个具体行动，并说明理由。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回顾纳瓦尔关于选书和放弃权利的原则。行动应基于“只读最好的”和“没必要读完”的决策逻辑。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 立即停止阅读：根据纳瓦尔“放弃一本书的权利”，你不需要因沉没成本而坚持。浪费时间在低质量内容上，等于剥夺了读更好书的机会。2. 回顾选书标准：检查当初选择这本书的原因（如跟风或推荐）。纳瓦尔建议只读经过时间检验的经典或能解决你具体问题的书。如果这本书不符合这些标准，果断放弃。3. 替换为更有价值的书：用节省的时间去重读一本曾改变你观点的经典，或寻找一本能提供新框架的书。例如，若你在读一本泛泛的自我管理书，不如换成《思考，快与慢》之类的深度作品。这样你不仅避免了低效阅读，还强化了“品味优先”的习惯。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合本课“重读的力量”和之前学过的“复利思维”（如第3课《时间与复利》），解释为什么重读经典书籍能产生认知复利。请举一个具体例子说明。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">重读带来的新收获类似于复利中本金增长。思考每次重读如何基于前次理解叠加新视角。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 认知复利的核心是每次投入产生持续增值。重读经典时，你带着新的生活经验和知识背景，能发现之前忽略的层次，就像复利中利息加入本金后产生更多利息。2. 例如，读《穷查理宝典》第一遍时，你可能只记住芒格的“多元思维模型”；十年后重读，结合你经历的商业失败，你会深刻理解“避免愚蠢”比“追求聪明”更重要。这种新洞察是前次阅读的积累衍生出的，不是凭空产生。3. 纳瓦尔强调“经典书籍每次读都有新收获”，正符合复利特性：每次重读都基于前次理解叠加新视角，形成指数级认知增长。而快速读新书往往只是线性积累，难以产生这种复合效应。因此，重读是最高效的阅读策略之一，它让时间成为你的盟友。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval070.html" class="prev">上一课</a>
+ <a href="naval072.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

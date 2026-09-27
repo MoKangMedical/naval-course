@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>真正的自由 — 纳瓦尔通识课第86课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 86 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>真正的自由</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 86/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval086.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：自由的真正含义</h3><p>想象这样一个人：他拥有亿万财富，却每天被会议、邮件和决策绑架。他的时间不属于自己，他的思想被市场波动牵着走，他的身体被固定在办公室。纳瓦尔会问：这样的人真的自由吗？</p><p>纳瓦尔曾坦言，他追求的不是财富本身，而是自由。财富只是工具，自由才是目的。他说：“我真正想要的是自由——不必做任何我不想做的事。”这句话看似简单，却道破了现代人最大的困惑：我们拼命赚钱，却往往在过程中失去了自由。</p><p>让我们先厘清一个关键点：自由不是放纵。纳瓦尔强调，自由不是随心所欲地做任何事，而是拥有选择权——选择做什么、不做什么、何时做、与谁做。这种选择权，才是自由的本质。</p><p>举个具体例子：一位年薪百万的投行高管，表面上风光无限，但他可能凌晨三点还在回复邮件，周末被客户电话打断，一年到头没有完整假期。而一位自由职业的插画师，收入可能只有前者的十分之一，但他可以决定今天画什么、在哪里画、画多久。从自由的角度看，插画师可能更自由。</p><p>纳瓦尔的思想深受斯多葛哲学影响。斯多葛学派认为，真正的自由来自内在的掌控——控制你能控制的，放下你不能控制的。纳瓦尔将这种智慧现代化：自由不是外部环境的完美，而是你对环境的反应能力。</p><p>芒格和纳瓦尔都强调，财富积累只是手段，不是目的。芒格曾说：“走到生命尽头时，你希望自己拥有的不是更多的钱，而是更多的智慧。”纳瓦尔更进一步：智慧的核心，是理解什么是真正的自由，并为之努力。</p><p>这一课，我们将深入探讨纳瓦尔对自由的定义，拆解自由的四个维度，并帮助你衡量自己的自由程度。记住，自由不是终点，而是一种状态——一种你可以持续追求和优化的状态。</p><h3>二、核心理论：自由的四个维度</h3><p>纳瓦尔将自由拆解为四个相互关联的维度：时间自由、地点自由、财务自由、思想自由。理解这四个维度，是通往真正自由的第一步。</p><p>第一，时间自由。这是最基础的维度。纳瓦尔认为，时间是你最宝贵的资源，因为它不可再生。时间自由意味着你能掌控自己的时间分配——你决定工作多久、休息多久、陪伴家人多久。一个没有时间自由的人，即使拥有亿万财富，也是奴隶。纳瓦尔自己就践行这一点：他每天只工作几小时，把大量时间用于阅读、思考和运动。</p><p>第二，地点自由。纳瓦尔是数字游民理念的先驱。他认为，现代技术已经允许我们在任何地方工作，为什么还要被办公室束缚？地点自由意味着你可以选择居住在哪里、在哪里工作、在哪里生活。纳瓦尔曾在推特上说：“我的办公室是整个世界。”他可以在海滩、咖啡馆、山间小屋处理工作，只要有一台电脑和网络。</p><p>第三，财务自由。这是大多数人最熟悉的维度。财务自由不是拥有花不完的钱，而是你的被动收入能覆盖基本生活开支，从而你不必为了生存而工作。纳瓦尔强调，财务自由的关键是“拥有资产，而不是出卖时间”。资产可以是股权、知识产权、房地产，甚至是数字产品。当你的资产产生的收入超过你的支出，你就获得了财务自由。</p><p>第四，思想自由。这是最高级的维度。思想自由意味着你不被社会规训、媒体噪音、他人期望所绑架。你能独立思考，形成自己的价值观和判断。纳瓦尔说：“思想自由是其他所有自由的基础。”没有思想自由，你即使有时间、地点、财务自由，也是行尸走肉。</p><p>这四个维度相互影响，但并非线性关系。例如，财务自由可以帮助你获得时间和地点自由，但思想自由需要内在修炼。纳瓦尔认为，思想自由是最难获得的，因为它需要你不断质疑默认假设，包括对“成功”“幸福”“意义”的定义。</p><p>芒格和纳瓦尔都强调，自由不是一蹴而就的。它是一个渐进的过程，需要你在每个维度上持续努力。芒格曾说：“每天起床时，比昨天聪明一点点。”对于自由也是如此：每天比昨天更自由一点点。</p><h3>三、深层分析：为什么自由比财富更重要</h3><p>纳瓦尔的观点可能会让很多人困惑：财富不是越多越好吗？为什么自由比财富更重要？让我们深入分析。</p><p>第一，财富有边际效用递减。纳瓦尔指出，当你的财富超过一定阈值后，每增加一单位财富带来的幸福感会急剧下降。这个阈值因人而异，但通常不高——比如能覆盖基本生活、医疗、教育后，再多钱只是数字。而自由没有边际效用递减：每增加一点时间自由、地点自由、思想自由，你的生活质量都会提升。</p><p>第二，财富可能是自由的陷阱。很多人为了追求财富，牺牲了时间、地点、思想自由。他们每天工作12小时，放弃爱好，忽视健康，随波逐流。最终，他们可能积累了财富，却失去了自由本身。纳瓦尔说：“如果你为了赚钱而失去了自由，那么你赚到的钱毫无意义。”这是一个悖论：追求财富的过程，可能恰恰是失去自由的过程。</p><p>第三，自由是幸福的直接来源。纳瓦尔认为，幸福的核心是平和与满足，而自由是达成这种状态的前提。当你拥有时间自由，你可以做真正热爱的事；当你拥有地点自由，你可以选择让自己愉悦的环境；当你拥有思想自由，你可以不被外界噪音干扰。这些直接转化为幸福感。</p><p>芒格和纳瓦尔都强调，长期来看，自由比财富更能抵御风险。财富可能被通胀、市场崩盘、政策变化侵蚀，但自由——尤其是思想自由——是内在的，无法被剥夺。芒格曾说：“最好的投资是投资你自己，因为没有人能拿走你学到的东西。”同样，没有人能拿走你的自由，除非你放弃它。</p><p>让我们用一个案例来理解。假设有两个人：A拥有1000万美元，但每天被各种责任和压力束缚，无法做自己喜欢的事；B拥有100万美元，但时间自由、地点自由、思想自由，可以随心生活。纳瓦尔会选择B。因为B的自由程度更高，而A的财富只是数字，无法转化为真正的自由。</p><p>纳瓦尔还提醒我们，自由不是放纵。自由需要自律。他说：“真正的自由是你能对自己说‘不’。”如果你不能拒绝诱惑，不能控制冲动，那么你其实是被欲望奴役。自由的反面不是束缚，而是失控。</p><h3>四、实践应用：如何衡量和提升你的自由</h3><p>理论讲完了，现在进入最实用的部分：如何衡量你的自由程度，并制定提升计划。</p><p>首先，为你的四个自由维度打分。使用1-10的量表，1代表完全没有自由，10代表完全自由。诚实评估自己：时间自由：你的时间有多少是自己掌控的？地点自由：你能在多大程度上选择工作地点？财务自由：你的被动收入覆盖了多少生活开支？思想自由：你有多大的独立思考能力？</p><p>纳瓦尔建议，不要追求每个维度都满分。因为资源有限，你需要聚焦于最短板。比如，如果你的思想自由得分只有3，那么即使其他维度都是9，你依然不自由。因为思想自由是基础。</p><p>其次，选择一个自由度最低的维度，设计一个具体提升计划。以小步快跑为原则，不要试图一夜改变。比如，如果时间自由最低，你可以从“每天留出30分钟无干扰时间”开始。如果地点自由最低，你可以尝试“每周远程工作一天”。如果财务自由最低，你可以“每月存下10%收入用于投资资产”。如果思想自由最低，你可以“每天阅读30分钟，并写下自己的思考”。</p><p>记住纳瓦尔的忠告：“最小的第一步比完美的计划更重要。”不要追求宏大方案，而是寻找那个“最小可行行动”。比如，提升思想自由的第一步，可能只是关掉手机通知，每天静坐5分钟。</p><p>最后，建立一个反馈机制。每周回顾你的自由分数，看是否提升。如果某个维度停滞不前，反思原因：是外部限制，还是内在恐惧？纳瓦尔说：“恐惧是自由的最大敌人。”我们害怕失去安全感，害怕别人的评价，害怕不确定性。克服恐惧，才能获得自由。</p><p>芒格和纳瓦尔都强调，自由不是终点，而是一种持续的状态。你永远不会达到“完全自由”，但你可以不断接近。芒格曾说：“人生的意义在于持续进步。”自由也是如此：不是要达到某个标准，而是每天比昨天更自由一点。</p><p>课后，请完成两个任务：第一，在1-10的量表上，为你的四个自由维度打分。第二，选择一个自由度最低的维度，设计一个提升计划，并明确最小的第一步。纳瓦尔说：“行动是自由的钥匙。”现在，开始行动吧。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔认为“自由比财富更重要”，请结合课程中提到的四个自由维度（时间、地点、财务、思想），解释为什么一个人即使拥有巨额财富，也可能并不真正自由？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考财富可能带来的束缚：比如为了维持财富而牺牲时间、被迫固定地点、或陷入社会期望的思维牢笼。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 时间自由：财富可能伴随高强度工作，失去自主支配时间的能力。2. 地点自由：财富可能要求你住在特定城市或频繁出差，而非随心选择。3. 财务自由：财富本身若成为焦虑来源（如投资压力），反而限制心理自由。4. 思想自由：财富可能让你陷入社会比较或“富人思维”的刻板模式，失去独立思考。纳瓦尔强调，自由是选择的权力，财富只是工具，若工具反客为主，则自由丧失。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你刚获得一笔意外之财，但需要你每天工作12小时、住在偏远工厂附近、不能使用手机，为期两年。用四个自由维度分析：这是否让你更自由？你会接受吗？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">分别评估每个维度：时间被锁定，地点被限制，财务短期改善，思想被隔离。权衡长期自由与短期收益。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 时间自由：完全丧失，每天12小时被占用。2. 地点自由：被强制固定，无法移动。3. 财务自由：短期财富增加，但两年后可能因技能退化而受限。4. 思想自由：隔离环境可能减少信息输入，但也可专注思考。总体而言，这牺牲了三个维度，仅财务短期提升。纳瓦尔认为自由是整体选择权，不接受更明智，因为真正的自由应平衡四维，而非孤注一掷。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾本课程中“自由不是放纵——是选择”的观点，结合此前学过的“杠杆效应”和“复利思维”，设计一个能同时提升时间、地点、财务、思想自由度的具体行动方案。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考如何用杠杆（如代码、媒体）创造被动收入，用复利积累知识，从而解放时间和空间，同时保持独立思考。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 时间自由：利用代码或媒体杠杆创建自动化收入系统（如在线课程），减少主动工作。2. 地点自由：选择远程工作或数字游民方式，依赖杠杆产品而非地点。3. 财务自由：将收入投入复利资产（如指数基金），让资本自动增长。4. 思想自由：每日阅读多元观点，刻意练习拒绝社会主流叙事，通过复利积累独立判断力。行动方案：第一年开发杠杆产品，第二年投资复利资产，第三年建立批判性思考习惯，最终实现四维自由同步提升。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval085.html" class="prev">上一课</a>
+ <a href="naval087.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

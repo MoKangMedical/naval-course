@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宏观经济学入门 — 纳瓦尔通识课第52课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 52 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 6 · 经济学思维</div>
+ <h1>宏观经济学入门</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 52/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval052.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么你需要关心宏观经济学？</h3><p>想象一下，你是一名船长，驾驶着一艘小船在海上航行。如果你只关注船内的细节——燃料是否充足、船舱是否整洁——你可能会忽略海面上的大风暴或洋流的变化。宏观经济学，就是帮你抬头看“大海”的学问。它不教你如何修船，而是告诉你整个海洋的气候如何变化，以及这些变化如何影响你的航行。</p><p>纳瓦尔曾说过：“微观经济学是必修课，宏观经济学是选修课。”但这门“选修课”其实至关重要，因为它直接影响你的钱包。比如，当通货膨胀率飙升时，你存在银行里的钱购买力会缩水；当经济衰退时，你可能会面临失业风险；当央行降息时，你的房贷利息会减少。这些看似遥远的“国家大事”，实际上每天都在塑造你的财务生活。</p><p>很多人对宏观经济学的第一印象是枯燥的图表和公式。但纳瓦尔提醒我们，理解这些概念不需要成为经济学家。你只需要掌握几个核心指标——GDP、通货膨胀、利率和经济周期——就能像看天气预报一样，预判经济的“晴雨”。比如，2020年新冠疫情爆发后，全球多国GDP大幅下滑，但随后央行降息、政府发钱，经济快速反弹。如果你当时理解了这些逻辑，或许就能在股市低迷时抄底，而不是恐慌抛售。</p><p>芒格和纳瓦尔都强调，跨学科思维是智慧的核心。宏观经济学正是这种思维的基石。它帮你跳出个人视角，看到系统性的力量。比如，房价上涨可能不是因为你所在的城市特别优秀，而是因为全国性的货币超发；工资不涨可能不是因为你不努力，而是因为经济结构转型导致劳动力供过于求。理解这些，能让你少一些焦虑，多一些应对策略。</p><p>这一课，我们将从四个关键概念入手：GDP是国家的收入报表，告诉你经济是增长还是萎缩；通货膨胀是钱变少的隐形税；央行和利率是经济的“中央空调”，调节冷热；经济周期则是繁荣和衰退的必然循环。学完这一课，你不仅能看懂新闻里的经济数据，还能做出更明智的个人财务决策。</p><blockquote>纳瓦尔曾说：“财富是你在睡觉时也能赚钱的东西。”而宏观经济学，就是帮你找到那些“睡觉时也能赚钱”的系统性机会。</blockquote><h3>二、核心理论：四大基石——GDP、通货膨胀、利率、经济周期</h3><p>宏观经济学有四大核心概念，它们就像房屋的四根柱子，支撑起我们对国家经济的理解。第一根柱子是GDP（国内生产总值）。简单说，GDP就是一个国家在一年内生产的所有最终商品和服务的市场价值总和。你可以把它想象成国家的“收入报表”。如果GDP增长，说明经济在扩张，企业赚钱，就业增加；如果GDP萎缩，说明经济在衰退，大家日子都难过。</p><p>纳瓦尔认为，GDP增长的本质是生产力的提升。比如，一个工人过去每天生产10件产品，现在通过学习新技术，每天生产20件，那么GDP就会翻倍。但要注意，GDP也有局限性。它不计算地下经济（比如黑市交易），也不反映收入分配是否公平。比如，一个国家GDP增长很快，但财富只集中在少数人手里，普通人的生活可能并没有改善。因此，看GDP时，还要结合其他指标。</p><p>第二根柱子是通货膨胀。纳瓦尔曾用一句话解释它：“通货膨胀是财富的隐形杀手。”当物价普遍上涨时，你手里的钱购买力下降。比如，10年前一碗面5元，现在要15元，你的100元存款能买的面条数量从20碗降到了不到7碗。通货膨胀的原因有很多，最常见的是货币超发——央行印了太多钱，而商品和服务没有同步增加。2020年后，全球多国通胀飙升，就是由于疫情期间大规模印钞刺激经济。</p><p>第三根柱子是利率和央行。央行（如美联储、中国人民银行）是经济的“中央空调”。当经济过热、通胀过高时，央行会调高利率，让借钱变贵，从而给经济降温；当经济过冷、失业率高时，央行会降低利率，让借钱变便宜，刺激消费和投资。纳瓦尔提醒我们，利率是所有资产定价的“锚”。比如，利率低时，股票和房产的估值往往更高，因为人们愿意为未来的收益支付更高的价格。</p><p>第四根柱子是经济周期。经济不会一直线性增长，而是像心电图一样有起伏。繁荣期，大家信心满满，投资和消费旺盛；衰退期，大家收缩开支，企业裁员。纳瓦尔认为，经济周期是人性“贪婪与恐惧”的宏观体现。比如，2008年金融危机前，美国房地产泡沫破裂，就是过度乐观和杠杆的结果。理解周期，能帮你在繁荣时保持清醒，在衰退时看到机会。</p><h3>三、深层分析：这些概念如何影响你的日常生活？</h3><p>现在，我们把这些抽象概念拉近到你的生活。先看GDP。假设你所在的国家GDP增速从6%降到2%，这意味着什么？对企业来说，市场需求减少，销售额可能下滑；对个人来说，找工作更难，加薪更少。纳瓦尔曾建议，在GDP增速放缓时，要更注重现金流和储蓄，而不是冒险投资。比如，2023年中国GDP增速放缓，很多互联网公司裁员，如果你提前储备了6个月的应急资金，就能从容应对。</p><p>再看通货膨胀。纳瓦尔认为，通货膨胀是对“现金持有者”的一种惩罚。如果你把所有积蓄都存在活期账户里，通胀会慢慢吞噬你的购买力。比如，假设通胀率是5%，而你存款利率只有1%，那么你的实际购买力每年缩水4%。因此，纳瓦尔建议，要避免持有过多现金，而是投资于能抗通胀的资产，如股票、房产或黄金。但要注意，不是所有资产都能抗通胀，比如某些债券在通胀时反而会贬值。</p><p>利率的影响更直接。以房贷为例，如果央行加息，你的月供会增加，购房成本上升；如果央行降息，月供减少，购房更划算。纳瓦尔曾说：“利率是经济的温度计。”2020年，美联储将利率降到接近零，刺激了全球资产价格上涨。如果你当时理解了这一点，或许会考虑增加股票或房产配置。但也要注意，低利率也会催生泡沫，比如2021年的加密货币狂热。</p><p>最后看经济周期。纳瓦尔和芒格都强调，周期是不可避免的。繁荣时，人们容易过度自信，借钱消费或投资；衰退时，人们又过度悲观，抛售资产。但真正的智慧是“逆周期”操作：在别人贪婪时恐惧，在别人恐惧时贪婪。比如，2008年金融危机后，巴菲特大量买入优质股票，后来赚得盆满钵满。纳瓦尔也建议，在经济衰退时，可以多学习、提升技能，因为此时机会成本低，而未来回报更高。</p><p>一个有趣的案例是“日本失落的三十年”。1990年日本经济泡沫破裂后，GDP长期停滞，通胀极低甚至通缩，利率接近零。这导致日本年轻人失去了“买房不如租房”的信念，消费主义盛行。但如果你在1990年理解了宏观经济学，就会知道日本股市和房地产泡沫不可持续，从而避免高位接盘。这个案例告诉我们，宏观经济学不是预测未来，而是帮你看清当下的位置。</p><h3>四、实践应用/总结：如何用宏观经济学指导你的财务决策？</h3><p>学完这些理论，你可能想问：我该怎么用？第一步，学会看数据。找到你国家当前的GDP增长率、通胀率和失业率。比如，2024年中国的GDP增速目标约为5%，通胀率在1%左右，失业率约为5.2%。这三个数字告诉你：经济在温和增长，通胀压力不大，但就业市场仍有挑战。这意味着，你的投资策略可以偏向稳健，比如配置一些国债或高分红股票，同时保持一定的流动性以应对不确定的就业市场。</p><p>第二步，用周期思维做决策。纳瓦尔认为，大多数人的财务错误都源于“线性思维”——认为当前趋势会永远持续。但经济是周期性的。比如，如果你看到房价连续上涨5年，不要认为它会永远涨。相反，当房价下跌时，很多人恐慌抛售，但如果你有长期视角，反而可能是买入机会。同样，当股市低迷时，定投指数基金往往比追涨杀跌更有效。</p><p>第三步，关注央行动态。纳瓦尔曾说：“央行是市场的最大玩家。”每次美联储或中国人民银行的议息会议，都可能影响你的投资组合。比如，如果央行释放加息信号，你可以减少长期债券的配置，因为利率上升时债券价格会下跌；如果央行降息，可以增加股票或房产的配置。但要注意，不要频繁交易，而是根据大趋势调整资产比例。</p><p>第四步，结合个人情况。宏观经济是“大环境”，但你的决策要基于“小环境”。比如，如果你是刚毕业的年轻人，经济衰退时可能更难找工作，但你可以利用这段时间学习新技能，为下一轮繁荣做准备；如果你是退休人士，通胀高企时，要确保你的养老金能抗通胀，比如投资一些通胀挂钩债券。</p><p>最后，纳瓦尔提醒我们，宏观经济学不是万能的。它不能预测短期波动，但能帮你建立长期视角。比如，2008年金融危机后，很多人恐慌离场，但那些坚持定投的人，在10年后获得了丰厚回报。理解宏观经济学，不是为了战胜市场，而是为了不被市场打败。就像芒格说的：“宏观是我们必须接受的，微观才是我们能有所作为的。”</p><p>课后实践：找到你国家当前的GDP增长率、通胀率和失业率，然后问自己：这三个数字组合意味着什么？是过热、温和还是衰退？据此调整你的储蓄、投资和职业规划。</p><p>课后作业：用宏观经济概念解释一个你观察到的现象。比如，为什么2020-2021年全球房价大涨？答案可能是：低利率降低了贷款成本，货币超发推高了资产价格，而居家办公增加了住房需求。把这个逻辑写下来，你会发现自己看世界的角度变了。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">假设你是一个国家的经济顾问，有人告诉你“GDP增长了，说明国家变富了”。请用你学到的知识，解释为什么GDP增长不一定等于国民幸福感提升？至少要提到GDP的局限性。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑GDP不计算什么：比如环境破坏、家务劳动、收入分配不均，以及非市场交易。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. GDP只衡量经济活动的总产出，不区分活动性质：比如自然灾害后的重建也会推高GDP，但人民生活水平可能下降。<br>2. GDP不反映收入分配：如果增长集中在少数人手中，大多数人可能并未受益。<br>3. GDP忽略非市场劳动和外部性：如家务、志愿者服务不计入，而污染、资源消耗则被忽视。<br>4. 因此，GDP是衡量经济规模的工具，但无法全面代表国民幸福感，需要结合其他指标如基尼系数、环境指数等。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你发现最近一年，你所在城市的房价上涨了15%，同时超市里的鸡蛋和牛奶价格也涨了10%。请运用通货膨胀的概念，分析这是否意味着你个人购买力一定下降了？并给出一个具体的应对建议。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">区分“价格上涨”和“购买力下降”的关系：如果收入涨幅超过通胀，购买力可能不变或上升。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 通货膨胀指整体物价水平持续上涨，导致货币购买力下降。房价和食品价格上涨是通胀的表现之一。<br>2. 但你的个人购买力变化取决于收入增速：如果你的工资上涨了20%，高于物价涨幅，实际购买力反而提升；如果收入不变或涨幅低于10%，购买力确实下降。<br>3. 应对建议：关注你的名义收入增速是否跑赢通胀率（可通过CPI数据对比），并考虑将部分储蓄投资于抗通胀资产（如指数基金、黄金），避免现金贬值。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾之前学过的“个人财务自由”课程（第1-5课），结合本课的经济周期理论，解释为什么在经济衰退期，个人应该优先增加储蓄和应急基金，而不是盲目投资？请用经济周期的不同阶段来论证。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系经济衰退期失业率上升、资产价格下跌的特点，以及个人现金流安全的重要性。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 经济周期包括繁荣、衰退、萧条、复苏阶段。衰退期通常伴随失业率上升、企业倒闭、资产价格下跌（如股票、房产）。<br>2. 个人财务自由课程强调“现金流为王”和“紧急备用金”。衰退期收入不稳定风险增大，优先增加储蓄可以保障基本生活，避免被迫低价抛售资产。<br>3. 衰退期资产价格虽低，但可能继续下跌，盲目投资容易“接飞刀”。而持有现金可以在萧条末期或复苏初期以更低成本买入优质资产，实现逆周期配置。<br>4. 因此，衰退期应优先巩固财务安全（储蓄+应急基金），再考虑机会性投资，这与“反脆弱”理念一致。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval051.html" class="prev">上一课</a>
+ <a href="naval053.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

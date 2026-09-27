@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时间主权 — 纳瓦尔通识课第89课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 89 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>时间主权</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 89/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval089.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：时间，你真正拥有的唯一资源</h3><p>想象一下，你每天醒来，打开手机，日历上已经排满了会议、电话、任务。你像一个提线木偶，被别人的需求牵着走。晚上躺下时，你感到疲惫，却不知道这一天到底为自己做了什么。这不是你的错，这是现代社会的常态。但纳瓦尔·拉维坎特会告诉你：这恰恰是最大的陷阱。</p><p>纳瓦尔曾说：“你可以赚更多的钱，但你不能赚更多的时间。”这句话听起来简单，却直击本质。钱是无限的，你可以通过杠杆、判断力、复利不断创造财富。但时间，你每天只有24小时，无法储存，无法借用，无法购买。你唯一能做的，就是选择如何花费它。而大多数人，把这种选择权拱手让给了别人。</p><p>什么是时间主权？简单来说，就是你对日历的完全控制权。不是让你的老板、客户、朋友或家人决定你做什么，而是你主动安排每一分钟。这听起来像是一种奢侈，但纳瓦尔认为，这是所有自由中最被低估的一种。为什么？因为大多数人追求财富自由、关系自由，却忽略了：没有时间主权，其他自由都是空谈。</p><p>举个例子。一个高薪的投行分析师，年入百万，但每周工作100小时。他的日程被客户的并购案、老板的汇报、同事的会议填满。他有钱，但没时间花。他以为自己掌控了财富，实际上，他的时间被别人的优先级劫持了。相反，一个自由职业的插画师，收入只有分析师的十分之一，但她可以决定今天画什么、休息多久、陪孩子去哪里。谁更自由？答案不言而喻。</p><p>芒格和纳瓦尔都强调：真正的财富不是账户上的数字，而是你对时间的控制力。芒格曾说：“不要卖掉你一天的时间来换取金钱，除非你是在为自己工作。”这句话点醒了无数人。时间主权不是懒散，而是主动选择。它要求你像管理金钱一样管理时间，甚至更严格。因为时间一旦流逝，永不回头。</p><p>这节课，我们将深入探讨时间主权的本质。你会看到：为什么大多数人的时间是别人的？如何夺回控制权？以及，说“不”的艺术如何成为你的护城河。记住，这不是教你更高效地工作，而是教你更聪明地生活。</p><h3>二、核心理论：时间主权的三大支柱</h3><p>要理解时间主权，我们需要拆解它的核心。纳瓦尔提出了一个简单但深刻的框架：时间主权由三个支柱构成——自主性、专注力和边界感。这三个支柱相互支撑，缺一不可。</p><p>第一个支柱是自主性。这意味着你的时间由你定义，而不是被外部力量驱动。纳瓦尔认为，大多数人陷入“反应模式”：他们不是在主动规划，而是在被动回应。比如，一封邮件进来，你立刻回复；一个电话打来，你立刻接听。你的日程变成了一堆“待办事项”，而不是“我想做的事”。自主性的本质是：你选择做什么，以及什么时候做。纳瓦尔自己就是这样做的。他每天只安排少量会议，大部分时间用于阅读、思考或休息。他常说：“我不忙，我只是有时间。”这句话的潜台词是：他掌控了节奏，而不是被节奏掌控。</p><p>第二个支柱是专注力。时间主权不仅仅是“有自由时间”，而是“在自由时间里做有意义的事”。如果你有3小时空闲，但一直在刷手机、回消息，那这3小时并没有真正属于你。纳瓦尔强调，专注力是时间的质量。他引用了一句古老的智慧：“注意力在哪里，能量就在哪里。”如果你想夺回时间主权，你必须学会屏蔽噪音，把注意力放在高价值的事情上。比如，每天早上花30分钟写日记或读书，而不是第一时间看新闻。这个习惯看似简单，却能重塑你对时间的感知。</p><p>第三个支柱是边界感。这是最容易被忽视的。边界感意味着你清楚地知道：什么是你的时间，什么是别人的时间。纳瓦尔曾说：“如果你不能对别人的要求说‘不’，你的时间就不是你的。”很多人害怕拒绝，因为他们担心失去机会、关系或尊重。但事实上，没有边界感的人，往往会被视为“好说话”，从而被更多要求淹没。芒格也强调过这一点：“不要试图取悦所有人，那会让你一无所有。”边界感不是自私，而是自我保护。它要求你设定规则，比如“晚上8点后不接工作电话”，并坚决执行。</p><p>这三个支柱相互加强。没有自主性，你无法专注；没有专注，边界感变得无关紧要；没有边界感，自主性会被侵蚀。纳瓦尔用了一个比喻：时间主权就像一座堡垒，自主性是城墙，专注力是武器，边界感是护城河。只有三者兼备，你才能抵御外界的入侵，守住自己的时间。</p><h3>三、深层分析：为什么大多数人的时间是别人的？</h3><p>既然时间主权如此重要，为什么大多数人还是把时间给了别人？纳瓦尔认为，根源在于三个深层原因：社会惯性、恐惧心理和错误的价值衡量。</p><p>第一个原因是社会惯性。我们从小被教育要“听话”“合作”“为他人考虑”。在学校，老师安排你的课程；在公司，老板安排你的任务。这种模式被内化为一种默认行为：别人的需求优先于自己的需求。纳瓦尔指出，这种惯性在职场尤其明显。比如，一个经理会下意识地接受所有会议邀请，因为“这是团队协作的一部分”。但事实上，很多会议完全可以通过邮件或异步沟通替代。社会惯性让你误以为“忙碌”等于“重要”，而忽略了：忙碌往往是效率的敌人。</p><p>第二个原因是恐惧心理。人们害怕说“不”带来的后果：失去工作、得罪客户、破坏关系。这种恐惧根植于生存本能。在原始社会，被群体排斥意味着死亡。但在现代社会，这种恐惧被放大了。纳瓦尔曾举过一个例子：一个创业者不敢拒绝投资人的无理要求，因为他怕失去资金支持。结果，他的时间被会议和报告填满，产品却迟迟没有进展。最终，投资人撤资，公司倒闭。纳瓦尔说：“恐惧让你把时间交给别人，但结果往往更糟。”真正的风险不是拒绝，而是把时间浪费在低价值的事情上。</p><p>第三个原因是错误的价值衡量。人们用“金钱”或“地位”来衡量时间的价值，而不是用“自由”或“幸福”。比如，一个律师每小时收费500美元，他会觉得工作1小时比陪家人1小时更“值钱”。但纳瓦尔反问：如果你赚了500美元，却错过了孩子的成长，这真的值吗？他提倡用“时间回报率”来思考：你的时间花在哪里，能带来最大的长期回报？这个回报不一定是金钱，可能是健康、关系或内心平静。芒格也持类似观点：他每天花大量时间阅读，看似“浪费”，但他说：“阅读让我积累智慧，这是最好的投资。”</p><p>这三个原因相互交织，形成了一个恶性循环。社会惯性让你默认接受，恐惧心理让你不敢反抗，错误衡量让你觉得“忙碌”是合理的。结果，你的日历被别人的优先级填满。纳瓦尔的解决方案是：打破循环，从一个小切口开始。比如，每周设定一个“不可侵犯的时间块”，不接电话，不回消息。这个习惯会帮你逐步建立自主性、专注力和边界感。</p><h3>四、实践应用：如何夺回时间主权</h3><p>理论讲完了，接下来是行动。纳瓦尔不是一个空谈家，他提供了具体的方法来夺回时间主权。以下是三个核心策略，你可以立即开始实践。</p><p>第一个策略是“日历审计”。纳瓦尔说：“看看你的日历，它揭示了你的优先级。”拿出下周的日历，逐项检查：有多少时间是别人要求的？比如会议、电话、任务。有多少是你主动安排的？比如学习、锻炼、休息。如果主动安排的时间少于50%，说明你的时间主权已经丧失。纳瓦尔建议，每周做一次审计，并问自己三个问题：这个活动对我有价值吗？它必须由我来做吗？它可以在别的时间做吗？通过审计，你会发现自己浪费了多少时间在“伪工作”上。比如，很多会议其实可以通过邮件解决，很多任务可以委托给他人。</p><p>第二个策略是“说‘不’的艺术”。这是最直接的工具。纳瓦尔认为，说“不”不是粗鲁，而是尊重自己的时间。他提供了一个简单公式：当别人提出要求时，先停顿3秒，然后说“让我想想”，而不是立刻答应。这3秒给了你空间去评估：这个要求是否值得你的时间？如果需要拒绝，可以用“感谢你的邀请，但我现在的时间有限”这样的句式。芒格也强调：“学会说‘不’，是你最强大的技能之一。”不要害怕得罪人，因为真正尊重你的人，会理解你的边界。相反，那些因为你说“不”就生气的人，本来就不值得你花费时间。</p><p>第三个策略是“设定不可侵犯的时间块”。这是课后作业的核心。每周至少3小时，完全属于你。不接电话、不回消息、不做任何外部要求的事。你可以用这段时间读书、冥想、写作，或者什么都不做。纳瓦尔自己每天都会留出1-2小时“空白时间”，用于深度思考。他说：“这段时间是我最有创造力的时刻。”如何开始？从下周开始，在你的日历上标注“个人时间”，并把它视为神圣不可侵犯。如果别人在这段时间找你，礼貌地拒绝。坚持一个月，你会感受到变化：你的焦虑减少，专注力提升，甚至工作效率也会提高。</p><p>最后，记住纳瓦尔的话：“时间是你唯一真正拥有的东西。如果你不控制它，别人就会控制你。”这堂课的目标不是让你变得更忙碌，而是让你变得更自由。从今天起，开始夺回你的时间主权。课后实践：看你下周的日历，标记出“别人要求的”和“你主动安排的”。课后作业：设定一个“不可侵犯的时间块”，每周至少3小时。行动，就是改变的开始。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说‘时间主权’是指你能够自由支配自己的时间，而不是被他人或外界事件牵着走。请用自己的话解释：为什么大多数人的时间其实是‘别人的时间’？结合你观察到的日常现象举例。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想那些你被迫参加的会议、无意义的社交、被手机通知打断的时刻——是谁在控制你的时间开关？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">大多数人的时间之所以是‘别人的’，是因为他们默认将时间的分配权交给了外部：1. 职场中，老板或客户的紧急需求随时打断你的计划，你成了‘救火队员’；2. 社交中，朋友聚会或家庭义务占满日程，你不敢拒绝；3. 数字时代，算法推送和即时消息像无形的手，让你被动刷屏。本质是缺乏边界感，把‘回应外界’当成了义务，而忘了时间本应是自己的主权领土。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你下周的日历上有以下事项：周一上午老板临时加的会议、周二陪同事吃饭、周三晚上刷短视频到凌晨、周四帮朋友搬家。请根据‘时间主权’原则，指出哪些是‘别人的时间’，并给出具体行动步骤来夺回至少一项的控制权。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">区分‘主动选择’和‘被动接受’。对非核心事项，练习说‘不’或重新协商时间。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 别人的时间：周一会议（被动响应）、周二陪吃饭（社交压力）、周三刷短视频（算法操控）、周四搬家（非紧急义务）。2. 夺回策略：对周一的会议，先问‘我必须参加吗？能否看会议记录？’然后回复‘我已有既定项目，请发纪要给我’；对周三的刷视频，设定时器或卸载APP，用那一小时读本书。核心是建立‘先问自己是否愿意，再决定如何回应’的反射。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾你学过的纳瓦尔课程（如财富杠杆、复利思维、幸福公式），请将‘时间主权’与其中一个概念结合，分析：为什么拥有时间主权的人更容易积累财富或获得幸福？用具体逻辑链说明。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">例如，财富杠杆中的‘所有权’——拥有时间主权才能专注创造高杠杆价值；幸福公式中的‘当下’——时间被侵占会剥夺幸福感。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">结合‘财富杠杆’概念：1. 时间主权是杠杆的燃料——只有当你控制时间，才能选择做‘高杠杆’的事（如写代码、创作内容等一次投入多次收益的事），而不是被低杠杆的杂务淹没。2. 复利思维同样依赖时间主权——持续投入深度工作才能形成技能复利，而碎片化时间只会打断积累。3. 幸福公式中，拥有时间主权意味着你更可能活在当下（如专注陪伴家人），而非被焦虑的未来或他人的期待绑架。简言之，时间主权是财富与幸福的底层操作系统。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval088.html" class="prev">上一课</a>
+ <a href="naval090.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

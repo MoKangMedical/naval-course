@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>决策疲劳与精力管理 — 纳瓦尔通识课第18课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 18 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 2 · 判断力与决策</div>
+ <h1>决策疲劳与精力管理</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 18/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval018.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：决策的隐形代价</h3><p>想象一下，你是一名法官，每天要处理几十起假释案件。你的决定将改变一个人的命运。但你有没有想过，同一个犯人，在上午9点和下午4点出现在你面前，获得假释的概率可能相差两倍？这不是假设，这是真实存在的研究发现。</p><p>2011年，哥伦比亚大学和本古里安大学的研究人员分析了以色列一个监狱法庭超过1100个假释案件。结果令人震惊：法官在上午的假释批准率约为65%，而到了下午，这一比例骤降至接近零。更令人不安的是，法官在午休后，批准率又回升到65%。</p><p>为什么？纳瓦尔对此有精辟的论述："决策是一种消耗品。每天能做出高质量决策的数量是有限的。"法官们并非有意歧视下午的犯人，他们的判断力被"决策疲劳"悄无声息地侵蚀了。每一次裁决，都在消耗他们的意志力和认知资源。</p><p>纳瓦尔本人深谙此道。他曾在一次访谈中分享："我每天只做少数几个重要决策。其他事情，我尽量让它自动化或者忽略。"这种策略并非懒惰，而是对大脑运作规律的深刻理解。</p><p>巴菲特和芒格也持有类似观点。芒格曾说："我一生中最重要的决定就是和谁结婚、投资什么公司、以及在哪里生活。其他事情，都不值得花太多精力。"这些顶级思考者都明白一个道理：你的决策带宽是有限的，必须用在刀刃上。</p><p>这节课，我们将深入探讨决策疲劳的科学机制，学习如何像纳瓦尔、巴菲特和芒格那样，保护你的决策带宽，把精力留给真正重要的事情。</p><h3>二、核心理论：决策疲劳的科学证据</h3><p>决策疲劳（Decision Fatigue）是心理学和神经科学领域的一个关键概念。它指的是，在连续做出多个决策后，个体的决策质量会显著下降。这不是主观感受，而是有坚实的生理基础。</p><p>心理学家罗伊·鲍迈斯特（Roy Baumeister）的"自我损耗"理论提供了核心解释。他的实验发现，当人们需要抑制冲动、做出选择或进行复杂的认知任务时，大脑中的血糖水平会下降。这就像肌肉在运动后变得疲劳一样，大脑的决策能力也会因为持续使用而暂时减弱。</p><p>鲍迈斯特的实验很直观：让两组人面对一盘刚出炉的饼干和一碗萝卜。一组人只能吃萝卜，另一组可以吃饼干。然后，要求他们完成一个需要持续注意力的拼图任务。结果，那些需要克制吃饼干冲动的"萝卜组"，比"饼干组"更快放弃拼图。为什么？因为他们已经消耗了意志力来控制诱惑，剩下的意志力不足以应对后续的挑战。</p><p>纳瓦尔在谈论这个现象时，常用一个比喻："你的大脑就像一个手机电池。每个决策都会消耗一格电。当电量低于10%时，你的判断就会变得模糊，容易出错。"这个比喻形象地揭示了决策疲劳的本质。</p><p>更具体的研究表明，决策疲劳不仅影响法官的假释决定，还影响医生的诊断、股票交易员的买卖决策，甚至普通人的购物选择。例如，一项研究发现，当消费者在超市里面对过多选择时，他们更容易做出冲动购买，或者干脆什么都不买。</p><p>这就是为什么纳瓦尔强调："简化你的生活。减少不必要的选择。"他的日常穿搭只有灰色和蓝色西装，他的饮食有固定的菜单，他的日程安排也尽量规律。这不是缺乏个性，而是为了保护决策带宽，以便在真正重要的事情上——比如投资、写作、思考——做出卓越决策。</p><h3>三、深层分析：为什么成功人士简化日常选择</h3><p>让我们把目光投向那些在各领域取得卓越成就的人。你会发现一个惊人的共同点：他们在日常琐事上都极其"无聊"。</p><p>奥巴马几乎只穿灰色或蓝色西装。扎克伯格常年穿着灰色T恤和连帽衫。乔布斯永远是黑色高领毛衣、蓝色牛仔裤和新百伦跑鞋。爱因斯坦有好几套一模一样的灰色西装。查理·芒格的日常着装也极其简单，他甚至在遗嘱中规定自己的葬礼上要穿什么。</p><p>这不是巧合，而是一种深思熟虑的策略。纳瓦尔对此有深刻的洞察："你的意志力是有限的。每一次你决定穿什么、吃什么、回什么邮件，都在消耗你的决策带宽。如果你把这些决定自动化，你就把宝贵的认知资源留给了真正重要的事情。"</p><p>芒格和纳瓦尔都强调，人类的认知能力是有限的。芒格曾引用一位心理学家的研究："一个普通人每天要做大约35000个决定。"其中大部分是下意识或低质量的。但如果你把精力耗费在决定今天穿哪双袜子、午餐吃什么、要不要回复那条短信上，那么当你面对真正重要的决策——比如是否投资一家初创公司、是否接受一个工作机会、是否结束一段关系——时，你的大脑已经精疲力尽。</p><p>纳瓦尔更进一步，他提出了"决策层次"的概念。他认为，决策可以分为三个层次：第一层是"生存决策"（比如吃饭、穿衣、睡觉），这些应该完全自动化或外包；第二层是"日常决策"（比如工作安排、社交活动），这些应该简化成惯例；第三层是"战略决策"（比如投资、职业选择、人生方向），这些才是你真正需要投入精力的地方。</p><p>"大多数人的问题在于，他们把太多精力花在了第一层和第二层决策上，导致在第三层决策时表现糟糕。"纳瓦尔说。他建议，每周花一天时间，集中处理所有需要深思熟虑的决策。其他时间，尽量让大脑处于"自动驾驶"状态。</p><h3>四、实践应用：如何保护你的决策带宽</h3><p>理解了决策疲劳的原理，接下来就是行动。纳瓦尔和芒格都强调，知识如果不转化为实践，就是无用的。以下是保护你决策带宽的四个具体策略。</p><p>第一，建立日常惯例。把那些重复性的、低价值的决定自动化。比如，固定你的早餐和午餐菜单，选择几套"制服"（比如纳瓦尔的灰蓝西装），固定你的运动时间。这样，你每天可以节省出数十个决策机会。</p><p>第二，把重要决策安排在精力最充沛的时候。研究显示，大多数人的认知高峰在上午。所以，把需要深度思考的工作——比如写报告、做投资分析、制定战略——安排在早上。把那些低认知需求的事务——比如回复邮件、整理文件——留到下午。</p><p>第三，减少不必要的选择。纳瓦尔说："如果你面前有太多选择，你很可能一个都做不好。"简化你的生活。减少社交媒体的碎片化信息输入，减少你关注的投资标的数量，减少你每天需要面对的任务列表。选择越少，你的决策质量越高。</p><p>第四，学会"不做决定"。芒格有一个著名的原则："如果一件事不值得你花5分钟去思考，那就不要花5秒钟去决定。"对于许多小事，最好的策略就是忽略。比如，不要花时间纠结于是否参加一个无意义的会议，直接拒绝。不要花时间比较两款相似的洗发水，随便选一个。</p><p>课后实践：从明天开始，记录你一天中做出最佳决定的时间段，以及最容易做出冲动或糟糕决定的时间段。连续记录一周，你会发现明显的模式。</p><p>课后作业：选择5个你每天都需要做的非重要决定，将它们自动化、提前规划或完全消除。比如：固定早餐菜单、选择三套"工作制服"、设定固定的社交媒体浏览时间、提前规划一周的晚餐、取消所有非必要的订阅邮件。</p><p>记住纳瓦尔的忠告："你的生命太短暂，不能浪费在琐碎的决定上。把精力留给那些能改变你人生轨迹的事情。"</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用自己的话解释为什么法官在午饭前更容易批准假释？这个现象背后隐藏着决策疲劳的什么核心机制？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系生理状态与认知资源的关系，思考饥饿和疲劳如何影响判断力。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">法官在午饭前更容易批准假释，是因为此时他们的决策资源已经因连续审理案件而耗竭，血糖水平下降导致大脑自我控制能力减弱。核心机制是：1. 决策疲劳是认知资源的有限性，每次决策都会消耗心理能量；2. 饥饿和疲劳加剧了资源枯竭，使人更倾向于选择风险更低的选项（如批准假释，因为拒绝需要更多认知努力）；3. 这证明决策质量并非恒定，而是随精力状态波动。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你是一名创业者，每天需要做出几十个商业决策（如回复邮件、选择供应商、分配任务）。请设计一套具体方案，将决策疲劳的影响降到最低，并说明每项措施如何保护你的决策带宽。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">借鉴成功人士简化日常选择的方法，如固定着装、固定日程、批量处理低价值决策。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">方案：1. 早上处理高价值决策（如产品策略、融资谈判），利用精力最充沛的时段；2. 建立日常惯例：固定早餐、着装、通勤路线，减少无关选择消耗；3. 批量处理低价值决策：每天固定两小时集中回复邮件、审批文件，避免碎片化决策；4. 设置决策截止时间：如下午3点后不再做重大决定，避免疲劳影响；5. 午间补充能量：安排15分钟小睡或健康零食，恢复血糖水平。每项措施通过减少决策数量、优化决策时机或补充生理资源来保护带宽。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合本课关于决策疲劳的知识，以及之前学过的“纳瓦尔时间杠杆”概念（如外包、自动化），分析为什么成功人士倾向于将日常选择“外包”给惯例或他人？请从认知资源分配的角度给出深度解释。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考时间杠杆如何释放认知空间，惯例如何将意志力从重复决策中解放。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">成功人士将日常选择外包，本质是运用时间杠杆来优化认知资源分配：1. 决策疲劳消耗的是有限的心理能量，而外包（如请助理安排日程、自动支付账单）将这些低价值决策从大脑中移除，释放带宽用于高杠杆思考；2. 惯例（如固定健身时间、统一着装）将重复决策转化为自动化行为，避免意志力在琐事上磨损——这正是纳瓦尔强调的“把精力集中在只有你能做的事情上”；3. 两者结合形成正向循环：减少决策数量→降低疲劳积累→提升关键决策质量→创造更多时间杠杆。这解释了为何扎克伯格穿同款T恤、巴菲特坚持简单食谱——他们并非缺乏审美，而是战略性地保护决策资源。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval017.html" class="prev">上一课</a>
+ <a href="naval019.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

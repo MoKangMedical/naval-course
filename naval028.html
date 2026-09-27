@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>接受与放下 — 纳瓦尔通识课第28课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 28 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 3 · 幸福与内在平静</div>
+ <h1>接受与放下</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 28/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval028.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：痛苦的双重来源</h3>
+<p>你是否曾经因为一件已经发生的事情，反复在脑海中重演？比如一次失败的谈判、一句伤人的话，或者一个无法挽回的错误。你明知道事情已经发生，无法改变，但内心却像被什么东西紧紧攥住，无法释怀。这种感受，纳瓦尔称之为“对现实的抗拒”。他认为，痛苦本身往往并不可怕，真正让痛苦翻倍的，是我们对痛苦的抗拒。</p>
+<p>纳瓦尔曾说：“痛苦 = 痛苦本身 + 对痛苦的抗拒。”这个公式看似简单，却揭示了人类心理的一个核心机制。当我们经历挫折、损失或不如意时，第一反应往往是抗拒——我们希望事情不是这样，我们试图改变已经发生的事实，我们在内心与“此刻的现实”搏斗。这种搏斗，消耗了我们大量的心理能量，让痛苦成倍增长。</p>
+<p>举个例子：你被公司裁员了。失去工作本身带来的经济压力和心理落差，是“痛苦本身”。但如果你不断纠结“为什么是我”“这不公平”“我本应该做得更好”，你就在增加“对痛苦的抗拒”。你开始失眠、焦虑、自我怀疑，甚至陷入抑郁。这些附加的痛苦，远超过失业本身带来的影响。</p>
+<p>芒格和纳瓦尔都强调，接受现实是智慧的开端。芒格常说：“如果你不能接受一个事实，那你就无法改变它。”纳瓦尔则更进一步，他把接受视为一种修炼，一种通往内心平静的必经之路。接受不是懦弱，不是放弃，而是一种清醒的勇气。</p>
+<p>从神经科学的角度看，抗拒现实会激活大脑的杏仁核，触发“战斗或逃跑”反应，导致皮质醇水平升高。长期处于这种状态，不仅损害心理健康，还会影响免疫系统、睡眠质量和决策能力。相反，当我们接受现实时，大脑的前额叶皮层被激活，我们开始用理性分析问题，而非被情绪淹没。</p>
+<p>这一课，我们将深入探讨“接受与放下”的智慧。你会学到：接受不等于放弃，而是更有效地行动；斯多葛学派的控制二分法如何帮你区分可控与不可控；以及如何通过简单的练习，释放内心的紧张感。让我们从理解痛苦的本质开始。</p>
+
+<h3>二、核心理论：接受≠放弃，斯多葛的控制二分法</h3>
+<p>纳瓦尔的思想深受斯多葛学派影响。斯多葛哲学的核心，是区分“我们能控制什么”和“我们不能控制什么”。这个看似简单的二分法，是接受与放下理论的基础。纳瓦尔曾说：“如果你无法区分可控和不可控，你就会把精力浪费在无法改变的事情上，从而陷入无尽的焦虑。”</p>
+<p>什么是你能控制的？你的思想、你的行动、你的态度、你的选择。什么是你不能控制的？他人的想法、过去的错误、天气、经济环境、别人的行为。听起来很简单，但现实中，我们大多数人每天都在为不可控的事情焦虑：担心别人怎么评价我们，后悔已经发生的错误，抱怨经济不景气。这些焦虑，本质上是对现实的抗拒。</p>
+<p>纳瓦尔用一个生动的比喻来解释：生活就像一场牌局。你无法控制发到手里的牌，但你可以控制怎么打这副牌。接受，就是承认“我手里的牌就是这样”，而不是幻想“如果我有另一副牌就好了”。放下，就是不再为牌的好坏而烦恼，而是专注于如何打好它。</p>
+<p>接受不是放弃，这一点至关重要。放弃是“我无能为力，所以我不努力了”。接受是“我清楚地看到现实，所以我选择把精力放在我能改变的事情上”。比如，你被裁员了。放弃的人会躺在床上自怨自艾，认为命运不公。接受的人会承认“我失去了工作”，然后思考：“我现在能做什么？我可以更新简历、联系朋友、学习新技能。”接受让你从情绪的泥潭中抽身，转向行动。</p>
+<p>芒格和纳瓦尔都强调，接受现实需要勇气。因为接受意味着你不再逃避，不再用幻想来安慰自己。它要求你直面最糟糕的情况，然后问自己：“现在，我能做什么？”这种勇气，是内在平静的基石。</p>
+<p>控制二分法还有一个延伸：在你能控制的范围内，你还可以进一步区分“完全可控”和“部分可控”。比如，你的努力是完全可控的，但结果只是部分可控。纳瓦尔建议，把注意力放在完全可控的事情上，比如你的态度、你的专注度、你的行动。对于部分可控的事情，尽力而为，然后接受结果。</p>
+
+<h3>三、深层分析：如何练习接受——承认、观察、放手</h3>
+<p>理论听起来简单，但实践起来并不容易。纳瓦尔提供了一个三步练习法：承认、观察、放手。这个练习可以帮助你从抗拒转向接受，从而降低痛苦。</p>
+<p>第一步：承认。承认是接受的前提。你需要对自己说：“这是我此刻的现实。”无论这个现实多么糟糕，你都要承认它的存在。比如，你正在经历分手。你可能会想：“我不应该被分手，这太不公平了。”但承认意味着你对自己说：“是的，我们分手了。这就是事实。”承认不是认同，不是喜欢，只是承认事实的存在。这一步很难，因为我们的本能是逃避。</p>
+<p>第二步：观察。观察是指不带评判地审视自己的情绪和反应。当你承认现实后，你可能会感到愤怒、悲伤、恐惧。不要压抑这些情绪，也不要被它们裹挟。像一个旁观者一样，观察它们：“我注意到我在愤怒，我注意到我的心跳在加速。”纳瓦尔说：“情绪就像云朵，它们来了，也会走。但如果你抓着它们不放，它们就会变成暴风雨。”观察让你与情绪保持距离，从而不被情绪控制。</p>
+<p>第三步：放手。放手不是忘记，而是不再对抗。当你观察情绪后，你可以有意识地选择放下它。你可以对自己说：“我允许这个情绪存在，但我选择不被它控制。”放手就像松开握紧的拳头。你可能会感觉到身体里的紧张感在释放。纳瓦尔说：“放手是一种力量，不是软弱。它需要你放下对完美的执念，放下对控制的幻想。”</p>
+<p>从生理学的角度看，这个练习可以降低皮质醇水平。皮质醇是压力激素，当我们长期处于抗拒状态时，皮质醇水平会升高，导致焦虑、失眠、免疫力下降。而接受练习能激活副交感神经系统，让身体进入放松状态。研究显示，正念冥想（与接受练习类似）能显著降低皮质醇，改善情绪和健康。</p>
+<p>一个实际的案例：一位创业者，公司面临破产。他最初抗拒现实，不断责怪合作伙伴、市场环境，甚至自己。他失眠、酗酒，状态越来越差。后来，他尝试了接受练习。他承认：“公司确实在破产边缘。”他观察自己的恐惧：“我害怕失去一切，害怕被嘲笑。”然后他放手：“我接受这个结果，无论它是什么。”当他接受后，他反而冷静下来，开始寻找解决方案。最终，他成功融资，挽救了公司。他说：“接受的那一刻，我才真正开始解决问题。”</p>
+
+<h3>四、实践应用/总结：从理论到行动</h3>
+<p>纳瓦尔说：“接受不是终点，而是起点。当你接受现实，你才能清晰地看到下一步。”这一课的核心，是学会区分可控与不可控，并通过接受练习释放内心的紧张感。现在，让我们把这些理论转化为具体的行动。</p>
+<p>课后实践：选择一个你一直在抗拒的现实。它可能是一次失败、一段关系、一个健康问题，或者一个无法改变的环境。找一个安静的地方，闭上眼睛。深呼吸三次。然后对自己说：“这是我此刻的现实。我接受它。”注意，不要试图改变它，只是承认它的存在。感受一下，你身体里是否有紧张感？在哪个部位？可能是胸口、肩膀、或者胃部。继续深呼吸，想象这些紧张感随着呼气慢慢释放。重复这个练习，每次三到五分钟。</p>
+<p>课后作业：画一个维恩图。左边的圈是“你能控制的”，右边的圈是“你不能控制的”。把让你焦虑的事情写进相应的圈里。比如，“别人对我的看法”放在右边，“我如何回应”放在左边。然后，把注意力完全放在左边的圈上。问自己：“在这个圈里，我能做什么？”然后制定一个行动计划。这个作业的目的是训练你区分可控与不可控，从而减少无效的焦虑。</p>
+<p>长期来看，接受与放下是一种生活方式。它需要你不断练习，就像锻炼肌肉一样。纳瓦尔建议，每天花几分钟做接受练习，尤其是在你感到焦虑或愤怒的时候。你可以把它变成一种习惯：遇到挫折时，先停下来，问自己：“这是我能控制的吗？”如果不能，就接受它；如果能，就行动。</p>
+<p>最后，记住纳瓦尔的话：“你无法选择发生在你身上的事，但你可以选择如何回应。当你接受现实，你就获得了自由。”这份自由，不是来自外部环境的改变，而是来自内心的平静。当你不再与事实对抗，你就能用全部的能量去创造、去成长、去享受生活。这就是接受与放下的真正力量。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">课程中区分了「接受」和「放弃」。请用自己的话解释：为什么说接受不是放弃，而是更高效行动的前提？结合斯多葛的控制二分法，说明两者本质区别。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考：接受现实后，你的精力会流向哪里？放弃是停止行动，接受是调整方向。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 接受是承认「不可控因素」的存在，如外界环境、他人行为；放弃则是彻底停止对可控部分的努力。2. 斯多葛二分法：接受帮你划清边界——把能量从无法改变的抗拒中抽离，集中到你能影响的行动上。3. 举例：接受考试失败的现实（不可控），不等于放弃学习（可控），而是基于失败原因调整复习策略。4. 本质：接受是清醒的认知，放弃是消极的逃避；接受降低内耗，放弃增加后悔。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你正为一个重要项目熬夜赶工，却因电脑突然崩溃丢失了3小时成果。请用「承认、观察、放手」三步法，写出你此刻的心理练习过程，并说明如何降低皮质醇水平。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">第一步对自己说「这是事实」；第二步不带评判地观察身体反应；第三步有意识地选择下一步行动。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 承认：对自己说「电脑崩溃了，3小时成果丢失，这是我此刻的现实」，停止幻想「如果没发生多好」。2. 观察：注意到心跳加速、肩膀紧绷、想砸东西的冲动——标记这些反应但不评判，深呼吸10秒。3. 放手：接受损失不可逆，放手对「已发生事件」的控制欲，转而问自己「现在我能做什么？」——比如重写核心部分或请求延期。4. 生理效应：承认降低杏仁核过度激活，观察打断应激反应链，放手减少皮质醇持续分泌，使身体从战斗模式切换到解决问题模式。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第10课《情绪的本质》中「情绪是信号而非事实」的概念，结合本课「对现实的抗拒是痛苦之源」，分析：当你在愤怒中抗拒一个糟糕的面试结果时，如何同时运用两课的工具实现情绪与现实的和谐？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先识别情绪信号（第10课），再用控制二分法划分责任（本课），最后将愤怒能量转化为行动。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 运用第10课：愤怒不是「面试结果很糟糕」这个事实，而是信号——提示你「我渴望被认可」或「我准备不足」。2. 结合本课：用控制二分法区分——面试官的决定（不可控）vs 我的后续准备（可控）。抗拒愤怒只会让皮质醇飙升，陷入「为什么是我」的无效循环。3. 整合步骤：①承认情绪存在（如「我正在愤怒」）但不认同它（第10课）；②接受结果已定（本课）；③将愤怒能量转化为行动：复盘可控环节（如答题逻辑），制定改进计划。4. 最终状态：情绪作为燃料而非牢笼，现实作为起点而非终点——这就是两课工具协同的智慧。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval027.html" class="prev">上一课</a>
+ <a href="naval029.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

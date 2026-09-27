@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>博弈论 — 纳瓦尔通识课第53课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 53 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 6 · 经济学思维</div>
+ <h1>博弈论</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 53/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval053.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：当理性的人做出非理性的选择</h3><p>假设你是一名囚犯，和同伙被分别关在审讯室里。检察官给你一个交易：如果你背叛同伙、承认罪行，而对方保持沉默，你可以立即获释，对方将坐十年牢。如果你们都保持沉默，各判一年。如果你们都背叛对方，各判五年。你会怎么选？</p><p>从个人角度看，背叛似乎是最优选择——无论对方怎么做，你都能避免最坏的结果。但奇怪的是，当两个人都这样想时，结果却是各判五年，远不如双方都沉默的一年。这就是博弈论中最经典的场景——囚徒困境。它揭示了一个令人不安的真相：个体理性并不总能导出集体理性。</p><p>纳瓦尔在多次访谈中强调，博弈论是理解世界的底层框架之一。他说：“你不需要成为数学家才能应用博弈论。你只需要意识到，你的决策会影响别人的决策，而别人的决策也会影响你。”这种策略性互动的思维，是区分普通人和顶级投资者的关键。</p><p>让我们回到囚徒困境。它之所以令人着迷，是因为它无处不在。在商业中，两家公司打价格战，虽然降价能短期抢到市场份额，但最终都利润微薄，不如维持高价。在环境问题上，每个国家都希望别国减排，自己坐享其成，结果全球气候持续恶化。在人际关系中，伴侣之间互相指责，虽然指责能让自己暂时舒服，但关系却越来越糟。</p><p>芒格和纳瓦尔都强调，要避免陷入囚徒困境式的局面。芒格说：“如果一种情况让你陷入两难，最好的办法是根本不要参与。”但现实中，我们无法总是逃避。更可行的策略是：理解博弈的结构，然后设计更好的规则。</p><p>博弈论的核心思想其实很简单：你的最优策略取决于别人怎么选。这听起来像废话，但大多数人决策时只考虑自己的利益，忽略了策略的相互依赖性。纳瓦尔提醒我们：“在博弈中，如果你只盯着自己的支付，你会输。你需要考虑对手的动机和可能的反应。”</p><p>这一课，我们将深入探讨博弈论的几个关键概念：囚徒困境、纳什均衡、零和与正和博弈，以及如何通过策略建立合作。你不需要掌握复杂的数学公式，只需要理解这些思想，就能在生活和工作中做出更聪明的决策。</p><h3>二、核心理论：纳什均衡与囚徒困境</h3><p>纳什均衡是博弈论中最基础的概念，由数学家约翰·纳什提出。简单来说，纳什均衡是一种状态：在给定其他人策略的情况下，没有人愿意单方面改变自己的策略。换句话说，每个人都在做对自己最有利的事，而且没有动机去调整。</p><p>以囚徒困境为例，我们看看纳什均衡是如何形成的。假设你是囚犯A，你考虑两种情况：如果囚犯B沉默，你背叛就能获释，沉默则判一年，所以背叛更好。如果囚犯B背叛，你背叛判五年，沉默判十年，所以背叛仍然更好。无论B怎么选，你的最优策略都是背叛。同样，B也会这样想。结果，双方都选择背叛，达到（背叛，背叛）这个纳什均衡。尽管（沉默，沉默）对双方更有利，但它不是纳什均衡，因为任何一方都有动机单方面改变策略。</p><p>纳什均衡揭示了为什么好人之间会产生坏结果。不是因为他们不理性，而是因为博弈的结构迫使每个人选择次优方案。纳瓦尔曾说：“很多社会问题，本质上都是博弈结构的问题。如果你改变规则，人们的行为就会改变。”</p><p>囚徒困境是纳什均衡的一个特例，但它展示了博弈论的核心洞察：个体理性与集体理性之间的冲突。这种冲突在现实中比比皆是。比如，在一个团队中，每个人都想少干活多拿钱，结果团队效率低下，最终所有人的收益都减少。再比如，在一个社区中，每个人都希望别人维护公共设施，自己坐享其成，结果设施破败，大家都不方便。</p><p>博弈论将博弈分为两类：零和博弈和正和博弈。零和博弈中，一方的收益等于另一方的损失，总收益为零。比如下棋、赌博、选举。正和博弈中，双方可以同时获益，总收益为正。比如贸易、合作、创新。纳瓦尔反复强调：“要玩正和博弈，而不是零和博弈。在零和博弈中，你只能通过击败别人来赢；在正和博弈中，你可以通过创造价值来赢。”</p><p>理解博弈的类型至关重要。如果你把正和博弈当成零和博弈来玩，你会错过合作的机会。反过来，如果你把零和博弈当成正和博弈，你可能会被利用。关键是要识别你所处的博弈结构，然后选择相应的策略。</p><h3>三、深层分析：如何从囚徒困境中突围</h3><p>囚徒困境看似无解，但现实中人们确实能建立合作。为什么？因为囚徒困境假设博弈只进行一次。如果博弈重复多次，情况就完全不同了。在重复博弈中，你的行为会影响对手未来的选择，因此合作可能成为最优策略。</p><p>政治学家罗伯特·阿克塞尔罗德曾举办一个著名的计算机竞赛，邀请各路学者提交策略来玩重复囚徒困境。获胜的策略非常简单：针锋相对。它由心理学家阿纳托尔·拉波波特提出，规则是：第一步选择合作，之后每一步都模仿对手上一步的行为。这个策略之所以有效，因为它具备四个特征：善良（从不先背叛）、报复（一旦被背叛，立刻还击）、宽恕（如果对手重新合作，它也合作）、清晰（对手很容易理解它的逻辑）。</p><p>纳瓦尔对针锋相对策略评价很高。他说：“在商业和生活中，最好的策略是做好人，但不要做烂好人。先假设对方会合作，但如果对方背叛，你要立即报复。然后，如果对方重新合作，你要宽恕。”这种策略既避免了被利用，又为合作留下了空间。</p><p>针锋相对策略揭示了建立合作的几个关键要素。第一，未来要足够重要。如果博弈即将结束，背叛的诱惑会增大。所以，长期关系比一次性交易更容易产生合作。第二，行为要可观察。如果你的背叛不会被发现，你就有动机作弊。所以，透明度是合作的基础。第三，要能识别背叛。如果无法判断对方是否合作，针锋相对就无法执行。所以，清晰的信号和反馈机制很重要。</p><p>芒格和纳瓦尔都强调，设计系统时要把这些要素考虑进去。芒格说：“如果你想让人们合作，就要让背叛的代价足够高，让合作的收益足够大。”纳瓦尔补充道：“最好的系统是让自私的人也能做出对社会有益的事。这就是市场经济的美妙之处。”</p><p>另一个突围囚徒困境的方法是改变博弈结构本身。比如，通过法律或合同强制合作，或者引入第三方监督。但纳瓦尔更推崇自发的合作。他说：“真正的合作不需要外部强制。它来自于对长期利益的共识和信任。”信任不是凭空产生的，而是通过反复的良性互动建立起来的。一旦建立，合作就会自我强化。</p><h3>四、实践应用：用博弈论思维优化你的生活</h3><p>现在，让我们把博弈论应用到实际中。首先，找出你生活中可能存在的囚徒困境。比如，你和同事共同负责一个项目。如果你们都全力以赴，项目成功，你们都能得到晋升。但如果一个人偷懒，另一个人累死，偷懒的人反而轻松得利。结果，你们可能都选择偷懒，项目失败。这就是一个典型的囚徒困境。</p><p>如何解决？你可以尝试引入重复博弈的思维。把一次性项目变成长期合作关系，定期回顾彼此的表现。或者，你可以设计一个机制，让偷懒的代价变得更高。比如，向老板汇报每个人的具体贡献，或者设立一个共同目标，只有达成目标才能获得奖励。纳瓦尔说：“好的机制让合作成为理性选择，而不是道德要求。”</p><p>其次，练习识别零和博弈和正和博弈。在谈判中，如果你能创造新的价值，而不是争夺固定的蛋糕，你就能把零和变成正和。比如，两家公司竞争市场份额，与其打价格战两败俱伤，不如合作开拓新市场，把蛋糕做大。纳瓦尔曾说：“真正的财富来自正和博弈。当你帮助别人致富时，你也更容易致富。”</p><p>最后，应用针锋相对策略来建立信任。在人际关系中，先假设对方是善意的，主动合作。如果对方背叛，你也要果断反击。但不要记仇，一旦对方表现出合作意愿，就重新开始合作。这种策略既保护了你，也让对方知道你的底线。</p><p>课后实践：请找出你生活中一个囚徒困境式的局面——虽然合作对双方都有利，但没人先动。然后，思考如何改变博弈结构，让合作成为自然选择。</p><p>课后作业：设计一个机制，让你所在团队的合作更自发性——不需要外部强制。比如，你可以建议团队定期分享进展，让每个人的贡献透明化；或者设立一个共同奖励，只有团队达成目标才能获得。记住，好的机制让自私的人也能做出利他的行为。</p><p>纳瓦尔说：“博弈论教会我们，聪明不是最优策略。善良、透明和长期思维才是。”希望你能用这些思想，在策略性互动的世界中找到自己的最优解。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">请用你自己的话解释「囚徒困境」为什么会导致个体理性与集体理性的冲突。在什么条件下，两个理性人明明合作更好，却选择了背叛？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考个体决策时的短期利益与长期利益的矛盾，以及信任缺失如何影响合作。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">囚徒困境的核心在于：每个个体都追求自身利益最大化，但若双方都这样做，整体结果反而不如合作。具体来说：<br>1. 个体理性：每个囚徒考虑自己是否背叛——背叛能减免刑罚，而合作可能面临更大风险。<br>2. 集体非理性：若双方都合作，总刑期最短；但理性计算下，双方都背叛，总刑期更长。<br>3. 关键条件：缺乏沟通、一次性博弈、无法强制履约，导致信任缺失。<br>4. 结论：短期自私行为累积成集体损失，揭示了“理性”的局限性。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你与一位同事共同负责一个项目，你们都需要投入额外时间才能让项目成功，但若只有一人努力，另一人偷懒，偷懒者反而收益更高。请描述这个“囚徒困境”局面，并设计一个能促成合作的策略。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑引入重复博弈机制，如建立定期反馈、设定共同目标，或使用针锋相对策略。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">这个局面的囚徒困境表现为：<br>- 双方都努力：项目成功，双方获得奖金（最优集体结果）。<br>- 一方努力，一方偷懒：努力者付出成本无回报，偷懒者坐享其成（个体最优）。<br>- 双方偷懒：项目失败，双方受罚（最差集体结果）。<br><br>促成合作的策略：<br>1. 采用针锋相对策略：先主动合作（努力），然后模仿对方上一轮行为。若对方偷懒，下一轮也偷懒以示惩罚。<br>2. 建立透明沟通：每周同步进度，将个人贡献可视化，减少信息不对称。<br>3. 设置外部监督：引入第三方检查或公开奖惩机制，提高背叛成本。<br>4. 强调长期合作：明确项目成功后还有后续合作，让双方看到重复博弈的价值。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合本课「零和博弈 vs 正和博弈」的概念，回顾此前学过的「复利思维」和「长期主义」，分析为什么在长期关系中更可能形成正和博弈？请用具体例子说明。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考零和博弈（短期竞争）与正和博弈（长期共赢）的区别，联系复利效应如何通过合作创造更多价值。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">零和博弈是一方赢则另一方输，如价格战；正和博弈是双方通过合作创造新增价值，如合资研发。<br><br>衔接复利思维与长期主义：<br>1. 复利思维强调持续积累，在博弈中表现为多次互动——重复博弈让合作收益随时间指数增长。<br>2. 长期主义让人看到未来回报，从而愿意放弃短期背叛的蝇头小利。<br><br>例子：两个初创公司争夺同一客户（零和），但若合作共享技术，开发新产品开拓新市场（正和），长期利润远大于零和竞争。<br>3. 正和博弈需要信任和重复互动，这与复利思维中的“持续投入”一致——每一次合作都像一笔复利存款，积累信任资本。<br>4. 结论：长期关系中，背叛的短期收益远低于合作的长期复利，因此理性人会选择正和博弈。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval052.html" class="prev">上一课</a>
+ <a href="naval054.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

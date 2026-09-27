@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数字资产与Web3 — 纳瓦尔通识课第66课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 66 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 7 · 投资智慧</div>
+ <h1>数字资产与Web3</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 66/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval066.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：从投机到技术革命的认知跃迁</h3><p>想象一下，你站在2009年的某个午后，有人递给你一份白皮书，标题是《比特币：一种点对点的电子现金系统》。你会怎么反应？大多数人会把它当作极客的幻想，甚至是一场骗局。但纳瓦尔·拉维坎特不是大多数人。他在比特币还不到1美元时就开始关注，并成为加密货币最早期、最坚定的支持者之一。</p><p>纳瓦尔曾直言：“加密货币不是投机——是技术革命。”这句话在今天听起来依然振聋发聩。当无数人沉迷于K线图、追逐百倍币时，纳瓦尔看到的却是更深层的东西：区块链作为一种“无需许可的协议”，正在重塑价值交换的基础设施。就像互联网改变了信息流动的方式，区块链正在改变价值流动的方式。</p><p>让我们做个对比。互联网协议，比如TCP/IP，是无需许可的——任何人不需要任何人的批准就可以在上面构建应用。电子邮件、网页、社交媒体，都是基于这个开放协议生长出来的。而区块链，特别是比特币和以太坊，提供了类似但更强大的特性：无需许可的价值转移和智能合约执行。</p><p>纳瓦尔认为，这种变革的深度不亚于互联网本身。他在一次播客中谈到：“我们正在从信息互联网转向价值互联网。区块链让价值像信息一样自由流动。”这不是简单的价格波动，而是底层规则的改变。就像当年人们争论互联网是泡沫还是革命一样，今天的加密货币争论同样充满噪音。</p><p>但纳瓦尔的逻辑很清晰：投资加密货币不是因为价格会涨，而是因为技术会改变世界。他投资了Uber、Twitter，也投资了比特币和以太坊。他的判断标准始终如一：这个技术是否解决了真实问题？是否具有平台级的潜力？</p><p>所以，当我们谈论数字资产和Web3时，首先要放下投机心态。这不是一夜暴富的游戏，而是一场长达数十年的技术变革。纳瓦尔的视角告诉我们：真正的财富来自理解底层逻辑，而不是追逐短期波动。</p><blockquote>“加密货币不是投机——是技术革命。”——纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：比特币、以太坊与Web3的底层逻辑</h3><p>纳瓦尔对加密货币的投资逻辑可以归结为三个核心层次：价值存储、计算平台和网络协议。每个层次对应着不同的技术架构和投资机会。</p><p>首先是比特币，纳瓦尔称之为“数字黄金”。为什么黄金有价值？因为它稀缺、耐用、可分割、易于储存。比特币完美复制了这些特性，同时增加了数字原生的优势：可以瞬间传输到全球任何地方，不需要物理运输，不需要第三方托管。纳瓦尔曾说：“比特币是第一个不依赖任何主权信用的货币。它用数学和代码取代了信任。”这种“去信任化”的特性，让比特币成为价值存储的理想工具。</p><p>但纳瓦尔也指出，比特币的局限性在于它只能做一件事：转移价值。它不能运行复杂的程序，不能创建去中心化应用。这就引出了第二个层次：以太坊和智能合约。</p><p>以太坊的创始人Vitalik Buterin看到了比特币的局限，提出了“世界计算机”的概念。智能合约让代码自动执行，不需要中介。纳瓦尔在2015年就公开支持以太坊，他认为智能合约将彻底改变金融、法律、房地产等依赖信任的行业。举个例子，传统的众筹需要平台如Kickstarter来管理资金，但智能合约可以自动完成：如果项目达成目标，资金自动释放；如果失败，自动退回。没有中间人，没有信任成本。</p><p>第三个层次是Web3，这是一个更宏大的愿景。纳瓦尔认为，Web3不是简单的“去中心化应用”，而是“用户拥有数据和身份的网络”。在Web2时代，用户创造内容，但平台拥有数据。谷歌、Facebook、Twitter积累了巨额财富，而用户只得到免费服务。Web3试图扭转这个局面：用户的数据归用户所有，用户可以通过代币分享网络价值。</p><p>纳瓦尔强调：“Web3让用户成为股东，而不是产品。”这听起来很美好，但现实是，今天的Web3应用还远未成熟。Gas费高昂、用户体验糟糕、安全漏洞频发。纳瓦尔对此很清醒，他说：“我们正处于互联网早期的拨号时代。Web3需要10年甚至20年才能成熟。”</p><h3>三、深层分析：无需许可协议的革命性意义</h3><p>纳瓦尔对区块链最核心的洞察，在于“无需许可的协议”这个概念。要理解它的革命性，我们需要先回顾历史。</p><p>在互联网诞生之前，通信是受控制的。你想建一个网站？需要向电信公司申请线路，获得政府批准。但TCP/IP协议改变了这一切：任何人只要有一台电脑和网络连接，就可以发布内容，不需要任何人的许可。这就是为什么互联网能爆发式增长——它降低了创新门槛。</p><p>区块链将同样的逻辑应用到了价值领域。在传统金融中，你想发送100美元到另一个国家？需要银行、SWIFT系统、外汇监管。每步都需要许可，每步都有成本和时间延迟。但比特币网络允许你直接发送价值，不需要银行批准，不需要政府许可。纳瓦尔形容：“区块链是第一个让价值自由流动的协议。”</p><p>这种无需许可的特性，带来了两个深远影响。第一，它消除了“守门人”。在传统系统中，守门人（银行、政府、平台）控制着入口，他们可以决定谁参与、谁被排除。区块链让任何人都能参与，无论国籍、身份、信用记录。纳瓦尔说：“这是第一次，一个非洲农民和一个硅谷程序员拥有相同的金融工具。”</p><p>第二，它创造了“可组合性”。就像乐高积木，不同的区块链协议可以相互组合，创造出全新的应用。DeFi（去中心化金融）就是最好的例子：你可以在Uniswap上交换代币，在Aave上借贷，在Compound上赚取利息，所有这些都可以通过智能合约自动完成，不需要人类中介。纳瓦尔认为，这种可组合性将催生一个“金融乐高”时代，创新速度会远超传统金融。</p><p>但纳瓦尔也提醒我们，无需许可协议并非没有代价。它带来了更大的责任：用户必须自己管理私钥，自己承担安全风险。如果丢失私钥，没人能帮你找回。如果智能合约有漏洞，资金可能被盗。纳瓦尔说：“自由和安全是一体两面。当你不需要许可时，你也失去了保护。”</p><p>芒格和纳瓦尔都强调，真正的智慧在于理解权衡。比特币和以太坊不是完美的解决方案，而是对现有系统的一种改进。它们解决了某些问题，也带来了新问题。作为投资者，我们需要看清：这些协议是否在解决真实、重要的问题？</p><h3>四、实践应用：从认知到行动的路径</h3><p>理解了底层逻辑，下一步是实践。纳瓦尔建议，投资加密货币的最佳方式不是频繁交易，而是“买入并持有”你认为有长期价值的资产。他本人持有比特币和以太坊多年，从未卖出。他说：“如果你找到了一种革命性的技术，最好的策略就是买入并坐稳。”</p><p>但“买入”之前，你需要做功课。纳瓦尔建议从三个维度评估一个加密项目：它解决了什么真实问题？它的技术方案是否合理？它的团队是否有能力执行？以比特币为例：它解决了“主权货币贬值”的问题，技术方案是工作量证明和去中心化网络，团队是匿名但被全球社区验证的。以太坊解决了“智能合约平台”的问题，技术方案是账户模型和EVM，团队有Vitalik等核心开发者。</p><p>对于初学者，纳瓦尔的建议很务实：先从比特币和以太坊开始。它们是整个生态的基石，风险相对较低。然后，可以花时间研究一些有潜力的应用层项目，比如去中心化交易所（Uniswap）、借贷协议（Aave）、或者存储协议（Filecoin）。但要记住，大多数项目会失败。纳瓦尔说：“在加密货币领域，90%的项目会归零。你的任务是找到那10%。”</p><p>课后实践：想象你只有100美元，必须在加密领域投资。你的逻辑是什么？不是为了赚钱，而是练习思考。你可以选择比特币，因为它是数字黄金，长期保值。或者选择以太坊，因为它是智能合约平台，应用最广。或者选择一个更小众的项目，比如某个DeFi协议，因为它解决了某个具体问题。写下你的理由，然后定期回顾，看看你的逻辑是否成立。</p><p>课后作业：读一个你感兴趣的加密项目白皮书。问自己三个问题：它解决了什么真实问题？如果没有区块链，这个问题能解决吗？这个项目的团队和技术是否可信？比如，读以太坊白皮书，你会理解为什么Vitalik要创建“世界计算机”。读Filecoin白皮书，你会明白去中心化存储为什么重要。读Uniswap白皮书，你会看到自动做市商如何颠覆传统交易所。</p><p>最后，纳瓦尔提醒我们：“不要成为加密货币的狂热信徒。保持怀疑，保持好奇，保持学习。”数字资产和Web3是一场长达数十年的变革，不是一夜暴富的捷径。真正的投资回报，来自你对底层逻辑的深刻理解，以及长期持有的耐心。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔认为加密货币不是投机，而是技术革命。请用你自己的话解释：为什么比特币被称为“数字黄金”？它的核心价值逻辑是什么？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想黄金的稀缺性、去中心化特性，以及比特币如何用技术模拟这些属性。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">比特币被称为数字黄金，因为它模仿了黄金的核心属性：1. 绝对稀缺性：总量2100万个，不可增发，类似黄金的有限储量；2. 去中心化：无中央机构控制，通过挖矿和共识机制维护网络，类似黄金的天然分散性；3. 抗审查：任何人都可以持有和转移，无需第三方许可，类似黄金的匿名性；4. 价值储存：长期来看，比特币的购买力相对稳定，尤其在货币超发环境下，它成为对抗通胀的“硬资产”。纳瓦尔强调，比特币的价值逻辑在于它提供了一种不受政府或银行操控的、全球通用的价值存储工具，这是技术对货币主权的解放。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你只有100美元，想体验Web3投资。请设计一个简单的投资逻辑（不是为了赚钱，而是练习思考）。你会选择比特币、以太坊，还是其他代币？为什么？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑风险承受能力、项目技术背景和你的个人兴趣，而不是短期价格波动。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">我会将100美元全部投入以太坊（ETH），逻辑如下：1. 技术基础：以太坊的智能合约是Web3的核心基础设施，支持去中心化应用（DApps）、DeFi和NFT，其生态最活跃；2. 升级潜力：以太坊已转向权益证明（PoS），能耗更低，且Layer2扩展方案（如Arbitrum）正解决拥堵问题；3. 风险分散：虽然比特币更稳定，但100美元规模下，以太坊的成长空间更大，且其作为“世界计算机”的愿景与纳瓦尔的技术革命理念一致；4. 学习价值：持有ETH可参与链上治理、质押或体验DApps，比单纯囤币更有教育意义。这笔投资不是赌涨跌，而是购买一张进入Web3世界的门票。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合此前课程中“杠杆”和“复利”的概念，分析Web3如何为普通人提供新的杠杆和复利机会？请举一个具体例子。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考智能合约如何自动化价值创造，以及代币经济如何让用户成为网络股东。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">Web3通过以下方式实现杠杆和复利：1. 杠杆——代码即法律：智能合约自动化执行交易、借贷和收益分配，无需中介，个人可以用小资金撬动大生态（例如在DeFi协议中提供流动性赚取手续费）；2. 复利——代币激励：用户参与网络（如持有、质押、贡献内容）可获得原生代币，代币升值带来资本复利，同时网络效应增强代币价值，形成正循环。具体例子：在Uniswap上为ETH/USDC交易对提供流动性，存入100美元后，每次交易收取0.3%手续费，手续费自动再投资，复利效应随交易量增长而扩大。此外，你获得的UNI代币可能随平台发展增值。这类似于纳瓦尔说的“用代码和媒体做杠杆”，Web3让普通人用代码和网络效应实现财富积累。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval065.html" class="prev">上一课</a>
+ <a href="naval067.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

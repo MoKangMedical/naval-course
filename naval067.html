@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行为金融学 — 纳瓦尔通识课第67课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 67 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 7 · 投资智慧</div>
+ <h1>行为金融学</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 67/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval067.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：你的大脑，并非为投资而生</h3><p>想象一下，你手里有1000元现金。今天，你走进一家商店，看到一款标价1000元的电子产品。你犹豫了一下，最终没有买。第二天，你路过另一家店，发现同一款产品正在打折，原价1200元，现在只要1000元。你会不会觉得，自己“赚了”200元？大概率会。但冷静想想，你实际付出的，和昨天一模一样——都是1000元。为什么感觉完全不同？</p><p>这个简单的例子，揭示了行为金融学的核心洞察：人类的大脑，尤其是涉及金钱时，并不是一台理性计算的机器。我们被情感、偏见和直觉所左右。传统金融学假设市场参与者都是理性的，会冷静地权衡风险与收益。但现实是，我们会在牛市顶峰贪婪买入，在熊市谷底恐慌卖出，我们持有亏损的股票太久，却过早地卖掉了盈利的股票。我们就像带着一副有色眼镜看世界，而这副眼镜，就是我们的心理偏差。</p><p>纳瓦尔·拉维坎特曾一针见血地指出：“投资中最难的事情，不是分析公司，而是控制你自己。” 他反复强调，真正的投资智慧，不是找到下一个特斯拉，而是理解并管理你自己的非理性。行为金融学，就是那本帮你摘下这副有色眼镜的手册。它告诉你：你的大脑，并非为投资而生。它更擅长在远古草原上躲避猛兽，而不是在现代金融市场中计算概率。</p><p>想想2000年的互联网泡沫。无数投资者看到雅虎、亚马逊的股价飙升，便不顾一切地涌入，生怕错过“一生一次的机会”。他们忽略了这些公司当时几乎没有盈利，市盈率高得离谱。结果呢？泡沫破裂，无数人血本无归。这不是因为他们智商低，而是因为他们的大脑被一种强大的心理力量控制了——从众心理。当所有人都说“这次不一样”时，你的理性防线会轻易被攻破。</p><p>行为金融学的诞生，正是为了弥补传统金融学这一巨大缺陷。它融合了心理学、社会学和金融学，试图解释为什么市场会出现价格泡沫、为什么投资者会犯系统性错误。它告诉我们：你不是一个人。你犯的错误，是整个人类大脑在进化过程中留下的“出厂设置”。但好消息是，一旦你了解了这些设置，你就能开始有意识地纠正它们。</p><p>本课的目标，不是让你变成一个没有感情的机器人，而是让你成为一个“有觉察的投资者”。当你下次因为股价下跌而心慌想卖出时，你会停下来问自己：这是理性的风险控制，还是损失厌恶在作祟？当你看到别人都在买入某个热门股票时，你会问：这是独立思考，还是从众心理？</p><p>让我们开始这段自我认知之旅。记住，投资的第一原则，是了解你自己。</p><h3>二、核心理论：四大心理偏差，如何让你亏钱</h3><p>行为金融学的研究发现，人类在投资决策中反复出现几种系统性错误。以下四种最为关键，几乎影响了我们每个人。</p><p><strong>第一，损失厌恶。</strong> 这是人类最根深蒂固的心理偏差之一。丹尼尔·卡尼曼和阿莫斯·特沃斯基的实验证明，失去100元带来的痛苦，大约是得到100元带来的快乐的两倍。换句话说，你为了避免亏损100元，愿意放弃赚取200元的机会。在投资中，这导致你死死抱住一只亏损的股票，因为它一旦回本，你就能消除痛苦。但你却忽略了，这笔钱如果投到其他地方，可能已经赚了更多。纳瓦尔曾说：“不要试图挽回沉没成本。你的大脑会欺骗你，让你觉得不卖出就不算亏损。但亏损就是亏损，无论你卖不卖。”</p><p><strong>第二，处置效应。</strong> 这是损失厌恶的直接后果。你倾向于过早地卖出盈利的股票，因为你想“锁定利润”，获得那种“我赚了”的快感。同时，你又倾向于过久地持有亏损的股票，因为你不愿面对“我错了”的痛苦。结果就是：你卖掉了那些未来可能继续上涨的赢家，却留住了那些可能继续下跌的输家。一个经典的例子是，许多投资者在2020年疫情初期，看到股市暴跌就恐慌卖出，结果错过了随后的历史性大涨。</p><p><strong>第三，过度自信。</strong> 你觉得自己开车技术比平均水平好吗？你觉得自己比普通人更聪明、更善良吗？绝大多数人会回答“是”。这就是过度自信偏差。在投资中，它表现为：你觉得自己能准确预测市场走势，你觉得自己能选到跑赢大盘的股票，你觉得自己比别人更早发现机会。研究表明，过度自信的投资者交易更频繁，但扣除交易成本后，他们的收益反而更低。纳瓦尔对此的忠告是：“承认你无法预测未来。没有人能。如果你真的能，你早就是世界首富了。”</p><p><strong>第四，从众心理。</strong> 人是社会性动物，我们天生倾向于跟随群体的行为，尤其是在不确定的情况下。当所有人都说某只股票会涨，你会觉得，他们一定知道一些你不知道的东西。这种心理，是导致市场泡沫的根本原因之一。从17世纪的郁金香狂热，到21世纪的比特币泡沫，从众心理一次次上演。查理·芒格和纳瓦尔都强调，真正的投资机会往往出现在“别人恐惧时我贪婪，别人贪婪时我恐惧”的时刻。但要做到这一点，你必须首先意识到，群体智慧并不总是正确。</p><blockquote>“投资中最难的事情，不是分析公司，而是控制你自己。” —— 纳瓦尔·拉维坎特</blockquote><h3>三、深层分析：为什么理性如此困难？</h3><p>理解了这四大偏差，你可能会问：为什么我们的大脑会如此“不理性”？答案藏在我们的进化史里。现代金融市场只有几百年的历史，而人类大脑的进化花了数百万年。我们的大脑，是为一个完全不同的世界设计的。</p><p>在远古草原上，我们的祖先面临的是即时、明确的生存威胁。看到草丛在动，你不需要计算“有老虎的概率是10%”，你需要立刻逃跑。损失厌恶，在那种环境下是生存优势：失去一顿饭可能是致命的，而多获得一顿饭只是锦上添花。但到了金融市场，这种机制却让我们在股价下跌时恐慌抛售，而不是冷静地寻找机会。我们的大脑，把股价下跌等同于“草丛里有老虎”。</p><p>同样，从众心理在远古时代也是有益的。如果你看到同伴们突然跑向某个方向，你最好也跟着跑，哪怕你并不知道为什么。因为那个同伴可能看到了猛兽，而你的犹豫可能导致死亡。但在股市里，当所有人都在买入时，往往意味着价格已经过高，风险大于收益。你的大脑，却在催促你“跟上，否则你会错过”。</p><p>纳瓦尔在多次访谈中都提到过“系统1”和“系统2”的思维模式，这是丹尼尔·卡尼曼在《思考，快与慢》中提出的概念。系统1是快速、直觉、情绪化的；系统2是缓慢、理性、需要努力的。我们的投资决策，绝大多数时候是由系统1做出的。它节省能量，但容易犯错。而真正的投资智慧，要求你启动系统2——去分析、去质疑、去计算。</p><p>但启动系统2，需要巨大的能量和自律。当你看到账户里的数字在一天内蒸发掉10%，你的心跳会加速，你的手心会出汗，你的大脑会立刻进入“战斗或逃跑”模式。在这种状态下，你很难冷静地思考：“这家公司的基本面变了吗？未来现金流贴现的价值是多少？” 你只想做一件事——卖出，以结束痛苦。</p><p>因此，理性投资，本质上是一场对抗自己本能的战争。你需要建立一套系统，来帮助你绕过这些心理陷阱。正如纳瓦尔所说：“不要试图改变你的本性，那太难了。相反，设计一个环境，让你不需要依靠意志力也能做出正确决定。”</p><p>这就是为什么，很多成功的投资者会采用“自动化”策略，比如定投指数基金。它让你不需要在恐慌时做决定。这也是为什么，他们会设定“买入检查清单”，强迫自己在冲动时停下来思考。记住，你的大脑是你的工具，而不是你的主人。学会驾驭它，而不是被它驾驭。</p><h3>四、实践应用：打造你的投资决策检查表</h3><p>理论再好，不付诸实践，就毫无意义。现在，让我们把行为金融学的智慧，变成你投资工具箱里的一件武器。最好的方法，就是建立一个“投资决策检查表”。</p><p>这个检查表，是你在做出任何重要投资决定之前，必须强制回答的5个问题。它的目的，是强制你启动“系统2”，让你从直觉模式切换到分析模式。以下是这5个问题，以及每个问题背后的心理学原理：</p><p><strong>问题1：这个决定，是基于事实，还是基于情绪？</strong> 问问自己，你是因为看到了可靠的数据分析而买入，还是因为焦虑、贪婪或害怕错过而行动？如果是后者，暂停24小时。情绪是会消退的，但错误的决定造成的损失不会。</p><p><strong>问题2：如果我现在没有持有这个资产，我还会买入它吗？</strong> 这是克服“处置效应”和“沉没成本谬误”的良药。如果你因为亏损而拒绝卖出，请问自己：如果我没有这笔投资，现在会愿意花同样的钱买入吗？如果答案是否定的，那就应该卖出。</p><p><strong>问题3：别人都在做的，就一定是对的吗？</strong> 当你发现某个股票或资产所有人都在谈论、都在买入时，请警惕。问问自己：这个价格合理吗？我是否只是因为害怕错过而行动？真正的机会，往往在无人问津时出现。</p><p><strong>问题4：我是否过度自信，认为自己能预测未来？</strong> 写下你的预测，并问自己：我的预测有什么依据？如果错了，会怎样？承认你无法预测市场，是走向理性的第一步。把精力放在你能控制的事情上，比如你的投资纪律和风险控制。</p><p><strong>问题5：这个投资，是否在我的风险承受范围内？</strong> 这是防止“损失厌恶”导致你恐慌抛售的关键。在买入前，就明确：如果这笔投资下跌30%，我能否承受？如果答案是不能，那就不要投入这么多。如果你在买入前就做好了最坏的打算，你就不会在下跌时被情绪冲昏头脑。</p><p>课后实践：回顾你最近的一次投资决定。你是基于逻辑做的——还是被某个心理偏差影响了？写下来，这是你成长的开始。</p><p>课后作业：为自己建立一个「投资决策检查表」。打印出来，贴在电脑旁。在每次交易前，强制自己回答这5个问题。坚持一个月，你会发现自己犯的错误越来越少。记住纳瓦尔的话：“财富是认知的变现。而认知，始于了解你自己的愚蠢。”</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">损失厌恶理论指出，失去100元的痛苦远大于得到100元的快乐。请用你自己的语言解释这一心理偏差如何导致投资者在市场下跌时做出非理性决策，比如恐慌性抛售或拒绝止损。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考痛苦与快乐的权重差异如何影响风险规避行为，尤其是在亏损情境下的情绪反应。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">损失厌恶使投资者对亏损的敏感度高于盈利，导致：1）市场下跌时，恐慌性抛售以逃避进一步亏损的痛苦，而非基于长期价值判断；2）拒绝止损，因为承认亏损会加剧痛苦，从而持有亏损资产直至更大损失；3）忽视概率，放大小概率亏损的风险感知，影响理性仓位管理。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你持有两只股票：A股已涨20%，B股跌15%。根据处置效应，你更可能卖出哪只？请结合你最近的投资决定，分析这种偏差如何导致你过早卖出盈利资产而持有亏损资产。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回忆你是否倾向于兑现盈利以获取满足感，同时回避亏损带来的痛苦，即使基本面已变化。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">根据处置效应，你更可能卖出A股，因为兑现盈利带来确认感，而卖出B股会承认亏损，引发痛苦。实际中，这种偏差导致：1）过早卖出潜力股，错失后续涨幅；2）长期持有亏损股，期望回本，却可能进一步下跌。例如，我最近卖出一只上涨20%的科技股，却未分析其增长空间，而持有亏损的能源股，最终因行业下行损失更大。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合之前学过的“系统1与系统2”思维模型，分析过度自信和从众心理如何共同作用，导致泡沫形成。请指出在泡沫膨胀期，投资者如何被系统1的直觉偏差所驱动。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考系统1的快速、情绪化决策如何被社会证明和过度自信强化，而系统2的理性分析被抑制。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">过度自信（如“我比平均更懂市场”）和从众心理（如“大家都在买，所以正确”）协同触发系统1的直觉偏差：1）过度自信使投资者忽视风险，快速追高，认为能提前退出；2）从众心理提供社会认可，压制系统2的质疑，形成正反馈循环；3）泡沫膨胀期，系统1的贪婪与恐惧交替，而系统2的理性被噪音淹没。整合后，投资者陷入“自信-跟随-再自信”的闭环，直到泡沫破裂。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval066.html" class="prev">上一课</a>
+ <a href="naval068.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

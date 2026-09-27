@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实用主义 — 纳瓦尔通识课第97课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 97 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 10 · 东西方哲学融合</div>
+ <h1>实用主义</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 97/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval097.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：哲学从书斋走向生活</h3><p>各位同学，欢迎来到第97课。今天，我们要聊一个听起来有点“土”却极其深刻的话题：实用主义。如果你觉得哲学总是高高在上、不接地气，那实用主义就是来打破这个刻板印象的。它不问你“世界的本质是什么”，而是问“这个想法能帮我解决问题吗”。</p><p>纳瓦尔·拉维坎特，这位硅谷的传奇投资人，他的思想体系里处处透着实用主义的味道。他常说的一句话是：“我不在乎一个理论是否完美，我只在乎它是否能让我赚到钱、让我更幸福。” 你看，这不就是实用主义的活教材吗？纳瓦尔不是坐在书斋里构建宏大体系的哲学家，他是一个把哲学用到生活里的实践者。他的每一个观点——从“财富是睡后收入”到“幸福是一种技能”——都经得起“是否有效”的检验。</p><p>实用主义是美国对世界哲学最独特的贡献。它的诞生，源于19世纪末美国人对欧洲形而上学的不满。当时，欧洲哲学家们争论“真理是什么”“上帝是否存在”这类问题，争得面红耳赤，却拿不出任何实际结论。实用主义者们说：够了，让我们换个思路。我们不问一个想法“是不是真的”，而是问“如果我相信它，会带来什么后果”。如果后果是好的，那它就是真的——至少对你而言是真的。</p><p>这就引出了实用主义的核心：有用即为真。听起来简单，甚至有点粗暴，但它的力量在于，它把哲学从象牙塔里拉了出来，扔进了生活的泥潭。纳瓦尔正是这种思想的现代代言人。他从不纠结于抽象的理论，而是问：“这个理念能帮我做出更好的决策吗？能让我更快乐吗？能让我更富有吗？” 如果答案是否定的，他会毫不犹豫地抛弃它。</p><p>举个例子，纳瓦尔在谈到“冥想”时，并没有从佛教的宇宙观或禅宗的公案入手。他直接说：“冥想让我更专注、更平静，所以它有用，我就做。” 这就是实用主义的态度：不迷信权威，不盲从传统，只看结果。今天，我们就来深入探讨这个思想，看看它如何帮我们拆解生活中的难题。</p><p>但请记住，实用主义不是“怎么都行”的廉价鸡汤。它有自己的逻辑和边界。接下来，我们先从它的核心理论说起。</p><h3>二、核心理论：有用即为真</h3><p>实用主义的真理论，简单说就是：一个信念的真假，取决于它在实践中带来的效果。如果相信一个想法能让你更成功、更幸福，那这个想法就是真的；反之，如果它让你痛苦、失败，那它就是假的。这个观点由美国心理学家和哲学家威廉·詹姆斯在19世纪末系统提出，后来由教育学家约翰·杜威发扬光大。</p><p>威廉·詹姆斯有一个著名的例子：一个人走在森林里，看到一只熊。他有两种信念：一是“熊会攻击我”，二是“熊不会攻击我”。从纯粹逻辑上看，两种信念都可能为真，但实用主义者会问：哪个信念更有效？显然，相信“熊会攻击我”会让人逃跑或防御，从而增加生存概率；而相信“熊不会攻击我”可能导致被攻击。所以，在实用主义看来，“熊会攻击我”就是真的，因为它有用。</p><p>这个例子听起来有点极端，但它揭示了实用主义的本质：真理不是静态的、客观的、等待被发现的东西，而是动态的、工具性的、帮助我们适应环境的东西。詹姆斯曾说：“真理是那些被证明为好的东西。” 这句话后来被简化为“有用即为真”。</p><p>纳瓦尔的思想中，这种实用主义精神无处不在。比如，他关于“财富”的观点：他认为财富不是金钱本身，而是“在你睡觉时也能为你赚钱的资产”。这个定义有用吗？非常有用。因为它引导人们去创造系统、投资资产，而不是单纯地出卖时间。再比如，他关于“幸福”的观点：幸福不是外在条件的满足，而是一种内在的平和状态。这个定义有用吗？同样有用，因为它让人们把注意力从外界转向内心，从而更容易获得持久的满足。</p><p>芒格和纳瓦尔都强调，判断一个理念的好坏，要看它是否经得起长期检验。芒格有句名言：“如果我知道我会死在哪里，我就永远不去那个地方。” 这是一种反向的实用主义：避免无效的信念，就是最有效的策略。纳瓦尔则说：“你的信念体系应该像一个软件，定期更新，删除那些不工作的部分。” 这正是实用主义的精髓：真理不是一成不变的，而是需要不断检验和修正的。</p><p>但这里有一个陷阱：实用主义会不会导致相对主义？如果“有用”的标准因人而异，那是不是每个人都可以有自己的“真理”？威廉·詹姆斯对此有回应：实用主义不是主观任意，而是强调在特定情境下，经过实践检验的信念才是有效的。比如，在科学领域，一个理论必须能预测现象、产生可重复的结果，才算“有用”。所以，实用主义其实是一种严格的检验方法，而不是放纵。</p><h3>三、深层分析：实用主义与科学的对话</h3><p>实用主义和科学有着天然的亲缘关系。科学的核心方法就是假设-检验：提出一个理论，看它能否解释现象、预测未来。如果实验结果支持它，我们就暂时接受它；如果实验反驳它，我们就修改或抛弃它。实用主义本质上就是把这种方法推广到生活的方方面面。</p><p>纳瓦尔本人就是一个科学思维的狂热信徒。他常说：“科学是唯一可靠的真理来源。” 但他说的“真理”不是绝对真理，而是“目前最有效的解释”。比如，物理学中的万有引力定律，它“有用”吗？非常有用，因为它能预测苹果下落、卫星轨道。但爱因斯坦的相对论修正了牛顿的定律，说明在极端条件下，牛顿定律不再“有用”。所以，科学真理是动态的、不断进化的——这正是实用主义的写照。</p><p>但实用主义也有它的局限。最大的局限是：它可能忽视长期价值。如果一个信念在短期内有用，但长期有害，那它还算“真”吗？比如，相信“及时行乐”能带来即时的快乐，但长期可能导致破产或健康问题。实用主义者会回答：我们需要考虑更广泛的“有用性”，包括长期后果。但问题在于，人类往往短视，容易只看眼前。</p><p>另一个局限是：实用主义可能被滥用。比如，某些骗子会利用“有用即为真”来推销伪科学或成功学，声称“只要相信就能成功”。但真正的实用主义要求严格的检验：你必须设计实验、收集数据、接受失败。纳瓦尔对此有清醒的认识，他反复强调：“不要相信任何未经你亲自验证的真理。” 这正是实用主义者的自律。</p><p>芒格和纳瓦尔都强调，实用主义需要与理性结合。芒格推崇“多元思维模型”，即从多个学科中提取有用的工具，而不是死守一个理论。纳瓦尔则说：“你的大脑是你最重要的工具，要学会用它。” 这种工具性思维，正是实用主义的精髓：把思想当作工具，而不是偶像。</p><p>所以，实用主义不是反智的，而是要求我们更聪明地使用智力。它让我们摆脱对抽象真理的执念，转而关注实际问题。正如杜威所说：“哲学不是对世界的沉思，而是对生活的改造。” 纳瓦尔的一生，就是这句话的最佳注解。</p><h3>四、实践应用：检视你的信念体系</h3><p>现在，让我们把实用主义用到自己身上。纳瓦尔有一个关键问题：你目前的信念体系在实践中有效吗？你的哲学正在帮你过更好的生活吗？如果答案是否定的，那你需要像软件更新一样，升级你的信念。</p><p>这里有一个具体的练习：评估你的3个核心理念。对每一个，问：这个理念让我的生活变得更好还是更坏？比如，你相信“努力工作就能成功”。这个理念有用吗？如果你发现它让你焦虑、疲惫，甚至忽略了健康，那它可能不再有效。你可以把它更新为“聪明工作比努力工作更重要”，或者“工作与生活需要平衡”。</p><p>再比如，你相信“金钱是万恶之源”。这个理念有用吗？如果你因此拒绝赚钱，导致生活拮据，那它显然有害。你可以把它更新为“金钱是工具，关键看如何使用”。</p><p>纳瓦尔自己的信念体系就经过多次迭代。他年轻时相信“靠出卖时间赚钱”，后来发现这没用，于是转向“靠资产赚钱”。他曾经相信“幸福来自成功”，后来发现这也没用，于是转向“幸福来自内心平和”。每一次更新，都让他的生活变得更好。</p><p>实用主义教会我们：不要做信念的奴隶，要做信念的主人。你可以随时抛弃那些不工作的理念，就像扔掉一件旧衣服。这听起来简单，但真正做到需要勇气和诚实。你需要问自己：我坚持这个信念，是因为它真的有效，还是因为我习惯了它？</p><p>最后，请记住威廉·詹姆斯的话：“真理是那些被证明为好的东西。” 你的真理，应该由你的生活来证明。从今天开始，做一个实用主义者：检验你的信念，保留那些有用的，抛弃那些无用的。这不仅是哲学，更是生存智慧。</p><p>课后作业：写下你最重要的3个信念，对每个信念，列出它带来的好处和坏处。然后决定：保留、修改、还是抛弃？下周我们来讨论你的发现。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">实用主义认为“有用即为真”。请用自己的话解释这句话的含义，并说明它与传统真理观（如符合论）的根本区别在哪里？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">从“真理的检验标准”入手，思考“有用”是指对谁有用、在什么情境下有用。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 实用主义认为，一个观念是否为“真”，不在于它是否精确地“符合”客观现实（符合论），而在于它在实践中是否能带来有效的、令人满意的结果。2. 例如，“地球是圆的”之所以为真，不是因为它与某个绝对实在一致，而是因为基于这个观念航海、导航都成功了。3. 核心区别：传统真理观强调静态的、客观的对应关系；实用主义强调动态的、主观的、情境性的“兑现价值”——真理是“我们相信它就能更好地行动”的工具。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你最近在工作中遇到一个棘手问题，团队有两种解决方案：A方案基于经典理论但执行困难，B方案看似“不严谨”但能快速见效。请用实用主义的视角分析你应该如何选择，并说明理由。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">不要纠结于方案是否符合“正确理论”，而是评估哪个方案在当下情境中能产生更优的实际效果。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 实用主义主张以“效果”作为判断标准。我会先测试B方案：如果它确实能快速解决痛点、节省资源、让团队前进，那么它在这个情境下就是“真”的。2. 同时，我会分析A方案的“经典理论”是否真正适用于当前的具体条件——如果它因为执行困难而无法落地，那么它在这个情境中就是“无效”的，因此不是“真”的。3. 但实用主义不排斥理论：我会保留A方案作为备用，并观察B方案实施后的长期反馈。关键结论：选择不是非此即彼，而是看哪个方案能真正改善现状、推动目标实现。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾之前学过的“第一性原理”和“反脆弱”概念，请分析实用主义如何与它们形成互补或冲突？如果你同时信奉三个理念，在实践中如何平衡？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“真理的实用性”与“本质还原”的关系，以及“效果导向”与“从不确定性中获益”如何协同。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 互补：第一性原理强调拆解到基本事实，而实用主义要求检验这些事实的“有效性”——两者结合能避免空想；反脆弱强调从波动中获益，实用主义则提供“根据效果不断调整信念”的行动指南，帮助你在变化中快速迭代。2. 潜在冲突：第一性原理可能追求绝对“本质”，而实用主义认为真理是相对的；反脆弱鼓励试错，但实用主义可能因过度追求短期“有用”而忽略长期风险。3. 平衡策略：用第一性原理找到核心假设，用实用主义测试其实际效果，用反脆弱设计小步试错的机制——例如先假设“客户需要A功能”（第一性），通过最小可行产品验证效果（实用），若失败则快速转向并积累经验（反脆弱）。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval096.html" class="prev">上一课</a>
+ <a href="naval098.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

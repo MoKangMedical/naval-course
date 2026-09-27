@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>资产配置 — 纳瓦尔通识课第64课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 64 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 7 · 投资智慧</div>
+ <h1>资产配置</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 64/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval064.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么资产配置比选股更重要</h3><p>想象一下，你花了很多时间研究某只股票，分析财报、跟踪新闻、甚至熬夜看K线图，最后你选中了一只“牛股”。但如果你把大部分资金都放在了现金或债券里，这只股票的涨幅对你整体收益的影响微乎其微。反过来，如果你把80%的资产配置在了股票上，即使你选中的股票表现一般，你的整体回报也可能远超那些选股高手。这就是资产配置的力量。</p><p>纳瓦尔曾说：“投资的本质不是预测未来，而是管理不确定性。” 他反复强调，大多数投资者过于关注短期波动，而忽视了最根本的决策——如何分配资金。研究数据也支持这一点。1991年，金融学家加里·布林森、兰迪·辛格和吉尔·比鲍尔发表了一篇经典论文，他们分析了美国91只大型养老基金在10年间的回报，发现资产配置解释了91.5%的回报差异。剩下的不到10%才来自选股、市场时机和其他因素。这意味着，你花90%的时间选股，可能只贡献了10%的效果。</p><p>这个结论听起来反直觉，但逻辑很简单。市场波动是随机的，短期择时几乎不可能持续成功。而资产配置决定了你的风险敞口——你是暴露在股市的长期增长中，还是被通胀吞噬，或者被利率变化冲击。纳瓦尔在《纳瓦尔宝典》中多次提到：“财富来自于长期持有优质资产，而不是频繁交易。” 资产配置就是帮你建立这个长期框架的工具。</p><p>举个例子，2008年金融危机期间，全球股市暴跌超过50%。如果一个投资者把全部资金投入股票，他的腰包会缩水一半。但另一个投资者配置了60%股票、40%债券，他的损失可能只有20%左右，因为债券在危机中往往上涨。资产配置不是让你避免亏损，而是控制亏损的幅度，让你有足够的耐心等待市场复苏。芒格和纳瓦尔都强调，投资的要义是“活下去”，而资产配置正是生存的基石。</p><p>所以，当你开始思考投资时，第一件事不是选哪只股票，而是问自己：我应该把多少钱放在股票里？多少钱放在债券里？多少钱放在现金里？这个决策，比你接下来做的任何投资决策都重要得多。</p><h3>二、核心理论：核心-卫星策略与生命周期投资</h3><p>理解了资产配置的重要性后，下一个问题是：如何设计一个有效的配置方案？纳瓦尔推崇一种简单而强大的方法——核心-卫星策略。这个策略的核心思想是：用大部分资金（核心）投资于低成本、分散化的指数基金，确保你获得市场平均回报；再用小部分资金（卫星）投资于你特别看好的个股、行业或另类资产，以博取超额收益。</p><p>纳瓦尔曾比喻说：“核心是你的锚，卫星是你的帆。锚让你稳定，帆让你前进。” 具体来说，核心部分通常占资产的70%-80%，投资于像标普500指数基金、全球股票指数基金或债券指数基金。这些资产的管理费低、透明度高，长期来看能稳定增长。卫星部分占20%-30%，你可以投资于你熟悉的公司股票、房地产信托、甚至加密货币——前提是你理解这些资产的风险。</p><p>这种策略的优势在于：它既避免了完全被动投资带来的平庸，又避免了完全主动投资带来的高风险。芒格和纳瓦尔都强调，大多数人在主动投资中会犯错误，因为情绪和偏见难以克服。核心-卫星策略通过强制你大部分资金“被动”，减少了情绪干扰；同时通过小部分资金“主动”，满足了你的探索欲和潜在超额收益。</p><p>另一个关键概念是生命周期投资。这个理念很简单：你的年龄决定了你的风险承受能力。年轻人有几十年的工作时间，可以承受更大的波动，因为市场下跌后还有时间恢复。而临近退休的人需要保护本金，因为一旦亏损，没有足够的时间弥补。纳瓦尔建议：“把你的年龄作为债券配置的参考比例。” 比如，30岁时，你可以把30%的资金放在债券或现金里，70%放在股票里；60岁时，则反过来。</p><p>这个规则背后是数学逻辑。股票长期年化回报约10%，但波动大；债券年化回报约5%，但波动小。年轻人用时间换收益，老年人用安全保稳定。当然，这只是一个起点，你还需要根据个人收入、支出、负债和目标调整。纳瓦尔强调：“没有放之四海而皆准的配置，但有一个放之四海而皆准的原则：你承担的风险必须与你的时间跨度匹配。”</p><p>最后，再平衡是让这个策略运转的引擎。再平衡是指定期调整你的资产比例，让它回到初始目标。比如，你设定股票和债券各50%。一年后，股票涨了，变成60%，债券跌到40%。再平衡就是卖出部分股票，买入债券，回到50:50。这听起来像是“低卖高买”，但纳瓦尔指出：“再平衡是你唯一能系统化实现低买高卖的方法。” 它强迫你在市场狂热时卖出，在市场恐慌时买入，从而锁定利润、降低风险。</p><h3>三、深层分析：为什么再平衡如此重要，以及常见陷阱</h3><p>再平衡看似简单，但很多人做不到，因为它违背人性。当股市大涨时，你舍不得卖出，总想着“还能再涨”；当股市大跌时，你不敢买入，害怕“还会再跌”。纳瓦尔曾一针见血地指出：“投资最大的敌人不是市场，而是你自己的情绪。” 再平衡是一个机械化的纪律，它让你脱离情绪，执行理性决策。</p><p>从数学角度看，再平衡能提升风险调整后的回报。假设你有两种资产：A波动大但回报高，B波动小但回报低。长期持有不调整，你的组合会越来越偏向A，风险越来越高。而定期再平衡，等于你每次都在A高估时减持、低估时增持，相当于自动执行了价值投资策略。研究显示，即使两种资产的长期回报相同，再平衡也能通过降低波动来提高复合增长率。</p><p>但再平衡也有陷阱。第一个陷阱是频率过高。有些人每月甚至每周再平衡，这会产生大量交易成本，还可能错过趋势。纳瓦尔建议：“每年再平衡一次就足够了，或者当偏离目标比例超过5%时再行动。” 太频繁的再平衡会让你陷入“噪音交易”，反而损害收益。第二个陷阱是忽略税收。在应税账户中，卖出股票会产生资本利得税。纳瓦尔提醒：“再平衡时，优先在免税账户（如养老金账户）里操作，或者用新增资金买入不足的资产，而不是卖出超额的资产。”</p><p>另一个常见错误是盲目遵循年龄规则。比如，一个40岁的人，按规则应该配置60%股票、40%债券。但如果他还有30年房贷、孩子教育基金要准备，他的实际风险承受能力可能更低。纳瓦尔强调：“资产配置必须与你的现金流匹配，而不是机械地套公式。” 他建议用“应急基金”作为缓冲：先存够6-12个月的生活费在现金或货币基金中，然后再考虑投资组合。</p><p>最后，纳瓦尔提醒我们警惕“资产类别膨胀”。很多人认为黄金、加密货币、艺术品等是“另类资产”，应该配置一些。但纳瓦尔的态度很谨慎：“如果你不理解一个资产，就不要碰它。” 黄金和加密货币的价格波动极大，且不产生现金流，更适合作为卫星部分的小额配置。芒格和纳瓦尔都认为，大多数人的投资组合只需要三种资产：股票、债券和现金。保持简单，才能坚持执行。</p><h3>四、实践应用/总结：设计你的资产配置方案</h3><p>现在，让我们把理论付诸实践。第一步，列出你当前的资产配置。如果你还没有做过，这就是最重要的一步。拿出一张纸，写下你拥有的所有资产：现金、银行存款、股票、基金、房地产、养老金账户等。计算每个类别的比例。你可能惊讶地发现，你其实已经配置了，只是没有意识到。比如，很多人把大部分钱放在银行里，这实际上是一种“100%现金”配置，长期会被通胀侵蚀。</p><p>第二步，根据你的年龄、收入和目标，设计一个简单的3-5种资产配置方案。以一位35岁的职场人为例：他年收入50万，有20万应急基金，目标是在60岁退休。他的配置可以是：70%股票（分散在国内外指数基金）、20%债券（国债或企业债ETF）、10%现金或货币基金。股票部分作为核心，债券提供稳定，现金保障流动性。如果他想增加一些卫星部分，可以从股票中拿出5%投资于他熟悉的科技行业ETF。</p><p>第三步，设定再平衡规则。你可以选择每年12月31日检查一次，或者当任何资产比例偏离目标超过5%时调整。比如，如果股票涨到75%，就卖出5%的股票，买入债券或现金。记住，再平衡不是预测市场，而是控制风险。纳瓦尔说：“再平衡是投资中最无聊但最有效的工作。”</p><p>最后，课后作业是：设计一个具体的配置方案，写出每种资产的目标比例和再平衡规则。比如：股票50%、债券30%、现金10%、房地产10%。再平衡规则：每年一次，偏离超过5%时调整。把这个方案写下来，贴在你看得到的地方。然后，坚持执行至少一年。你会发现，当你不再纠结于选股，而是专注于配置时，你的心态会变得平和，你的回报也会更稳定。</p><p>总结一下，资产配置是投资中最简单却最重要的事。它决定了你90%的回报，而选股、择时只是锦上添花。纳瓦尔和芒格都告诉我们：投资成功的秘诀不是聪明，而是纪律。用核心-卫星策略构建框架，用生命周期投资匹配风险，用再平衡系统化执行。从今天开始，停止追逐热点，开始思考你的资产配置。这一个小小的改变，可能会改变你一生的财富轨迹。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">为什么说资产配置决定了你90%的投资回报，而不是选股或择时？请用不超过100字解释这个核心观点背后的逻辑。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考长期回报的主要来源是什么，以及分散化如何降低个体决策的随机性。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 研究表明，90%以上的投资组合回报波动由资产配置解释，而非具体股票选择或买卖时机。2. 选股和择时具有高度不确定性，受市场情绪和运气影响，而资产配置通过分散化捕捉不同资产类别的长期风险溢价。3. 资产配置决定了你的整体风险暴露水平，从而主导了长期复合收益的路径，是战略层面的决策，战术操作只是细节。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你今年30岁，手头有20万元可投资资金，请根据生命周期投资原则和核心-卫星策略，设计一个简单的资产配置方案，并说明各部分的理由。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">考虑年龄决定的风险承受能力，核心部分用低成本的指数基金，卫星部分可以用特定行业或主题。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 核心部分（70%）：配置14万元于宽基指数基金（如沪深300+标普500），获取市场平均回报，降低个股风险。2. 卫星部分（30%）：配置6万元于成长性资产，如科技行业ETF或新兴市场基金，以博取超额收益。3. 年龄因素：30岁有20年以上投资期，可承受较高风险，因此股票类资产占比可达80-90%，剩余10-20%配置债券或货币基金作为缓冲。4. 理由：核心提供稳定基础，卫星增强弹性，生命周期原则确保风险与时间匹配。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合此前学过的复利效应和风险控制概念，说明为什么定期再平衡（如每年一次）是“低买高卖”的系统化工具，并解释它如何增强长期回报？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">再平衡强制卖出涨多的资产、买入跌多的资产，这如何与复利和纪律性关联？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 复利效应依赖于持续的正回报，而再平衡通过卖出高估值资产、买入低估值资产，自动实现低买高卖，避免追涨杀跌。2. 风险控制：再平衡维持预设的资产比例，防止单一资产过度集中导致风险失控（如牛市后期股票占比过高）。3. 系统化纪律：再平衡消除了情绪干扰，强制在恐惧时买入、贪婪时卖出，从而捕捉均值回归带来的超额收益。4. 长期看，再平衡能平滑收益曲线，减少最大回撤，使复利更稳定地发挥作用，最终提升风险调整后回报。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval063.html" class="prev">上一课</a>
+ <a href="naval065.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

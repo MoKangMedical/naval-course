@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>声誉管理 — 纳瓦尔通识课第83课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 83 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>声誉管理</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 83/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval083.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：数字时代，你的名字就是你的命</h3>
+<p>各位同学，今天我们来聊一个看似老派、实则极其前卫的话题——声誉管理。纳瓦尔·拉维坎特有一句非常直白的话：“声誉是你最值钱的资产——也是你最容易被偷走的东西。” 这句话放在今天，分量比以往任何时候都重。</p>
+<p>想想看，在原始社会，你的声誉可能就是部落里几个人对你的看法。在工业时代，声誉可能只限于你所在的工厂或社区。但在互联网时代，你的声誉被无限放大了。一个帖子、一条评论、一段视频，可能让一个素不相识的人对你产生深刻印象。同样，一个错误、一次失误，也可能像野火一样蔓延，让你多年积累的声誉毁于一旦。</p>
+<p>纳瓦尔强调，声誉是“杠杆”的一种形式。好的声誉能让你获得信任，从而撬动更多的资源、机会和合作。但反过来，坏的声音也会成为你前进路上的绊脚石。更关键的是，声誉具有“不可逆性”——一旦受损，修复的成本极高，甚至永远无法恢复。</p>
+<p>举个例子。假设你是一个自由职业者，在Upwork或Fiverr上接单。你的评分和评价就是你的声誉。一个五星好评，能让你接到更多高价值订单；一个差评，可能让你几个月都接不到活。这就是数字时代声誉的力量——它像空气一样无处不在，却又像玻璃一样易碎。</p>
+<p>所以，今天这堂课，我们要系统探讨：为什么声誉在数字时代如此重要？长期声誉的三大支柱是什么？如何主动建立专业声誉？以及，当声誉危机来临时，该怎么办？</p>
+<blockquote>纳瓦尔曾说：“你的声誉是你最重要的资产，因为它决定了别人是否愿意与你合作。而合作，是创造财富的核心方式。”</blockquote>
+<p>好，让我们带着这个认知，进入核心理论部分。</p>
+
+<h3>二、核心理论：长期声誉的三大支柱</h3>
+<p>纳瓦尔和查理·芒格都强调，声誉不是靠一次闪光点建立的，而是靠长期、一致的行为积累的。芒格曾说：“声誉和正直是你最重要的资产，它们需要一生来建立，但可以在几分钟内被摧毁。” 综合两位大师的思想，我将长期声誉的支柱归纳为三点：可信度、可靠性和一致性。</p>
+<p><strong>第一，可信度。</strong> 可信度意味着你是一个“说真话”的人。纳瓦尔认为，在信息爆炸的时代，真实和透明反而成了稀缺资源。如果你能坚持不说谎、不夸大、不隐瞒，别人就会把你当作一个可信赖的信息源。可信度不是靠一次“正确”建立的，而是靠每一次选择——哪怕那个选择会让你短期吃亏。</p>
+<p>举个例子。一位投资人在评估项目时，如果发现创始人隐瞒了关键风险，即使项目看起来再好，他也会放弃。因为一旦信任破裂，后续的合作就失去了基础。纳瓦尔本人就以“坦率”著称，他经常在推特上分享自己的失败经历，这种坦诚反而赢得了更多人的尊重。</p>
+<p><strong>第二，可靠性。</strong> 可靠性意味着你是一个“说到做到”的人。纳瓦尔说：“如果你承诺了某件事，就一定要完成它。即使完成不了，也要提前沟通。” 可靠性是建立信任的基石。在商业世界里，一个可靠的合作伙伴比一个聪明的合作伙伴更受欢迎。</p>
+<p>想想看，你更愿意和谁合作？是那个每次都按时交付、即使遇到困难也会主动沟通的人，还是那个经常拖延、找借口、甚至失联的人？答案不言而喻。纳瓦尔在投资时，特别看重创始人的“执行力”，而执行力背后就是可靠性——你是否能兑现你的承诺。</p>
+<p><strong>第三，一致性。</strong> 一致性意味着你的言行在时间上是稳定的。纳瓦尔认为，人最怕的是“反复无常”。如果你今天说一套，明天做一套，别人就无法预测你的行为，自然不敢与你深入合作。一致性不仅体现在工作上，也体现在价值观上。一个坚持原则的人，即使观点不被所有人认同，也会赢得尊重。</p>
+<p>芒格和纳瓦尔都强调，一致性是长期声誉的“粘合剂”。没有一致性，可信度和可靠性都会打折扣。举个例子，一个企业家如果今天倡导环保，明天却投资污染企业，那么他之前的环保言论就失去了意义。人们会认为他“虚伪”，而虚伪是声誉的致命伤。</p>
+<p>总结一下：长期声誉的三大支柱是可信度（说真话）、可靠性（说到做到）和一致性（言行稳定）。这三者缺一不可，共同构成了你数字时代的名片。</p>
+
+<h3>三、深层分析：如何建立专业声誉与应对危机</h3>
+<p>理解了理论，我们来看实践。如何主动建立专业声誉？纳瓦尔给出了一个非常实用的框架：<strong>输出价值，而非推销自己。</strong></p>
+<p>纳瓦尔认为，最有效的声誉建立方式，不是到处宣传“我很牛”，而是持续地、免费地输出有价值的内容。比如，写博客、发推文、做公开分享。这些行为本质上是在“展示你的思考过程”，让别人看到你的专业能力、逻辑和价值观。久而久之，人们会把你和某个领域关联起来——你就是那个“懂行的人”。</p>
+<p>举个例子。纳瓦尔本人就是通过持续输出关于财富和幸福的观点，逐步建立了“硅谷思想领袖”的声誉。他没有靠广告或公关，而是靠一篇篇推文、一次次访谈。他的内容本身就成了最好的宣传。</p>
+<p>具体操作上，纳瓦尔建议：<strong>找到你的“特定知识”领域，然后持续输出。</strong> 特定知识是你真正擅长且热爱的领域，比如编程、写作、投资、教育等。不要试图讨好所有人，而是聚焦于一个细分领域，成为那个领域的小专家。这样，你的声誉就会像滚雪球一样，越滚越大。</p>
+<p>接下来，我们谈谈声誉危机管理。纳瓦尔说：“声誉危机是不可避免的。关键在于你如何应对。” 他提出了三个步骤：<strong>承认、解释、改进。</strong></p>
+<p><strong>第一步，承认。</strong> 当错误发生时，第一时间承认，不要推卸责任。纳瓦尔强调，人们原谅的是“诚实的人”，而不是“完美的人”。如果你试图掩盖，只会让事情变得更糟。</p>
+<p><strong>第二步，解释。</strong> 解释不是找借口，而是说明发生了什么以及为什么。纳瓦尔建议，解释要简洁、真诚，避免情绪化。比如，“我犯了一个错误，因为我在时间管理上出了问题。这是我的责任。”</p>
+<p><strong>第三步，改进。</strong> 最后，给出具体的改进措施，并承诺不再犯。行动比语言更有力量。如果你能真正改过，别人反而会因为你的“成长”而更加信任你。</p>
+<p>举个例子。一家科技公司因为产品安全问题导致用户数据泄露。如果CEO第一时间公开道歉、说明原因、并推出改进方案，用户可能会原谅。但如果CEO选择沉默或甩锅，那么声誉损失将不可逆转。纳瓦尔说：“危机是建立声誉的另一次机会——只要你处理得当。”</p>
+
+<h3>四、实践应用与总结：从现在开始，管理你的声誉</h3>
+<p>好了，理论和方法都讲完了。现在，我们进入实践环节。纳瓦尔说：“知识如果不转化为行动，就是无用的。” 所以，这堂课的课后实践非常具体：<strong>Google一下你自己的名字。</strong> 看看搜索结果中，跳出来的内容是不是你想让人看到的？如果不是，那说明你的声誉管理还有很大的提升空间。</p>
+<p>具体来说，你可以做以下几件事：</p>
+<ul>
+  <li><strong>清理负面信息。</strong> 如果有一些过时的、不准确的、甚至负面的信息，尝试联系网站管理员删除或更新。如果无法删除，至少确保它们被正面信息“压下去”。</li>
+  <li><strong>创建正面内容。</strong> 开通一个博客、领英账号或推特，持续输出你专业领域的内容。这是建立声誉最主动的方式。</li>
+  <li><strong>参与行业讨论。</strong> 在相关论坛、社群中积极发言，分享你的见解。让别人看到你的专业和热情。</li>
+</ul>
+<p>课后作业是：<strong>写一个「声誉愿景」。</strong> 想象一下，10年后，当人们提起你的名字时，他们最可能想到的三个词是什么？是“专业”“可靠”“有爱心”，还是“聪明”“高效”“有创意”？写下你的愿景，然后问自己：我现在正在做什么，来建立那个声誉？</p>
+<p>纳瓦尔说：“你的声誉是你留给世界的遗产。” 它不是一夜之间建立的，而是由你每一天的选择、每一次的对话、每一个承诺累积而成的。在数字时代，你的名字就是你的品牌，你的品牌就是你的命。</p>
+<p>最后，总结一下今天的核心要点：</p>
+<ul>
+  <li>声誉是数字时代最重要的资产，具有杠杆效应和不可逆性。</li>
+  <li>长期声誉的三大支柱：可信度、可靠性、一致性。</li>
+  <li>建立专业声誉的最佳方式是输出价值，而非推销自己。</li>
+  <li>面对声誉危机，承认、解释、改进三步走。</li>
+</ul>
+<blockquote>芒格和纳瓦尔都强调：“声誉和正直是你最重要的资产。它们需要一生来建立，但可以在几分钟内被摧毁。所以，请像保护你的眼睛一样，保护你的声誉。”</blockquote>
+<p>今天的课就到这里。希望你能从今天开始，有意识地去管理你的声誉。下次课，我们将进入第10阶段——财务自由，敬请期待。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“你的名字是你最大的资产”。请用你自己的话解释：为什么在数字时代，声誉比过去任何时候都更重要？它和“信任”有何本质区别？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">想想互联网的永久记忆、信息传播速度、以及个人品牌的可搜索性。信任是点对点的，声誉是全网可见的。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 数字时代信息留存永久且传播极快：一次失误可能被截图、转发，十年后仍能被找到。2. 声誉是“全网信任指数”：信任只存在于两人之间，而声誉是无数人对你印象的加权总和，影响你未来的合作机会。3. 可搜索性决定了第一印象：雇主、客户、伴侣都会先搜你的名字，搜索结果就是你的数字名片。4. 声誉一旦受损修复成本极高：因为互联网没有“忘记”按钮，重建需要数倍于最初的努力。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你刚加入一个初创团队，负责对外合作。一位潜在投资人通过搜索引擎发现了你大学时期在社交媒体上的一条不当言论。对方没有直接质问，但态度明显冷淡。请设计一个三步行动方案来应对这次声誉危机。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">第一步是主动承认并解释背景，第二步是展示成长与专业度，第三步是长期加固正面信息。不要删除，要转化。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 主动沟通，坦诚道歉：在第二次会面时主动提及，说明当时年少无知，并已删除类似内容，强调自己现在的价值观与团队一致。2. 展示专业成果：立刻发送一份近期完成的项目报告，用事实对冲负面印象。3. 长期加固正面声誉：未来3个月持续在LinkedIn、行业论坛发布高质量内容，让搜索引擎中你的专业文章排名超过那条旧帖。关键原则：不撒谎、不抱怨、用行动重建信任。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第62课《杠杆效应》和第83课《声誉管理》的核心思想，分析：为什么“代码和媒体”作为杠杆工具，同时也能成为声誉放大器或毁灭器？请用一个具体职业（如程序员、作家、创业者）举例说明。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">杠杆放大了你的产出，也放大了你的瑕疵。媒体让一个错误被千万人看到，代码让一个漏洞影响所有用户。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 杠杆的双刃剑效应：代码和媒体让你一次工作影响无限人，但也让任何一个错误被无限放大。2. 以程序员为例：一个开源项目的优秀代码（如React）能让你成为社区明星，声誉暴涨；但一个安全漏洞被公开后，你的名字会永远关联到那次事故。3. 作家：一篇爆款文章带来千万读者，但若包含剽窃或事实错误，搜索引擎会把“抄袭”标签永久贴在你名字旁边。4. 整合结论：使用杠杆前必须先建立“防错机制”——代码要写测试、文章要多次核查、社交媒体发言要冷静24小时再发。声誉管理不是事后补救，而是使用杠杆时的默认配置。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval082.html" class="prev">上一课</a>
+ <a href="naval084.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

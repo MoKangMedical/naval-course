@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清晰思考的艺术 — 纳瓦尔通识课第11课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 11 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 2 · 判断力与决策</div>
+ <h1>清晰思考的艺术</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 11/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval011.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：清晰思考，从剥离开始</h3><p>想象一下，你面前有一杯浑浊的水。你拼命摇晃它，试图让它变清，但结果只会更糟。你唯一能做的，是静置它，让泥沙沉淀，让水恢复清澈。清晰思考的艺术，不是往这杯水里添加什么，而是停止摇晃，让杂质自然下沉。纳瓦尔曾说：“清晰的思考不是变得更聪明，而是剥离一切不是真相的东西。”这句话点出了思考的本质：我们的大脑天生不是为了看清真相而设计的，而是为了生存和节省能量。我们习惯依赖直觉、情绪和过往经验，这些就像水杯中的泥沙，遮蔽了事物的本来面目。</p><p>纳瓦尔认为，大多数人所谓的“思考”，其实只是“重新整理自己的偏见”。我们的大脑像一台高效的过滤器，只接受符合自己已有认知的信息，而自动忽略那些挑战我们假设的证据。这就是为什么，两个同样聪明的人，面对同一组数据，可能得出完全相反的结论。不是因为他们智商不同，而是因为他们各自带着不同的“预设滤镜”。</p><p>清晰思考的敌人有三个：自我、情绪和预设。自我让我们固执己见，害怕认错；情绪让我们被愤怒、恐惧或兴奋劫持；预设则让我们在还没看清问题之前，就已经给出了答案。纳瓦尔说：“思考的障碍不是无知，是认为自己已经知道的幻觉。”这种幻觉，比无知更危险。无知至少还能学习，而自以为是则关闭了学习的大门。</p><p>举个例子。2008年金融危机前，许多经济学家和银行家都坚信房价永远不会全国性下跌。他们拥有海量数据，却全部用来验证自己的预设。最终，现实给了他们一记响亮的耳光。不是他们不够聪明，而是他们太“聪明”到只相信自己想相信的东西。清晰思考的第一步，就是承认：我们看到的，未必是真实的；我们相信的，未必是正确的。</p><p>今天这堂课，我们将深入探讨如何剥离这些干扰，看清事物的本来面目。这不是天赋，而是一种可以训练的能力。就像肌肉一样，思考的清晰度需要反复练习。接下来的内容，会帮你识别那些隐藏的思维盲区，并给你一套实用的工具，让你在决策时更接近真相。</p><blockquote>“清晰的思考者知道什么不重要，他们舍弃不重要的东西。”——纳瓦尔</blockquote><h3>二、核心理论：思考的障碍与剥离之道</h3><p>纳瓦尔将清晰思考的过程比喻为“减法”，而不是“加法”。他认为，大多数人在思考时，第一反应是“我要如何证明我是对的”，而不是“真相是什么”。这种思维模式，根植于我们的进化历史。在原始社会，被部落排斥意味着死亡，所以大脑进化出了一种机制：宁可集体犯错，也不单独对抗共识。这种机制在现代社会依然活跃，表现为“从众效应”和“确认偏误”。</p><p>确认偏误，是清晰思考的头号敌人。它让我们只寻找支持自己观点的证据，忽略相反的证据。比如，你相信某个股票会涨，你就会主动寻找看涨的分析报告，而对看空的风险警告视而不见。纳瓦尔说：“如果你无法为相反的观点辩护，你就没有真正理解你的观点。”这句话揭示了思考的深层陷阱：我们往往在“知道”和“理解”之间划等号。知道一个观点，只是记住了结论；理解一个观点，意味着你能从多个角度审视它，包括那些让你不舒服的角度。</p><p>另一个障碍是“情绪劫持”。当我们的情绪被强烈激发时，前额叶皮层（负责理性思考的部分）会部分关闭，而杏仁核（负责情绪反应的部分）接管大脑。此时，我们不是在做决策，而是在做“应激反应”。纳瓦尔强调：“不要在情绪高涨时做任何重要决定。”因为情绪会扭曲你对概率和风险的判断。比如，愤怒时你更容易高估冲突的收益，低估合作的损失；恐惧时你更容易高估风险，低估机会。</p><p>那么，如何剥离这些障碍？纳瓦尔的方法有三步。第一，暂停。在做出反应之前，给自己至少5秒钟的空白。这5秒，是让情绪潮水退去的时间。第二，问自己：“如果我没有这个预设，我会怎么想？”这个提问能帮你暂时跳出固有的框架。第三，寻找反例。刻意去寻找那些与你观点相悖的证据，哪怕它们让你不舒服。这三步看似简单，但需要刻意练习才能形成习惯。</p><p>芒格和纳瓦尔都强调，清晰思考不是天赋，而是“反人性”的练习。因为大脑天生喜欢省力，喜欢确定性，喜欢一致性。而真相往往需要你打破这些舒适区。每一次你选择暂停、质疑和反例，都是在训练你的思考肌肉。久而久之，你会发现自己看问题的方式变了：你不再急于下结论，而是更愿意等待，更愿意倾听，更愿意承认“我不知道”。</p><h3>三、深层分析：思维盲区与认知谦逊</h3><p>纳瓦尔有一个著名的比喻：“你的大脑是一个房间，里面堆满了家具。清晰思考就是把家具搬走，只留下必要的。但大多数人，连房间里有什么家具都不知道。”这句话直指思维盲区的本质：我们看不见自己的盲区，因为盲区就是“我们不知道自己不知道”的东西。心理学上，这被称为“达克效应”（Dunning-Kruger Effect）：能力越差的人，越容易高估自己；而能力越强的人，反而越容易低估自己。</p><p>思维盲区的形成，主要源于两个原因。第一，认知吝啬。大脑为了节省能量，会依赖“启发式”（mental shortcuts）来做判断。比如，用“熟悉度”代替“准确性”：我们更容易相信经常听到的观点，即使它缺乏证据。第二，社会认同。我们倾向于相信大多数人相信的东西，因为这样最安全。纳瓦尔指出：“如果你想要不一样的答案，就不要问大多数人。”因为大多数人的思维都受制于同样的盲区。</p><p>如何识别自己的思维盲区？纳瓦尔推荐了一个简单而强大的工具：“观点反转法”。具体做法是：当你对某个问题有了明确的立场后，立即写下支持相反立场的三个最强理由。如果你写不出来，说明你根本没有理解这个问题。这个练习会强迫你看到自己思维中的“空白地带”。比如，你坚信“远程办公降低效率”，那么请列出“远程办公提高效率”的三个理由。你可能会发现，原来自己忽略了灵活时间、减少通勤压力等正面因素。</p><p>另一个工具是“预验尸法”（Pre-mortem）。在做决策前，假设这个决策已经失败，然后倒推失败的原因。这种方法能帮你提前发现潜在风险，而不是事后才后悔。纳瓦尔说：“预测未来最好的方法，是去创造未来。”但创造未来之前，你需要先清理掉那些可能让你失败的盲区。</p><p>认知谦逊，是清晰思考的基石。纳瓦尔认为，真正的智者不是知道最多的人，而是最愿意承认自己无知的人。他说：“智慧的开始，是承认你不知道。”当你能够坦然说出“我不确定”“我需要更多信息”时，你就已经比90%的人更接近真相了。因为大多数人宁愿假装知道，也不愿暴露无知。</p><h3>四、实践应用：将清晰思考融入日常决策</h3><p>理论再好，不实践就是空谈。纳瓦尔强调：“知识只有转化为行动才有价值。”清晰思考的艺术，最终要落实到你的每一个日常决策中。无论是选择职业、投资股票，还是处理家庭矛盾，清晰思考都能帮你做出更明智的选择。</p><p>第一步，建立“决策日志”。每天记录一个你做的决定，包括你当时的想法、情绪和假设。一周后，回顾这些记录，问自己：“我当时的判断是基于事实，还是基于我想要相信的东西？”你会惊讶地发现，很多决定其实经不起推敲。比如，你可能因为“感觉”某个项目会成功就投入资源，却忽略了市场数据。纳瓦尔说：“如果你无法用数据说服自己，那就不要用情绪说服别人。”</p><p>第二步，练习“立场互换”。下次遇到争议性问题，比如“是否应该提高最低工资”，先写下你自己的立场和理由。然后，用你最强的能力为对立的立场辩护，至少写出三个有说服力的论点。完成后，对比两边的论述。你可能会发现，原来自己之前的立场，只是基于有限的视角。这个练习不仅能拓宽你的思维，还能让你在争论中更有同理心。</p><p>第三步，设置“思考暂停点”。在每一天中，选择三个时间点（比如上午10点、下午3点、晚上8点），暂停手头的工作，问自己三个问题：我现在是在思考，还是在反应？我此刻的情绪是什么？我是否在默认接受某个预设？这个简单的习惯，能让你从自动导航模式中跳出来，重新掌握思考的主导权。</p><p>课后实践：选一个你最近做的决定，重要或不重要都可以。重新审视它：你是基于事实做决定的，还是基于你想要相信的东西？写下你的反思。你会发现，清晰思考不是一次性的顿悟，而是每天微小的选择积累的结果。纳瓦尔说：“你的人生，是你所有决策的总和。”而清晰思考，就是让这些决策更接近真相的唯一路径。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说：「思考的障碍不是无知，而是认为自己已经知道的幻觉。」请用你自己的话解释这句话的意思，并举例说明一个你曾经因为「自以为知道」而做出错误判断的场景。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考「确信」和「真相」之间的差距。回忆一个你事后才发现自己判断失误的瞬间。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">这句话的核心是：真正的无知并不可怕，因为你会主动去学习；最危险的是你误以为自己已经掌握了全部真相，从而关闭了探索和质疑的大门。例如，我曾在团队项目中坚信某个方案是最优的，因为过去类似项目都成功过，结果忽略了新环境的关键变量，导致失败。事后才意识到，我的「经验」成了盲区。1. 自以为是会让我们停止收集新信息。2. 它会让我们用过去的模板套用现在的问题。3. 只有承认自己可能不知道，才能开启清晰思考。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">回想你最近做的一个重要决定（比如换工作、投资或选择课程）。请列出：1. 你当时认为的「事实」是什么？2. 你当时希望相信的「故事」是什么？3. 这两者之间是否存在差距？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">区分客观数据和主观愿望。例如：事实是「公司裁员10%」，故事是「我肯定不会被裁」。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">以「选择跳槽到一家初创公司」为例：1. 事实：初创公司融资到B轮，但现金流紧张；我的现公司稳定但升职慢。2. 故事：初创公司会快速上市，我将成为元老；现公司已经没前途了。3. 差距：我夸大了初创的成功概率，忽略了现金流风险；同时贬低了现公司的长期价值。清晰思考要求我剥离「希望成真」的滤镜，只基于可验证的数据做决策。建议：用纸笔列出所有假设，并逐一验证其真实性。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第5课《区分事实与观点》和第7课《批判性思维入门》，设计一个「思维盲区自查清单」。清单应包含至少3个问题，用于在做出重大决策前，帮助自己剥离自我、情绪和预设的干扰。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">从三个敌人出发：自我（ego）、情绪（emotion）、预设（assumption）。每个敌人对应一个反问句。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">「思维盲区自查清单」：1. 针对自我：『如果这个决定被公开，我会因为害怕丢脸而坚持它吗？』—— 检查是否被面子或自尊心绑架。2. 针对情绪：『我现在是焦虑、兴奋还是愤怒？这些情绪是否在扭曲我对风险的评估？』—— 例如，焦虑时会高估风险，兴奋时会低估成本。3. 针对预设：『我默认的前提是什么？这个前提有数据支持吗？』—— 比如「大家都这么做」或「过去一直有效」可能是陷阱。整合自第5课（事实与观点分离）和第7课（质疑前提），这个清单强迫你从旁观者视角审视自己的思考过程。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval010.html" class="prev">上一课</a>
+ <a href="naval012.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

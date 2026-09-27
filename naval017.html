@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概率思维 — 纳瓦尔通识课第17课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 17 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 2 · 判断力与决策</div>
+ <h1>概率思维</h1>
+ <div class="lesson-meta"><span><span class="badge badge-advanced">进阶</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 17/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval017.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：当世界拒绝确定性</h3>
+<p>想象这样一个场景：你站在一个十字路口，面前有两条路。左边那条路看起来平坦宽阔，但地图上标注着“偶尔有落石”。右边那条路狭窄崎岖，但地图上写着“安全通行”。你会选哪条？</p>
+<p>现在，假设你选择了左边，结果真的遇到落石，你受伤了。这是否意味着你的选择是错的？反过来，如果你选了右边，顺利到达目的地，这是否证明你做了正确的决策？</p>
+<p>在大多数人的直觉里，结果好坏直接等同于决策质量。但现实远比这复杂。这正是概率思维要挑战的核心认知：<strong>世界是概率性的，不是确定性的。</strong>你无法控制结果，只能控制决策过程。一个好的决策可能带来坏结果，一个坏决策也可能侥幸成功——而判断决策质量的标准，不是事后结果，而是事前概率。</p>
+<blockquote>纳瓦尔·拉维坎特曾说过：“人生中最重要的能力之一，就是学会用概率思考。它不是要你预测未来，而是让你在不确定中做出更好选择。”</blockquote>
+<p>作为硅谷最成功的投资人之一，纳瓦尔深知：投资和人生一样，都是概率游戏。每一笔投资、每一次职业选择、每一段关系，本质上都是在不确定条件下做决策。而概率思维，就是帮你把不确定性转化为可计算、可优化的数学问题。</p>
+
+<h3>二、核心理论：概率思维的四大支柱</h3>
+<p>要真正掌握概率思维，你需要理解四个核心概念。它们构成了在不确定性中做决策的基础框架。</p>
+<p><strong>第一，概率不是确定性。</strong>这是概率思维的起点。当我们说“明天下雨的概率是70%”，并不意味着明天一定会下雨，也不意味着70%的时间会下雨。它表达的是一种信念程度——基于当前信息，你认为下雨的可能性是70%。即使明天真的没下雨，这个概率估计也可能是合理的，因为30%的可能性确实发生了。关键区别在于：<strong>概率描述的是你对结果的主观信念，而不是结果本身的性质。</strong>一个合理的概率判断，即使结果相反，也不能被事后证明为错误。</p>
+<p><strong>第二，贝叶斯更新：根据新信息调整信念。</strong>这是概率思维中最强大的工具之一。简单来说，贝叶斯更新告诉你：当你获得新信息时，你应该如何调整你对某个事件的概率估计。公式看起来复杂，但核心思想很简单：<strong>你的信念应该随着证据而更新。</strong>比如，你原本认为某个项目的成功率是50%。然后你发现团队成员中有两位顶尖专家，你的概率估计就会上调到70%。再后来，你得知市场出现了一个强劲的竞争对手，你的概率估计又下调到40%。这个过程就是贝叶斯更新——用新信息不断修正旧信念。</p>
+<p><strong>第三，期望值思维：不仅看可能的结果，还要看概率。</strong>期望值是所有可能结果乘以各自概率的总和。比如，一个投资有50%的概率赚100万，50%的概率亏20万，它的期望值就是（0.5×100万）+（0.5×-20万）=40万。期望值思维强迫你同时考虑两个维度：<strong>结果的大小和它发生的概率。</strong>一个高概率的小收益可能不如一个低概率的大收益有吸引力——如果后者的期望值更高。但纳瓦尔提醒我们：期望值不是一切。在现实生活中，你还需要考虑风险承受能力、机会成本和个人目标。但无论如何，期望值思维是量化决策的基础工具。</p>
+<p><strong>第四，不要把结果和决策质量混为一谈。</strong>这是概率思维中最反直觉、也最重要的一课。一个决策的好坏，取决于你当时掌握的信息、你的推理过程和你的概率判断，而不是最终结果。因为结果受运气影响——即随机因素。纳瓦尔把这称为“结果偏差”。比如，你决定酒后驾车回家，结果安全到达了。这个结果是好的，但决策本身是极其糟糕的——因为从概率角度看，酒后驾车导致事故的风险非常高。相反，你决定叫代驾，结果代驾司机出了事故。这个结果很糟糕，但你的决策是正确的——因为从概率角度看，叫代驾大大降低了你的风险。</p>
+
+<h3>三、深层分析：从理论到认知的跃迁</h3>
+<p>理解了四大支柱，我们来看看概率思维如何改变你对世界的基本认知。</p>
+<p><strong>1. 概率思维如何重塑因果关系？</strong>日常生活中，我们习惯用因果关系解释一切：因为A发生了，所以B发生了。但在概率思维下，因果关系被重新理解：A只是增加了B发生的概率，而不是必然导致B。比如，努力学习不一定能考上好大学（因为还有天赋、运气、家庭背景等因素），但它确实显著提高了概率。这种转变让你从“非黑即白”的确定性思维，走向“灰度”的概率思维——你不再为单一结果过度焦虑，而是关注如何通过优化过程来提高成功概率。</p>
+<p><strong>2. 概率思维如何对抗认知偏差？</strong>人类大脑天生不擅长概率思考。我们容易受到“后见之明偏差”的影响——事后看来，所有事情都显得可预测。我们也容易陷入“确认偏差”——只关注支持自己信念的证据。概率思维提供了对抗这些偏差的工具：<strong>贝叶斯更新要求你主动寻找反面证据；期望值思维强迫你量化所有可能性；而“结果与决策分离”原则，则让你在失败时不自我否定，在成功时不盲目自信。</strong>纳瓦尔曾比喻说：“你的大脑就像一台老旧的计算机，预装了很多有缺陷的软件。概率思维就是升级补丁。”</p>
+<p><strong>3. 概率思维在现实中的局限与陷阱。</strong>任何理论都有边界。概率思维也不例外。首先，它依赖你能否准确估计概率。在信息充分、模式清晰的情况下（比如扑克牌游戏），概率可以精确计算。但在复杂的现实世界（比如创业、职业选择），概率估计往往带有很大主观性。其次，期望值思维可能忽略风险厌恶——一个100%概率获得100万的选择，可能比一个50%概率获得200万的选择更优，因为前者没有波动。最后，过度依赖概率可能导致“分析瘫痪”——你花太多时间计算概率，却错过了行动时机。纳瓦尔的建议是：<strong>在重要但低频的决策中（比如换工作、投资），认真做概率分析；在日常高频决策中（比如中午吃什么），相信直觉。</strong></p>
+<p><strong>4. 概率思维与纳瓦尔的投资哲学。</strong>作为天使投资人，纳瓦尔深谙概率思维的价值。他投资初创公司时，不会因为某个项目失败就否定自己的决策——只要投资组合的期望值为正，长期来看就会盈利。他把每笔投资都看作一个概率分布，而不是一个确定事件。这种思维让他能够从容面对失败：<strong>“我投的项目中，90%都会失败。但我不在乎单个项目的成败，我在乎的是整个组合的期望值。”</strong>这种思维也延伸到他的人生哲学：不要追求完美决策，而是追求决策系统的优化。</p>
+
+<h3>四、实践应用：把概率思维变成日常习惯</h3>
+<p>理论讲完了，现在进入最关键的环节：如何把概率思维应用到你的生活中？</p>
+<p><strong>第一步：建立“决策日志”。</strong>每次做重要决策时，写下你的概率估计。比如：“我估计这次面试成功的概率是60%。”然后在结果出来后，记录实际结果。这不仅能帮助你校准自己的概率估计能力（就像投篮需要练习一样），还能让你逐渐区分“好决策”和“好结果”。坚持三个月，你会发现自己的决策质量明显提升。</p>
+<p><strong>第二步：练习贝叶斯更新。</strong>选择一个你关心的事件（比如“我能在三个月内学会编程”），先写下你当前的概率估计。然后，每周记录一条新信息（比如“我本周完成了两个项目”或“我遇到一个很难的概念”），并重新调整概率。这能训练你根据证据灵活调整信念的能力。</p>
+<p><strong>第三步：用期望值思维评估选项。</strong>下次面临选择时（比如“是否要接受这份工作”），列出所有可能的结果（比如高薪但压力大、低薪但自由、中薪且平衡等）。为每个结果分配一个概率和效用值（1-10分）。然后计算每个选项的期望值。你会惊讶地发现，有些直觉上吸引人的选择，在期望值计算下并不占优。</p>
+<p><strong>第四步：接受“好决策坏结果”。</strong>当你做出一个自认为正确的决策，却遭遇坏结果时，不要自我怀疑。相反，你应该对自己说：“我做了当时最好的选择，只是运气不在我这边。”同样，当你因为一个坏决策而侥幸成功时，也要警惕——这可能是运气，而不是能力。纳瓦尔建议：<strong>定期回顾你的决策，用概率思维而非结果思维来评估自己。</strong></p>
+<p><strong>课后实践：</strong>回顾一个“好结果但坏决策”的经历。比如，你因为临时决定不复习就去考试，结果考了高分。分析：为什么结果是好的？（因为题目恰好是你会的部分）为什么决策本身是坏的？（因为从概率角度看，不复习导致挂科的风险非常高）这个练习能帮你打破“结果=决策质量”的错误认知。</p>
+<p><strong>课后作业：</strong>做下一个重要决定时（比如换工作、投资、搬家），列出所有可能的结果和你的概率估计。事后比较预测和实际。比如：你决定跳槽到一家初创公司，你估计成功的概率是40%，失败是40%，平庸是20%。三个月后，回顾实际结果，分析你的概率估计是否合理。这个习惯能让你成为更好的决策者。</p>
+<p>最后，记住纳瓦尔的话：<strong>“人生不是关于预测未来，而是关于在不确定性中做出最优决策。概率思维是你的指南针。”</strong>从今天开始，用数学的方式理解不确定性，你会发现，世界虽然充满随机性，但你依然可以掌握自己的方向。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">你朋友说：‘我抛硬币连续5次都是正面，所以第6次正面的概率更高。’请用概率思维指出他错在哪里，并解释概率的本质是什么。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考每次抛硬币是否独立？概率是描述长期频率还是短期模式？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 他犯了赌徒谬误：每次抛硬币是独立事件，前5次结果不影响第6次的概率，始终是50%。2. 概率不是确定性，而是描述大量重复事件中的稳定频率，短期结果可能偏离概率。3. 概率思维强调：单个事件无法预测，只有长期平均才稳定。4. 好的概率判断应基于客观条件，而非主观幻觉。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你打算投资一个项目，有30%概率赚10万，70%概率亏2万。朋友说：‘别投，大概率亏钱！’请用期望值思维分析这个决策是否合理，并说明为什么只看结果概率可能误导。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">计算期望值：0.3×10万 + 0.7×(-2万)，再对比风险承受力。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 期望值 = 0.3×10 + 0.7×(-2) = 3 - 1.4 = 1.6万，是正期望值，长期重复投资可盈利。2. 朋友只看‘大概率亏钱’（70%概率），忽略了赚时的巨大收益，这是概率盲点。3. 期望值思维要求：不仅看结果概率，还要考虑结果大小。4. 但需注意：单次决策有70%可能亏2万，如果无法承受亏损，即使正期望也不该投——决策需结合个人风险承受力。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第5课《复利思维》中‘长期增长靠持续小进步’的观点，结合本课‘概率不是确定性’和‘贝叶斯更新’，解释为什么在投资或学习中，即使短期结果不好，也不该轻易放弃原有策略？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">将复利与概率结合：短期波动是随机噪声，贝叶斯更新帮你区分噪音和趋势。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 复利思维强调：长期增长依赖持续执行正确策略，但短期受概率波动影响，好策略常伴随坏结果。2. 概率思维告诉我们：单次结果不能证明策略好坏，就像抛硬币连续反面不代表硬币有问题。3. 贝叶斯更新指导：面对坏结果，应收集更多信息（如市场变化、学习方法调整），而非情绪化放弃。4. 整合框架：坚持复利策略时，用概率思维接受短期波动，用贝叶斯更新理性调整——只有当新信息持续否定原假设时，才考虑改变。5. 例：学习新语言，前3个月没进步可能是概率波动，继续坚持并调整方法，才是好决策。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval016.html" class="prev">上一课</a>
+ <a href="naval018.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

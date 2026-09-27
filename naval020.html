@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>建立你的决策原则 — 纳瓦尔通识课第20课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 20 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 2 · 判断力与决策</div>
+ <h1>建立你的决策原则</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 20/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval020.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么我们需要决策原则</h3>
+<p>想象一下，你站在一个十字路口：一边是稳定的工作，一边是创业的机会。你的心跳加速，手心出汗，脑海里全是“万一失败了怎么办”和“错过这次机会可能再也没有了”的声音。这是每个人都会遇到的情境——一个重要的决策，而你的情绪正在试图接管方向盘。</p>
+<p>纳瓦尔曾说过一句让人印象深刻的话：“你的情绪是糟糕的决策者。它们就像那个在派对上喝多了的朋友，最后总是把你带进沟里。”纳瓦尔的意思并不是情绪不重要，而是说在重大决策时，情绪会扭曲我们对事实的感知。恐惧会让你过度保守，贪婪会让你忽视风险，而焦虑则会让你仓促行动。</p>
+<p>那么，我们该怎么办？答案来自另一位思想者——瑞·达里奥，桥水基金的创始人。他在《原则》一书中提出了一个革命性的想法：把你的决策过程写下来，变成一条条具体的、可重复使用的原则。达里奥认为，这些原则是你最高智慧时刻的沉淀，是你冷静时思考出来的规则，而不是冲动时的产物。</p>
+<p>想象一下，如果你有一个“决策算法”，就像电脑程序一样：当遇到A情况，就采取B行动。你就不需要每次都在情绪风暴中挣扎。你只需检查：这个情境符合哪条原则？然后执行。这听起来像机器人，但纳瓦尔和达里奥都强调，这恰恰是让自己更自由的途径——因为你不必再被情绪绑架。</p>
+<p>举个例子：巴菲特和芒格都有一条著名的原则：“如果不想持有十年，就不要持有十分钟。”这条原则简单、具体，而且经过了无数次市场波动的检验。当股市大跌时，其他投资者恐慌抛售，而巴菲特因为遵循这条原则，反而在别人恐惧时贪婪。这不是因为他比普通人更勇敢，而是因为他有原则作为锚点。</p>
+<p>康波研究院的核心理念之一就是：判断力是可以训练的，而训练的第一步就是建立你的决策原则。这节课，我们将深入探讨为什么原则如此重要，如何从你的经历中提炼原则，以及如何让这些原则真正为你所用。</p>
+
+<h3>二、核心理论：从经历中提炼原则的四个步骤</h3>
+<p>纳瓦尔曾说：“你的原则应该是你从痛苦中学到的教训，而不是从书本上抄来的格言。”这句话点出了原则的本质：它们必须来自你自己的经历，尤其是那些让你感到疼痛的经历。因为只有疼痛，才会让你真正记住。</p>
+<p>那么，如何从经历中提炼原则？我们可以把它分解为四个步骤。</p>
+<p>第一步：识别关键决策时刻。回顾你的过去，找出那些让你事后后悔或感到自豪的决策。比如，你曾经因为冲动而买了一只股票，结果亏了很多钱。或者，你曾经因为犹豫而错过了一个工作机会。这些时刻就是你的“原则矿藏”。</p>
+<p>第二步：分析决策背后的情绪和逻辑。问自己：当时我为什么那样做？是恐惧、贪婪、焦虑，还是基于理性分析？比如，当你冲动买股票时，可能是因为你看到别人赚钱了，产生了“害怕错过”的情绪。而当你犹豫错过机会时，可能是因为你害怕失败，被“损失厌恶”控制了。</p>
+<p>第三步：提炼出一条具体的、可检验的原则。原则不能是模糊的“要理性”或“不要冲动”。它必须像达里奥说的那样，是“可编程的”。比如，“当市场恐慌时，不要卖出”仍然太模糊。更好的原则是：“当标普500指数单日跌幅超过3%时，除非有明确的基本面恶化证据，否则不进行任何卖出操作。”这条原则具体、可检验，而且有明确的触发条件。</p>
+<p>第四步：测试并迭代。把原则写下来后，在下一个类似情境中，强迫自己遵守它。如果结果不好，就修改原则。纳瓦尔和芒格都强调，原则不是一成不变的，它们需要随着你的经验和认知升级而更新。</p>
+<p>举个例子：一位创业者分享过他的一条原则：“在融资过程中，永远不要在情绪波动时做决定。”这条原则来自他的一次失败经历：他在投资人拒绝后，感到极度沮丧，于是接受了另一个条件很差的投资，结果公司后来被拖垮。后来他规定自己：每次融资谈判后，必须等24小时再做任何决定。这条原则简单、具体，而且拯救了他后来的公司。</p>
+
+<h3>三、深层分析：原则为什么比情绪更可靠</h3>
+<p>纳瓦尔在多次访谈中提到：“你的大脑不是为现代世界设计的。它是在非洲草原上进化出来的，适合处理短期的、生存性的威胁，而不是复杂的、长期的决策。”这句话揭示了为什么情绪是糟糕的决策者——它们来自我们古老的生存机制，而现代世界充满了抽象、延迟和不确定性。</p>
+<p>情绪决策的典型问题有三个。第一，情绪是短视的。恐惧和贪婪都只关注当下，而忽略长期后果。比如，当你在股市下跌时恐慌卖出，你避免了短期疼痛，但错过了长期反弹。第二，情绪是情境依赖的。你今天的心情、昨晚的睡眠、甚至天气都会影响你的决策。而原则是稳定的，不随环境变化。第三，情绪容易导致“决策疲劳”。当你每次都要重新权衡所有因素时，你的认知资源会被耗尽，导致后续决策越来越差。</p>
+<p>原则为什么更可靠？达里奥在《原则》中给出的答案是：原则是“系统化”的智慧。它们把复杂的决策简化为可重复的模式。就像芒格说的：“如果你有一百个思维模型，你就不会在同一个坑里摔两次。”原则就是你的思维模型，它们让你每一次决策都基于过去的经验，而不是重新发明轮子。</p>
+<p>更深一层，原则还能帮你对抗“确认偏误”——我们倾向于寻找证据来支持自己的已有观点。当情绪上头时，你会自动忽略反对意见。但如果你有一条原则说：“在做重要决策前，必须找到至少三个反对理由”，你就强迫自己进行逆向思考。纳瓦尔就有一条这样的原则：“如果一个决策让我感到兴奋，我会故意推迟一天再做。”因为兴奋往往意味着过度乐观。</p>
+<p>芒格和纳瓦尔都强调，原则的另一个好处是“可积累”。当你把每次决策的教训变成一条原则，你的决策系统就在不断升级。十年后，你可能积累了上百条原则，它们就像你的个人操作系统，让你在复杂世界中游刃有余。而依赖情绪的人，十年后仍然在重复同样的错误。</p>
+
+<h3>四、实践应用：建立你的原则文档</h3>
+<p>理论讲完了，现在进入最关键的环节：如何把这一切变成行动。纳瓦尔说：“知道不等于做到，做到才是真的知道。”所以，我要求你立刻开始做一件事——建立你的原则文档。</p>
+<p>第一步：写下你目前遵循的三条最重要的决策原则。它们不需要完美，也不需要来自书本。它们应该来自你真实的经历。比如：“在投资中，永远不要买入我不完全理解的资产。”或者“在人际冲突中，先听完对方的三句话再回应。”或者“在职业选择上，优先选择能让我学到最多东西的机会，而不是薪水最高的。”每一条原则后，写下它来自哪次经历。这会让原则更有力量。</p>
+<p>第二步：每次做出一个重要决定后，记录三件事：决策是什么、为什么这样决定、学到的原则。这个习惯不需要花很多时间，但长期坚持会产生复利效应。你可以用手机备忘录、笔记本或任何你方便的工具。关键是持续。</p>
+<p>第三步：定期审查和更新你的原则。建议每季度一次，翻看你的原则文档，问自己：这些原则现在还适用吗？有没有新的经历让我需要修改它们？就像软件需要更新一样，你的原则也需要迭代。随着你的认知水平提升，有些原则可能会被淘汰，有些则需要细化。</p>
+<p>最后，我想分享一个来自纳瓦尔的具体案例。他有一条著名的原则：“如果我不确定一个决定是否正确，那就选择更困难的那个选项。”因为困难的选择往往意味着成长，而容易的选择通常只是拖延。这条原则来自他年轻时的一次创业经历，当时他面临两个选择：继续做一份轻松的工作，还是冒险创业。他选择了困难的创业，最终获得了巨大成功。现在，这条原则已经帮助他做出了无数个重要决策。</p>
+<p>课后作业很简单：开始你的原则文档。从今天起，每次做出重要决定后，记录它。一个月后，你会惊讶于自己积累了多少智慧。记住，原则是你最高智慧时刻的沉淀，而你现在就可以开始沉淀。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“情绪是糟糕的决策者”。请用自己的话解释：为什么情绪会导致糟糕的决策？并结合一个你亲身经历的例子，说明情绪如何扭曲了你的判断。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">回忆一次你愤怒、兴奋或恐惧时做出的决定，事后是否后悔？情绪如何影响你的理性分析？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">情绪会扭曲决策，因为它激活大脑的杏仁核，压制前额叶皮层的理性思考，导致短视、冲动和偏见。例如：我曾在愤怒时给同事发了一封尖锐的邮件，事后发现误解了对方意图，结果破坏了合作关系。愤怒让我只关注“反击”，忽略了事实和长期后果。情绪决策往往基于即时感受，而非客观逻辑，容易忽略概率和风险。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你面临一个职业选择：一份高薪但需频繁加班的工作，与一份低薪但时间灵活的工作。请根据纳瓦尔的原则提炼方法，设计一条具体的、可检验的决策原则，并说明如何用它来评估这两个选项。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">原则要具体（如“当X发生时，做Y”），可检验（能事后判断对错）。思考你的核心价值观是什么？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">原则：“当我评估工作机会时，优先选择能最大化长期成长和自由时间的选项，除非基本生存需求无法满足。”具体操作：列出两个选项对“技能提升”“健康”“家庭时间”的影响，并设定阈值（如“加班超过每周10小时则拒绝”）。然后，用这条原则检验：高薪工作虽收入高，但可能耗尽精力，阻碍学习；低薪工作虽收入低，但允许投资自我。最终，原则引导我选择后者，因为它符合“长期成长”目标。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第10课《复利思维》和第15课《第一性原理》，结合本课“从经历中提炼原则”，设计一个框架：如何用第一性原理拆解一次失败经历，并提炼出一条具有复利效应的决策原则？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">先分解失败的根本原因（第一性原理），再思考这条原则如何能反复应用于未来类似场景，产生复利。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">框架：1. 用第一性原理拆解失败：例如，一次创业失败，根本原因不是“市场不好”，而是“产品没有解决真实痛点”（用户需求假设错误）。2. 提炼原则：“在投入资源前，先用最小成本验证用户的核心假设。”3. 复利效应：这条原则每次应用都会减少试错成本，积累决策经验。例如，下次创业时，先做用户访谈而非直接开发，节省时间与金钱。原则越用越精准，决策质量随时间指数级提升，正如复利思维：小改进的持续积累带来巨大回报。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval019.html" class="prev">上一课</a>
+ <a href="naval021.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

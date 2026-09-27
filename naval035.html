@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>习惯的力量 — 纳瓦尔通识课第35课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 35 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 4 · 自我修炼</div>
+ <h1>习惯的力量</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 35/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval035.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：从目标崇拜到系统思维</h3>
+<p>今天我们来聊一个看似简单、实则深刻的话题：习惯。你可能听过无数关于习惯的鸡汤，但纳瓦尔和詹姆斯·克利尔(James Clear)给了我们一个截然不同的视角。纳瓦尔曾说：“你不是你的目标，你是你的系统。”这句话直击要害——我们太迷恋目标了，仿佛只要设定一个宏伟目标，人生就能自动改变。但实际上，目标只是结果，而系统是过程。你每天做的事情，才是真正的你。</p>
+<p>想想看，你是不是也定过这样的目标：“我要每天读书1小时”“我要减肥20斤”“我要学一门新语言”。然后呢？头几天激情满满，一周后就开始懈怠，一个月后彻底放弃。问题出在哪里？不是你不够努力，而是你太依赖意志力了。纳瓦尔和克利尔都强调：意志力是有限资源，靠它支撑习惯注定失败。你需要的是一个系统——一个让好习惯自然发生、坏习惯难以生存的环境。</p>
+<p>举个具体例子。我的朋友小李想养成每天写作的习惯，他一开始的目标是“每天写2000字”。结果坚持了3天就崩溃了，因为每天下班后已经很累，还要逼自己写那么多，太痛苦了。后来他听了纳瓦尔的建议，把目标改成“每天写一句话”。你猜怎么着？他连续写了30天，而且大部分时候写着写着就超出一句话。这就是系统的力量：它不依赖意志力，而是依赖最小行动。</p>
+<p>芒格和纳瓦尔都强调，真正的智慧不在于追求完美，而在于设计一个能让你持续进步的系统。习惯就是这样一种系统——它不是一次性的壮举，而是日复一日的积累。今天这节课，我们就来拆解习惯的底层逻辑：为什么目标会让人失败，而系统能让人成功？如何用神经科学原理设计习惯？以及如何通过环境设计让好习惯成为默认选项。</p>
+<p>记住：你不是你的目标，你是你的系统。这句话不是鸡汤，是科学。准备好了吗？我们开始。</p>
+
+<h3>二、核心理论：目标 vs 系统——结果与过程的深层博弈</h3>
+<p>先来澄清一个关键概念：目标和系统的区别。目标是你想要达到的地方，比如“我要跑完马拉松”。系统是你每天做的事情，比如“我每天跑3公里”。纳瓦尔认为，目标导向的人往往陷入“结果陷阱”——他们只关心终点，忽略了过程。而系统导向的人关注的是“当下行动”，他们不焦虑结果，因为他们知道，只要系统正确，结果自然会发生。</p>
+<p>詹姆斯·克利尔在《原子习惯》中进一步解释了这一点。他说：“目标是你想要的结果，系统是导致结果的流程。”比如，一个目标是“减肥10斤”的人，可能会节食一周，然后暴饮暴食。而一个系统是“每天吃一顿健康餐”的人，会慢慢调整饮食结构，体重自然下降。区别在哪里？前者依赖意志力，后者依赖习惯。意志力会波动，但习惯一旦形成，就是自动的。</p>
+<p>从神经科学角度看，习惯的自动化源于基底神经节。基底神经节是我们大脑中负责模式识别和自动化的区域。当你重复一个行为时，基底神经节会逐渐接管，把行为变成“自动驾驶”模式。这就是为什么你刷牙时不需要思考——它已经成了习惯。纳瓦尔曾说：“你的大脑不是用来思考的，是用来执行习惯的。”这句话有点夸张，但很有道理：我们每天90%的行为都是习惯驱动的。</p>
+<p>那么，如何建立新习惯？克利尔提出了“提示-行为-奖励”循环。提示是触发行为的信号，行为是具体行动，奖励是完成后的满足感。比如，你想养成每天喝水的习惯：提示是“每天早上起床后”，行为是“喝一杯水”，奖励是“清爽的感觉”。关键在于，奖励要即时、简单。大脑更喜欢短期的奖励，而不是长期的回报。所以，如果你想养成跑步的习惯，不要想着“一年后变瘦”，而要想着“跑完后多巴胺的快乐”。</p>
+<p>芒格和纳瓦尔都强调，习惯的建立不是靠意志力，而是靠设计。你需要把提示放在显眼处，把行为缩小到不可能失败，把奖励变得即时。比如，纳瓦尔本人就喜欢把书放在床头，这样他每天睡前都能读几页。这就是系统思维：不是“我要读书”，而是“书就在我手边”。</p>
+
+<h3>三、深层分析：环境设计——让好习惯更容易，坏习惯更难</h3>
+<p>纳瓦尔有个核心观点：环境比意志力重要100倍。他说：“不要问自己为什么不能自律，问自己为什么把环境设计得这么糟糕。”想想看，如果你把薯片放在茶几上，你每天都会无意识地吃几片。但如果你把薯片放在储藏室最深处，你可能会忘记它的存在。这就是环境设计的力量——它不要求你对抗诱惑，而是让诱惑消失。</p>
+<p>克利尔把环境设计称为“默认选项”。他说：“你不需要成为意志力超人，只需要让好习惯成为默认选项。”比如，你想每天健身，就把运动鞋放在门口，这样你出门时就会看到它。你想减少刷手机，就把手机放在另一个房间，或者用定时锁屏。这些微小的环境调整，能大大降低行动的门槛。</p>
+<p>从神经科学看，环境设计利用了“情境依赖”原理。大脑会根据环境线索自动触发行为。比如，你走进厨房，看到冰箱，可能会自动打开找吃的。但如果你把冰箱里放满健康食物，你吃的就是健康餐。这就是为什么纳瓦尔建议：如果你想戒糖，就不要买糖，而不是靠意志力对抗糖的诱惑。因为意志力是有限的，而环境是永恒的。</p>
+<p>举个实际案例。我有一个朋友想戒掉熬夜刷手机的习惯。他试过各种方法：设闹钟、用App锁、甚至把手机放在客厅。但效果都不好，因为他总会在睡前偷偷拿回手机。后来他听了纳瓦尔的建议，干脆把手机充电器放在书房，卧室里只放闹钟和书。结果呢？第一周他很不习惯，但一周后，他发现自己睡前都看书，入睡时间提前了2小时。这就是环境设计的魔力——不是靠意志力，而是靠改变环境。</p>
+<p>芒格和纳瓦尔都强调，环境设计要遵循“最小阻力原则”。也就是说，让好习惯的阻力最小，坏习惯的阻力最大。比如，你想多喝水，就在办公桌上放一个大水瓶，而不是每天去饮水机接水。你想少喝咖啡，就把咖啡机收起来，或者只买难喝的速溶咖啡。这些看似简单的调整，背后是深刻的认知科学：我们的大脑天生喜欢走捷径，所以我们要让好习惯成为捷径。</p>
+
+<h3>四、实践应用与总结：从理论到行动，打造你的习惯系统</h3>
+<p>好了，理论讲完了，现在来点实际的。纳瓦尔说：“知识不是力量，知识只有转化为行动才是力量。”所以，这节课的实践部分很简单，但很关键：选择一个你想建立的习惯，把它缩小到不可能失败的程度。比如，每天1个俯卧撑、每天读1页书、每天写50个字。你可能会觉得这太简单了，但正是这种“简单”让习惯得以持续。因为大脑不会抗拒一个“微不足道”的行动，而一旦你开始了，往往会超额完成。</p>
+<p>具体怎么做？第一步，确定一个习惯。比如“每天冥想5分钟”。第二步，把它缩小到“每天冥想1分钟”。第三步，设置一个明确的提示，比如“每天刷牙后”。第四步，给自己一个即时奖励，比如“冥想后喝一杯茶”。连续做7天，不要中断。如果某天你忘记了，不要自责，第二天继续。记住，目标是建立系统，不是追求完美。</p>
+<p>课后作业是设计你的环境。找一张纸，写下你想建立的习惯和你想停止的习惯。对每个习惯，列出至少3个环境调整方案。比如，你想建立“每天读书”的习惯，就把书放在枕头上、沙发上、办公桌上。你想停止“刷短视频”的习惯，就卸载App、关闭通知、把手机放在另一个房间。然后，执行这些调整，观察效果。一周后，你会惊讶于环境对你的影响有多大。</p>
+<p>最后，总结一下这节课的核心：你不是你的目标，你是你的系统。目标只是路标，系统才是你每天走过的路。习惯的力量不在于一次性的努力，而在于日复一日的积累。纳瓦尔曾说：“如果你把生活看作一场游戏，那么习惯就是你的游戏规则。”所以，别纠结于目标了，去设计你的系统吧。从今天开始，从最小的行动开始。记住，改变不是一蹴而就的，而是每天进步1%。</p>
+<p>好了，这节课就到这里。课后请完成实践和作业，下节课我们来聊聊“如何用习惯构建复利人生”。再见。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“你不是你的目标，你是你的系统”。请用自己的话解释目标与系统的核心区别，并说明为什么系统比目标更强大？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考目标是一次性结果，而系统是持续过程。想想习惯如何让系统自动化。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">目标是一个具体的结果（如减重10公斤），完成即结束，常伴随压力；系统是一套持续的行为模式（如每天运动30分钟），关注过程，能产生复利效应。系统比目标更强大，因为：1）目标依赖意志力，系统依赖习惯自动化；2）目标失败易引发挫败感，系统允许小步迭代；3）系统通过习惯的神经机制（基底神经节）节省认知资源，长期坚持更易成功。例如，每天写100字是系统，写一本书是目标，系统自然导向目标。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你一直想养成每天阅读30分钟的习惯，但总是坚持不下来。请运用“提示-行为-奖励循环”和环境设计原则，设计一个具体的方案，并解释每一步如何降低失败风险。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">提示要显眼（如把书放枕头上），行为要微小（如读2页），奖励要即时（如喝杯茶）。环境上移除手机干扰。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1）提示：每晚睡前将书放在枕头中央，手机调成飞行模式并放客厅。2）行为：将目标从30分钟缩小到“读2页或5分钟”，无法失败。3）奖励：读完后立即吃一颗黑巧克力或听一首喜欢的歌。4）环境设计：床头灯调成暖光，书桌上放阅读日志（打勾获得成就感）。原理：提示触发自动化（基底神经节），微小行为降低启动阻力，即时奖励强化多巴胺通路，环境消除诱惑（手机远离床）。7天后，你会自然想读更多。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合本课的“习惯系统”和之前学过的“复利效应”（第12课）、“第二大脑”（第28课），说明如何用习惯系统积累知识复利？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考每日微小习惯（如记一条笔记）如何通过系统自动化，最终形成知识复利。引用基底神经节和笔记工具。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1）习惯系统作为复利引擎：每天写100字笔记（微小习惯），通过提示-行为-奖励循环（如固定时间+工具打开）自动化，基底神经节接管后无需意志力。2）知识复利：每条笔记是“知识原子”，长期积累产生连接（复利效应，第12课），一年后形成365条知识块。3）第二大脑（第28课）：用工具（如Notion）存储并索引笔记，系统自动整理，避免遗忘。4）整合：习惯系统提供持续输入（行为），第二大脑提供存储与检索（环境），复利效应放大价值（结果）。例如，每天读1页书并记1条笔记，5年后你拥有1825条关联知识，远超突击学习。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval034.html" class="prev">上一课</a>
+ <a href="naval036.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

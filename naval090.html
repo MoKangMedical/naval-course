@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设计你的人生 — 纳瓦尔通识课第90课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 90 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 9 · 关系与自由</div>
+ <h1>设计你的人生</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 90/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval090.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：从默认脚本到自主设计</h3><p>想象一下，你走进一家餐厅，服务员递给你菜单，但你连看都不看，直接说：“给我上你们的默认套餐。” 你可能会觉得这很荒谬。然而，在人生这场盛宴中，大多数人每天都在这样做。纳瓦尔·拉维坎特一针见血地指出：“大多数人不是在生活——他们是在执行社会默认的脚本。上学、工作、结婚、退休。” 这个脚本如此根深蒂固，以至于我们从未质疑过它的合理性。我们被推着走，从一所学校到另一所学校，从一份工作到另一份工作，从一段关系到另一段关系，仿佛人生就是一条预设好的流水线。</p><p>纳瓦尔认为，这种“默认模式”是自由的敌人。它剥夺了我们选择的权利，将我们变成了社会机器上的齿轮。你为什么会选择现在的工作？是因为你真的热爱它，还是因为“大家都这么做”？你为什么会选择现在的生活方式？是因为它让你快乐，还是因为它符合“成功”的标准？大多数时候，答案是后者。我们害怕偏离轨道，害怕成为异类，害怕承担选择的风险。于是，我们心安理得地接受着默认设置，用“稳定”和“安全”来安慰自己，却忽视了内心深处的空洞与不安。</p><p>但纳瓦尔提醒我们，人生不是一场必须按部就班执行的程序，而是一件需要主动创作的艺术品。你的生活，就是你的作品。每个选择都是一笔，每个决定都是一色。如果你只是被动地接受别人的设计，那么你的人生不过是别人的复制品。真正的自由，来自于有意识地设计自己的人生。这意味着你要停下来，问自己一个根本性的问题：我真正想要的是什么？</p><p>这并非易事。设计人生需要勇气，需要你对抗来自家庭、社会、甚至自己内心的惯性。但正如查理·芒格和纳瓦尔都强调的，长期来看，有意识的选择总是优于无意识的服从。芒格曾说：“如果我知道我会死在哪里，那我就永远不去那个地方。” 同样，如果你知道默认脚本会带你去哪里，你就有机会选择一条不同的路。今天，我们就来探讨如何从执行默认脚本，转向设计自己的人生。</p><h3>二、核心理论：人生设计的思维框架</h3><p>纳瓦尔并非空谈家，他为我们提供了一套可操作的人生设计思维框架。这个框架的核心是“有意识的选择”。它包含三个关键步骤：定义你的价值观、设定你的北极星、以及构建你的系统。</p><p>第一步，定义你的价值观。纳瓦尔认为，价值观是人生设计的基石。你无法设计出令自己满意的人生，如果你不知道自己最看重什么。是财富、健康、自由、创造力、家庭、还是智慧？每个人都有自己的优先级。纳瓦尔自己的价值观排序是：健康 > 自由 > 财富。他曾说：“健康是第一财富。没有健康，其他一切都是零。” 你需要诚实地审视自己，列出你的核心价值观，并按照重要程度排序。这不是一个一次性的工作，而是一个持续迭代的过程。</p><p>第二步，设定你的北极星。北极星是你的长期愿景，是你想要成为的那个人，是你想要过的生活。它不应该是具体的、可量化的目标，比如“年薪100万”或“住进大房子”，而应该是一个方向性的指引。纳瓦尔建议，想象你80岁时，回首一生，你希望自己做了什么？你希望别人如何评价你？这个问题的答案，就是你北极星的雏形。北极星必须基于你的价值观，而不是社会的标准。比如，如果你的核心价值观是“自由”，那么你的北极星可能是“拥有完全掌控自己时间的能力”。</p><p>第三步，构建你的系统。价值观和北极星是“道”，而系统是“术”。系统是你日常生活中的具体行动和习惯，它们将你的愿景转化为现实。纳瓦尔强调，系统要简单、可持续，并且与你的价值观一致。例如，如果你的北极星是“拥有健康的身体”，那么你的系统可能包括：每天运动30分钟、吃天然食物、保持充足睡眠。系统不是目标，而是实现目标的手段。芒格和纳瓦尔都认为，拥有好的系统比设定具体目标更重要，因为系统能让你在正确的轨道上持续前进，而目标往往让你在达成后陷入迷茫。</p><p>这个框架的妙处在于，它把人生设计变成了一个动态过程。你不是在规划一个固定的终点，而是在不断调整航向，确保自己始终朝着北极星的方向前进。纳瓦尔常说：“人生就像一场无限游戏，你的目标不是赢，而是继续玩下去。” 设计人生，就是让你在这场游戏中玩得更有意义、更快乐。</p><h3>三、深层分析：平衡 vs 取舍，以及迭代方法</h3><p>在人生设计中，我们常常会陷入一个误区：追求“平衡”。我们渴望事业、家庭、健康、社交、个人成长等各个方面都能完美兼顾。但纳瓦尔直言不讳地指出：“平衡是一个谎言。人生本质上是关于取舍。” 你不可能什么都想要，也不可能同时做好所有事。资源是有限的，时间、精力、注意力都是稀缺品。你必须做出选择，必须放弃一些东西，才能得到另一些东西。</p><p>那么，如何做出取舍？纳瓦尔建议，基于你的价值观和北极星来决策。如果你的北极星是“财富自由”，那么你可能需要在早期阶段牺牲大量的休闲时间，去积累资本和技能。如果你的北极星是“家庭幸福”，那么你可能需要放弃一些高薪但需要频繁出差的工作。关键在于，你的取舍必须是有意识的，而不是被动接受的。纳瓦尔曾说：“你选择不做什么，比你选择做什么更重要。” 每一次取舍，都是在向你的北极星靠近一步。</p><p>但取舍并不意味着你的人生设计是一成不变的。恰恰相反，纳瓦尔强调“迭代”的重要性。他认为，人生设计是一个不断试错、反馈、调整的过程。你不需要一开始就找到完美的答案，因为完美的答案根本不存在。你需要的是“快速试错，持续改进”。就像软件开发中的敏捷开发一样，你的人生设计也应该采用迭代方法。</p><p>具体来说，迭代方法包括四个步骤：假设、行动、评估、调整。首先，你基于自己的价值观和北极星，提出一个假设，比如“如果我每天花2小时学习编程，6个月后我就能找到一份远程工作，获得更多自由”。然后，你开始行动，执行这个假设。一段时间后，你评估结果：你学得怎么样？你的自由感增加了吗？最后，根据评估，你调整假设或行动方案。也许你需要延长学习时间，或者改变学习方式。这个过程周而复始，让你的人生设计越来越贴近你的真实需求。</p><p>纳瓦尔提醒我们，迭代需要耐心。不要期待一夜之间发生巨变。真正的改变，来自于微小的、持续的行动。芒格和纳瓦尔都强调，复利效应不仅适用于财富，也适用于人生设计。每天进步一点点，长期积累下来，你会发现自己已经走得很远。正如纳瓦尔所说：“你的人生是你所有选择的总和。每一个微小的选择，都在塑造未来的你。”</p><h3>四、实践应用与总结：从理念到行动</h3><p>理论讲得再多，不付诸实践也是空谈。现在，我们来谈谈如何将人生设计的理念应用到你的日常生活中。纳瓦尔建议，你可以从两个具体的实践开始：写一份“我的人生设计宣言”，以及定期进行“人生审计”。</p><p>首先，写一份“我的人生设计宣言”。这是一份不超过一页纸的文档，描述你理想中10年后的生活在各个维度上的样子。维度可以包括：职业、财务、健康、关系、个人成长、社区贡献等。不要写得太抽象，要尽可能具体，用细节勾勒出画面。比如，不要写“我很有钱”，而是写“我拥有一个被动收入超过生活开支的投资组合，我可以随时选择不工作”。不要写“我很健康”，而是写“我每天早晨能轻松跑5公里，精力充沛地开始一天”。这份宣言不是目标清单，而是一幅愿景蓝图。它将成为你北极星的具体化呈现。</p><p>其次，定期进行“人生审计”。每隔三个月或半年，拿出你的宣言，对照现实，问自己几个问题：我现在的状态与理想状态差距有多大？我在哪些维度上偏离了方向？我最近做的取舍是否与我的价值观一致？我需要调整哪些行动？这个审计过程，就是迭代方法的实践。它能让你保持清醒，避免被日常琐事带偏方向。</p><p>最后，我想分享一个真实案例。我的朋友小李，曾是某大厂的程序员，年薪百万，但他感到极度空虚。他发现自己只是在执行社会默认的脚本：高薪、高压、高消费。他的北极星是“自由和创造力”。于是，他做了一个有意识的取舍：辞职，降薪70%，加入一家小型创业公司，做自己感兴趣的产品。最初两年，他过得很艰难，收入锐减，不确定性大增。但他坚持迭代，不断学习新技能，调整自己的角色。三年后，他不仅成为了公司合伙人，还拥有了更多的自由时间，可以陪家人、做公益。他说：“我放弃了金钱，却得到了人生。”</p><p>总结一下，设计你的人生，核心在于有意识地选择，而不是接受默认设置。你需要定义你的价值观，设定你的北极星，构建你的系统，并在取舍中迭代前进。不要害怕犯错，因为每一次迭代都是一次成长。纳瓦尔说：“你的生活是你的作品。不要把它交给别人去设计。” 从今天开始，拿起你人生的画笔，勇敢地描绘属于你自己的画卷吧。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">人生设计的核心思维框架强调“你的生活是你的作品”。请用自己的话解释，为什么说人生设计不仅仅是“计划”，而更像“创作”？它与传统的“目标设定”有什么本质区别？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“创作”中的试错、迭代和主观能动性，对比“计划”的线性与被动接受。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 核心区别：人生设计是主动创作而非被动执行。传统目标设定像画固定路线图，而人生设计像雕塑家面对一块石头——每次敲击都改变形态，且允许中途改变主意。2. 创作本质：包含试错（如原型设计）、迭代（根据反馈调整）、主观价值注入（你的审美决定作品方向）。3. 计划陷阱：计划假设环境可控，但人生充满变量（如转行、疾病）。设计思维承认不确定性，用“快速试错”替代“完美规划”。4. 比喻：目标设定是“找到正确答案”，人生设计是“提出好问题”，比如“我如何让工作更接近我的热爱？”</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">假设你同时面临两个选择：A. 高薪但高压的工作（需要每天加班，牺牲家庭时间）；B. 薪资减半但时间自由，能陪伴家人并发展爱好。请运用“平衡 vs 取舍”的概念，设计一个具体的行动方案，而不是简单二选一。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">避免非此即彼。思考“创意取舍”：能否压缩A的工作强度？或结合B的自由模式？列出可调整的变量。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 拒绝非黑即白：先与A公司协商“压缩工时”（如每周4天班），用20%薪资换取30%时间。同时用业余时间尝试B类工作的“迷你版”（如周末接自由职业项目）。2. 定义你的成功：写下自己最看重的3个维度（如收入、家庭时间、个人成长），给每个维度打分，找到“足够好”的阈值（如年收入20万+每周2天陪家人）。3. 迭代方案：前3个月执行“混合模式”，每月复盘：如果高压导致健康问题，则增加B的权重；如果收入不足，再调整A的强度。4. 关键取舍：放弃“完美平衡”幻想，接受“阶段性侧重”——比如前两年侧重A积累资本，后三年转向B。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合本课“人生设计的迭代方法”和之前学过的“复利思维”（第35课），请设计一个“人生迭代实验”方案。要求：用复利思维解释为什么小步试错比一次性大决策更有效，并给出一个具体的生活领域（如职业、健康、关系）的迭代步骤。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">复利靠“持续小增益”，迭代靠“快速小反馈”。思考：如何将一次重大选择拆解为多个低成本实验？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 复利与迭代的共通点：复利效应依赖“微小但持续的正向改进”，人生迭代的每个小实验（如每周尝试一个新副业方向）会产生反馈数据，这些数据叠加后形成认知复利。2. 职业领域案例：假设想转型做自由插画师，不直接辞职，而是设计“周实验”：第一周：在社交媒体发3幅作品，记录互动数据；第二周：根据反馈调整风格；第三周：接1单低价客户，测试工作流程。3. 复利效果：每次实验成本低（时间/金钱），但积累的“客户认知”、“技能短板”、“市场偏好”等数据，使后续决策准确率指数增长。4. 对比大决策：直接辞职的风险是“一次错误浪费数年”，而迭代法让错误发生在小实验中（如发现插画市场需求不足，及时转向）。5. 关键公式：人生复利 = （实验频率 × 反馈质量）^ 时间， 所以每周1次小实验 > 每年1次大决策。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval089.html" class="prev">上一课</a>
+ <a href="naval091.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

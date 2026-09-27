@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>批判性思维 — 纳瓦尔通识课第76课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 76 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 8 · 阅读与学习</div>
+ <h1>批判性思维</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 76/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval076.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：批判性思维不是怀疑一切</h3><p>在信息爆炸的时代，我们每天都会遇到无数观点——从社交媒体上的热门帖子，到专业领域的深度分析。许多人以为，批判性思维就是不断地质疑和否定，像一台永不停歇的“反驳机器”。但纳瓦尔·拉维坎特对此有完全不同的理解。他说：“批判性思维不是怀疑一切，而是要求证据。在看到好证据之前，你保持开放；在看到好证据之后，你愿意改变想法。”</p><p>这种定义听起来简单，但执行起来极难。想想看，当你遇到一个与你立场完全相反的观点时，你的第一反应是什么？是立刻找出它的漏洞，还是先问自己：“这个观点有什么合理之处？” 大多数人会本能地选择前者。这是因为我们的认知系统天生倾向于确认偏见——我们更愿意接受支持自己已有信念的信息，而拒绝那些挑战它的信息。</p><p>举个例子。假设你是一个坚定的素食主义者，有人告诉你“适量食用红肉对健康有益”。你可能会立刻想到各种反对理由：饱和脂肪的危害、动物伦理问题、环境成本。但批判性思维要求你先停下来，问自己：“这个观点是否有科学依据？它是基于什么研究？这些研究的质量如何？” 你可能仍然不同意，但这个过程让你从情绪反应转向理性评估。</p><p>纳瓦尔强调，真正的批判性思维是一种“慢思考”的实践。它要求我们像科学家一样，把观点当作假设，而不是真理。正如查理·芒格和纳瓦尔都强调的：“如果你不能比对方更好地反驳自己的观点，那你还没有真正理解它。” 这句话揭示了批判性思维的核心：它不是为了赢，而是为了更接近真相。</p><p>这一课，我们将深入探讨什么是真正的批判性思维，它如何区别于简单的怀疑主义，以及我们如何在日常生活中运用它。你会发现，批判性思维不是一种攻击性工具，而是一种谦逊的、基于证据的思考方式。它让我们在面对复杂问题时，能够保持开放心态，同时又不失理性判断。</p><blockquote>“批判性思维不是怀疑一切，而是要求证据。在看到好证据之前，你保持开放；在看到好证据之后，你愿意改变想法。”——纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：什么是真正的批判性思维</h3><p>批判性思维的核心是一种“证据优先”的思维模式。纳瓦尔认为，大多数人犯的错误是把批判性思维等同于“找茬”——不断寻找别人观点中的错误。但真正的批判性思维包括两个关键步骤：第一，在看到好证据之前不做判断；第二，在看到好证据之后愿意改变想法。</p><p>第一步“不做判断”听起来简单，但实践起来极其困难。我们的头脑天生是“判断机器”——我们几乎自动地对每件事形成看法。比如，当你听到“比特币是泡沫”这个观点时，你可能立刻产生同意或反对的冲动。批判性思维要求你抑制这种冲动，转而问自己：“支持这个观点的证据是什么？这些证据有多可靠？” 这需要训练。</p><p>第二步“愿意改变想法”同样具有挑战性。我们的大脑有强烈的“一致性偏好”——我们喜欢自己的信念保持一致，改变想法会带来认知失调。但纳瓦尔指出，真正的智慧在于“快速纠正错误”。他说：“如果你不能轻易改变自己的想法，那你可能被某种东西束缚住了——可能是自尊、习惯或恐惧。” 一个批判性思考者应该像科学家一样，把观点当作暂时的假设，随时准备根据新证据更新。</p><p>为了帮助你理解，这里有一个实践框架。当你面对一个观点时，问自己三个问题：第一，这个观点的核心主张是什么？把它简化成一个可验证的陈述。第二，支持这个主张的证据是什么？是来自权威、个人经验、还是科学研究？第三，这些证据的强度如何？是否存在反例或替代解释？ 这个过程迫使你从情绪反应转向分析性思考。</p><p>举例来说，假设你听到有人说“冥想可以显著提高工作效率”。如果你只是点头同意，那是在接受一个未经检验的断言。批判性思维要求你进一步追问：哪些研究支持这个说法？样本量有多大？是否有对照组？是否存在其他因素（如更好的睡眠）干扰了结果？ 通过这种方式，你不仅能评估这个观点，还能深化你对冥想和工作效率之间关系的理解。</p><h3>三、深层分析：常见逻辑谬误与论证强度评估</h3><p>要成为批判性思考者，我们必须识别常见的逻辑谬误。这些谬误是思维中的“陷阱”，它们让论证看似合理，实则无效。纳瓦尔提到过几种最常见的谬误，包括诉诸权威、稻草人论证、以及虚假二分法。</p><p>诉诸权威是最常见的谬误之一。比如，有人说“因为某位诺贝尔奖得主支持这个观点，所以它一定是正确的”。但纳瓦尔提醒我们：“权威不是证据。权威只是提供了信息来源，但我们需要检验信息本身。” 一个专家可能在某个领域是权威，但在其他领域并不比普通人更可靠。批判性思维要求我们关注论证本身，而不是说话者的身份。</p><p>稻草人论证同样普遍。它指的是曲解或夸大对方的观点，然后攻击这个被扭曲的版本。比如，有人主张“应该减少碳排放”，反对者可能会说“你的意思是让我们回到原始时代吗？” 这显然是一种曲解。识别稻草人论证的关键是：问自己“这个反驳是否准确反映了原观点？” 如果不，那它就是稻草人。</p><p>虚假二分法则把复杂问题简化为两个极端选项。比如，“要么支持完全自由市场，要么支持计划经济”忽略了中间地带。纳瓦尔强调，现实世界很少是非黑即白的。一个好的批判性思考者会寻找第三种、第四种可能性。正如查理·芒格所说：“如果你只有一把锤子，那么每个问题看起来都像钉子。” 虚假二分法正是这种思维的体现。</p><p>除了识别谬误，我们还需要评估论点的强度。一个论点由前提和结论组成。评估强度时，问两个问题：第一，前提是否真实？第二，前提是否支持结论？ 如果前提是虚构的，或者前提与结论之间没有逻辑联系，那么论点就是弱的。例如，有人说“因为大多数人都相信上帝，所以上帝存在”——这是一个典型的诉诸多数谬误。前提（多数人相信）并不支持结论（上帝存在），因为信仰不是证据。</p><p>科学思维和批判性思维密切相关，但并不完全相同。科学思维强调可重复性、可证伪性和系统性观察。而批判性思维更广泛，适用于日常生活中的所有观点。纳瓦尔认为，科学思维是批判性思维的一种高级形式。他说：“科学方法是人类发明的最好的纠错系统。它要求我们提出假设、收集证据、接受反驳、根据新证据修订理论。” 将科学思维应用到日常生活中，就是批判性思维的精髓。</p><h3>四、实践应用：把批判性思维变成习惯</h3><p>理论必须转化为实践，否则只是空中楼阁。纳瓦尔强调，批判性思维不是一种天赋，而是一种可以训练的技能。以下是一些具体的实践方法，你可以立即开始使用。</p><p>第一，练习“反向思考”。当你强烈同意某个观点时，强迫自己找出三个反对它的最强论证。这听起来反直觉，但它是打破确认偏见的有效方法。例如，如果你坚信“远程工作比办公室工作更高效”，试着列出三个支持办公室工作的理由：比如更好的协作、更快的反馈、更强的归属感。这个过程不是为了否定你的观点，而是让你看到它的局限性。纳瓦尔说：“如果你不能从反对者的角度思考，那你还没有真正理解问题。”</p><p>第二，阅读你不同意的观点文章。不要找它的漏洞——找它说得对的地方。这需要巨大的自律，因为它违背了我们的本能。但正如纳瓦尔所说：“你的目标是学习，不是赢。” 当你能够从对方的角度找到合理之处，你就开始超越二元对立，进入更深层次的理解。例如，如果你是一个环保主义者，试着读一篇支持核能发展的文章，并找出其中的合理点——比如核能碳排放低、能量密度高。你可能仍然不完全同意，但你的观点会变得更加细致。</p><p>第三，建立“证据日记”。每天记录一个你遇到的观点，然后写下支持它的证据和反对它的证据。这迫使你从情绪反应转向系统分析。例如，今天你看到一条新闻说“人工智能将取代所有工作”。在日记中列出支持证据（如自动化案例）和反对证据（如人类创造力的不可替代性）。一个月后，回顾你的记录，你会发现自己思考的演变。</p><p>最后，记住纳瓦尔的提醒：“批判性思维不是一种攻击性武器，而是一种自我纠正工具。” 它的目的不是为了驳倒别人，而是为了让你自己更接近真相。下次当你遇到一个强烈触动情绪的观点时，停下来，深呼吸，然后问自己：“我有什么证据？我有没有可能错了？” 这种谦逊和开放，才是批判性思维的真正力量。</p><p>课后实践：读一篇你不同意的观点文章。不要找它的漏洞——找它说得对的地方。</p><p>课后作业：下次你强烈同意某个观点时，强迫自己找出三个反对它的最强论证。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">有人说：“批判性思维就是专门挑刺，怀疑一切。”请用本课核心概念反驳这个观点，并说明批判性思维真正的核心是什么。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">区分“怀疑一切”和“要求证据”——后者是建设性的，而非破坏性的。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 批判性思维不是否定一切，而是要求证据和逻辑支撑。<br>2. 它的核心是“理性评估”——判断论点是否基于可靠证据、推理是否有效，而非盲目反对。<br>3. 真正的批判性思维者会主动寻找反方合理之处（如课后实践），而非只找漏洞。<br>4. 它和科学思维一致：可证伪、可验证、开放修正。因此，批判性思维是建设性的工具，不是攻击武器。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">你看到一篇自媒体文章声称“某保健品治愈了数百人”，但未提供任何对照实验或独立验证。请用批判性思维分析这个论点的强度，并指出可能的逻辑谬误。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">注意“轶事证据”和“因果谬误”——无对照组等于无科学证据。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 论点强度极弱：只有个案描述（轶事证据），缺乏对照组、随机化、双盲等科学标准。<br>2. 常见谬误：a) 幸存者偏差——只报道有效案例，忽略无效或副作用；b) 因果谬误——将时间先后或巧合当作因果关系。<br>3. 批判性思维要求：要求提供随机对照试验数据、样本量、复现结果，并考虑其他解释（如安慰剂效应）。<br>4. 结论：未满足“要求证据”原则，论点不可靠。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾第1课《事实与观点》和第35课《科学方法》，结合本课，说明批判性思维如何帮助你在日常讨论中识别“观点伪装成事实”的情况。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">联系“可证伪性”（第35课）和“证据强度”（本课）来拆解伪装。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 第1课区分：事实可验证，观点主观。批判性思维要求将观点转化为可检验的命题。<br>2. 第35课科学方法：可证伪性、重复性、同行评审。若一个“事实”无法被证伪（如“宇宙有隐藏力量”），则可能是观点伪装。<br>3. 本课工具：检查论点的证据类型（轶事 vs 实验）、逻辑谬误（如诉诸权威、虚假两难）。<br>4. 整合应用：遇到“研究表明……”时，追问：研究是否同行评审？样本量？有无利益冲突？——这就是批判性思维+科学思维。<br>5. 最终：批判性思维不是怀疑一切，而是用科学标准评估证据，从而剥离观点与事实。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval075.html" class="prev">上一课</a>
+ <a href="naval077.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

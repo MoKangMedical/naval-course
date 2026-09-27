@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人知识管理 — 纳瓦尔通识课第79课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 79 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 8 · 阅读与学习</div>
+ <h1>个人知识管理</h1>
+ <div class="lesson-meta"><span><span class="badge badge-core">核心</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 79/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval079.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：你的大脑不是硬盘</h3><p>想象一下，你每天都会产生无数的想法、灵感和信息片段。你看到一篇精彩的文章，听到一段深刻的播客，或者在工作中得到一个绝妙的创意。你告诉自己：“这个很重要，我得记住它。”但几小时后，你甚至想不起那个想法的轮廓。这不是你记性不好，而是你的大脑被用错了地方。</p><p>纳瓦尔·拉维坎特，这位硅谷最敏锐的投资人之一，曾反复强调一个核心观点：“你的大脑是用来产生想法的——不是用来存储信息的。”这句话听起来简单，却颠覆了我们对学习和记忆的传统认知。纳瓦尔认为，大多数人把大脑当作一个硬盘，拼命往里塞信息，却忘了硬盘会满，会乱，会找不到文件。而真正高效的思考者，会把大脑解放出来，专注于连接、创造和洞察。</p><p>这就是“第二大脑”概念的起源。所谓第二大脑，是一个外部的知识管理系统——它可以是数字笔记软件、实体笔记本，或者任何你用来捕获和组织信息的工具。它的目标很简单：把你从记忆的负担中解放出来，让你能更自由地思考。</p><p>想想看，查理·芒格和纳瓦尔都强调，判断力是财富和幸福的基石。但判断力需要海量的知识作为支撑。如果你把所有知识都锁在大脑里，你的思维带宽就会被记忆任务占据，留给真正思考的空间就少了。纳瓦尔说：“我从不试图记住任何东西。我只记下它，然后忘记它。这样我才有空间去想更重要的事。”</p><p>今天，这堂课就是要教你如何建立自己的第二大脑。你不需要成为技术专家，也不需要购买昂贵的工具。你只需要理解四个核心步骤：捕获、组织、连接和回顾。让我们从第一步开始。</p><h3>二、核心理论：从捕获到连接的知识循环</h3><p>纳瓦尔的知识管理哲学可以概括为一个简单的循环：捕获灵感、组织信息、连接知识、定期回顾。这不是一个线性的过程，而是一个持续迭代的生态系统。</p><p>首先是捕获灵感。纳瓦尔说：“灵感是短暂的。如果你不立即记录，它就会消失。”他随身携带一个简单的笔记本，随时记下任何触动他的想法。哪怕只是一个词、一句话，甚至是一个模糊的感觉。他认为，记录的行为本身就是在向大脑发出信号：“这个很重要。”这能帮助大脑在潜意识里继续加工这个想法。</p><p>其次是组织信息。捕获下来的灵感是碎片化的，像一堆散落的拼图块。你需要把它们整理成可用的知识单元。纳瓦尔推荐使用“渐进式总结”的方法：每读一篇文章或一本书，先记下核心观点，然后用自己的话重述，最后加上你的思考和问题。这样，信息就从“别人的知识”变成了“你的知识”。</p><p>连接知识是第三步，也是最关键的一步。纳瓦尔和芒格都强调，真正的智慧来自不同领域知识的交叉。一个孤立的知识点几乎没有价值，但当你把它和另一个领域的知识连接起来时，就会产生强大的洞察。比如，你把生物学中的“进化论”和商业中的“竞争策略”连接起来，就能理解为什么“适者生存”在市场上同样适用。</p><p>最后是定期回顾。纳瓦尔每周会花一小时回顾他的笔记。他称之为“知识回顾”。他会问自己：这周我学到了什么？这些知识点之间有什么联系？哪些想法可以组合成新的创意？这个习惯让他能不断从旧知识中挖掘新价值，就像采矿者反复筛选矿渣，总能找到黄金。</p><p>这个循环的核心在于：你的第二大脑不是被动的存储库，而是主动的思考伙伴。它帮你记住，让你去想。</p><h3>三、深层分析：为什么大多数笔记系统会失败</h3><p>很多人尝试过建立笔记系统，但大多数都半途而废。原因很简单：他们把系统设计得太复杂，或者太依赖工具。纳瓦尔警告说：“工具是次要的。系统才是关键。”如果你花太多时间在整理笔记的格式上，而不是在思考内容上，你的第二大脑就会变成一个漂亮的垃圾场。</p><p>一个常见的错误是“收集癖”。你看到一篇好文章，立刻收藏到某个文件夹里，然后告诉自己“我以后会看”。但“以后”永远不会来。纳瓦尔曾说：“收藏不等于学习。真正的学习发生在你主动处理信息的时候。”如果你只是把信息从一个地方搬到另一个地方，你并没有真正拥有它。</p><p>另一个陷阱是“过度分类”。有些人喜欢把笔记分成几十个类别：商业、科技、心理、哲学……结果每次记录时，都要花时间想“这个该放哪一类”。纳瓦尔的做法更简单：他只用一个标签系统。每条笔记可以有多个标签，比如“#投资”“#心理学”“#纳瓦尔”。这样，一条关于“风险偏好”的笔记可以同时属于投资和心理学两个领域，方便跨领域连接。</p><p>芒格和纳瓦尔都强调“多元思维模型”——从不同学科中提取核心模型来理解世界。你的第二大脑应该支持这种跨学科连接。比如，你可以创建一个“模型库”笔记，专门记录各种思维模型：复利、机会成本、反馈回路、幸存者偏差……然后，每当你在其他笔记中用到某个模型时，就用链接指向它。这样，你的知识网络就会越来越稠密。</p><p>纳瓦尔还提醒我们，不要追求完美。他说：“完成比完美更重要。”你的第二大脑不需要一开始就很漂亮。它只需要能用。随着你不断使用，它会自然进化成最适合你的样子。就像一棵树，先扎根，再长枝，最后才能开花结果。</p><h3>四、实践应用：今天开始你的第二大脑</h3><p>现在，你可能会问：“我该从哪里开始？”答案很简单：从今天开始。你不需要购买昂贵的软件，也不需要学习复杂的教程。一张纸、一支笔，或者手机上的备忘录，就足够你迈出第一步。</p><p>纳瓦尔建议，第一件事是“立即记录”。今天，当你学到任何新东西时——无论是从一本书、一段对话，还是自己的思考中——立刻把它记下来。不要犹豫，不要评判。哪怕只是一个词：“复利”“耐心”“系统”。这些碎片会在未来某个时刻连接起来。</p><p>接下来，建立你的“知识回顾”习惯。每周固定一个时间，比如周日下午，花30分钟回顾本周的所有笔记。问自己三个问题：第一，这周我学到了哪三个最重要的知识点？第二，这些知识点之间有什么联系？第三，哪个想法可以转化为行动？纳瓦尔说：“不回顾的笔记就像不浇水的花。它会枯萎。”</p><p>这里有一个具体的案例。假设你是一名创业者，本周你读了一本关于“行为经济学”的书，记下了“锚定效应”这个概念。同时，你在市场调研中注意到，你的客户总是把价格和竞争对手比较。在知识回顾中，你把这两个点连接起来，意识到：客户其实是被“锚定”在了竞争对手的价格上。于是，你设计了一个新的定价策略，用更高的价格作为锚点，然后打折促销。结果，转化率提升了20%。这就是第二大脑的力量。</p><p>课后实践非常简单：今天就开始你的笔记系统。无论是笔记本、Notion、Obsidian还是其他工具，选择一个你最喜欢的，然后记录你今天学到的3件事。不要追求完美，只要开始。课后作业是每周进行一次“知识回顾”，找出连接和模式。</p><p>最后，记住纳瓦尔的提醒：“你的大脑是用来产生想法的，不是用来存储信息的。”建立第二大脑，不是让你变得更忙碌，而是让你变得更自由。当你不再被记忆束缚，你的创造力会像泉水一样涌出。现在，拿起你的笔，或者打开你的笔记软件，开始吧。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">“第二大脑”这个概念的核心是什么？它和我们日常使用的记忆或搜索引擎有什么本质区别？请用自己的话解释，不要复述定义。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考“第二大脑”是主动构建还是被动存储？它如何帮你“思考”而非仅仅“回忆”？</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">第二大脑的核心不是存储信息，而是通过主动捕获、组织、连接知识来辅助思考与创造。与记忆相比，它克服了遗忘曲线；与搜索引擎相比，它不是被动检索全网信息，而是你个人经过筛选、关联、内化的知识网络。它让你能发现不同想法之间的潜在联系，产生新洞见，就像大脑的延伸，帮你“想得更深”而非“记得更牢”。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">今天你在阅读或工作中突然冒出一个灵感（比如一个项目改进点子或一个写作主题），但手头正忙。请描述你会如何运用“立即记录”原则，在30秒内捕获这个灵感，并说明你选择的具体工具和记录格式。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">工具可以是手机备忘录、语音速记、手边便签；格式要足够简短但能唤醒完整想法。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">我会立刻打开手机上的Flomo应用，用一句话记录：“[项目X] 改进：用自动化脚本替代手动数据录入，预计节省2小时/周。”如果环境不允许打字，就用语音输入：“项目X自动化脚本想法。”格式采用“关键词+核心行动+预期收益”，这样即使只有几个字，晚上回顾时也能快速理解原意。关键是“先捕获，再整理”，不追求完美格式，只求不丢失灵感。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">回顾此前学过的“复利思维”和“系统思维”，结合本课“连接知识：标签、链接、索引”的概念，解释为什么说一个精心维护的个人知识管理系统，本身就是一种“复利系统”？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考知识连接如何产生“1+1>2”的效果，以及时间积累如何放大这种价值。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">复利系统的核心是“积累”与“指数增长”。个人知识管理通过标签、链接、索引，让每条笔记不是孤立点，而是编织成网。最初每条笔记价值有限，但随着连接增多，新知识能快速锚定到已有节点，产生“知识交叉点”——这就像复利中的利息生息。系统思维则要求我们设计这个网络的拓扑结构，而非随意堆砌。久而久之，知识网络的价值不是线性增长，而是指数级跃迁：你发现一个旧笔记突然因新连接而焕发新意义，这种“洞见复利”正是第二大脑的终极回报。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval078.html" class="prev">上一课</a>
+ <a href="naval080.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>饮食与营养 — 纳瓦尔通识课第33课 — 康波研究院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07070a;--bg2:#0a0a10;--card:#121218;--card2:#18181f;--card3:#1e1e27;--border:#22222d;--border2:#2e2e3a;--text:#f5f5f7;--text2:#a0a0ab;--text3:#656570;--gold:#e2b64f;--gold-light:#f0d478;--gold-dark:#b8922e;--green:#22c55e;--blue:#3b82f6;--purple:#a78bfa;--serif:'Noto Serif SC',serif;--sans:'Inter',-apple-system,sans-serif;--radius:14px;--radius-lg:20px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,7,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:60px;display:flex;align-items:center}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--gold)}
+.nav-info{font-size:.78rem;color:var(--text3);background:var(--card2);padding:4px 14px;border-radius:20px}
+
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:3px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s;width:0}
+
+.main{max-width:800px;margin:0 auto;padding:90px 28px 60px}
+
+.lesson-header{text-align:center;margin-bottom:48px}
+.lesson-phase{display:inline-block;font-size:.7rem;font-weight:600;color:var(--gold);background:rgba(226,182,79,.08);border:1px solid rgba(226,182,79,.15);padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
+.lesson-header h1{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:14px;background:linear-gradient(135deg,var(--text) 30%,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lesson-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--text3);font-size:.82rem}
+.lesson-meta span{display:flex;align-items:center;gap:5px}
+.lesson-meta .badge{padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500}
+.lesson-meta .badge-beginner{background:rgba(34,197,94,.1);color:#4ade80}
+.lesson-meta .badge-core{background:rgba(59,130,246,.1);color:#60a5fa}
+
+.audio-player{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:28px 0;display:flex;align-items:center;gap:14px;transition:border-color .3s}
+.audio-player:hover{border-color:rgba(226,182,79,.2)}
+.audio-player audio{width:100%;height:36px;filter:sepia(100%) saturate(300%) hue-rotate(350deg)}
+.audio-label{font-size:.78rem;color:var(--text3);margin-bottom:2px}
+.audio-title-mini{font-size:.9rem;font-weight:600;color:var(--text)}
+
+.content h2{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--text);margin:40px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.content h2::before{content:'';width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.content h3{font-size:1.1rem;font-weight:600;color:var(--gold-light);margin:28px 0 10px}
+.content h4{font-size:1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.content p{color:var(--text2);font-size:1rem;margin-bottom:12px;line-height:1.9}
+.content strong{color:var(--text);font-weight:600}
+.content em{color:var(--gold)}
+.content blockquote{background:linear-gradient(135deg,rgba(226,182,79,.06),rgba(226,182,79,.02));border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;border-radius:0 10px 10px 0;color:var(--text);font-size:.95rem;line-height:1.8}
+.content blockquote p:last-child{margin-bottom:0}
+.content ul,.content ol{padding-left:24px;margin:12px 0;color:var(--text2)}
+.content li{margin:6px 0}
+.content li::marker{color:var(--gold-dark)}
+.content code{background:var(--card3);color:var(--gold-light);padding:2px 7px;border-radius:5px;font-size:.85rem}
+.content pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:16px 0;overflow-x:auto}
+.content pre code{background:none;padding:0;color:var(--text2);font-size:.85rem}
+.content hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.data-table th{background:rgba(226,182,79,.08);color:var(--gold);font-weight:600;text-align:left;padding:11px 15px;border-bottom:2px solid rgba(226,182,79,.2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.data-table td{padding:11px 15px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even){background:rgba(255,255,255,.015)}
+
+.callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;margin:24px 0}
+.callout.gold{border-left:4px solid var(--gold)}
+.callout.green{border-left:4px solid var(--green)}
+.callout.blue{border-left:4px solid var(--blue)}
+.callout-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--gold)}
+.callout p,.callout li{color:var(--text2);font-size:.93rem;line-height:1.85}
+
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;margin:28px 0}
+.exercise:nth-of-type(odd){border-left:3px solid var(--blue)}
+.exercise:nth-of-type(even){border-left:3px solid var(--gold)}
+.exercise h3{color:var(--text);font-size:1.05rem;margin-bottom:10px}
+.exercise .q{color:var(--text);font-weight:500;margin-bottom:10px}
+.exercise textarea{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.93rem;resize:vertical;transition:border-color .2s;line-height:1.8}
+.exercise textarea:focus{outline:none;border-color:var(--gold)}
+.exercise textarea::placeholder{color:var(--text3)}
+.exercise details{margin-top:12px;padding:12px 16px;background:var(--card2);border-radius:8px}
+.exercise details summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.88rem}
+.exercise details[open] summary{margin-bottom:8px}
+.exercise details p,.exercise details li{font-size:.85rem;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;margin-top:48px;border-top:1px solid var(--border)}
+.bottom-nav a{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:500;transition:all .25s;font-size:.93rem}
+.bottom-nav .prev{color:var(--text3);border:1px solid var(--border)}
+.bottom-nav .prev:hover{border-color:var(--gold);color:var(--gold)}
+.bottom-nav .next{background:var(--gold);color:#1a1a0a}
+.bottom-nav .next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+.recommend{background:var(--card);border-radius:var(--radius-lg);padding:24px 28px;margin:32px 0;border:1px solid var(--border)}
+.recommend h3{font-family:var(--serif);color:var(--gold);margin-bottom:12px;font-size:1.1rem}
+.recommend table{width:100%}
+.recommend td{padding:6px 8px;font-size:.85rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.03)}
+.recommend td:first-child{font-weight:500;color:var(--text)}
+.recommend td:last-child{color:var(--text3);font-size:.8rem}
+
+@media(max-width:640px){
+ .main{padding:80px 16px 48px}
+ .lesson-header h1{font-size:1.5rem}
+ .content h2{font-size:1.15rem}
+ .data-table{font-size:.75rem}
+ .data-table th,.data-table td{padding:8px 10px}
+ .exercise{padding:20px}
+ .bottom-nav a{padding:12px 20px;font-size:.85rem}
+}
+
+/* Interactive Exercises */
+.interactive-exercises{margin:48px 0 32px}
+.ie-section-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.ie-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ie-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--purple);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:20px;transition:border-color .3s}
+.ie-card:nth-child(2){border-left-color:var(--blue)}
+.ie-card:nth-child(3){border-left-color:var(--gold)}
+.ie-card:hover{border-color:rgba(167,139,250,.25)}
+.ie-type{display:inline-block;font-size:.7rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,.08);padding:3px 12px;border-radius:12px;margin-bottom:12px;letter-spacing:.04em}
+.ie-question{color:var(--text);font-size:.98rem;font-weight:500;line-height:1.75;margin-bottom:14px}
+.ie-hint-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);cursor:pointer;user-select:none;padding:6px 12px;border-radius:8px;transition:all .2s;margin-bottom:6px}
+.ie-hint-toggle:hover{color:var(--gold);background:rgba(226,182,79,.05)}
+.ie-arrow{font-size:.6rem;transition:transform .2s;display:inline-block}
+.ie-hint{display:none;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1);border-radius:10px;padding:12px 14px;margin-bottom:14px;color:var(--text2);font-size:.84rem;line-height:1.7}
+.ie-hint.visible{display:block}
+.ie-answer{width:100%;min-height:80px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:.9rem;resize:vertical;transition:border-color .2s;line-height:1.75}
+.ie-answer:focus{outline:none;border-color:var(--gold)}
+.ie-answer::placeholder{color:var(--text3)}
+.ie-reference{margin-top:12px}
+.ie-reference summary{cursor:pointer;color:var(--gold);font-weight:500;font-size:.85rem;padding:10px 14px;background:var(--card2);border-radius:8px;transition:background .2s}
+.ie-reference summary:hover{background:rgba(226,182,79,.06)}
+.ie-reference[open] summary{margin-bottom:0;border-radius:8px 8px 0 0}
+.ie-ref-content{padding:14px 16px;background:rgba(226,182,79,.03);border:1px solid rgba(226,182,79,.1);border-top:none;border-radius:0 0 8px 8px;color:var(--text2);font-size:.85rem;line-height:1.8;white-space:pre-wrap}
+@media(max-width:640px){.ie-card{padding:18px}.ie-question{font-size:.9rem}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="nav-inner"><a href="index.html" class="nav-brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#e2b64f" stroke-width="1.5"/><path d="M6 18c2-6 4-8 8-10s6 2 8 6" stroke="#e2b64f" stroke-width="1.5" fill="none"/><circle cx="14" cy="12" r="2.5" fill="#e2b64f"/></svg>
+ 康波研究院
+ </a>
+ <div class="nav-info">第 33 课 / 共 100 课</div>
+ </div>
+</nav>
+
+<div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+
+<main class="main">
+ <div class="lesson-header"><div class="lesson-phase">阶段 4 · 自我修炼</div>
+ <h1>饮食与营养</h1>
+ <div class="lesson-meta"><span><span class="badge badge-beginner">入门</span></span>
+ <span>纳瓦尔通识课程</span>
+ <span>第 33/100 课</span>
+ <span>含练习</span>
+ </div>
+ </div>
+
+ <div class="audio-player"><span style="font-size:1.3rem">&#9835;</span>
+ <div style="flex:1"><div class="audio-label">课程音频</div><audio controls preload="none"><source src="audio/naval033.mp3" type="audio/mpeg"></audio></div>
+ </div>
+
+ <div class="content">
+<h3>一、开篇引入：为什么大多数饮食方案都失败了</h3><p>想象一下，你身边有多少朋友尝试过节食、生酮、素食、地中海饮食，但最终都回到了原来的饮食习惯？纳瓦尔·拉维坎特在谈及饮食时，一针见血地指出：“世界上最好的饮食就是你能坚持的饮食。”这句话看似简单，却戳破了整个饮食行业的泡沫。我们被各种复杂方案、超级食物、神奇补剂轰炸，但忽略了最基本的事实：任何不能长期执行的饮食方案，都是无效的。</p><p>纳瓦尔曾分享自己的经历：他尝试过纯素食、生酮、高蛋白等多种饮食，最终发现，只有当他选择简单、可重复的食物组合时，才能持续健康。他说：“如果你需要一张复杂的表格来计算每餐的营养素，你注定会失败。因为你的意志力是有限的，而生活是无限的。” 这正是康波研究院强调的“极简原则”——在自我修炼中，规则越少，执行越久。</p><p>芒格和纳瓦尔都强调，人类的意志力是一种消耗品。就像肌肉会疲劳，你的自律也会在一天中逐渐耗尽。复杂的饮食方案要求你不断做决策——今天吃多少克脂肪？这个水果含糖量高吗？这餐是否符合宏量营养素比例？这些决策叠加起来，变成了一座认知负担的大山。最终，你会在压力、疲惫或社交场合下放弃，然后自责，然后陷入“节食-暴食-再节食”的恶性循环。</p><p>所以，本课的核心不是给你一套新食谱，而是帮你建立一种思考饮食的方式。我们要问：什么样的饮食规则，能让你在十年后依然轻松执行？答案不是某种神奇的方案，而是回归常识——少吃加工食品，多吃天然食物。简单，但有效。</p><blockquote>“世界上最好的饮食就是你能坚持的饮食。” —— 纳瓦尔·拉维坎特</blockquote><h3>二、核心理论：天然食物 vs 加工食品的根本区别</h3><p>纳瓦尔认为，饮食的核心矛盾不是“碳水化合物 vs 脂肪”，也不是“素食 vs 肉食”，而是“天然食物 vs 加工食品”。他说：“你的身体是经过几百万年进化而来的，它知道如何处理天然食物。但加工食品是最近一百年才出现的，你的身体不知道如何应对。” 这一观点得到了大量科学研究的支持。</p><p>天然食物，比如蔬菜、水果、肉类、鱼类、蛋类、坚果、种子，它们含有完整的营养结构。例如，一个苹果不仅含有果糖，还含有纤维、维生素、多酚和水分。纤维会减缓糖分的吸收，避免血糖飙升；多酚则具有抗氧化作用。而一个苹果味饮料，可能只有高果糖玉米糖浆、人工香精和色素，没有纤维，没有多酚，只有纯粹的糖和化学物质。你的身体吸收这些糖分后，血糖迅速升高，胰岛素大量分泌，长期如此，就会导致胰岛素抵抗和慢性炎症。</p><p>加工食品的另一个问题是“过度美味”。食品工业经过精密设计，让薯片、饼干、含糖饮料达到“极乐点”——一种让你吃了还想吃、停不下来的人工味道。纳瓦尔曾说：“加工食品就像毒品，它们劫持了你的奖赏系统。” 天然食物则不同，你吃够后自然会停止。比如，你很难吃下三斤草莓，但可以轻松喝下一瓶含糖饮料，后者含有等量的糖却没有任何饱腹感。</p><p>芒格和纳瓦尔都强调，简单规则优于复杂理论。你不需要记住几十种营养素的名字。只需一个简单规则：如果一种食物有超过五种成分，或者成分表里有你看不懂的化学名词，就不要吃。这一规则覆盖了超市里80%的包装食品。剩下的，就是天然食物。这个规则不需要意志力，只需要一次决策——购物时扫一眼成分表。</p><h3>三、深层分析：间歇性禁食的科学与糖的慢性伤害</h3><p>纳瓦尔是间歇性禁食的长期实践者。他通常每天只吃两餐，中午和晚上，中间间隔约16小时。他说：“禁食不是挨饿，而是给你的消化系统一个休息的机会。” 科学研究表明，间歇性禁食可以改善胰岛素敏感性、降低炎症水平、促进细胞自噬——一种细胞清除废物和受损成分的自我修复机制。自噬过程在进食后数小时启动，大约在禁食12-16小时达到高峰。这就是为什么纳瓦尔强调16小时禁食窗口。</p><p>但纳瓦尔也警告：禁食不是万能药，也不是每个人都适合。他说：“如果你在禁食期间感到头晕、疲劳或无法集中注意力，就停止。倾听你的身体。” 关键在于，禁食是一种工具，而不是教条。你可以从12小时开始，比如晚上8点到早上8点不进食，这已经能带来显著好处。然后逐步延长到14小时、16小时。重要的是，禁食期间只喝水、黑咖啡或无糖茶，避免任何含热量的饮料。</p><p>糖和慢性炎症是现代饮食的最大问题。纳瓦尔曾直言：“糖是慢性炎症的主要驱动因素，而慢性炎症是所有慢性病的根源——心脏病、糖尿病、阿尔茨海默症、甚至癌症。” 加工食品中的添加糖，尤其是高果糖玉米糖浆，会直接促进肝脏脂肪合成、导致胰岛素抵抗，并激活炎症通路。一项发表在《美国医学会杂志》上的研究显示，每天摄入超过25克添加糖的人，心血管疾病死亡率比摄入低于10克的人高出近两倍。</p><p>那么如何减少糖的摄入？纳瓦尔建议：戒掉含糖饮料，这是最简单的第一步。一杯500毫升的可乐含有约54克糖，远超世界卫生组织建议的每日25克上限。换成水或气泡水，你就能立即减少一半的糖摄入。第二步，警惕“隐形糖”——番茄酱、沙拉酱、酸奶、麦片中都可能隐藏大量糖。学会阅读成分表，如果糖排在成分表前三位，就远离它。</p><h3>四、实践应用与总结：建立你的可持续饮食系统</h3><p>现在，让我们把理论转化为行动。纳瓦尔的饮食哲学不需要你成为营养学专家，只需要你遵循三个简单规则：第一，尽量吃天然食物，避免加工食品；第二，找到你能长期坚持的饮食模式，无论是三餐还是两餐；第三，减少糖和精制碳水化合物的摄入。这三个规则覆盖了80%的收益，剩下的20%细节并不重要。</p><p>一个具体的实践方法：每周花一小时进行“厨房清理”。打开你的冰箱和橱柜，把所有加工食品拿出来——薯片、饼干、含糖饮料、速冻披萨、罐头汤。看看它们的成分表。然后问自己：如果没有这些东西，我可以用什么天然食物替代？比如，用新鲜水果替代糖果，用坚果替代薯片，用气泡水替代可乐。这一步不需要你一次性戒掉所有，而是逐渐替换。纳瓦尔说：“不要追求完美，追求进步。每次只改善一个习惯。”</p><p>课后实践：立刻检查你的厨房和冰箱。加工食品占多大比例？你能用哪些天然食物替代它们？记录在笔记本上。然后尝试一周不吃任何加工食品——任何有超过五种成分的包装食品。注意你的感觉：精力是否更稳定？下午是否不再犯困？皮肤是否变好？很多人发现，停止加工食品后，他们的食欲自然下降，因为天然食物会调节饥饿激素。</p><p>最后，记住纳瓦尔的忠告：“健康不是关于你吃了多少顿完美的餐，而是关于你避免了哪些糟糕的选择。” 饮食是一场马拉松，不是短跑。选择你能坚持的规则，然后每天执行。简单，但持续。这就是纳瓦尔饮食哲学的精髓，也是康波研究院自我修炼课程的核心理念。</p>
+ </div>
+
+
+<!-- 互动练习 -->
+<section class="interactive-exercises">
+  <h2 class="ie-section-title">互动练习</h2>
+  <div class="ie-card">
+    <div class="ie-type">概念内化</div>
+    <div class="ie-question">纳瓦尔说“世界上最好的饮食是你能坚持的饮食”。请解释为什么大多数流行的饮食方案（如生酮、纯素、低碳水等）最终会失败？核心原因是什么？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">聚焦“可持续性”与“行为改变”，而非单纯营养学角度。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 极端限制：大多数饮食方案要求严格剔除某类食物（如碳水化合物或脂肪），导致心理压抑和社交障碍，难以长期坚持。2. 违背习惯：突然改变日常饮食模式（如从三餐改为间歇性禁食）会触发大脑的“匮乏反应”，引发暴食反弹。3. 忽视个体差异：没有考虑人的生活方式、文化背景和代谢特点，一套方案无法适配所有人。4. 短期目标导向：人们将其视为“任务”而非“生活方式”，一旦达成体重目标便放弃，导致体重循环。核心失败原因在于“不可持续”——任何无法融入日常节奏的饮食，终将被现实打破。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">实际应用</div>
+    <div class="ie-question">检查你的厨房和冰箱，找出3种最常见的加工食品。针对每一种，提出一个天然食物替代方案，并说明为什么这个替代方案能减少慢性炎症风险。</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">加工食品通常含精制糖、反式脂肪或添加剂，天然替代品应更接近原始形态。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 加工食品：含糖早餐麦片 → 替代方案：钢切燕麦+新鲜浆果+坚果。原因：避免精制糖导致的血糖骤升和胰岛素抵抗，浆果中的花青素具有抗炎作用。2. 加工食品：薯片 → 替代方案：烤羽衣甘蓝片（橄榄油+海盐）。原因：减少反式脂肪和丙烯酰胺（高温加工产物），羽衣甘蓝富含维生素K和抗氧化剂。3. 加工食品：含糖酸奶 → 替代方案：原味全脂希腊酸奶+蜂蜜+肉桂。原因：去除添加糖和人工甜味剂，肉桂中的肉桂醛能降低炎症因子TNF-α。天然食物能提供完整的微量营养素和植物化学物质，直接对抗慢性炎症。</div>
+    </details>
+  </div>
+
+  <div class="ie-card">
+    <div class="ie-type">框架整合</div>
+    <div class="ie-question">结合第32课《压力与恢复》中关于“压力-恢复周期”的概念，解释为什么间歇性禁食（如16:8）不是一种饥饿折磨，而是一种“营养压力”训练？它与肌肉锻炼的恢复机制有何相似之处？</div>
+
+    <div class="ie-hint-toggle" onclick="var d=this.nextElementSibling;d.classList.toggle('visible');var i=this.querySelector('.ie-arrow');i.textContent=d.classList.contains('visible')?'▼':'▶'">
+      <span class="ie-arrow">▶</span> 解题提示
+    </div>
+    <div class="ie-hint">思考禁食如何激活细胞自噬和代谢灵活性，类比运动后的超量恢复。</div>
+
+    <textarea class="ie-answer" placeholder="在此写下你的回答..." rows="4"></textarea>
+
+    <details class="ie-reference">
+      <summary>查看参考答案</summary>
+      <div class="ie-ref-content">1. 相似机制：间歇性禁食本质上是一种“可控压力源”，如同举重对肌肉施加机械张力。禁食期间，细胞面临能量短缺（压力），随后进食阶段提供营养（恢复），从而增强线粒体功能和胰岛素敏感性。2. 自噬激活：禁食触发细胞自噬（清除受损蛋白质和线粒体），类似于运动后肌肉纤维的修复与再生。这种“清理-重建”周期是抗衰老和抗炎的核心。3. 代谢弹性：规律禁食训练身体在葡萄糖和酮体之间灵活切换燃料，好比肌肉适应不同运动模式（有氧vs无氧）。4. 关键区别：禁食并非持续饥饿，而是主动选择“压力窗口”，配合充足睡眠和低强度活动（如散步），避免皮质醇过高。正如第32课强调的，恢复与压力同等重要——禁食后的第一餐应选择营养密度高的天然食物，而非精制碳水。</div>
+    </details>
+  </div>
+
+</section>
+
+</main>
+
+<div class="bottom-nav">
+ <a href="naval032.html" class="prev">上一课</a>
+ <a href="naval034.html" class="next">下一课</a>
+</div>
+
+<script>
+(function(){
+ var pf=document.getElementById('pf');
+ if(pf){
+  window.addEventListener('scroll',function(){
+   var doc=document.documentElement,st=doc.scrollTop,sh=doc.scrollHeight-doc.clientHeight;
+   pf.style.width=sh?Math.min(100,(st/sh)*100)+'%':'0';
+  });
+ }
+})();
+</script>
+
+</body>
+</html>
